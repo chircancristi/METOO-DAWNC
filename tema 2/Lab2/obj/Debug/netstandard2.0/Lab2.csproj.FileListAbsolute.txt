@@ -1,0 +1,18 @@
+D:\UAIC\An3\NET\Lab2\Lab2\bin\Debug\netstandard2.0\Lab2.deps.json
+D:\UAIC\An3\NET\Lab2\Lab2\bin\Debug\netstandard2.0\Lab2.dll
+D:\UAIC\An3\NET\Lab2\Lab2\bin\Debug\netstandard2.0\Lab2.pdb
+D:\UAIC\An3\NET\Lab2\Lab2\obj\Debug\netstandard2.0\Lab2.csprojAssemblyReference.cache
+D:\UAIC\An3\NET\Lab2\Lab2\obj\Debug\netstandard2.0\Lab2.csproj.CoreCompileInputs.cache
+D:\UAIC\An3\NET\Lab2\Lab2\obj\Debug\netstandard2.0\Lab2.AssemblyInfoInputs.cache
+D:\UAIC\An3\NET\Lab2\Lab2\obj\Debug\netstandard2.0\Lab2.AssemblyInfo.cs
+D:\UAIC\An3\NET\Lab2\Lab2\obj\Debug\netstandard2.0\Lab2.dll
+D:\UAIC\An3\NET\Lab2\Lab2\obj\Debug\netstandard2.0\Lab2.pdb
+F:\Facultate\dotnet\tema 2\Lab2\bin\Debug\netstandard2.0\Lab2.deps.json
+F:\Facultate\dotnet\tema 2\Lab2\bin\Debug\netstandard2.0\Lab2.dll
+F:\Facultate\dotnet\tema 2\Lab2\bin\Debug\netstandard2.0\Lab2.pdb
+F:\Facultate\dotnet\tema 2\Lab2\obj\Debug\netstandard2.0\Lab2.csprojAssemblyReference.cache
+F:\Facultate\dotnet\tema 2\Lab2\obj\Debug\netstandard2.0\Lab2.csproj.CoreCompileInputs.cache
+F:\Facultate\dotnet\tema 2\Lab2\obj\Debug\netstandard2.0\Lab2.AssemblyInfoInputs.cache
+F:\Facultate\dotnet\tema 2\Lab2\obj\Debug\netstandard2.0\Lab2.AssemblyInfo.cs
+F:\Facultate\dotnet\tema 2\Lab2\obj\Debug\netstandard2.0\Lab2.dll
+F:\Facultate\dotnet\tema 2\Lab2\obj\Debug\netstandard2.0\Lab2.pdb

@@ -1,0 +1,151 @@
+{
+  "runtimeTarget": {
+    "name": ".NETStandard,Version=v2.0/",
+    "signature": "32f24f6c9561f2d3c8369a79cf76a54f40eab4a4"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETStandard,Version=v2.0": {},
+    ".NETStandard,Version=v2.0/": {
+      "Product.test/1.0.0": {
+        "dependencies": {
+          "FluentAssertions": "5.4.2",
+          "MSTest.TestAdapter": "1.3.2",
+          "MSTest.TestFramework": "1.3.2",
+          "Microsoft.NET.Test.Sdk": "15.8.0",
+          "NETStandard.Library": "2.0.3",
+          "Product": "1.0.0"
+        },
+        "runtime": {
+          "Product.test.dll": {}
+        }
+      },
+      "FluentAssertions/5.4.2": {
+        "dependencies": {
+          "System.Configuration.ConfigurationManager": "4.4.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/FluentAssertions.dll": {
+            "assemblyVersion": "5.4.2.0",
+            "fileVersion": "5.4.2.0"
+          }
+        }
+      },
+      "Microsoft.NET.Test.Sdk/15.8.0": {},
+      "Microsoft.NETCore.Platforms/1.1.0": {},
+      "MSTest.TestAdapter/1.3.2": {},
+      "MSTest.TestFramework/1.3.2": {
+        "runtime": {
+          "lib/netstandard1.0/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll": {
+            "assemblyVersion": "14.0.0.0",
+            "fileVersion": "14.0.2505.1"
+          },
+          "lib/netstandard1.0/Microsoft.VisualStudio.TestPlatform.TestFramework.dll": {
+            "assemblyVersion": "14.0.0.0",
+            "fileVersion": "14.0.2505.1"
+          }
+        }
+      },
+      "NETStandard.Library/2.0.3": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0"
+        }
+      },
+      "System.Configuration.ConfigurationManager/4.4.0": {
+        "dependencies": {
+          "System.Security.Cryptography.ProtectedData": "4.4.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Configuration.ConfigurationManager.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.6.25519.3"
+          }
+        }
+      },
+      "System.Security.Cryptography.ProtectedData/4.4.0": {
+        "runtime": {
+          "lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll": {
+            "assemblyVersion": "4.0.2.0",
+            "fileVersion": "4.6.25519.3"
+          }
+        }
+      },
+      "Product/1.0.0": {
+        "dependencies": {
+          "FluentAssertions": "5.4.2"
+        },
+        "runtime": {
+          "Product.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Product.test/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "FluentAssertions/5.4.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ZhinGnIVyJvos6VOXegxDltPiuVOMgysxV+ADt4qqZn0I2AOsU5r8R/L02tV6kPeUX9DkzjEPrd3rGhL0bCYUQ==",
+      "path": "fluentassertions/5.4.2",
+      "hashPath": "fluentassertions.5.4.2.nupkg.sha512"
+    },
+    "Microsoft.NET.Test.Sdk/15.8.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-yRnkhvz0RXRGmoLZqcL917aA8GoEgJRyxhmlf1CoFxU/6msYeIPxVJbBFnMpiSOm8rrY2jJedWnJUODQRbalaw==",
+      "path": "microsoft.net.test.sdk/15.8.0",
+      "hashPath": "microsoft.net.test.sdk.15.8.0.nupkg.sha512"
+    },
+    "Microsoft.NETCore.Platforms/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
+      "path": "microsoft.netcore.platforms/1.1.0",
+      "hashPath": "microsoft.netcore.platforms.1.1.0.nupkg.sha512"
+    },
+    "MSTest.TestAdapter/1.3.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Gf3z9oEcQ9+h+c+ZUkeIlhrXkmlvVMcqYwDlGzH0mVcOe4bi+rcIVLZBWDAtw+OjEZ0lOX3eL31VuzY8CQen1Q==",
+      "path": "mstest.testadapter/1.3.2",
+      "hashPath": "mstest.testadapter.1.3.2.nupkg.sha512"
+    },
+    "MSTest.TestFramework/1.3.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1R4o/wJ5UFQt2c4Nlmor39rMX0d0ByOMVXZwOyhGhh1BQqgj54fuE+yMZ0/e8yEZYVl29PFYfj4cjHB9yKyOmA==",
+      "path": "mstest.testframework/1.3.2",
+      "hashPath": "mstest.testframework.1.3.2.nupkg.sha512"
+    },
+    "NETStandard.Library/2.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
+      "path": "netstandard.library/2.0.3",
+      "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
+    },
+    "System.Configuration.ConfigurationManager/4.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-RLYB3YOmdz9dE3zMhBFGv3GF74upGjH0nF0G9lFFRLNLsCEMIpiuQsMGv2qE0qdp1JdheVNO8RIRpUKdokiK+g==",
+      "path": "system.configuration.configurationmanager/4.4.0",
+      "hashPath": "system.configuration.configurationmanager.4.4.0.nupkg.sha512"
+    },
+    "System.Security.Cryptography.ProtectedData/4.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-WwEexvBd+17yfY7fcS+fBGl+HADEfCJuKeDJqBT7D6j6vKwYvfLyGuq2y/MmrKORC6mbYwth7kjinO1mPhTL3g==",
+      "path": "system.security.cryptography.protecteddata/4.4.0",
+      "hashPath": "system.security.cryptography.protecteddata.4.4.0.nupkg.sha512"
+    },
+    "Product/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

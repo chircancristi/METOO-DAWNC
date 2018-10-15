@@ -1,0 +1,34 @@
+D:\UAIC\An3\NET\Lab2\Lab2.test\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+D:\UAIC\An3\NET\Lab2\Lab2.test\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+D:\UAIC\An3\NET\Lab2\Lab2.test\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+D:\UAIC\An3\NET\Lab2\Lab2.test\bin\Debug\netcoreapp2.1\Lab2.test.deps.json
+D:\UAIC\An3\NET\Lab2\Lab2.test\bin\Debug\netcoreapp2.1\Lab2.test.runtimeconfig.json
+D:\UAIC\An3\NET\Lab2\Lab2.test\bin\Debug\netcoreapp2.1\Lab2.test.runtimeconfig.dev.json
+D:\UAIC\An3\NET\Lab2\Lab2.test\bin\Debug\netcoreapp2.1\Lab2.test.dll
+D:\UAIC\An3\NET\Lab2\Lab2.test\bin\Debug\netcoreapp2.1\Lab2.test.pdb
+D:\UAIC\An3\NET\Lab2\Lab2.test\bin\Debug\netcoreapp2.1\Lab2.dll
+D:\UAIC\An3\NET\Lab2\Lab2.test\bin\Debug\netcoreapp2.1\Lab2.pdb
+D:\UAIC\An3\NET\Lab2\Lab2.test\obj\Debug\netcoreapp2.1\Lab2.test.csprojAssemblyReference.cache
+D:\UAIC\An3\NET\Lab2\Lab2.test\obj\Debug\netcoreapp2.1\Lab2.test.csproj.CoreCompileInputs.cache
+D:\UAIC\An3\NET\Lab2\Lab2.test\obj\Debug\netcoreapp2.1\Lab2.test.AssemblyInfoInputs.cache
+D:\UAIC\An3\NET\Lab2\Lab2.test\obj\Debug\netcoreapp2.1\Lab2.test.AssemblyInfo.cs
+D:\UAIC\An3\NET\Lab2\Lab2.test\obj\Debug\netcoreapp2.1\Lab2.test.csproj.CopyComplete
+D:\UAIC\An3\NET\Lab2\Lab2.test\obj\Debug\netcoreapp2.1\Lab2.test.dll
+D:\UAIC\An3\NET\Lab2\Lab2.test\obj\Debug\netcoreapp2.1\Lab2.test.pdb
+F:\Facultate\dotnet\tema 2\Lab2.test\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+F:\Facultate\dotnet\tema 2\Lab2.test\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+F:\Facultate\dotnet\tema 2\Lab2.test\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+F:\Facultate\dotnet\tema 2\Lab2.test\bin\Debug\netcoreapp2.1\Lab2.test.deps.json
+F:\Facultate\dotnet\tema 2\Lab2.test\bin\Debug\netcoreapp2.1\Lab2.test.runtimeconfig.json
+F:\Facultate\dotnet\tema 2\Lab2.test\bin\Debug\netcoreapp2.1\Lab2.test.runtimeconfig.dev.json
+F:\Facultate\dotnet\tema 2\Lab2.test\bin\Debug\netcoreapp2.1\Lab2.test.dll
+F:\Facultate\dotnet\tema 2\Lab2.test\bin\Debug\netcoreapp2.1\Lab2.test.pdb
+F:\Facultate\dotnet\tema 2\Lab2.test\bin\Debug\netcoreapp2.1\Lab2.dll
+F:\Facultate\dotnet\tema 2\Lab2.test\bin\Debug\netcoreapp2.1\Lab2.pdb
+F:\Facultate\dotnet\tema 2\Lab2.test\obj\Debug\netcoreapp2.1\Lab2.test.csprojAssemblyReference.cache
+F:\Facultate\dotnet\tema 2\Lab2.test\obj\Debug\netcoreapp2.1\Lab2.test.csproj.CoreCompileInputs.cache
+F:\Facultate\dotnet\tema 2\Lab2.test\obj\Debug\netcoreapp2.1\Lab2.test.AssemblyInfoInputs.cache
+F:\Facultate\dotnet\tema 2\Lab2.test\obj\Debug\netcoreapp2.1\Lab2.test.AssemblyInfo.cs
+F:\Facultate\dotnet\tema 2\Lab2.test\obj\Debug\netcoreapp2.1\Lab2.test.csproj.CopyComplete
+F:\Facultate\dotnet\tema 2\Lab2.test\obj\Debug\netcoreapp2.1\Lab2.test.dll
+F:\Facultate\dotnet\tema 2\Lab2.test\obj\Debug\netcoreapp2.1\Lab2.test.pdb

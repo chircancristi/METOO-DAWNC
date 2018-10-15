@@ -1,0 +1,15 @@
+F:\Facultate\dotnet\dotNet\Product.test\bin\Debug\netstandard2.0\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+F:\Facultate\dotnet\dotNet\Product.test\bin\Debug\netstandard2.0\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+F:\Facultate\dotnet\dotNet\Product.test\bin\Debug\netstandard2.0\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+F:\Facultate\dotnet\dotNet\Product.test\bin\Debug\netstandard2.0\Product.test.deps.json
+F:\Facultate\dotnet\dotNet\Product.test\bin\Debug\netstandard2.0\Product.test.dll
+F:\Facultate\dotnet\dotNet\Product.test\bin\Debug\netstandard2.0\Product.test.pdb
+F:\Facultate\dotnet\dotNet\Product.test\bin\Debug\netstandard2.0\Product.dll
+F:\Facultate\dotnet\dotNet\Product.test\bin\Debug\netstandard2.0\Product.pdb
+F:\Facultate\dotnet\dotNet\Product.test\obj\Debug\netstandard2.0\Product.test.csprojAssemblyReference.cache
+F:\Facultate\dotnet\dotNet\Product.test\obj\Debug\netstandard2.0\Product.test.csproj.CoreCompileInputs.cache
+F:\Facultate\dotnet\dotNet\Product.test\obj\Debug\netstandard2.0\Product.test.AssemblyInfoInputs.cache
+F:\Facultate\dotnet\dotNet\Product.test\obj\Debug\netstandard2.0\Product.test.AssemblyInfo.cs
+F:\Facultate\dotnet\dotNet\Product.test\obj\Debug\netstandard2.0\Product.test.csproj.CopyComplete
+F:\Facultate\dotnet\dotNet\Product.test\obj\Debug\netstandard2.0\Product.test.dll
+F:\Facultate\dotnet\dotNet\Product.test\obj\Debug\netstandard2.0\Product.test.pdb
