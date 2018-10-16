@@ -1,0 +1,11 @@
+@mixin flex-nav {
+  flex-flow: row wrap;
+  justify-content: center;
+
+  list-style: none;
+  font-size: 1.2em;
+
+  li:not(:last-of-type) {
+    margin-right: 0.75em;
+  }
+}
