@@ -13,14 +13,53 @@ html {
 }
 
 .header {
-  padding: 2em;
+  padding: 2.5em;
   width: 100%;
 
   color: #2C3A47;
-  background-color: #55E6C1;
+  background-color: #f7f1e3;
 
   .nav--main {
     @include flex-nav;
+  }
+  li{
+    
+    padding:1.2em 3em ;
+    border: 1px solid black;
+    margin-top:0.5em;
+    margin-right:0.5em;
+    @include button;
+  
+  }
+
+  li a {
+    color: inherit;
+    text-decoration: none;
+    text-align: center;
+  }
+  .nav--dropdown{
+    position: relative;
+    display: inline-block;
+    left:90%;
+    bottom:3.5em;
+    .dropbtn{
+      font-size: 100%;
+      padding:2em 2.5em;
+      color:black;
+      border:none;
+      background-color:green;
+
+    }
+    .dropdown__content{
+      a {
+        color: black;
+        padding: 0.8em 0.5em;
+        text-decoration: none;
+        display: block;
+    }
+        position: absolute;
+    }
+    
   }
 }
 

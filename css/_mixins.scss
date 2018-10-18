@@ -9,3 +9,15 @@
     margin-right: 0.75em;
   }
 }
+@mixin button{
+  
+  transition:0.5s;
+  background-color: #CAD3C8;
+  
+  &:hover{
+    color:#cd6133;
+    box-shadow:0.2em 0.3em black;
+    transform: translateY(-0.4em);
+    background-color: #ccae62;
+  }
+}
