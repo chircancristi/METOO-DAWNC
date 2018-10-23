@@ -1,0 +1,162 @@
+@import "reset";
+@import "normalize";
+@import "variables";
+@import "mixins";
+@import "card";
+
+html {
+  height: 100%;
+  font-size: 16px; 
+
+  body {
+    height: 100%;
+    position: relative;
+  }
+}
+
+.header {
+  padding: 2.5em;
+  width: 100%;
+
+  color: #2C3A47;
+  background-color: #f7f1e3;
+
+  .nav--main {
+    @include flex-nav;
+  }
+
+  li{
+    @include button;
+    
+    padding:1.2em 3em ;
+    border: 1px solid black;
+    margin-top:0.5em;
+    margin-right:0.5em;
+  }
+
+  li a {
+    color: inherit;
+    text-decoration: none;
+    text-align: center;
+  }
+
+  .nav--dropdown {
+    position: relative;
+    display: inline-block;
+    left: 90%;
+    bottom: 3.5em;
+
+    .dropbtn {
+      padding:2em 2.5em;
+      border:none;
+      
+      font-size: 100%;
+      color:black;
+      background-color:green;
+    }
+
+    .dropdown__content {
+      position: absolute;
+      
+      a {
+        color: black;
+        padding: 0.8em 0.5em;
+        text-decoration: none;
+        display: block;
+      }
+    }
+  }
+}
+
+.nav {
+  display: flex;
+}
+
+.main-content,
+.places {
+  height: 100%;
+}
+
+.places {
+  padding: 2em 7em;
+
+  .grid {
+    height: calc(100% - 7em);
+
+    display: grid;
+    grid-row-gap: 1.2em;
+    grid-template-columns: repeat(2, 30%) 40%;
+    grid-template-rows: 33.33% repeat(2, 16.66%)  33.33%;
+
+    .grid__item {
+      &:nth-of-type(1) {
+        grid-column: 1 / 3;
+        grid-row: 1 / 4;
+      }
+      
+      &:nth-of-type(2) {
+        margin-left: 1em;
+
+        grid-column: 3 / 4;
+        grid-row: 1 / 3;
+      }
+  
+      &:nth-of-type(3) {
+        margin-left: 1em;
+
+        grid-column: 3 / 4;
+        grid-row: 3 / 5;
+      }
+  
+      &:nth-of-type(4) {
+        margin-left: 1em;
+
+        grid-column: 2 / 3;
+        grid-row: 4 / 5;
+      }
+  
+      &:nth-of-type(5) {
+        grid-column: 1 / 2;
+        grid-row: 4 / 5;
+      }
+    }
+  }
+}
+
+.footer {
+  display: none;
+  padding: 1.2em;
+  width: 100%; 
+  position: fixed;
+  bottom: 0;
+
+  color: #3B3B98;
+
+  ul {
+    @include flex-nav;
+
+    transform: translateY(-.5em);
+
+    li a {
+      position: relative;
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+
+  &:before { 
+    content: "";
+    padding: 5em 0;
+    display: block;
+    width: 200%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #CAD3C8;
+    transform: rotate(-4.5deg) translateY(-85px);
+    z-index: -1;
+
+  }
+}

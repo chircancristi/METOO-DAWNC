@@ -1,0 +1,41 @@
+.card {
+  height: 100%;
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.55);
+}
+
+.grid__item {
+  &:nth-of-type(1) {
+    .card {
+      background: url("../images/carturesti-medium.jpg") rgba(0, 0, 0, 0.075) center no-repeat;
+      background-size: cover;
+    }
+  }
+
+  &:nth-of-type(2) {
+    .card {
+      background: url("../images/bcu-medium.jpg") rgba(0, 0, 0, 0.075) center no-repeat;
+      background-size: cover;
+    }
+  }
+
+  &:nth-of-type(3) {
+    .card {
+      background: url("../images/college-medium.jpg") rgba(0, 0, 0, 0.075) center no-repeat;
+      background-size: cover;
+    }
+  }
+
+  &:nth-of-type(4) {
+    .card {
+      background: url("../images/asachi-medium.jpg") rgba(0, 0, 0, 0.075) center no-repeat;
+      background-size: cover;
+    }
+  }
+
+  &:nth-of-type(5) {
+    .card {
+      background: url("../images/fablab-medium.jpg") rgba(0, 0, 0, 0.075) center no-repeat;
+      background-size: cover;
+    }
+  }
+}
