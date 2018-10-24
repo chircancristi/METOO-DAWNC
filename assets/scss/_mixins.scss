@@ -3,7 +3,55 @@
   list-style: none;
   font-size: 1.4em;
   padding-left: 3.5em;
+  
   li:not(:last-of-type) {
     margin-right: 0.25em;
+  }
+}
+
+@mixin hover-effect-nav($left, $right) {
+  &:before {
+    content: "{";
+    display: block;
+
+    position: absolute;
+    top: 0;
+    left: $left;
+
+    opacity: 0;
+  }
+
+  &:after {
+    content: "}";
+    display: block;
+
+    position: absolute;
+    top: 0;
+    right: $right;
+
+    opacity: 0;
+  }
+
+  &:before,
+  &:after {
+    color: hsl(28, 80%, 50%);
+    transform: translateZ(0);
+    transition: transform .1s ease-in-out;
+    pointer-events: none;
+  }
+
+  &:hover {
+    &:before,
+    &:after {
+      opacity: 1;
+    }
+
+    &:before {
+      transform: translateX(-15px);
+    }
+
+    &:after {
+      transform: translateX(15px);
+    }
   }
 }

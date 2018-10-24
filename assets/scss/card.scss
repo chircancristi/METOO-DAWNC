@@ -1,9 +1,22 @@
 .card {
   height: 100%;
   box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.55);
+  transform: translateZ(0);
 }
 
 .grid__item {
+  overflow: hidden;
+
+  &:hover .card,
+  &:focus .card {
+    transform: scale(1.1);
+    opacity: .7;
+  }
+
+  .card {
+    transition: all .2s ease-in-out;
+  }
+
   &:nth-of-type(1) {
     .card {
       background: url("../images/carturesti-medium.jpg") rgba(0, 0, 0, 0.075) center no-repeat;
