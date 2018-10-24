@@ -94,7 +94,7 @@ html {
 }
 
 .main-content,
-.places {
+.places , .listings{
   height: 100%;
 }
 
@@ -142,6 +142,19 @@ html {
       }
     }
   }
+}
+.listings{
+  padding: 2em 7em;
+  .grid {
+    height: calc(100% - 7em);
+
+    display: grid;
+    grid-row-gap: 1.2em;
+    grid-template-areas: "a a";
+    grid-column-gap: 0.3em;
+    grid-auto-rows: 60%;
+  }
+
 }
 
 .footer {
