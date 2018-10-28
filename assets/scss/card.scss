@@ -1,7 +1,9 @@
 .card {
   height: 100%;
   box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.55);
-  transform: translateZ(0);
+  transform: translateZ(0); 
+  opacity: 0.9;
+  transition: opacity 0.35s, transform 0.5s;
 }
 
 .grid__item {
@@ -19,6 +21,7 @@
 
   &:nth-of-type(1) {
     .card {
+     
       background: url("../images/carturesti-medium.jpg") rgba(0, 0, 0, 0.075) center no-repeat;
       background-size: cover;
     }
