@@ -4,6 +4,7 @@
   transform: translateZ(0); 
   opacity: 0.9;
   transition: opacity 0.35s, transform 0.5s;
+  z-index:0;
 }
 
 .grid__item {
