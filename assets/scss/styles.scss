@@ -158,7 +158,8 @@ html {
 
 .main-content,
 .places, 
-.listings {
+.listings,
+.allPlaces {
   height: 100%;
 }
 
@@ -216,17 +217,71 @@ html {
 }
 
 
-.listings {
+.listings,
+.allPlaces{
   padding: 2em 7em;
 
   .grid {
     height: calc(100% - 7em);
-
     display: grid;
     grid-row-gap: 1.2em;
     grid-template-areas: "a a";
-    grid-column-gap: 0.3em;
+    grid-column-gap: 0.2em;
     grid-auto-rows: 60%;
+    .grid__item{
+      @include hover-effect-photo(2em,1em,0.5em);
+      text-decoration: none;
+    }
+  }
+}
+.listings{
+  .listings__nav{
+    display:flex;
+    justify-content: space-between;
+    margin-bottom: 1em; 
+    height: 10%;
+  }
+  .search__wrapper{
+    border: 1px solid grey;
+    width: 45%;
+    height: 70%;
+    border-radius: 25px;
+    .search__button,
+    .search__box{
+      margin-top: 0.5em;
+      margin-left:2em;
+    }
+    .search__box,
+    {
+      height:70%;  
+      width: 56%;
+    }
+    .search__button{
+      height:70%;
+      width: 25%;
+      color:hsl(210, 29%, 65%);
+      font-size: 1em;
+      font-weight: bold;
+      background-color: 	hsl(204, 70%, 86%);
+      transition: opacity .35s ease-in-out;
+    }
+    .search__button:hover{
+      opacity:0.5;
+     
+    }
+  }
+  button{
+    background-color: 	hsl(204, 70%, 86%);
+    color:hsl(210, 29%, 65%);
+    font-size: 1em;
+    font-weight: bold;
+    height:70%;
+    width: 20%;
+    transition: all .35s ease-in-out;
+  }
+  button:hover{
+    opacity:0.5;
+    font-size:1.3em;
   }
 }
 

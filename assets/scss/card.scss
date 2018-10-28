@@ -55,4 +55,11 @@
       background-size: cover;
     }
   }
+  
+  &:nth-of-type(6) {
+    .card {
+      background: url("../images/fablab-medium.jpg") rgba(0, 0, 0, 0.075) center no-repeat;
+      background-size: cover;
+    }
+  }
 }
