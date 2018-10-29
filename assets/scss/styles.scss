@@ -355,17 +355,18 @@ html {
             position: absolute;
             width: 250%;
             height: 250%;
-            border: solid 5px grey;
+            border: solid 5px hsla(204, 70%, 53%, 1);
             border-radius: 50%;
             transform: scale(0.6);
-            
+            opacity:0
           }
          }
          &::before{
-          border-right:2px solid black;
+          border-right:2px solid grey;
          }
          &::after{
-          border-right:2px solid red;
+          border-right:2px solid hsla(204, 70%, 53%, 0.9);
+          opacity:0;
          }
          &:before,
          &:after{
@@ -381,6 +382,14 @@ html {
          &:last-child::before,
          &:last-child::after {
            display: none; 
+         }
+         &:first-child{  
+          &::after{
+              opacity:1;
+            }
+            span:before{
+              opacity:1;
+            }
          }
        }
        
@@ -437,6 +446,7 @@ html {
         opacity:1;
       }
     }
+    
 
   }
 }
