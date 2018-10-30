@@ -78,13 +78,13 @@
     grid-column: 2;
 
     opacity:0;
-    transform: translateY(-30em);
+    transform: translateY(-80em);
    
     
     transition: 
-      opacity 1.5s linear, 
-      transform .9s cubic-bezier(.5, 0, .5, 1),
-      visibility 0s linear 1.5s;
+      opacity 2s linear, 
+      transform 1.5s cubic-bezier(.5, 0, .5, 1),
+      visibility 0s linear 2s;
     max-width: 30em;
     
     .form__section--h1{

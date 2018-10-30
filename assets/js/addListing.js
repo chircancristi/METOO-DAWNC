@@ -32,7 +32,7 @@ function changeItem()
     nextSection=document.getElementById(nextItemId+"Question");
     currentSection=document.getElementById(curentItemId+"Question");
 
-    currentSection.style.transform="translateY(-30em)";
+    currentSection.style.transform="translateY(-80em)";
     currentSection.style.opacity=0;
     
     nextSection.style.transform="translateY(0em)";
