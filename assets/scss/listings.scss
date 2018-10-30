@@ -1,0 +1,178 @@
+.listings{
+    .listings__nav{
+      display:flex;
+      justify-content: space-between;
+      margin-bottom: 1em; 
+      height: 10%;
+    }
+    .search__wrapper{
+      display:flex;
+      justify-content: center;
+      border: 1px solid grey;
+      width: 45%;
+      height: 70%;
+      border-radius: 25px;
+      .search__button,
+      .search__box{
+        margin-top: 0.5em;
+        margin-left:2em;
+      }
+      .search__box,
+      {
+        height:70%;  
+        width: 56%;
+      }
+      .search__button{
+        height:70%;
+        width: 25%;
+        color:hsl(210, 29%, 65%);
+        font-size: 1em;
+        font-weight: bold;
+        background-color: 	hsl(204, 70%, 86%);
+        transition: opacity .35s ease-in-out;
+      }
+      .search__button:hover{
+        opacity:0.5;
+      }
+    }
+    .listings__nav__button--new,
+    .listings__nav__button--messages{
+      background-color: 	hsl(204, 70%, 86%);
+      color:hsl(210, 29%, 65%);
+      font-size: 1em;
+      font-weight: bold;
+      height:70%;
+      width: 20%;
+      transition: all .35s ease-in-out;
+    }
+    button:hover{
+      opacity:0.5;
+      font-size:1.3em;
+    }
+}
+
+
+.form__section {
+    grid-row: 1;
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 30em;
+    .form__section--h1{
+      font-family: 'Droid Serif', Georgia, Times, serif;
+      text-decoration: none;
+      color:hsla(204, 70%, 53%, 1);
+      
+    }
+    .form__section--currentStep{
+      opacity: 0.8;
+      font-weight: bold;
+      letter-spacing: 1px;
+      color:grey; 
+    }
+    .form__section--p{
+      margin-bottom: 2em;
+      color:hsla(204, 70%, 53%, 0.8);
+
+    }
+    .form__section--input{
+        appearance: none;
+        border: 1px solid #CCC;
+        border-radius: 2px;
+        padding: 0.5em;
+        transition: border-color .3s ease;
+        
+    }
+    .form__section--button{
+      appearance: none;
+      background: hsla(204, 70%, 53%, 1) ;
+      border: none;
+      border-radius: 2px;
+      padding: 1rem;
+      display: inline-block;
+      color: white;
+      text-transform: uppercase;
+      font-size: .75em;
+      letter-spacing: 2px;
+      width: auto;
+      margin-top: 1em;
+      transition: all 0.75s;
+      opacity:0.5;
+      &:hover{
+        opacity:1;
+      }
+    }
+  }
+  .listings__form{
+    padding:5%;
+    display: grid;
+    grid-template-columns: auto 100%;
+    grid-template-rows: 1fr;
+    justify-items: center;
+    height: 100%;
+    .listings__form--list{
+      
+          display: grid;
+          grid-column: 1;
+          margin-right: 1em;
+         .list-step{
+          display: grid;
+          grid-template-rows: auto 1fr;
+          height: 100%;
+           span{
+             position: relative;
+            width: 2em;
+            height: 2em;
+            border-radius: 50%;
+            color: #FFF;
+            background-color:#2980b9;
+            place-items: center;
+            display: grid;
+            line-height: 1;
+            &:before{
+              content: '';
+              position: absolute;
+              width: 250%;
+              height: 250%;
+              border: solid 5px hsla(204, 70%, 53%, 1);
+              border-radius: 50%;
+              transform: scale(0.6);
+              opacity:0
+            }
+           }
+           &::before{
+            border-right:2px solid grey;
+           }
+           &::after{
+            border-right:2px solid hsla(204, 70%, 53%, 0.9);
+            opacity:0;
+           }
+           &:before,
+           &:after{
+            content: '';
+            display: block;
+            grid-row: 2;
+            grid-column: 1;
+            
+            width: 2em;
+            width: 0px;
+            margin: 0 auto;
+           }
+           &:last-child::before,
+           &:last-child::after {
+             display: none; 
+           }
+           &:first-child{  
+            &::after{
+                opacity:1;
+              }
+              span:before{
+                opacity:1;
+              }
+           }
+         }   
+    }
+  }
+  
