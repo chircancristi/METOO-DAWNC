@@ -2,7 +2,12 @@ const submitButton = document.querySelector('#submit');
 let order=1;
 let curentItemId ;
 let nextItemId;
-
+var styling=class{
+    applyStyle(elementToBeStyled,translate,opacity){
+        elementToBeStyled.style.transform=translate;
+        elementToBeStyled.style.opacity=opacity;    
+    }
+}
 function changeItem()
 {
     if (order===1) {
@@ -24,6 +29,7 @@ function changeItem()
     if (order===5) {
         curentItemId ="fifth";
     }
+    let style=new styling();
     let nextItemSpanSelector="#"+nextItemId+" span";
     let nextLine=document.getElementById(nextItemId);
     document.querySelector(nextItemSpanSelector).style.backgroundColor = "hsla(204, 70%, 53%, 0.9)";
@@ -32,13 +38,8 @@ function changeItem()
     let nextSection=document.getElementById(nextItemId+"Question");
     let currentSection=document.getElementById(curentItemId+"Question");
 
-    currentSection.style.transform="translateY(-80em)";
-    currentSection.style.opacity=0;
+    style.applyStyle(currentSection,"translateY(-80em)",0)
+    style.applyStyle(nextSection,"translateY(0em)",1)
     
-    nextSection.style.transform="translateY(0em)";
-    nextSection.style.opacity=1;
-  
- 
-  
     order=order+1;
 };
