@@ -1,5 +1,5 @@
-.listings{
-  .listings__nav{
+.listings {
+  .listings__nav {
     display:flex;
     
     @include query-above($small) {
@@ -20,39 +20,39 @@
     justify-content:center;
    
     @include query-above($small){
-    border: 1px solid grey;
-    width: 45%;
-    height: 70%;
+      border: 1px solid grey;
+      width: 45%;
+      height: 70%;
+      border-radius: 25px;
 
-    .search__button,
-    .search__box{
-      margin-top: 0.5em;
-    }
-    border-radius: 25px;
+      .search__button,
+      .search__box {
+        margin-top: 0.5em;
+      }
     }
 
-    .search__box,
-    {
+    .search__box {
       height:70%;  
       width: 56%;
     }
 
-    .search__button{
-      height:70%;
+    .search__button {
+      height: 70%;
       width: 25%;
-      color:hsl(210, 29%, 65%);
+      color: hsl(210, 29%, 65%);
       font-size: 1em;
       font-weight: bold;
-      background-color: 	hsl(204, 70%, 86%);
+      background-color:	hsl(204, 70%, 86%);
       transition: opacity .35s ease-in-out;
     }
 
-    .search__button:hover{
+    .search__button:hover {
       opacity:0.5;
     }
   }
+
   .listings__nav--new,
-  .listings__nav--messages{
+  .listings__nav--messages {
     background-color: 	hsl(204, 70%, 86%);
     color:hsl(210, 29%, 65%);
     font-size: 1em;
@@ -65,11 +65,10 @@
     transition: all .35s ease-in-out;
   }
 
-  button:hover{
-    opacity:0.5;
-    font-size:1.3em;
+  button:hover {
+    opacity: 0.5;
+    font-size: 1.3em;
   }
-  
   @include query-below($small){
     .listings__nav--new,
     .listings__nav--messages,
@@ -78,39 +77,3 @@
     }
   }
 }
-.footer {
-  display: none;
-  padding: 1.2em;
-  width: 100%; 
-  position: fixed;
-  bottom: 0;
-
-  color: #3B3B98;
-
-  ul {
-    @include flex-nav;
-    transform: translateY(-.5em);
-    li a {
-      position: relative;
-      color: inherit;
-      text-decoration: none;
-    }
-  }
-
-  &:before { 
-    content: "";
-    padding: 5em 0;
-    display: block;
-    width: 200%;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: #CAD3C8;
-    transform: rotate(-4.5deg) translateY(-85px);
-    z-index: -1;
-
-  }
-}
-
