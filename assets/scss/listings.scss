@@ -1,25 +1,42 @@
 .listings{
   .listings__nav{
     display:flex;
-    justify-content: space-between;
-    margin-bottom: 1em; 
-    height: 10%;
+    
+    @media only screen and (min-width:851px ){
+      justify-content: space-between;
+      margin-bottom: 1em; 
+      height: 10%;
+    }
+
+    @media only screen and (max-width:850px ){
+      flex-direction: column;
+      justify-content: space-between;
+      align-content: center;
+    }
+ 
   }
   .search__wrapper{
+    display: flex;
+    justify-content:center;
+   
+    @media only screen and (min-width:851px ){
     border: 1px solid grey;
     width: 45%;
     height: 70%;
-    border-radius: 25px;
+
     .search__button,
     .search__box{
       margin-top: 0.5em;
-      margin-left:2em;
     }
+    border-radius: 25px;
+    }
+
     .search__box,
     {
       height:70%;  
       width: 56%;
     }
+
     .search__button{
       height:70%;
       width: 25%;
@@ -29,9 +46,9 @@
       background-color: 	hsl(204, 70%, 86%);
       transition: opacity .35s ease-in-out;
     }
+
     .search__button:hover{
       opacity:0.5;
-     
     }
   }
   .listings__nav--new,
@@ -40,16 +57,27 @@
     color:hsl(210, 29%, 65%);
     font-size: 1em;
     font-weight: bold;
-    height:70%;
-    width: 20%;
+
+    @media only screen and (min-width:851px ){
+            height:70%;
+            width: 20%;
+    }
     transition: all .35s ease-in-out;
   }
+
   button:hover{
     opacity:0.5;
     font-size:1.3em;
   }
+  
+  @media only screen and (max-width:850px ){
+    .listings__nav--new,
+    .listings__nav--messages,
+    .search__wrapper{
+      margin-bottom: 2em;
+    }
+  }
 }
-
 .footer {
   display: none;
   padding: 1.2em;
@@ -61,9 +89,7 @@
 
   ul {
     @include flex-nav;
-
     transform: translateY(-.5em);
-
     li a {
       position: relative;
       color: inherit;
