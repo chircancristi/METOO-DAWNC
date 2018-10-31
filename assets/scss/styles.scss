@@ -172,10 +172,10 @@ html {
   .grid--main--page {
     height: calc(100% - 7em);
 
-    @media only screen and (min-width:801px) {
+    @include query-above($small) {
          @include home-page-grid();
       }
-    @media only screen and (max-width:800px ) {
+      @include query-below($small) {
          @include one-column-grid();
       }
   }
@@ -188,10 +188,10 @@ html {
   .grid--twoColumns {
     height: calc(100% - 7em);
 
-    @media only screen and (min-width:651px) {
+    @include query-above($small)  {
       @include two-columns-grid();
     }
-    @media only screen and (max-width:650px ) {
+    @include query-below($small) {
       @include one-column-grid();
    }
    

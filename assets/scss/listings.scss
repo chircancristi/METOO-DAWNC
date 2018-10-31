@@ -2,13 +2,13 @@
   .listings__nav{
     display:flex;
     
-    @media only screen and (min-width:851px ){
+    @include query-above($small) {
       justify-content: space-between;
       margin-bottom: 1em; 
       height: 10%;
     }
 
-    @media only screen and (max-width:850px ){
+    @include query-below($small) {
       flex-direction: column;
       justify-content: space-between;
       align-content: center;
@@ -19,7 +19,7 @@
     display: flex;
     justify-content:center;
    
-    @media only screen and (min-width:851px ){
+    @include query-above($small){
     border: 1px solid grey;
     width: 45%;
     height: 70%;
@@ -58,7 +58,7 @@
     font-size: 1em;
     font-weight: bold;
 
-    @media only screen and (min-width:851px ){
+    @include query-above($small){
             height:70%;
             width: 20%;
     }
@@ -70,7 +70,7 @@
     font-size:1.3em;
   }
   
-  @media only screen and (max-width:850px ){
+  @include query-below($small){
     .listings__nav--new,
     .listings__nav--messages,
     .search__wrapper{

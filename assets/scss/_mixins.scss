@@ -187,3 +187,14 @@
     }
   }
 }
+@mixin query-above($value) {
+  @media only screen and (min-width:$value) {
+    @content;
+  }
+}
+
+@mixin query-below($value) {
+  @media not screen and (min-width:$value) {
+    @content;
+  }
+}
