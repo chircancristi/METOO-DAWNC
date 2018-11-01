@@ -58,8 +58,8 @@
     font-weight: bold;
 
     @include query-above($small){
-            height:70%;
-            width: 20%;
+      height:70%;
+      width: 20%;
     }
     transition: all .35s ease-in-out;
   }
