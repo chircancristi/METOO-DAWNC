@@ -69,6 +69,7 @@
     opacity: 0.5;
     font-size: 1.3em;
   }
+  
   @include query-below($small){
     .listings__nav--new,
     .listings__nav--messages,

@@ -1,0 +1,130 @@
+.header {
+  padding: 1em;
+  width: 100%;
+  position: relative;
+ 
+  color: hsl(210, 29%, 29%);
+  background-color: hsla(204, 70%, 53%, 0.3);
+
+  .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .title-text {
+      font-family: 'Droid Serif', Georgia, Times, serif;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .title-text__h1 {
+      margin-top: 0;
+      margin-bottom: .5em;
+      font-size: 1.7em;
+      letter-spacing: 0.2em;
+    }
+
+    .title-text__h3 {
+     color:	hsl(210, 29%, 65%);
+     text-align: center;
+    }
+  }
+
+  .nav--main {
+    @include flex-nav;
+    
+    li {
+      @include hover-effect-nav(10px, 10px);
+
+      &:hover {
+        a {
+          color:	hsl(28, 80%, 50%);
+        }
+      }
+      
+      padding: 0.1em 0.5em;
+      position: relative;
+      
+      a {
+        text-decoration: none;
+        text-align: center;
+        color: inherit;
+
+        transition: color .1s ease-in-out;
+      }
+    }
+  }
+
+  .nav--dropdown {
+    margin-left: 1em;
+
+    display: inline-block;
+    font-size: 1.4em;
+   
+    .dropdown__button {
+      padding-left: 1em;
+      border: none;
+      
+      a {
+        @include hover-effect-nav(0, 0);
+
+        position: relative;
+        text-decoration: none;
+        color: inherit;
+
+        &:hover {
+          color: hsl(28, 80%, 50%);
+        }
+      }
+    }
+
+    &:hover .dropdown__button > a {
+      color: hsl(28, 80%, 50%);
+      &:before,
+      &:after {
+        opacity: 1;
+      }
+
+      &:before {
+        transform: translateX(-15px);
+      }
+  
+      &:after {
+        transform: translateX(15px);
+      }
+    }
+
+    .dropdown__content {
+      display: none;
+      position: absolute;
+      
+      transition: all .2s ease-in-out;
+      z-index: 1;
+
+      ul {
+        padding-left: 1em;
+        display: flex;
+        flex-flow: column nowrap;
+
+        background-color: hsla(204, 70%, 53%, 0.9);
+
+        li {
+          padding: .3em .3em .3em 0;
+
+          &:hover {
+            color: white;
+          }
+
+          a {
+            text-decoration: none;
+            color: inherit;
+          }
+        }
+      }
+    }
+
+    &:hover .dropdown__content {
+      display: inline-block;
+    }
+  }
+}
