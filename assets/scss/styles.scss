@@ -1,15 +1,15 @@
-// base
-@import "reset";
-@import "normalize";
-@import "variables";
-@import "mixins";
+// utils
+@import "utils/reset";
+@import "utils/normalize";
+@import "utils/variables";
+@import "utils/mixins";
 
 // components
-@import "header";
-@import "card";
-@import "listings";
-@import "listingsForm";
-@import "footer";
+@import "components/header";
+@import "components/card";
+@import "components/footer";
+@import "components/listings";
+@import "components/add-listing";
 
 html {
   height: 100%;

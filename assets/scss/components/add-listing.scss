@@ -44,8 +44,8 @@
         transform: translateX(-50%);
       }
 
-      &:last-child::before,
-      &:last-child::after {
+      &:last-child:before,
+      &:last-child:after {
         display: none;
       }
 
@@ -126,6 +126,7 @@
 
       transition: all 0.75s;
       opacity: 0.5;
+      
       &:hover {
         opacity: 1;
       }
