@@ -58,16 +58,16 @@
 
 @mixin hover-effect-photo {
   .card:hover {
-    filter: grayscale(70%);
-    opacity: 0.9;
+    filter: grayscale(100%);
     
-    &:after {
-      transform: rotate(45deg) scale3d(1, 1, 1);
-    }
+    // &:before,
+    // &:after {
+    //   opacity: 1;
+    //   transform: rotate(180deg);
+    // }
 
     .card__content {
       opacity: 1;
-
     }
   }
 }
@@ -119,7 +119,7 @@
 @mixin home-page-grid() {
   display: grid;
   grid-template-columns: repeat(2, 30%) 40%;
-  grid-template-rows: 33.33% repeat(2, 16.66%)  33.33%;
+  grid-template-rows: 40% repeat(2, 10%)  40%;
 
   .grid__item {
     text-decoration: none;

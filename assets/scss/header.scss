@@ -2,6 +2,7 @@
   padding: 1em;
   width: 100%;
   position: relative;
+  font-family: 'IBM Plex Mono', monospace;
  
   color: hsl(210, 29%, 29%);
   background-color: hsla(204, 70%, 53%, 0.3);
@@ -12,7 +13,6 @@
     align-items: center;
 
     .title-text {
-      font-family: 'Droid Serif', Georgia, Times, serif;
       text-decoration: none;
       color: inherit;
     }
