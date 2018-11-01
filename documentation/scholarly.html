@@ -1,116 +1,182 @@
 <!DOCTYPE html>
-<html property = "https://schema.org/ScholarlyArticle">
+<html property="https://schema.org/ScholarlyArticle">
+
 <head>
     <meta charset="utf-8" />
-    <title>MeeToo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-</head>
-<body>
-    <article>
-        <header><h1>MeeToo</h1></header>
-        <section typeof="sa:AuthorsList">
-            <h2>Authors</h2>
-            <ul>
-              <li typeof="sa:ContributorRole" property="schema:author">
-               
-                  <meta property="schema:givenName" content="Dan">
-                  <meta property="schema:additionalName" content="Cristian">
-                  <meta property="schema:familyName" content="Chircan">
-                  <span property="schema:name">Chircan Dan Cristian</span>
-                </span>
-              </li>
-              <li typeof="sa:ContributorRole" property="schema:author">
-                  <meta property="schema:givenName" content="Razvan">
-                  <meta property="schema:familyName" content="Sbîngu">
-                  <span property="schema:name">Sbingu Razvan</span>
-                </span>
-              </li>
-            </ul>
-        </section>
-        <section typeof="sa:Introduction">
-            <h3>1. Introducere</h3>
-                    <span >
-                            <p>
-                                Să se dezvolte o aplicaţie de tip PWA (Progressive Web App) menită a încuraja interacţiunea dintre persoanele 
-                                care studiază/lucrează în localuri comune disponibile într-un areal geografic: biblioteci, cafenele sau spaţii de co-working. 
-                                Fiecare utilizator, autentificat via un cont disponibil pe o reţea socială, odată ajuns într-un astfel de spaţiu va anunţa public ce activitate efectuează 
-                                – astfel de mesaje vor putea fi parametrizate (de exemplu, "implementez <software> folosind pentru front-end <bibliotecă> şi ca back-end 
-                                <platforma> pentru <limbajul de programare>" sau "studiez <concept|tehnologie>"). De asemenea, fiecare persoană participantă va oferi 
-                                lista abilităţilor în funcţie de o anumită sarcină de efectuat – e.g., "pentru <programare> ştiu ca <expert|novice> 
-                                <limbaj|paradigmă|framework>, iar pentru <design> am lucrat cu <software>". 
-                                Toţi utilizatorii interesaţi de aceste tehnologii/abilităţi vor primi automat o notificare aferentă, 
-                                sistemul oferind suport pentru realizarea de conversaţii (a)sincrone, invitaţii de întâlnire "la o cafea", partajare de calendare comune etc. 
-                                De asemenea, utilizatorii vor putea vizualiza într-o manieră atractivă care sunt cele mai populare locuri din oraş şi ce tipuri de persoane le frecventează 
-                                (de exemplu, la BCU vin mulţi dezvoltatori JavaScript pasionaţi de numismatică). 
-                            </p>
-                        </span>
+    <link rel="stylesheet" href="scholarly.min.css">
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono|IBM+Plex+Sans" rel="stylesheet">
 
-          </section>
-          <section typeof="sa:pwa">
-                <h3>2. Progressive web app</h3>
-                        <span >
-                                <p>
-                                    Progressive web apps sunt aplicații web care se încarcă la fel ca 
-                                    aplicațile web obișnuite însa oferă userului funcționalități precum:
-                                </p>
-                                <ul>
-                                <li>Aplicația poate fii acessată offline</li>
-                                <li>Push Notifications</li>
-                                <li>Access hardware al deviceului care în mod normal ar 
-                                    putea fii realizat doar la nivelul aplicațiilor native pentru telefon
-                                </li>
-                                </ul>
-                                <img src="../assets/images/pwa.jpeg" width="400">
-                        </span>
-            </section>
-            <section typeof="sa:structura">
-                    <h3>3. Structura paginii</h3>
-                      
-                           <p>Orice pagină conține un nav-bar prin care userul se poate plimba prin pagini. 
-                               Pagina principală conține și un button de login prin care userul se poate loga
-                               prin Faceebok,Twitter sau Gmail. 
-                            </p>
-                           <img src="../assets/images/header.png" width="400">
-                            <p>Paginile aplicaţie sunt:</p>
-                        <ul>
-                            <li>Home</li>
-                            <li>Listings</li>
-                            <li>listingForm</li>
-                            <li>Places</li>
-                            <li>Account</li>
-                            <li>About</li>
-                            
-                        </ul>
-                        <h4>Home</h4>
-                            <p>Pagina principală(Home) a aplicației conține un top al celor mai populare 
-                                locații si detalii despre acele locații. 
-                            </p>
-                           <img src="../assets/images/home.png" width="600">
-                           <p>
-                               Contentul este organizat folosind un grid cu 3 coloane (30%, 30% , 40%) și  5 linii (40% 10% 10% 40%). 
-                            </p>
-                            <ul>
-                            <li> <p> Primul card este împartit (1/3,1/4).</p> </li>
-                            <li> <p>Al doilea card este împartit (3/4,1/3).</p> </li>
-                            <li> <p>Al treilea card este împartit (3/4,3/5).</p> </li>
-                            <li> <p>Al patrulea card este împartit (2/3,4/5).</p> </li>
-                            <li> <p>Al doilea card este împartit (1/2,4/5).</p> </li>
-                            </ul>   
-                         <h4>Listings</h4>
-                            <p>Pe pagina listings userul poate să vadă anunțurile făcute de alti useri. În anunțuri se regasesc
-                               detalii despre locație, limbaj, proiect șșamd.. Daca userul considera că anunțul ii se potrivște 
-                               acesta poate să trimită o notificare către proprietarul anunțului.
-                               Userul poate sorta anunțurile după locație. Userul mai are opțiunea să posteze el un anunț. 
-                               Dacă acesta apasa pe butonul add listing va fii redirecționat catre pagina listingForm.  
-                             </p>
-                        <h4>Listing Form</h4>
-                             <p>Pagina conține un formular prin care userul va fii 
-                                 întrebat detalii despre anunțul sau(locație,limbaj, proiect ssmd.).
-                                 
-                             </p>
-                           
-            </section>
-    </article>
+    <title>MeeToo - Scholarly Doc</title>
+</head>
+
+<body prefix="schema: http://schema.org">
+    <header>
+        <h1>MeeToo, a social app for co-working</h1>
+    </header>
+
+    <div role="contentinfo">
+        <ol role="directory" class="level-zero">
+            <li> <a href="#abstract">Abstract</a> </li>
+            <li>
+                <a href="#proj-specifics">Project specifics</a>
+
+                <ol class="level-one">
+                    <li>
+                        Description
+                        <ol class="level-two">
+                            <li>PWA</li>
+                            <li>MeToo</li>
+                        </ol>
+                    </li>
+                    <li>Important ideas / concepts regarding overall design</li>
+                </ol>
+            </li>
+            <li>
+                <a href="#user-interaction">User interaction methods</a>
+            </li>
+            <li>
+                <a href="#code-management">Ways of using the code management system</a>
+                <ol class="level-one">
+                    <li>Code hosting platform</li>
+                    <li>Issue tracker</li>
+                </ol>
+            </li>
+        </ol>
+
+        <dl typeof="sa:AuthorsList">
+            <dt>Authors</dt>
+            <dd typeof="sa:ContributorRole" property="schema:author">
+                <meta property="schema:givenName" content="Dan">
+                <meta property="schema:additionalName" content="Cristian">
+                <meta property="schema:familyName" content="Chircan">
+                <a property="schema:name" href="https://github.com/chircancristi/">Chircan Dan Cristian</a>
+            </dd>
+
+            <dd typeof="sa:ContributorRole" property="schema:author">
+                <meta property="schema:givenName" content="Răzvan">
+                <meta property="schema:familyName" content="Sbîngu">
+                <a href="https://github.com/srzvan/" property="schema:name">Sbîngu Răzvan</a>
+            </dd>
+        </dl>
+    </div> <!-- contentinfo -->
+
+    <section typeof="sa:Abstract" id="abstract" role="doc-abstract">
+        <h2><span>1. Abstract</span></h2>
+        <p>
+            A PWA (Progressive Web App) meant to stimulate interaction between the people that study/work in local
+            public places (e.g. libraries, cafes or co-working spaces).
+        </p>
+    </section> <!-- abstract -->
+
+    <section id="proj-specifics">
+        <h2>2. Project specifics </h2>
+
+        <h3>2.1 Description </h3>
+        <h4>2.1.1 PWA </h4>
+        <section>
+            <p>
+                <a href="https://developers.google.com/web/progressive-web-apps/" role="doc-biblioref">Progressive Web
+                    Apps</a> (PWAs) are web applications that load like regular web pages or websites but can offer the
+                user functionality such as working offline, push notifications, and device hardware access
+                traditionally available only to native mobile applications. PWAs are an emerging technology that
+                combine the open standards of the web offered by modern browsers to provide benefits of a rich mobile
+                experience.
+            </p>
+            <figure>
+                <img src="../assets/images/pwa.jpeg" width="400">
+            </figure>
+        </section>
+
+        <h4>2.1.2 MeToo</h4>
+        <section>
+            <p>
+                MeToo is a PWA in which users, authenticated via a social media account, can post a listing of the
+                project they are working on while in a public place. Said listings can use certain templates like:
+                <code>
+                    implementing &ltsoftware&gt using front-end &ltlibrary&gt and &ltplatform&gt as back-end for &ltprogramming-language&gt
+                </code>
+                or
+                <code>
+                    studying &ltconcept|technology&gt
+                </code> .
+                <br>
+                Each user can specify a list of abilities for a given task related to the listing, e.g.
+                <code>
+                I'm a &ltexpert|novice&gt at &ltprogramming&gt using  &ltlanguage|paradigm|framework&gt and for &ltdesign&gt I've worked with &ltsoftware&gt
+                </code>
+                The users interested in certain technologies/abilities will be notified when another user posts a
+                listing that has in its description said technologies/abilities. Users can also chat using the comment
+                section of the listing (asynchronously) and invite other user out for a co-working session.
+
+                The popular places (the ones with the most activity recorded on the platform) will be presented in an
+                attractive manner with details regarding the users that visit them.
+            </p>
+        </section>
+
+        <h3>2.2 Important ideas / concepts regarding overall design </h3>
+
+        <h4>2.2.1 Presentation of popular places </h4>
+        <section>
+            <p>
+                A place becomes popular after a threshold of listings is met, listings which are posted from the said
+                location. The home page features a list of the 5 most popular places that is presented using an
+                asymmetrical <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid" role="doc-biblioref"> CSS
+                    grid. </a>
+            </p>
+        </section>
+
+        <h4>2.2.2 "Add a listing" form </h4>
+        <section>
+            <p>
+                The "Add a listing" form can be accessed from the Listings page. This component works in a
+                "step-by-step" manner, prompting the user for specific input at each stage. The information gathered
+                with this form represents the body of a listing which can be found in the Listings or Account pages.
+            </p>
+        </section>
+    </section> <!-- proj-specifics -->
+
+    <section id="#user-interaction">
+        <h2><span>3. User interaction methods</span></h2>
+        <section>
+            <p>
+                There are several ways a user can interact with the application:
+                <ul>
+                    <li>check out the popular places list</li>
+                    <li>adding a listing</li>
+                    <li>request to join a certain listing</li>
+                    <li>comment on a listing for which said user is owner or collaborator</li>
+                </ul>  
+            </p>
+        </section>
+    </section> <!-- user-interaction -->
+
+    <section id="#code-management">
+        <h2>4. Ways of using the code management system</h2>
+
+        <h3>4.1 Code hosting platform</h3>
+        <section>
+            <p>
+                The project source code is currently hosted at <a href="https://github.com/chircancristi/METOO-DAWNC">this
+                    Github repository</a>. During development we used the <a href="https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow"
+                    role="doc-biblioref">feature branch workflow</a>. For each feature we created a new branch with a
+                suggestive name related to the issue describing the feature. After the work on the said feature was
+                done, a pull-request is created. In addition, after the <a href="https://en.wikipedia.org/wiki/Code_review">code
+                    review</a> and conflicts solving, a merge with the <code>master</code> branch follows.
+            </p>
+        </section>
+
+        <h3>4.2 Issue tracker</h3>
+        <section>
+            <p>
+                For tracking our tasks and repository issues we have been using the <a href="https://www.gitkraken.com/glo"
+                    role="doc-biblioref">GitKraken Glo</a> web app. The software syncs our repository with a board of
+                issues. Every card from each column is converted into a GitHub repository issue, making things easier
+                to follow.
+            </p>
+        </section>
+    </section> <!-- code-management -->
+
 </body>
+
 </html>
