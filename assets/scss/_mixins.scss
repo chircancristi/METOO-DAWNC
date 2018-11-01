@@ -81,25 +81,25 @@
   .grid__item {
     text-decoration: none;
 
-    // &:nth-of-type(1) {
-    //   @include hover-effect-photo(2.3em,1em,2.7em);
-    // }
+    &:nth-of-type(1) {
+      @include hover-effect-photo();
+    }
 
-    // &:nth-of-type(2) {
-    //   @include hover-effect-photo(2.3em,1em,2.7em);
-    // }
+    &:nth-of-type(2) {
+      @include hover-effect-photo();
+    }
 
-    // &:nth-of-type(3) {
-    //   @include hover-effect-photo(2.3em,0.8em,2.7em);
-    // }
+    &:nth-of-type(3) {
+      @include hover-effect-photo();
+    }
 
-    // &:nth-of-type(4) {
-    //   @include hover-effect-photo(2.3em,0.6em,2.7em);
-    // }
+    &:nth-of-type(4) {
+      @include hover-effect-photo();
+    }
 
-    // &:nth-of-type(5) {
-    //   @include hover-effect-photo(2.3em,0.6em,2.7em);
-    // }
+    &:nth-of-type(5) {
+      @include hover-effect-photo();
+    }
   }
 }
 
@@ -111,7 +111,7 @@
   grid-auto-rows: 60%;
 
   .grid__item{
-    // @include hover-effect-photo(2em,1em,0.5em);
+     @include hover-effect-photo();
     text-decoration: none;
   }
 }
