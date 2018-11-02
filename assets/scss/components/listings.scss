@@ -1,6 +1,13 @@
+// .b--listings {
+//   background-color: #edf1f2;
+// }
+
 .listings {
+  padding: 1em 20em;
+  height: 100%;
+
   .listings__nav {
-    display:flex;
+    display: flex;
     
     @include query-above($small) {
       justify-content: space-between;
@@ -14,7 +21,8 @@
       align-content: center;
     }
   }
-  .search__wrapper{
+  
+  .search__wrapper {
     display: flex;
     justify-content:center;
    
@@ -52,21 +60,127 @@
 
   .listings__nav--new,
   .listings__nav--messages {
-    background-color: 	hsl(204, 70%, 86%);
+    background-color:	hsl(204, 70%, 86%);
     color:hsl(210, 29%, 65%);
     font-size: 1em;
     font-weight: bold;
 
     @include query-above($small){
-            height:70%;
-            width: 20%;
+      height:70%;
+      width: 20%;
     }
     transition: all .35s ease-in-out;
   }
 
-  button:hover {
-    opacity: 0.5;
-    font-size: 1.3em;
+  .flex {
+    display: flex;
+    flex-direction: column;
+
+    .flex__item {
+      padding: .7em;
+      border-radius: .4em;
+
+      position: relative;
+      background-color: hsl(184, 9%, 100%);
+      box-shadow: 3px 4px 15px hsl(184, 9%, 70%);
+
+      &:not(:last-of-type) {
+        margin-bottom: 1.5em;
+      }
+
+      .listing {
+        display: flex;
+        justify-content: space-between;
+        color: hsl(210, 29%, 29%);
+
+        .listing__content {
+          max-width: 40%;
+          display: flex;
+          flex-direction: column;
+
+          .title {
+            margin-bottom: .8em;
+          }
+
+          .skills-req {
+            margin-bottom: 2em;
+            display: flex;
+            flex-wrap: wrap;
+
+            li:not(:last-of-type) {
+              margin-right: .8em;
+            }
+          }
+
+          // create .btn class in a new
+          // partial file
+          .actions {
+            .join {
+              padding: .2em 1em;
+              border: 1px solid hsl(168, 76%, 36%);
+              margin-right: .5em;
+              outline: 0;
+              min-width: 4.2em;
+              
+              color: hsl(168, 76%, 36%);
+              background-color: transparent;
+
+              cursor: pointer;
+              transition: all .1s ease-in-out;
+
+              &.joined {
+                color: hsl(192, 15%, 94%);
+                background-color: hsl(168, 76%, 36%);
+              }
+            }
+
+            .view-listing {
+              color: inherit;
+              font-weight: 500;
+              text-decoration: none;
+
+              &:hover {
+                color: hsl(28, 80%, 50%);
+              }
+            }
+          }
+        }
+
+        .listing__meta {
+          padding: 1em;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+
+          a {
+            display: flex;
+            justify-content: flex-end;
+            color: inherit;
+            text-decoration: none;
+
+            &:hover {
+              color: hsl(28, 80%, 50%);
+            }
+          }
+
+          .author,
+          .place {
+            font-size: 1.2em;
+          }
+        }
+
+        .listing__type {
+          padding: .4em;
+          position: absolute;
+          top: -1px;
+          right: -1px;
+          border-top-right-radius: .4em;
+          border-bottom-left-radius: .4em;
+          background-color: hsl(283, 39%, 53%);
+          color: white;
+        }
+      }
+    }
   }
   
   @include query-below($small){
