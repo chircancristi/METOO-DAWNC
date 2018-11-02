@@ -3,41 +3,55 @@ let order = 1;
 let curentItemId ;
 let nextItemId;
 const blue = "hsla(204, 70%, 53%, 0.9)";
-// var styling=class{
-//     applyStyle(elementToBeStyled,translate,opacity){
-//         elementToBeStyled.style.transform=translate;
-//         elementToBeStyled.style.opacity=opacity;  
-//     }
-// }
+const slider = document.getElementById("js-slider");
+function changeQuestion(target,type) {
 
-function changeItem() {
+    // if (target.id==="reset"){
+    //     if (type==="study") {
+    //         slider.classList.toggle('move-left');
+    //    }
+    //    if (type==="implement") {
+    //         slider.classList.toggle('move-right');
+    //    }
 
+    // }
     if (order===1) {
-        curentItemId ='first';
-        nextItemId='second';
+        curentItemId =type+'-first';
+        nextItemId=type+'-second';
     }
 
     if (order===2) {
-        curentItemId ="second";
-        nextItemId="third";
+        curentItemId =type+"-second";
+        nextItemId=type+"-third";
+        if(target.id==="back"){
+            nextItemId=type+"-first";
+        }
     }
     
     if (order===3) {
-        curentItemId ="third";
-        nextItemId="fourth";
+        curentItemId =type+"-third";
+        nextItemId=type+"-fourth";
+        if(target.id==="back"){
+            nextItemId=type+"-second";
+        }
     }
 
     if (order===4) {
-        curentItemId ="fourth";
-        nextItemId="fifth";
+        curentItemId =type+"-fourth";
+        nextItemId=type+"-fifth";
+        if(target.id==="back"){
+            nextItemId=type+"-third";
+        }
     }
 
     if (order===5) {
-        curentItemId ="fifth";
+        curentItemId =type+"-fifth";
+        nextItemId = type +"-sixth";
+        if(target.id==="back"){
+            nextItemId=type+"-fourth";
+        }
     }
-
-    // let style=new styling();
-
+    if (target.id==="next"){
     let nextItemSpanSelector = "#" + nextItemId + " span";
     let nextLine = document.getElementById(nextItemId);
     document.querySelector(nextItemSpanSelector).style.backgroundColor = blue;
@@ -46,19 +60,54 @@ function changeItem() {
     let nextSection = document.getElementById(nextItemId + "Question");
     let currentSection = document.getElementById(curentItemId + "Question");
 
-    // style.applyStyle(currentSection,"translateY(-80em)",0)
-    // style.applyStyle(nextSection,"translateY(0em)",1)
-
-    // currentSection.style.transform = "translateY(-100%)";
-    // currentSection.style.opacity = 0;
-
-    // nextSection.style.transform = "translateY(0)";
-    // nextSection.style.opacity = 1;
-
     currentSection.classList.toggle('hidden');
     nextSection.classList.toggle('is-visible');
     nextSection.classList.toggle('hidden');
-    
-    
+
     order = order + 1;
+    }
+    if (target.id==="back"){
+        if(order===1){
+            if (type==="study") {
+                slider.classList.toggle('move-left');
+           }
+           if (type==="implement") {
+                slider.classList.toggle('move-right');
+           }
+        }
+        else{
+            let curentItemSpanSelector = "#" + curentItemId + " span";
+            let curentLine = document.getElementById(curentItemId);
+            document.querySelector(curentItemSpanSelector).style.backgroundColor = "grey";
+            curentLine.style.color = "grey";
+        
+            let nextSection = document.getElementById(nextItemId + "Question");
+            let currentSection = document.getElementById(curentItemId + "Question");
+        
+            currentSection.classList.toggle('hidden');
+            nextSection.classList.toggle('is-visible');
+            nextSection.classList.toggle('hidden');
+            order= order-1;
+
+        }
+    }
+
 };
+document.getElementById("js-listing-type").addEventListener("click", (e) => {
+   sliderMove(e.target);
+} );
+document.getElementById("js-listing-implement").addEventListener("click", (e) => {
+    changeQuestion(e.target,"implement");
+ } );
+ document.getElementById("js-listing-study").addEventListener("click", (e) => {
+    changeQuestion(e.target,"study");
+ } );
+function sliderMove(target){
+   if (target.id==="js-study") {
+        slider.classList.toggle('move-right');
+   }
+   if (target.id==="js-implement") {
+        slider.classList.toggle('move-left');
+   }
+   order=1;
+}

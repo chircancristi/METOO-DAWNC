@@ -8,93 +8,174 @@
   <link rel="stylesheet" href="../assets/css/styles.min.css">
   <title>Form</title>
 </head>
-<header class="header">
-  <div class="title">
-    <a class="title-text" href="#">
-      <h1 class="title-text__h1">Public Study</h1>
-      <h3 class="title-text__h3">Meet study mates</h3>
-    </a>
-    <ul class="nav nav--main">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="browse-listings.html">Listings</a></li>
-      <li><a href="browse-places.html">Places</a></li>
-      <li><a href="account.html">Account</a></li>
-      <li><a href="about.html">About</a></li>
-    </ul>
-    <div class="nav--dropdown">
-      <div class="dropdown__button"><a href="#">Sign in</a></div>
-      <div class="dropdown__content">
-        <ul>
-          <li><a href="#">Facebook</a></li>
-          <li><a href="#">Twitter</a></li>
-          <li><a href="#">Gmail</a></li>
-        </ul>
-      </div>
+
+<body class="add__listing">
+  <header class="header">
+  
+        <div class="title">
+          <a class="title-text" href="#">
+            <h1 class="title-text__h1">Public Study</h1>
+            <h3 class="title-text__h3">Meet study mates</h3>
+          </a>
+          <ul class="nav nav--main">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="browse-listings.html">Listings</a></li>
+            <li><a href="browse-places.html">Places</a></li>
+            <li><a href="account.html">Account</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+          <div class="nav--dropdown">
+            <div class="dropdown__button"><a href="#">Sign in</a></div>
+            <div class="dropdown__content">
+              <ul>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Twitter</a></li>
+                <li><a href="#">Gmail</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+  <main class="main-content main-content--add-listing">
+  <div class="slider" id="js-slider">
+    <form class="listing-form " id="js-listing-implement">
+      <ul class="listings__form-list">
+        <li class="list-step" id="implement-first"><span>1</span></li>
+        <li class="list-step" id="implement-second"><span>2</span></li>
+        <li class="list-step" id="implement-third"><span>3</span></li>
+        <li class="list-step" id="implement-fourth"><span>4</span></li>
+        <li class="list-step" id="implement-fifth"><span>5</span></li>
+      
+      </ul>
+      <section id="implement-firstQuestion" class="form__section  is-visible">
+        <div class="form__section--curentQuestion">First question</div>
+        <h1 class="form__section--h1">Public Study</h1>
+        <p class="form__section--p">The title of the project is <input type="textarea" class="form__section--input" required>
+        </p>
+        <div class="form__section--inputWrapper">
+          <button type="button" id="next" class="form__section--button">Next</button>
+          <button type="button" id="back" class="form__section--button">Back</button>
+        </div>
+      </section>
+      <section id="implement-secondQuestion" class="form__section hidden">
+        <div class="form__section--curentQuestion">Second question</div>
+        <h1 class="form__section--h1">Public Study</h1>
+        <p class="form__section--p">The place I am working in is <input type="textarea" class="form__section--input" required>
+        </p>
+        <div class="form__section--inputWrapper">
+          <button type="button" id="next" class="form__section--button">Next</button>
+          <button type="button" id="back" class="form__section--button">Back</button>
+        </div>
+      </section>
+      <section id="implement-thirdQuestion" class="form__section hidden">
+        <div class="form__section--curentQuestion">Third question</div>
+        <h1 class="form__section--h1">Public Study</h1>
+        <p class="form__section--p">The programming language/Framework I am working in is  <input type="textarea" class="form__section--input" required>
+        </p>
+        <div class="form__section--inputWrapper">
+          <button type="button" id="next" class="form__section--button">Next</button>
+          <button type="button" id="back" class="form__section--button">Back</button>
+        </div>
+      </section>
+      <section id="implement-fourthQuestion" class="form__section hidden">
+        <div class="form__section--curentQuestion">Fourth question</div>
+        <h1 class="form__section--h1">Public Study</h1>
+        <p class="form__section--p">My project is  <input type="textarea" class="form__section--input" required>
+        </p>
+        <div class="form__section--inputWrapper">
+          <button type="button" id="next" class="form__section--button">Next</button>
+          <button type="button" id="back" class="form__section--button">Back</button>
+        </div>
+      </section>
+      <section id="implement-fifthQuestion" class="form__section hidden">
+        <div class="form__section--curentQuestion">Fifth question</div>
+        <h1 class="form__section--h1">Public Study</h1>
+        <p class="form__section--p"> The skills of the persons that I want to work with me are <input type="textarea" class="form__section--input" required>
+        </p>
+        <div class="form__section--inputWrapper">
+          <button type="button" id="next" class="form__section--button">Next</button>
+          <button type="button" id="back" class="form__section--button">Back</button>
+        </div>
+      </section>
+    
+      <!-- <button class="reset" id="reset">Reset</button> -->
+    </form>
+
+    <div class="listing-type" id="js-listing-type">
+        <div class="type-wrapper">
+          <div class="study"  id="js-study">
+             <h3 class="title">Implement</h1>
+          </div>
+          <div class="implement" id="js-implement">
+            <h3 class="title">Study</h3>
+          </div>
+        </div>
     </div>
+
+    <form class="listing-form " id="js-listing-study">
+        <ul class="listings__form-list">
+            <li class="list-step" id="study-first"><span>1</span></li>
+            <li class="list-step" id="study-second"><span>2</span></li>
+            <li class="list-step" id="study-third"><span>3</span></li>
+            <li class="list-step" id="study-fourth"><span>4</span></li>
+            <li class="list-step" id="study-fifth"><span>5</span></li>
+           
+          </ul>
+          <section id="study-firstQuestion" class="form__section  is-visible">
+            <div class="form__section--curentQuestion">First question</div>
+            <h1 class="form__section--h1">Public Study</h1>
+            <p class="form__section--p">The title of the project is <input type="textarea" class="form__section--input" required>
+            </p>
+            <div class="form__section--inputWrapper">
+                <button type="button" id="next" class="form__section--button">Next</button>
+                <button type="button" id="back" class="form__section--button">Back</button>
+            </div>
+          </section>
+          <section id="study-secondQuestion" class="form__section hidden">
+            <div class="form__section--curentQuestion">Second question</div>
+            <h1 class="form__section--h1">Public Study</h1>
+            <p class="form__section--p">The place I am working in is <input type="textarea" class="form__section--input" required>
+            </p>
+            <div class="form__section--inputWrapper">
+                <button type="button" id="next" class="form__section--button">Next</button>
+                <button type="button" id="back" class="form__section--button">Back</button>
+            </div>
+          </section>
+          <section id="study-thirdQuestion" class="form__section hidden">
+            <div class="form__section--curentQuestion">Third question</div>
+            <h1 class="form__section--h1">Public Study</h1>
+            <p class="form__section--p">The concept/tehnology I am studying is <input type="textarea" class="form__section--input" required>
+            </p>
+            <div class="form__section--inputWrapper">
+                <button type="button" id="next" class="form__section--button">Next</button>
+                <button type="button" id="back" class="form__section--button">Back</button>
+            </div>
+          </section>
+          <section id="study-fourthQuestion" class="form__section hidden">
+            <div class="form__section--curentQuestion">Fourth question</div>
+            <h1 class="form__section--h1">Public Study</h1>
+            <p class="form__section--p">My project is  <input type="textarea" class="form__section--input" required>
+            </p>
+            <div class="form__section--inputWrapper">
+                <button type="button" id="next" class="form__section--button">Next</button>
+                <button type="button" id="back" class="form__section--button">Back</button>
+            </div>
+          </section>
+          <section id="study-fifthQuestion" class="form__section hidden">
+            <div class="form__section--curentQuestion">Fifth question</div>
+            <h1 class="form__section--h1">Public Study</h1>
+            <p class="form__section--p"> The skills of the persons that I want to work with me are <input type="textarea" class="form__section--input" required>
+            </p>
+            <div class="form__section--inputWrapper">
+                <button type="button" id="next" class="form__section--button">Next</button>
+                <button type="button" id="back" class="form__section--button">Back</button>
+            </div>
+          </section>
+      
+          <!-- <button class="reset" id="reset">Reset</button> -->
+        </form>
   </div>
-</header>
-
-<body>
-  <form class="listings__form">
-    <ul class="listings__form-list">
-      <li class="list-step" id="first"><span>1</span></li>
-      <li class="list-step" id="second"><span>2</span></li>
-      <li class="list-step" id="third"><span>3</span></li>
-      <li class="list-step" id="fourth"><span>4</span></li>
-      <li class="list-step" id="fifth"><span>5</span></li>
-    </ul>
-    <section id="firstQuestion" class="form__section  is-visible">
-      <div class="form__section--curentQuestion">First question</div>
-      <h1 class="form__section--h1">Public Study</h1>
-      <p class="form__section--p">Lorem ipsum dolor sit amet, vidit tempor molestie sed no, affert antiopam ea sit. ?
-      </p>
-      <div class="form__section--inputWrapper">
-        <input type="text" class="form__section--input" required>
-        <button type="button" onclick="changeItem()" class="form__section--button">Next</button>
-      </div>
-    </section>
-    <section id="secondQuestion" class="form__section hidden">
-      <div class="form__section--curentQuestion">Second question</div>
-      <h1 class="form__section--h1">Public Study</h1>
-      <p class="form__section--p">Lorem ipsum dolor sit amet, vidit tempor molestie sed no, affert antiopam ea sit. ?
-      </p>
-      <div class="form__section--inputWrapper">
-        <input type="text" class="form__section--input" required>
-        <button type="button" onclick="changeItem()" class="form__section--button">Next</button>
-      </div>
-    </section>
-    <section id="thirdQuestion" class="form__section hidden">
-      <div class="form__section--curentQuestion">Third question</div>
-      <h1 class="form__section--h1">Public Study</h1>
-      <p class="form__section--p">Lorem ipsum dolor sit amet, vidit tempor molestie sed no, affert antiopam ea sit. ?
-      </p>
-      <div class="form__section--inputWrapper">
-        <input type="text" class="form__section--input" required>
-        <button type="button" onclick="changeItem()" class="form__section--button">Next</button>
-      </div>
-    </section>
-    <section id="fourthQuestion" class="form__section hidden">
-      <div class="form__section--curentQuestion">Fourth question</div>
-      <h1 class="form__section--h1">Public Study</h1>
-      <p class="form__section--p">Lorem ipsum dolor sit amet, vidit tempor molestie sed no, affert antiopam ea sit. ?
-      </p>
-      <div class="form__section--inputWrapper">
-        <input type="text" class="form__section--input" required>
-        <button type="button" onclick="changeItem()" class="form__section--button">Next</button>
-      </div>
-    </section>
-    <section id="fifthQuestion" class="form__section hidden">
-      <div class="form__section--curentQuestion">Fifth question</div>
-      <h1 class="form__section--h1">Public Study</h1>
-      <p class="form__section--p">Lorem ipsum dolor sit amet, vidit tempor molestie sed no, affert antiopam ea sit. ?
-      </p>
-      <div class="form__section--inputWrapper">
-        <input type="text" class="form__section--input" required>
-        <button type="button" onclick="changeItem()" class="form__section--button">Next</button>
-      </div>
-    </section>
-
-  </form>
+  </main>
 </body>
 
 <script src="../assets/js/add-listing.js"></script>
