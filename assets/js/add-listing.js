@@ -2,7 +2,7 @@ const submitButton = document.querySelector('#submit');
 let order = 1;
 let curentItemId ;
 let nextItemId;
-const blue = "hsla(204, 70%, 53%, 0.9)";
+const blue = "hsl(28, 80%, 50%)";
 const slider = document.getElementById("js-slider");
 function changeQuestion(target,type) {
 
@@ -78,8 +78,8 @@ function changeQuestion(target,type) {
         else{
             let curentItemSpanSelector = "#" + curentItemId + " span";
             let curentLine = document.getElementById(curentItemId);
-            document.querySelector(curentItemSpanSelector).style.backgroundColor = "grey";
-            curentLine.style.color = "grey";
+            document.querySelector(curentItemSpanSelector).style.backgroundColor = "hsl(204, 8%, 76%)";
+            curentLine.style.color = "hsl(204, 8%, 76%)";
         
             let nextSection = document.getElementById(nextItemId + "Question");
             let currentSection = document.getElementById(curentItemId + "Question");
@@ -93,21 +93,26 @@ function changeQuestion(target,type) {
     }
 
 };
+
 document.getElementById("js-listing-type").addEventListener("click", (e) => {
    sliderMove(e.target);
 } );
+
 document.getElementById("js-listing-implement").addEventListener("click", (e) => {
-    changeQuestion(e.target,"implement");
- } );
+    changeQuestion(e.target, "implement");
+} );
+
  document.getElementById("js-listing-study").addEventListener("click", (e) => {
-    changeQuestion(e.target,"study");
- } );
-function sliderMove(target){
-   if (target.id==="js-study") {
+    changeQuestion(e.target, "study");
+});
+
+function sliderMove ( target ) {
+   if (target.id === "js-study") {
         slider.classList.toggle('move-right');
    }
-   if (target.id==="js-implement") {
+   if (target.id === "js-implement") {
         slider.classList.toggle('move-left');
    }
-   order=1;
+
+   order = 1;
 }

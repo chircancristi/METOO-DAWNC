@@ -1,6 +1,7 @@
 .main-content.main-content--add-listing{
   padding-left:2em;
   padding-top:2em;
+  margin: 0;
   
   height: 85%;
   width: 100%;
@@ -37,17 +38,45 @@
         transform: translate(-50%,-50%);
 
         .study,
-        .implement{
+        .implement {
           position: relative;
           width: 100%;
-          border:2px solid black;
+          border: 2px solid transparent;
+
+          font-family: 'IBM Plex Mono', monospace;
+          color: hsl(192, 16%, 94%);
+          background-color: hsl(28, 80%, 50%);
+          cursor: pointer;
+          transition: all .15s ease-in-out;
+
+          &:hover {
+            color:  hsl(28, 80%, 50%);
+            border-color: hsl(28, 80%, 50%);
+            background-color: hsl(192, 16%, 94%);
+          }
+
+          .fas,
+          .title {
+            pointer-events: none;
+          }
+
+          .fas {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+
+            font-size: 5em;
+            transform: translate(-50%, -50%);
+          }
 
           .title {
             position: absolute;
-            top:50%;
-            left:50%;
+            top: 2em;
+            left: 50%;
+
+            font-size: 1.7em;
+            text-transform: uppercase;
             transform: translate(-50%,-50%);
-              
           }  
         }
 
@@ -74,7 +103,7 @@
         margin-right: 1em;
       
         .list-step {
-          color: grey;
+          color: hsl(204, 8%, 76%);
           display: grid;
           grid-template-rows: auto 100%;
           height: 100%;
@@ -87,7 +116,7 @@
             height: 3em;
             border-radius: 50%;
             color: #fff;
-            background-color: grey;
+            background-color: hsl(204, 8%, 76%);
           }
 
           &:before {
@@ -110,10 +139,10 @@
           }
 
           &:first-child {
-            color: hsla(204, 70%, 53%, 0.9);
+            color: hsl(28, 80%, 50%);
             
             span {
-              background-color: hsla(204, 70%, 53%, 0.9);
+              background-color: hsl(28, 80%, 50%);
             }
           }
         }
@@ -127,6 +156,7 @@
         grid-row: 1;
         grid-column: 2;
 
+        color: hsl(210, 29%, 24%);
         transition: opacity .4s ease-in-out, transform .7s ease-out .15s;
         max-width: 30em;
 
@@ -142,29 +172,28 @@
         }
 
         .form__section--h1 {
-          font-family: "Droid Serif", Georgia, Times, serif;
           text-decoration: none;
-          color: hsla(204, 70%, 53%, 1);
         }
 
         .form__section--curentQuestion {
           opacity: 0.8;
           font-weight: bold;
           letter-spacing: 1px;
-          color: grey;
         }
 
         .form__section--p {
           margin-bottom: 2em;
-          color: hsla(204, 70%, 53%, 0.8);
         }
 
         .form__section--input {
-          appearance: none;
           border:none;
-          width:10em;
           border-bottom: 1px black dotted;
+          min-width: 10em;
+
+          appearance: none;
+          background-color: transparent;
           transition: border-color 0.3s ease;
+
           &:focus{
             outline:0;
           }
@@ -172,54 +201,50 @@
 
         .form__section--button {
           padding: 1rem;
-          border: none;
+          border: 1px solid transparent;
           border-radius: 2px;
           margin-top: 1em;
 
-          appearance: none;
           display: inline-block;
-          width: auto;
-
-          background: hsla(204, 70%, 53%, 1);
-          color: white;
-
+          outline: 0;
+          appearance: none;
+          background-color: hsl(28, 80%, 50%);
+          color: hsl(192, 16%, 94%);
           text-transform: uppercase;
           font-size: 0.75em;
           letter-spacing: 2px;
 
-          transition: all 0.75s;
-          opacity: 0.5;
-          
+          transition: all .2s ease-in-out;
+
           &:hover {
-            opacity: 1;
+            color: hsl(28, 80%, 50%);
+            border-color: hsl(28, 80%, 50%);
+            background-color: hsl(192, 16%, 94%);
           }
         }
       }
-      .reset{    
+      
+      .reset {    
         border: none;
-    
-        position: absolute;
-        bottom:2em;
-        right:2em;
-        appearance: none;
-        display: inline-block;
-  
-        background: hsla(204, 70%, 53%, 1);
-    
         width:8em;
         height: 5em;
+
+        display: inline-block;
+        position: absolute;
+        bottom: 2em;
+        right: 2em;
+        
+        appearance: none;
+        background-color: hsl(28, 80%, 50%);
         text-transform: uppercase;
         font-size: 0.75em;
         letter-spacing: 2px;
-        opacity:0.8;
-
+        opacity: 0.8;
         transition: all 0.75s;
-        
         &:hover {
           background-color: red;
         }
       }
     }
-    
   }
 }
