@@ -1,6 +1,9 @@
+@import "../utils/variables";
+@import "../utils/mixins";
+
 .main-content.main-content--add-listing{
-  padding-left:2em;
-  padding-top:2em;
+  // padding-left: 2em;
+  // padding-top: 2em;
   margin: 0;
   
   height: 85%;
@@ -33,8 +36,8 @@
         position: absolute;
         height:50%;
         width: 50%;
-        top:50%;
-        left:50%;
+        top: 50%;
+        left: 50%;
         transform: translate(-50%,-50%);
 
         .study,
@@ -77,13 +80,27 @@
             font-size: 1.7em;
             text-transform: uppercase;
             transform: translate(-50%,-50%);
-          }  
+          }
+          
+          @include query-below($xsmall) {
+            .fas {
+              font-size: 2.5em;
+            }
+
+            .title {
+              font-size: 1em;
+            }
+          }
         }
 
-        .implement{
+        .implement {
           margin-left: 2em;
         }
-    }
+
+        @include query-below($small) {
+          width: 90%;
+        }
+      }
     }
     .listing-form {
       
