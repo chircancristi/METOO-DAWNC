@@ -2,7 +2,6 @@
   flex-flow: row wrap;
   list-style: none;
   font-size: 1.4em;
-  padding-left: 3.5em;
   
   li:not(:last-of-type) {
     margin-right: 0.25em;
@@ -72,7 +71,7 @@
   }
 }
 
-@mixin one-column-grid(){
+@mixin one-column-grid {
   display: grid;
   grid-row-gap: 1.2em;
   grid-template-columns: 100%;
@@ -103,7 +102,7 @@
   }
 }
 
-@mixin two-columns-grid() {
+@mixin two-columns-grid {
   display: grid;
   grid-row-gap: 1.2em;
   grid-template-areas: "a a";
@@ -116,7 +115,7 @@
   }
 }
 
-@mixin home-page-grid() {
+@mixin home-page-grid {
   display: grid;
   grid-template-columns: repeat(2, 30%) 40%;
   grid-template-rows: 40% repeat(2, 10%)  40%;

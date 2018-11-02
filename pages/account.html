@@ -4,8 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/styles.min.css">
-  <title>Document</title>
+  <title>Account</title>
 </head>
 <body>
   <header class="header">
@@ -32,6 +35,31 @@
         </div>
       </div>
     </div>
+
+    <div class="mobile-header">
+      <button id="js-nav-trigger" class="menu-trigger">
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+      </button>
+
+      <h2 class="mobile-title">Public Study</h2>
+    </div>
+    
+    <nav id="js-nav-wrapper" class="mobile-menu-wrapper">
+      <button id="js-nav-close" class="menu-close">
+        <span class="close"></span>
+        <span class="close"></span>
+      </button>
+
+      <ul class="nav--mobile">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="browse-listings.html">Listings</a></li>
+        <li><a href="browse-places.html">Places</a></li>
+        <li><a href="account.html">Account</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
   </header>
 
   <footer class="footer">
@@ -43,6 +71,7 @@
       <li><a href="#">Contact</a></li>
     </ul>
   </footer>
-  
+
+<script src="../assets/js/mobile-nav.js"></script>
 </body>
 </html>

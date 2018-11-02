@@ -5,7 +5,7 @@
   font-family: 'IBM Plex Mono', monospace;
  
   color: hsl(210, 29%, 29%);
-  background-color: hsla(204, 70%, 53%, 0.3);
+  background-color:	hsl(203, 57%, 82%);
 
   .title {
     display: flex;
@@ -28,10 +28,16 @@
      color:	hsl(210, 29%, 65%);
      text-align: center;
     }
+
+    @include query-below($lap) {
+      display: none;
+    }
   }
 
   .nav--main {
     @include flex-nav;
+
+    padding-left: 3.5em;
     
     li {
       @include hover-effect-nav(10px, 10px);
@@ -53,6 +59,10 @@
         transition: color .1s ease-in-out;
       }
     }
+
+    @include query-below($desk) {
+      padding-left: 1em;
+    }
   }
 
   .nav--dropdown {
@@ -62,7 +72,6 @@
     font-size: 1.4em;
    
     .dropdown__button {
-      padding-left: 1em;
       border: none;
       
       a {
@@ -125,6 +134,123 @@
 
     &:hover .dropdown__content {
       display: inline-block;
+    }
+
+    @include query-below($desk) {
+      margin-left: .5em;
+    }
+  }
+
+  .mobile-header {
+    @include query-above($lap) {
+      display: none;
+    }
+
+    display: flex;
+    justify-content: space-between;
+
+    .menu-trigger {
+      padding: .3em;
+      border: 0;
+      position: relative;
+      width: 50px;
+      height: 35px;
+      outline: 0;
+      background-color: transparent;
+  
+      .burger-line {
+        position: absolute;
+        left: .3em;
+        display: inline-block;
+        width: calc(100% - .6em);
+        height: 4px;
+        background-color: hsl(210, 29%, 24%);
+  
+        &:nth-of-type(1) {
+          top: .3em;
+        }
+  
+        &:nth-of-type(2) {
+          top: 50%;
+          transform: translateY(-50%)
+        }
+  
+        &:nth-of-type(3) {
+          bottom: .3em;
+        }
+      }
+    }
+  }
+
+  .mobile-menu-wrapper {
+    padding: 45px 1em 0 .2em;
+    border-right: 1px solid hsl(210, 29%, 24%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 1;
+
+    background-color:	hsl(203, 57%, 82%);
+    transition: transform .3s ease-in-out;
+    transform: translateX(-100%);
+
+    &.is-visible {
+      transform: translateX(0);
+    }
+
+    .menu-close {
+      padding: .3em;
+      border: 0;
+      position: absolute;
+      top: 5px;
+      left: 50%;
+
+      width: 40px;
+      height: 40px;
+      outline: 0;
+      background-color: transparent;
+      transform: translateX(-50%);
+
+      .close {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        display: inline-block;
+        width: 4px;
+        height: 100%;
+        background-color: hsl(210, 29%, 24%);
+        transform-origin: center center;
+
+        &:nth-of-type(1) {
+          transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        &:nth-of-type(2) {
+          transform: translate(-50%, -50%) rotate(-45deg);
+        }
+      }
+    }
+
+    .nav--mobile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      font-size: 1.5em;
+
+      li {
+        &:not(:last-of-type) {
+          margin-bottom: .7em;
+        }
+
+        a {
+          text-decoration: none;
+          color: hsl(210, 29%, 24%);
+        }
+      }
     }
   }
 }
