@@ -1,14 +1,13 @@
-.b--listings {
-  background-color: #edf1f2;
-}
+// .b--listings {
+//   background-color: #edf1f2;
+// }
 
 .listings {
   padding: 1em 20em;
   height: 100%;
 
   .listings__nav {
-    // display: flex;
-    display: none;
+    display: flex;
     
     @include query-above($small) {
       justify-content: space-between;
