@@ -20,6 +20,7 @@ html {
     width: 100%;
     position: relative;
 
+    background-color: #edf1f2;
     font-family: 'IBM Plex Sans', sans-serif;
 
     .container {
@@ -33,9 +34,12 @@ html {
   display: flex;
 }
 
+.main-content {
+  margin: 1em 5em;
+}
+
 .main-content,
-.places, 
-.listings,
+.places,
 .allPlaces {
   height: 100%;
 }
@@ -55,14 +59,13 @@ html {
   }
 }
 
-.listings,
-.allPlaces{
+.allPlaces {
   padding: 2em 7em;
  
   .grid--twoColumns {
     height: calc(100% - 7em);
 
-    @include query-above($small)  {
+    @include query-above($small) {
       @include two-columns-grid();
     }
     @include query-below($small) {
