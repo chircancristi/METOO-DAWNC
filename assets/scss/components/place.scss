@@ -1,9 +1,10 @@
 .main-content-place {
     height: 88%;
+    font-family: 'IBM Plex Mono', monospace;
 
     .place-info {
         padding: 2em 7em;
-        height: 85%;
+        height: 80%;
     
         .place-grid {
             display: grid;
@@ -30,7 +31,8 @@
                     grid-row: 1 / 3;
                     
                     margin-left: 2em;
-                    border: 2px black solid;
+                    border: 1px black solid;
+                    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.55);
                     
                     display: flex;
                     justify-content: center;
@@ -42,6 +44,8 @@
                         height: 20%;
                         font-size: 2.5em;
                         text-align: center;
+                        background-color: hsl(203, 57%, 82%);
+                        color:hsl(210, 28%, 29%);
                     }
                     
                     .place-info__container {
@@ -50,6 +54,7 @@
                     
                         display: flex;
                         justify-content: center;
+                        
                     
                         .place-info__colaborator-container {
                             width: 70%;
@@ -60,10 +65,10 @@
                             .place-info__colaborator {
                                 position: absolute;
                                 top:10%;
-                                left:50%;
-                                transform: translate(-50%,-10%);
-                               
+                                width: 100%;
+                                
                                 font-size: 1.5em;
+                                text-align: center;
                             }
                     
                             img {
@@ -123,15 +128,70 @@
                   
                         text-align: center;
                         line-height: 100%;
+                        background-color:  hsl(203, 57%, 82%);
+                        transition: all 0.5s;
                   
                         h2 {
                             padding-top: 1em;
+                            
                             text-transform: uppercase;
                             pointer-events: none;
+                            color:hsl(210, 28%, 29%);
+                            transition: all 0.5s;
+                        }
+
+                        &:hover {
+                            background-color:  hsl(210, 28%, 29%);
+
+                            h2{
+                                color:hsl(203, 57%, 82%);
+                            }
                         }
                     }
                 }
             }
         }
+    }
+    .place-recommendations {
+        height: 15%;
+        position: relative;
+        
+
+        .recommendations-container {
+            height: 100%;
+            width: 85%;
+            
+            position: absolute;
+            left:9%;
+            display: flex;
+            justify-content: space-around;
+
+            .recommendations-container--other-page {
+              top: -30%;
+              width: 10%;
+              height: 120%;
+              position: relative;
+              
+              .recommendations-container--title{
+                font-size: 2em;
+                opacity: 0;
+
+                transition:all 1s;
+                pointer-events: none;
+                text-align: center;
+                text-transform: uppercase;
+              }
+              img{
+                width: 100%;
+                height: 80%;
+             }
+             &:hover .recommendations-container--title{
+                 opacity: 1;
+             }
+            }
+
+
+        }
+        
     }
 }
