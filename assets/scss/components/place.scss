@@ -75,7 +75,7 @@
                                 position: absolute;
                                 top:40%;
                                 left:50%;
-                                transform: translate(-50%,-40%);
+                                transform:translatex(-50%);
 
                                 width: 50%;
                                 height: 50%;
@@ -132,11 +132,13 @@
                         transition: all 0.5s;
                   
                         h2 {
-                            padding-top: 1em;
+                            display: inline-block;
                             
+                            vertical-align: middle;
                             text-transform: uppercase;
                             pointer-events: none;
                             color:hsl(210, 28%, 29%);
+                            
                             transition: all 0.5s;
                         }
 
@@ -166,7 +168,7 @@
             display: flex;
             justify-content: space-around;
 
-            .recommendations-container--other-page {
+            .single-recomamendation {
               top: -30%;
               width: 10%;
               height: 120%;
