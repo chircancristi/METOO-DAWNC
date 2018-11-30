@@ -5,8 +5,8 @@
     * app shell
     * caching 
     * Worker/Web Worker
+    * Service Workers
   * DB - Firebase - schema
-  * Service Workers
 * Design Pattern
 * APIs
   * Login (FB, Gmail, Twitter) -> *Firebase*
