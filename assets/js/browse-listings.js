@@ -10,3 +10,4 @@ function joinListing ( target ) {
 listings.addEventListener('click', (e) => {
   joinListing(e.target);
 });
+

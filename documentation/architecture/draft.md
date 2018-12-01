@@ -1,22 +1,19 @@
 # Arhitectura S10
-## 1.Topics
-* Data flow
-  * PWA
+## Table of contents
+* **Data flow**
+  * **PWA**
     * app shell
-    * caching 
+    * caching
     * Worker/Web Worker
     * Service Workers
-  * DB - Firebase - schema
-* Design Pattern
-* APIs
+  * **DB** - *Firebase* - schema
+* **Design Pattern**
+* **API**s
   * Login (FB, Gmail, Twitter) -> *Firebase*
   * Google Maps
-* Cum ajung datele în Front-End
-  * AJAX
-  * API
-  * socket
+* **Front-End Back-End communication**
 
-## 2.Data flow
+## 1.Data flow
 * `Single-place`
   * Încărcare dinamică(și/sau cache-uită) a datelor
 * `Account`
@@ -33,11 +30,18 @@
     * după skills
   * la apăsarea butonului de `Join` autorul listing-ului respectiv va primi o notificare
 
-## 2.2 DB
+## 1.1 PWA
+### 1.1.1 App shell
+
+### 1.1.2 Cache
+
+### 1.1.3 Service Worker/Web worker/Worklets
+
+## 1.2 DB
 
 NoSQL database using *Firebase*.
 
-### 2.2.1 User
+### 1.2.1 User
 ```
 User: {
   id: alphanumeric,
@@ -45,6 +49,7 @@ User: {
   firstName: string,
   lastName: string,
   password: string,
+  skills: [skill1, skill2, skill3 ...],
   listings: {
     authored: [id1, id2, id3 ...],
     joined: [id1, id2, id3 ...],
@@ -53,7 +58,7 @@ User: {
   location: id (alphanumeric)
 }
 ```
-### 2.2.2 Listing
+### 1.2.2 Listing
 ```
 Listing: {
   id: alphanumeric,
@@ -72,7 +77,7 @@ Listing: {
 }
 ```
 
-### 2.2.3 Place
+### 1.2.3 Place
 ```
 Place: {
   id: alphanumeric,
@@ -86,6 +91,27 @@ Place: {
   onSiteUsers: [id1, id2, id3 ...] // refactor `key` name
 }
 ```
+
+### 1.2.4 Comments
+```
+Comments: {
+  id: alphanumeric,
+  content: string,
+  author: string,
+  listing: id (alphanumeric),
+  date: date
+}
+```
+
+## 2. Design Pattern
+
+## 3. APIs
+
+### 3.1 Google Maps
+
+## 4. Front-End Back-End communication
+
+
 # TODO:
 * comentarii
 * restul de la capitole 
