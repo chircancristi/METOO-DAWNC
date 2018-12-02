@@ -1,0 +1,22 @@
+{
+  "short_name": "Metoo",
+  "name": "Meet-up web tool",
+  "icons": [
+    {
+      "src": "/assets/images/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/images/icons-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/pages/index.html",
+  "background_color": "#edf1f2",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/pages/",
+  "theme_color": "#b7d7eb"
+}
