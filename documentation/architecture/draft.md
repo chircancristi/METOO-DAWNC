@@ -171,7 +171,7 @@ NoSQL database using *Firebase*.
 
 
 
-# Cloudd example
+# Cloud example
 * For sub-collection
 ```
 firebase.initializeApp(config);
