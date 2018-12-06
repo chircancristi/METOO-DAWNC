@@ -31,6 +31,8 @@
                     <li>Important ideas / concepts regarding overall design
                         <ol class="level-two">
                             <li>PWA</li>
+                            <li>Firebase</li>
+                            <li>Google Maps Api</li>
                         </ol>
                     </li>
                 </ol>
@@ -97,7 +99,7 @@
     <section id="proj-specifics">
         <h2>2. Project specifics </h2>
 
-        <h3>2.1 Description</h3>
+        <h3 id="proj-specifics__description">2.1 Description</h3>
         <section>
             <p>
                 MeToo is a PWA in which users, authenticated via a social media account, can post a listing of the
@@ -120,7 +122,7 @@
                     <li>the skills required for the listing must match the user's skills</li>
                     <li>the location of the listing must be in the proximity of the user</li>
                 </ul>
-                <br><br>
+                <br>
                 The users interested in certain technologies/abilities will be notified when another user posts a
                 listing that has in its description said technologies/abilities. 
                 Users can also chat using the <strong>comment section</strong> of the listing and invite other user out for a co-working session.
@@ -130,6 +132,8 @@
                 attractive manner with details regarding the frequent users.
             </p>
         </section>
+
+        
 
         <h3>2.2 Important ideas / concepts regarding overall design </h3>
 
@@ -142,10 +146,103 @@
                 traditionally available only to native mobile applications. PWAs are an emerging technology that
                 combine the open standards of the web offered by modern browsers to provide benefits of a rich mobile
                 experience.
+                <br><br>
+                   For our aplication the manifest.json which will provide information about the app will look like this: <br>
+                   <code>
+                        { <br>
+                            "short_name": "Metoo",  <br>
+                            "name": "Meet-up web tool", <br>
+                            "icons": [ <br>
+                              {  <br>
+                                "src": "/assets/images/icon-192.png", <br>
+                                "type": "image/png", <br>
+                                "sizes": "192x192" <br>
+                              }, <br>
+                              { <br>
+                                "src": "/images/icons-512.png", <br>
+                                "type": "image/png", <br>
+                                "sizes": "512x512" <br>
+                              } <br>
+                            ], <br>
+                            "start_url": "/pages/index.html", <br>
+                            "background_color": "#edf1f2", <br>
+                            "display": "standalone", <br>
+                            "orientation": "portrait", <br>
+                            "scope": "/pages/", <br>
+                            "theme_color": "#b7d7eb" <br>
+                          } <br>
+                   </code> 
+                   <br><br>
+                   The service worker will cache the app shell which will consist off:
+                   <ul>
+                        <li>all the html files</li>
+                        <li>style.min.css</li>
+                        <li>main.js</li>
+                   </ul>
+                   The service worker will also cache dinamic content using the 
+                   cache then network strategy. If the user loads a page, 
+                   two request will be send asycron. One to the caching and one to the network.
+                   If the request for the caching finds data cached, it will first check if 
+                   there is any data rendender from the network. If not, the page will be rendered 
+                   with the data from the cache.
+                   If the request for the network finds any new data, it will cache it then will render
+                   the page with the data.
             </p>
         </section>
 
-        <h4>2.2.2 Presentation of popular places </h4>
+        <h4>2.2.2 Firebase </h3>
+        <section>
+            <a href="https://en.wikipedia.org/wiki/Firebase" role="doc-biblioref">Firebase</a> is a mobile and web application development 
+            platform developed by Firebase, Inc. in 2011, then acquired by Google in 2014. In our aplication we will use the following 
+            features:
+               <ul>
+                    <li>Realtime Database</li>
+                    <li>Firebase Auth</li>
+                    <li>Firebase Messaging</li>
+               </ul>
+            
+            The database will look like this: 
+            <br>
+            <img src="architecture/diagrams/dataBase.png">
+            <br><br>
+             The sign-up process will be handled by firebase.auth() using the selected provider. (google,github)
+             The user will be redirected to the provider log in page.  Onced loged firebase.auth() will create
+             two tokens:
+                 <ul>
+                    <li>id token- used for checking the autentification of the user</li>
+                    <li>refresh token</li> 
+                 </ul>
+            When an user logs in for the first time, he will be inserted in the users collection from the database 
+            <br>
+            <code>
+                    { <br>
+                        id: alphanumeric, <br>
+                        email: string, (firebase.auth API -> email) <br>
+                        fullName: string, (firebase.auth API -> displayName) <br>
+                        imgUrl: string, (firebase.auth API -> photoURL) <br>
+                        skill: [string1, string2, string3, ... ], <br>
+                        location: integer, <br>
+                        listingsAuthor: alphanumeric, <br>
+                        listingsDone: alphanumeric, <br>
+                        listingsCollaborator: alphanumeric, <br>
+                        notification: alphanumeric <br>
+                    }<br>
+            </code>
+            <br><br>
+            Our aplication will suport push notifcations which will be handled by firebase messaging. When one of the event mentioned in the  <a href="#proj-specifics"> project description </a>
+            occurs, a document will be written in the notifcations collection. A listener on that collection will send notifications to all users involved, depending on the type of the notification.
+            (listings created, comment or join request)
+
+        </section>
+        <h4>2.2.3 Google Maps API</h4>
+        <section>
+                <a href="https://developers.google.com/maps/documentation/javascript/tutorial" role="doc-biblioref">Google maps API</a> will be used 
+                 to get the geolocation of the user or the location and for the presentation of the most popular places.
+                 If the users is in the proximity of a location registered to our aplication he will receive notifcations 
+                 regarding listings that are created in that place and compatible with his set of skills.
+
+        </section>
+        <h4>2.2.4 Presentation of popular places </h4>
         <section>
             <p>
                 A place becomes popular after a threshold of listings is met, listings which are posted from the said
@@ -155,7 +252,7 @@
             </p>
         </section>
 
-        <h4>2.2.3 "Add a listing" form </h4>
+        <h4>2.2.5 "Add a listing" form </h4>
         <section>
             <p>
                 The "Add a listing" form can be accessed from the Listings page. This component works in a
