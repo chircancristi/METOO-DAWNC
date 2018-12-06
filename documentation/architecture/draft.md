@@ -232,3 +232,23 @@ firebase.auth().getRedirectResult().then(function(result) {
   // ...
 });
 ~~~
+# Mesaje parametrizate
+## Tipuri de mesaje 
+* study
+* code
+## Study  
+1. Titlu 
+2. Concept/Tehnologie
+3. Descriere 
+4. Skilluri necesare
+5. Locatie
+
+## Code
+1. Titlu
+
+~~~
+
+addListing(){
+
+}
+~~~
