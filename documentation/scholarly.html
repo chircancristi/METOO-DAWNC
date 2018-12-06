@@ -25,11 +25,14 @@
                     <li>
                         Description
                         <ol class="level-two">
-                            <li>PWA</li>
                             <li>MeToo</li>
                         </ol>
                     </li>
-                    <li>Important ideas / concepts regarding overall design</li>
+                    <li>Important ideas / concepts regarding overall design
+                        <ol class="level-two">
+                            <li>PWA</li>
+                        </ol>
+                    </li>
                 </ol>
             </li>
             <li>
@@ -60,26 +63,26 @@
             </dd>
         </dl>
         <section typeof="sa:Affiliations">
-  <h2>Affiliations</h2>
-  <ul>
-    <li id="sa">
-      <span typeof="schema:Organization" resource="http://www.info.uaic.ro/bin/Admission/Admission?language=ro">
-        <span property="schema:name">Faculty of computer science</span>,
-        <span property="schema:parentOrganization">
-          <span typeof="schema:Organization">
-            <span property="schema:name">CLIW</span>
-            —
-            <span property="schema:location" typeof="schema:Place">
-                <span property="schema:addressLocality">IS</span>,
-                <span property="schema:addressCountry">RO</span>
-              </span>
-            </span>
-          </span>
-        </span>
-      </span>
-    </li>
-  </ul>
-</section>
+            <h2>Affiliations</h2>
+            <ul>
+                <li id="sa">
+                <span typeof="schema:Organization" resource="http://www.info.uaic.ro/bin/Admission/Admission?language=ro">
+                    <span property="schema:name">Faculty of computer science</span>,
+                    <span property="schema:parentOrganization">
+                    <span typeof="schema:Organization">
+                        <span property="schema:name">CLIW</span>
+                        —
+                        <span property="schema:location" typeof="schema:Place">
+                            <span property="schema:addressLocality">IS</span>,
+                            <span property="schema:addressCountry">RO</span>
+                        </span>
+                        </span>
+                    </span>
+                    </span>
+                </span>
+                </li>
+            </ul>
+        </section>
             
     </div> <!-- contentinfo -->
 
@@ -94,27 +97,11 @@
     <section id="proj-specifics">
         <h2>2. Project specifics </h2>
 
-        <h3>2.1 Description </h3>
-        <h4>2.1.1 PWA </h4>
-        <section>
-            <p>
-                <a href="https://developers.google.com/web/progressive-web-apps/" role="doc-biblioref">Progressive Web
-                    Apps</a> (PWAs) are web applications that load like regular web pages or websites but can offer the
-                user functionality such as working offline, push notifications, and device hardware access
-                traditionally available only to native mobile applications. PWAs are an emerging technology that
-                combine the open standards of the web offered by modern browsers to provide benefits of a rich mobile
-                experience.
-            </p>
-            <figure>
-                <img src="../assets/images/pwa.jpeg" width="400">
-            </figure>
-        </section>
-
-        <h4>2.1.2 MeToo</h4>
+        <h3>2.1 Description</h3>
         <section>
             <p>
                 MeToo is a PWA in which users, authenticated via a social media account, can post a listing of the
-                project they are working on while in a public place. Said listings can use certain templates like:
+                activity (coding / studying) they are conducting while in a public place. Said listings can use certain templates like:
                 <code>
                     implementing &ltsoftware&gt using front-end &ltlibrary&gt and &ltplatform&gt as back-end for &ltprogramming-language&gt
                 </code>
@@ -127,18 +114,38 @@
                 <code>
                 I'm a &ltexpert|novice&gt at &ltprogramming&gt using  &ltlanguage|paradigm|framework&gt and for &ltdesign&gt I've worked with &ltsoftware&gt
                 </code>
+                <br><br>
+                The collection of listings available on the <code>browse-listings</code> page is on first load filtered using the following criteria:
+                <ul>
+                    <li>the skills required for the listing must match the user's skills</li>
+                    <li>the location of the listing must be in the proximity of the user</li>
+                </ul>
+                <br><br>
                 The users interested in certain technologies/abilities will be notified when another user posts a
-                listing that has in its description said technologies/abilities. Users can also chat using the comment
-                section of the listing (asynchronously) and invite other user out for a co-working session.
-
+                listing that has in its description said technologies/abilities. 
+                Users can also chat using the <strong>comment section</strong> of the listing and invite other user out for a co-working session.
+                Notifications regarding comments will be issued to all the people collaborating on a issue.
+                <br><br>
                 The popular places (the ones with the most activity recorded on the platform) will be presented in an
-                attractive manner with details regarding the users that visit them.
+                attractive manner with details regarding the frequent users.
             </p>
         </section>
 
         <h3>2.2 Important ideas / concepts regarding overall design </h3>
 
-        <h4>2.2.1 Presentation of popular places </h4>
+        <h4>2.2.1 PWA </h4>
+        <section>
+            <p>
+                <a href="https://developers.google.com/web/progressive-web-apps/" role="doc-biblioref">Progressive Web
+                    Apps</a> (PWAs) are web applications that load like regular web pages or websites but can offer the
+                user functionality such as working offline, push notifications, and device hardware access
+                traditionally available only to native mobile applications. PWAs are an emerging technology that
+                combine the open standards of the web offered by modern browsers to provide benefits of a rich mobile
+                experience.
+            </p>
+        </section>
+
+        <h4>2.2.2 Presentation of popular places </h4>
         <section>
             <p>
                 A place becomes popular after a threshold of listings is met, listings which are posted from the said
@@ -148,7 +155,7 @@
             </p>
         </section>
 
-        <h4>2.2.2 "Add a listing" form </h4>
+        <h4>2.2.3 "Add a listing" form </h4>
         <section>
             <p>
                 The "Add a listing" form can be accessed from the Listings page. This component works in a
