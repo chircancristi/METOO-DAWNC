@@ -26,17 +26,12 @@ body {
     padding-left: 1.2em;
   }
 
-  p {
-    // text-align: justify;
-  }
-
   code {
     padding: .2em .4em;
     margin: .3em 0 .3em 0;
     
     display: inline-block;
     font-size: 0.9em;
-    text-align: justify;
     background-color: lightskyblue;
     font-family: 'IBM Plex Mono', monospace;
   }
@@ -46,9 +41,16 @@ body {
     width: 100%;
 
     img {
+      width: 100%;
+      height: auto;
       position: relative;
       left: 50%;
       transform: translateX(-50%);
+    }
+
+    figcaption {
+      text-align: center;
+      font-style: italic;
     }
   }
 
