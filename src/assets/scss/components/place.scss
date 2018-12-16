@@ -257,7 +257,7 @@
             }
         }
     }
-    .subscribed-people{
+    .subscribed-modal{
         display: none; 
         position: fixed; 
 
@@ -271,28 +271,33 @@
 
         background-color: rgba(0,0,0,0.4); 
 
-        .subscribed-people__content{
+        .subscribed-modal__content{
             position: relative;
-            padding: 2px;
+            padding: 1em;
          
             background-color: #fefefe;
             border: 1px solid #888;
-            margin:auto;
+            margin: auto;
 
-            top:50%;
+            overflow: auto;
+            border-radius: 25px;
+
+            top: 50%;
             transform: translateY(-50%);
-            width: 30%;
-            height:50%;
-            .subscribed-people__content-header{
+            width: 25%;
+            height: 50%;
+
+            .subscribed-modal__content-header{
                 position: relative;
                 width: 100%;
                 height: 10%;
                 
                 border-bottom: 2px solid black;
-                .subscribed-people__close {
+
+                .subscribed-modal__close {
                     position: absolute;
-                    right:0;
-                    top:0;
+                    right: 0;
+                    top: 0;
                     color: #aaaaaa;
                 
                     font-size: 2em;
@@ -304,13 +309,65 @@
                         cursor: pointer;
                  }    
             }
-            .subscribed-people__title{
+
+            .subscribed-modal__title{
                 position: absolute;
                 left: 50%;
-                top:50%;
+                top: 50%;
                 transform: translate(-50%,-50%);
             }
           }
+
+        .subscriber-modal__content-flex{
+            display: flex;
+            min-height: min-content;
+            flex-direction: column;
+
+            overflow: auto;
+
+            .subscriber-container{
+                padding: .7em;
+                height: 30%;
+               
+                display: flex;
+                justify-content: space-between;
+                
+                border-bottom:1px grey solid;
+                background-color: hsl(184, 9%, 100%);
+                
+                .subscriber__pic{
+                    width: 10%;
+                    height: 3em;
+                }
+                .subscriber__info{
+                    position: relative;
+                    width: 80%;
+
+                    .subscriber__info-name{
+                        position: absolute;
+                        top:50%;
+                        transform: translateY(-50%);
+
+                    }
+                    .subscriber__info-profile{
+                        position: absolute;
+                        left:70%;
+                        top:50%;
+                        transform: translateY(-50%);
+
+                        background-color:hsl(203, 57%, 82%);
+                        color:	hsl(211, 31%, 65%);
+
+                        &:hover{
+                            color:black;
+                            background-color:white; 
+                        }
+
+                    }   
+                    
+                }
+            }
+        }
         }
     
     }
