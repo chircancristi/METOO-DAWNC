@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#4285f4">
+
+  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans" rel="stylesheet">
+  <link rel="stylesheet"  type="text/css" href="/css/styles.min.css">
+  <title>Browse - listings</title>
+</head>
+
+<body class="b--listings">
+
+ <header class="header">
+    <div class="title">
+      <a class="title-text" href="#">
+        <h1 class="title-text__h1">Public Study</h1>
+        <h3 class="title-text__h3">Meet study mates</h3>
+      </a>
+      <ul class="nav nav--main">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="browse-listings.html">Listings</a></li>
+        <li><a href="browse-places.html">Places</a></li>
+        <li><a href="account.html">Account</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+     
+    </div>
+
+    <div class="mobile-header">
+      <button id="js-nav-trigger" class="menu-trigger">
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+      </button>
+
+      <h2 class="mobile-title">Public Study</h2>
+    </div>
+    
+    <nav id="js-nav-wrapper" class="mobile-menu-wrapper">
+      <button id="js-nav-close" class="menu-close">
+        <span class="close"></span>
+        <span class="close"></span>
+      </button>
+
+      <ul class="nav--mobile">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="browse-listings.html">Listings</a></li>
+        <li><a href="browse-places.html">Places</a></li>
+        <li><a href="account.html">Account</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main-content main-content--listings">
+    <section id="js-listings" class="listings">
+
+      <div class="listings__nav">
+        <button onclick="location.href='add-listing.html';" class="listings__nav--new">New Listing</button>
+        <form class="search__wrapper">
+          <input type="text" class="search__box" placeholder="Alege locatia" required>
+          <input type="submit" class="search__button" value="search">
+        </form>
+        <button class="listings__nav--messages">See notifications</button>
+      </div>
+
+      <div class="flex">
+
+        <div class="flex__item">
+          <article class="listing">
+            <div class="listing__content">
+              <h3 class="title">Proiect CLIW</h3>
+              <ul class="skills-req">
+                <li>HTML5</li>
+                <li>CSS3</li>
+                <li>JavaScript</li>
+              </ul>
+
+              <div class="actions">
+                <button id="js-join" class="join">Join</button>
+                <a href="" class="view-listing">View Listing</a>
+              </div>
+            </div>
+            
+            <div class="listing__meta">
+              <a href="#">
+                <span class="author">Costandache Ovidiu Costi</span>
+              </a>
+              <a href="#"><span class="place">The Grape</span></a>
+            </div>
+
+            <span class="listing__type">code</span>
+          </article>
+        </div>
+
+        <div class="flex__item">
+          <article class="listing">
+            <div class="listing__content">
+              <h3 class="title">Neural Networks</h3>
+              <ul class="skills-req">
+                <li>Machine Learning</li>
+                <li>Statistics</li>
+              </ul>
+
+              <div class="actions">
+                <button id="js-join" class="join">Join</button>
+                <a href="" class="view-listing">View Listing</a>
+              </div>
+            </div>
+            
+            <div class="listing__meta">
+              <a href="#">
+                <span class="author">Georgescu Vlad</span>
+              </a>
+              <a href="#"><span class="place">FabLab</span></a>
+            </div>
+
+            <span class="listing__type">study</span>
+          </article>
+        </div>
+
+        <div class="flex__item">
+          <article class="listing">
+            <div class="listing__content">
+              <h3 class="title">Proiect CLIW</h3>
+              <ul class="skills-req">
+                <li>HTML5</li>
+                <li>CSS3</li>
+                <li>JavaScript</li>
+              </ul>
+
+              <div class="actions">
+                <button id="js-join" class="join">Join</button>
+                <a href="" class="view-listing">View Listing</a>
+              </div>
+            </div>
+            
+            <div class="listing__meta">
+              <a href="#">
+                <span class="author">Costandache Ovidiu Costi</span>
+              </a>
+              <a href="#"><span class="place">The Grape</span></a>
+            </div>
+
+            <span class="listing__type">code</span>
+          </article>
+        </div>
+
+        <div class="flex__item">
+          <article class="listing">
+            <div class="listing__content">
+              <h3 class="title">Neural Networks</h3>
+              <ul class="skills-req">
+                <li>Machine Learning</li>
+                <li>Statistics</li>
+              </ul>
+
+              <div class="actions">
+                <button id="js-join" class="join">Join</button>
+                <a href="" class="view-listing">View Listing</a>
+              </div>
+            </div>
+            
+            <div class="listing__meta">
+              <a href="#">
+                <span class="author">Georgescu Vlad</span>
+              </a>
+              <a href="#"><span class="place">FabLab</span></a>
+            </div>
+
+            <span class="listing__type">study</span>
+          </article>
+        </div>
+
+        <div class="flex__item">
+          <article class="listing">
+            <div class="listing__content">
+              <h3 class="title">Proiect CLIW</h3>
+              <ul class="skills-req">
+                <li>HTML5</li>
+                <li>CSS3</li>
+                <li>JavaScript</li>
+              </ul>
+
+              <div class="actions">
+                <button id="js-join" class="join">Join</button>
+                <a href="" class="view-listing">View Listing</a>
+              </div>
+            </div>
+            
+            <div class="listing__meta">
+              <a href="#">
+                <span class="author">Costandache Ovidiu Costi</span>
+              </a>
+              <a href="#"><span class="place">The Grape</span></a>
+            </div>
+
+            <span class="listing__type">code</span>
+          </article>
+        </div>
+
+        <div class="flex__item">
+          <article class="listing">
+            <div class="listing__content">
+              <h3 class="title">Neural Networks</h3>
+              <ul class="skills-req">
+                <li>Machine Learning</li>
+                <li>Statistics</li>
+              </ul>
+
+              <div class="actions">
+                <button id="js-join" class="join">Join</button>
+                <a href="" class="view-listing">View Listing</a>
+              </div>
+            </div>
+            
+            <div class="listing__meta">
+              <a href="#">
+                <span class="author">Georgescu Vlad</span>
+              </a>
+              <a href="#"><span class="place">FabLab</span></a>
+            </div>
+
+            <span class="listing__type">study</span>
+          </article>
+        </div>
+
+        <div class="flex__item">
+          <article class="listing">
+            <div class="listing__content">
+              <h3 class="title">Proiect CLIW</h3>
+              <ul class="skills-req">
+                <li>HTML5</li>
+                <li>CSS3</li>
+                <li>JavaScript</li>
+              </ul>
+
+              <div class="actions">
+                <button id="js-join" class="join">Join</button>
+                <a href="" class="view-listing">View Listing</a>
+              </div>
+            </div>
+            
+            <div class="listing__meta">
+              <a href="#">
+                <span class="author">Costandache Ovidiu Costi</span>
+              </a>
+              <a href="#"><span class="place">The Grape</span></a>
+            </div>
+
+            <span class="listing__type">code</span>
+          </article>
+        </div>
+
+        <div class="flex__item">
+          <article class="listing">
+            <div class="listing__content">
+              <h3 class="title">Neural Networks</h3>
+              <ul class="skills-req">
+                <li>Machine Learning</li>
+                <li>Statistics</li>
+              </ul>
+
+              <div class="actions">
+                <button id="js-join" class="join">Join</button>
+                <a href="" class="view-listing">View Listing</a>
+              </div>
+            </div>
+            
+            <div class="listing__meta">
+              <a href="#">
+                <span class="author">Georgescu Vlad</span>
+              </a>
+              <a href="#"><span class="place">FabLab</span></a>
+            </div>
+
+            <span class="listing__type">study</span>
+          </article>
+        </div>
+
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="footer">
+    <ul class="nav nav--footer">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Listings</a></li>
+      <li><a href="#">Places</a></li>
+      <li><a href="#">Account</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </footer>
+
+  <script src="/js/mobile-nav.js"></script>
+  <script src="/js/browse-listings.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase.js"></script>
+
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyB-wcY0u8Sk6m5WBv6dYG1B7W_4Clo5rjw",
+      authDomain: "metoo-c7619.firebaseapp.com",
+      databaseURL: "https://metoo-c7619.firebaseio.com",
+      projectId: "metoo-c7619",
+      storageBucket: "metoo-c7619.appspot.com",
+      messagingSenderId: "295303057551"
+    };
+
+    firebase.initializeApp(config);
+
+    const firestore = firebase.firestore();
+    const settings = {
+      timestampsInSnapshots: true
+    };
+
+    firestore.settings(settings);
+
+    var docRef = firestore.collection("Listing").doc("l1");
+
+    docRef.get().then(function(doc) {
+        if (doc.exists) {
+            console.log("Document data:", doc.data());
+        } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+        }
+    }).catch(function(error) {
+        console.log("Error getting document:", error);
+    });
+  </script>
+</body>
+
+</html>

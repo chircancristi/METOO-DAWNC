@@ -1,0 +1,118 @@
+.card {
+  height: 100%;
+  position: relative;
+
+  transform: translateZ(0); 
+  opacity: 0.9;
+  transition: opacity 0.35s, transform 0.5s;
+
+  // &:before, 
+  // &:after {
+  //   content: "";
+  //   position: absolute;
+  //   width: 100%;
+  //   height: 3px;
+  //   background-color: white;
+
+  //   transition: opacity .2s ease-in-out .05s, transform .25s ease-in-out;
+  //   opacity: 0;
+  //   transform-origin: center center;
+  //   transform: rotate(45deg);
+  // }
+
+  // &:before {
+  //   bottom: 20%;
+  //   left: -33%;
+  // }
+
+  // &:after {
+  //   top: 20%;
+  //   left: 33%;
+  // }
+
+  .card__image {
+    height: 100%;
+  }
+
+  .card__content {
+    padding: .5em;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    width: 100%;
+    
+    text-align: center;
+    text-decoration: none;
+
+    color: white;
+    background-color: hsla(0, 50%, 0%, 0.5);
+    opacity: 0;
+    transition: all .3s ease-in-out;
+    transform: translateX(-50%);
+
+    .card__title {
+      margin-bottom: 0.5em;
+    }
+
+    .card__content--li:nth-of-type(1) {
+      margin-bottom: .5em;
+    }
+  }
+}
+
+.grid__item {
+  overflow: hidden;
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.55);
+
+  &:hover .card,
+  &:focus .card {
+    transform: scale(1.1);
+    // opacity: .9;
+  }
+
+  .card {
+    transition: all .2s ease-in-out;
+  }
+
+  &:nth-of-type(1) {
+    .card__image {
+      background: url("../images/carturesti-medium.jpg") rgba(0, 0, 0, 0.075) center no-repeat;
+      background-size: cover;
+    }
+  }
+
+  &:nth-of-type(2) {
+    .card__image {
+      background: url("../images/bcu-medium.jpg") rgba(0, 0, 0, 0.075) center no-repeat;
+      background-size: cover;
+    }
+  }
+
+  &:nth-of-type(3) {
+    .card__image {
+      background: url("../images/college-medium.jpg") rgba(0, 0, 0, 0.075) center no-repeat;
+      background-size: cover;
+    }
+  }
+
+  &:nth-of-type(4) {
+    .card__image {
+      background: url("../images/asachi-medium.jpg") rgba(0, 0, 0, 0.075) center no-repeat;
+      background-size: cover;
+    }
+  }
+
+  &:nth-of-type(5) {
+    .card__image {
+      background: url("../images/fablab-medium.jpg") rgba(0, 0, 0, 0.075) center no-repeat;
+      background-size: cover;
+    }
+  }
+  
+  &:nth-of-type(6) {
+    .card__image {
+      background: url("../images/fablab-medium.jpg") rgba(0, 0, 0, 0.075) center no-repeat;
+      background-size: cover;
+    }
+  }
+}
