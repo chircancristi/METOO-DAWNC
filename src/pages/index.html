@@ -9,6 +9,8 @@
   
   <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/solid.css" integrity="sha384-uKQOWcYZKOuKmpYpvT0xCFAs/wE157X5Ua3H5onoRAOCNkJAMX/6QF0iXGGQV9cP" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/fontawesome.css" integrity="sha384-HU5rcgG/yUrsDGWsVACclYdzdCcn5yU8V/3V84zSrPDHwZEdjykadlgI6RHrxGrJ" crossorigin="anonymous">
   <link rel="stylesheet" href="../assets/css/styles.min.css">
   <link rel="manifest" href="../manifest.json">
 
@@ -29,8 +31,27 @@
           <li><a href="browse-places.html">Places</a></li>
           <li><a href="account.html">Account</a></li>
           <li><a href="about.html">About</a></li>
+          <li><a href="">Sign in</a></li>
+          <li>
+            <input name="notifications-checkbox" id="notifications-trigger" type="checkbox">
+            <label for="notifications-trigger"><i class="fas fa-bell fa-icon"></i></label>
+            <ul class="notifications-container">
+              <li class="notification">
+                <div class="notification__icon">
+                  <i class="fas fa-user-check"></i>
+                </div>
+                <div class="notification__description">
+                  <span class="user">Johnny Doe</span>
+                  requested to join your listing.
+                </div>
+              </li>
+              <li><i class="fas fa-code"></i></li>
+              <li><i class="fas fa-book"></i></li>
+              <li><i class="fas fa-comment"></i></li>
+            </ul>
+          </li>
         </ul>
-        <div class="nav--dropdown">
+        <!-- <div class="nav--dropdown">
           <div class="dropdown__button"><a href="#">Sign in</a></div>
           <div class="dropdown__content">
             <ul>
@@ -39,7 +60,7 @@
               <li><a href="#">Gmail</a></li>
             </ul>
           </div>
-        </div>
+        </div> -->
       </div>
 
       <div class="mobile-header">

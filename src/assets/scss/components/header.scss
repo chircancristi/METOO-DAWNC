@@ -43,7 +43,8 @@
       @include hover-effect-nav(10px, 10px);
 
       &:hover {
-        a {
+        a,
+        .fa-icon.fa-bell {
           color:	hsl(28, 80%, 50%);
         }
       }
@@ -58,6 +59,42 @@
 
         transition: color .1s ease-in-out;
       }
+
+      [name="notifications-checkbox"] {
+        display: none;
+      }
+    }
+
+    // notifications dropdown
+    .notifications-container {
+      position: fixed;
+      height: 100%;
+      width: 25%;
+      top: 0;
+      right: 100%;
+      // opacity: 0;
+      // pointer-events: none;
+      transition: opacity .3s ease-in-out,
+                  transform .2s ease-in-out;
+      background-color: hsl(203, 57%, 60%);
+      z-index: 1;
+
+      font-size: .7em;
+      font-family: 'IBM Plex Sans', sans-serif;
+
+      .notification {
+        display: flex;
+
+        .notification__icon {
+          margin-right: .3em;
+        }
+      }
+    }
+
+    [name="notifications-checkbox"]:checked ~ .notifications-container {
+      // opacity: 1;
+      // pointer-events: auto;
+      transform: translateX(100%);
     }
 
     @include query-below($desk) {
@@ -153,10 +190,11 @@
       padding: .3em;
       border: 0;
       position: relative;
-      width: 50px;
-      height: 35px;
+      width: 40px;
+      height: 30px;
       outline: 0;
       background-color: transparent;
+      cursor: pointer;
   
       .burger-line {
         position: absolute;
@@ -165,6 +203,7 @@
         width: calc(100% - .6em);
         height: 4px;
         background-color: hsl(210, 29%, 24%);
+        transition: transform .15s ease-out;
   
         &:nth-of-type(1) {
           top: .3em;
@@ -172,7 +211,7 @@
   
         &:nth-of-type(2) {
           top: 50%;
-          transform: translateY(-50%)
+          transform: translateY(-50%);
         }
   
         &:nth-of-type(3) {
@@ -207,8 +246,9 @@
       left: 50%;
 
       width: 40px;
-      height: 40px;
+      height: 30px;
       outline: 0;
+      cursor: pointer;
       background-color: transparent;
       transform: translateX(-50%);
 
