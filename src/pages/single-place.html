@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +13,7 @@
 
   <title>Single place</title>
 </head>
+
 <body>
   <header class="header">
     <div class="title">
@@ -47,7 +49,7 @@
 
       <h2 class="mobile-title">Public Study</h2>
     </div>
-    
+
     <nav id="js-nav-wrapper" class="mobile-menu-wrapper">
       <button id="js-nav-close" class="menu-close">
         <span class="close"></span>
@@ -67,57 +69,400 @@
   <main class="main-content-place">
     <section class="place-info">
       <div class="place-grid">
-          <a class="place-grid__item">
-            <img src="../assets/images/carturesti-medium.jpg">
-          </a>
-          <a class="place-grid__item">
-              <h2 class="place-info__title">Carturesti</h2>
-              <div class="place-info__container">
-                  <div class="place-info__colaborator-container">
-                    <h5 class="place-info__colaborator"> Most active colaborator- Dorel</h5>
-                    <img src="../assets/images/user-exemple.jpg">  
+        <div class="place-grid__item">
+          <img src="../assets/images/carturesti-medium.jpg">
+        </div>
+        <div class="place-grid__item">
+          <h2 class="place-info__title">Carturesti</h2>
+          <div class="place-info__container">
+            <div class="place-info__listings-container">
+              <div class="place-listings__selector">
+                <input id="listings__selector-button--inprogress" type="radio" name="checkbox-group" class="listings__checkbox"
+                  checked>
+                <label for="listings__selector-button--inprogress">
+                  <div class="listings__selector-title__container">
+                    <h3 class="listings__selector-title">Listings in progress</h5>
                   </div>
-                  <div class="place-info__details-container">
-                    <h5 class="place-info__details-title"> Other stuff</h5>
-                    <ul class="place-info__details">
-                        <li> Favourite skill-Java</li>
-                        <li >Open listings- 200</li>
-                        <li >Finished listings- 1000</li>
-                    </ul>
+                </label>
+                <div class="place-listings__content">
+                  <div class="flex">
+
+                    <div class="flex__item">
+                      <article class="listing">
+                        <div class="listing__content">
+                          <h3 class="title">Proiect CLIW</h3>
+                          <ul class="skills-req">
+                            <li>HTML5</li>
+                            <li>CSS3</li>
+                            <li>JavaScript</li>
+                          </ul>
+
+                          <div class="actions">
+                            <button id="js-join" class="join">Join</button>
+                            <a href="" class="view-listing">View Listing</a>
+                          </div>
+                        </div>
+
+                        <div class="listing__meta">
+                          <a href="#">
+                            <span class="author">Costandache Ovidiu Costi</span>
+                          </a>
+                          <a href="#"><span class="place">The Grape</span></a>
+                        </div>
+
+                        <span class="listing__type">code</span>
+                      </article>
+                    </div>
+
+                    <div class="flex__item">
+                      <article class="listing">
+                        <div class="listing__content">
+                          <h3 class="title">Neural Networks</h3>
+                          <ul class="skills-req">
+                            <li>Machine Learning</li>
+                            <li>Statistics</li>
+                          </ul>
+
+                          <div class="actions">
+                            <button id="js-join" class="join">Join</button>
+                            <a href="" class="view-listing">View Listing</a>
+                          </div>
+                        </div>
+
+                        <div class="listing__meta">
+                          <a href="#">
+                            <span class="author">Georgescu Vlad</span>
+                          </a>
+                          <a href="#"><span class="place">FabLab</span></a>
+                        </div>
+
+                        <span class="listing__type">study</span>
+                      </article>
+                    </div>
                   </div>
-              </div>   
-          </a>
-          <a class="place-grid__item">
-              <div class="place-listings__button">
-                <h2>See Listings</h2>
+                </div>
               </div>
-          </a>
+              <div class="place-listings__selector">
+                <input id="listings__selector-button--finished" type="radio" name="checkbox-group" class="listings__checkbox">
+                <label for="listings__selector-button--finished">
+                  <div class="listings__selector-title__container">
+                    <h3 class="listings__selector-title">Finished listings</h5>
+                  </div>
+                </label>
+                <div class="place-listings__content">
+                  <div class="flex">
+
+                    <div class="flex__item">
+                      <article class="listing">
+                        <div class="listing__content">
+                          <h3 class="title">Proiect CLIW</h3>
+                          <ul class="skills-req">
+                            <li>HTML5</li>
+                            <li>CSS3</li>
+                            <li>JavaScript</li>
+                          </ul>
+
+                          <div class="actions">
+                            <button id="js-join" class="join">Join</button>
+                            <a href="" class="view-listing">View Listing</a>
+                          </div>
+                        </div>
+
+                        <div class="listing__meta">
+                          <a href="#">
+                            <span class="author">Costandache Ovidiu Costi</span>
+                          </a>
+                          <a href="#"><span class="place">The Grape</span></a>
+                        </div>
+
+                        <span class="listing__type">code</span>
+                      </article>
+                    </div>
+
+                    <div class="flex__item">
+                      <article class="listing">
+                        <div class="listing__content">
+                          <h3 class="title">Neural Networks</h3>
+                          <ul class="skills-req">
+                            <li>Machine Learning</li>
+                            <li>Statistics</li>
+                          </ul>
+
+                          <div class="actions">
+                            <button id="js-join" class="join">Join</button>
+                            <a href="" class="view-listing">View Listing</a>
+                          </div>
+                        </div>
+
+                        <div class="listing__meta">
+                          <a href="#">
+                            <span class="author">Georgescu Vlad</span>
+                          </a>
+                          <a href="#"><span class="place">FabLab</span></a>
+                        </div>
+
+                        <span class="listing__type">study</span>
+                      </article>
+                    </div>
+
+                    <div class="flex__item">
+                      <article class="listing">
+                        <div class="listing__content">
+                          <h3 class="title">Proiect CLIW</h3>
+                          <ul class="skills-req">
+                            <li>HTML5</li>
+                            <li>CSS3</li>
+                            <li>JavaScript</li>
+                          </ul>
+
+                          <div class="actions">
+                            <button id="js-join" class="join">Join</button>
+                            <a href="" class="view-listing">View Listing</a>
+                          </div>
+                        </div>
+
+                        <div class="listing__meta">
+                          <a href="#">
+                            <span class="author">Costandache Ovidiu Costi</span>
+                          </a>
+                          <a href="#"><span class="place">The Grape</span></a>
+                        </div>
+
+                        <span class="listing__type">code</span>
+                      </article>
+                    </div>
+
+                    <div class="flex__item">
+                      <article class="listing">
+                        <div class="listing__content">
+                          <h3 class="title">Neural Networks</h3>
+                          <ul class="skills-req">
+                            <li>Machine Learning</li>
+                            <li>Statistics</li>
+                          </ul>
+
+                          <div class="actions">
+                            <button id="js-join" class="join">Join</button>
+                            <a href="" class="view-listing">View Listing</a>
+                          </div>
+                        </div>
+
+                        <div class="listing__meta">
+                          <a href="#">
+                            <span class="author">Georgescu Vlad</span>
+                          </a>
+                          <a href="#"><span class="place">FabLab</span></a>
+                        </div>
+
+                        <span class="listing__type">study</span>
+                      </article>
+                    </div>
+
+                    <div class="flex__item">
+                      <article class="listing">
+                        <div class="listing__content">
+                          <h3 class="title">Proiect CLIW</h3>
+                          <ul class="skills-req">
+                            <li>HTML5</li>
+                            <li>CSS3</li>
+                            <li>JavaScript</li>
+                          </ul>
+
+                          <div class="actions">
+                            <button id="js-join" class="join">Join</button>
+                            <a href="" class="view-listing">View Listing</a>
+                          </div>
+                        </div>
+
+                        <div class="listing__meta">
+                          <a href="#">
+                            <span class="author">Costandache Ovidiu Costi</span>
+                          </a>
+                          <a href="#"><span class="place">The Grape</span></a>
+                        </div>
+
+                        <span class="listing__type">code</span>
+                      </article>
+                    </div>
+
+                    <div class="flex__item">
+                      <article class="listing">
+                        <div class="listing__content">
+                          <h3 class="title">Neural Networks</h3>
+                          <ul class="skills-req">
+                            <li>Machine Learning</li>
+                            <li>Statistics</li>
+                          </ul>
+
+                          <div class="actions">
+                            <button id="js-join" class="join">Join</button>
+                            <a href="" class="view-listing">View Listing</a>
+                          </div>
+                        </div>
+
+                        <div class="listing__meta">
+                          <a href="#">
+                            <span class="author">Georgescu Vlad</span>
+                          </a>
+                          <a href="#"><span class="place">FabLab</span></a>
+                        </div>
+
+                        <span class="listing__type">study</span>
+                      </article>
+                    </div>
+
+                    <div class="flex__item">
+                      <article class="listing">
+                        <div class="listing__content">
+                          <h3 class="title">Proiect CLIW</h3>
+                          <ul class="skills-req">
+                            <li>HTML5</li>
+                            <li>CSS3</li>
+                            <li>JavaScript</li>
+                          </ul>
+
+                          <div class="actions">
+                            <button id="js-join" class="join">Join</button>
+                            <a href="" class="view-listing">View Listing</a>
+                          </div>
+                        </div>
+
+                        <div class="listing__meta">
+                          <a href="#">
+                            <span class="author">Costandache Ovidiu Costi</span>
+                          </a>
+                          <a href="#"><span class="place">The Grape</span></a>
+                        </div>
+
+                        <span class="listing__type">code</span>
+                      </article>
+                    </div>
+
+                    <div class="flex__item">
+                      <article class="listing">
+                        <div class="listing__content">
+                          <h3 class="title">Neural Networks</h3>
+                          <ul class="skills-req">
+                            <li>Machine Learning</li>
+                            <li>Statistics</li>
+                          </ul>
+
+                          <div class="actions">
+                            <button id="js-join" class="join">Join</button>
+                            <a href="" class="view-listing">View Listing</a>
+                          </div>
+                        </div>
+
+                        <div class="listing__meta">
+                          <a href="#">
+                            <span class="author">Georgescu Vlad</span>
+                          </a>
+                          <a href="#"><span class="place">FabLab</span></a>
+                        </div>
+
+                        <span class="listing__type">study</span>
+                      </article>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="place-info__details-container">
+              <div class="place-info__slideshow-container">
+                <div class="slide">
+                  <img src="../assets/images/user-exemple.jpg">
+                  <div class="slide__text"> Most active user</div>
+                </div>
+                <div class="slide">
+                  <img src="../assets/images/java.png">
+                  <div class="slide__text"> Favourite language</div>
+                </div>
+                <div class="slide">
+                  <img src="../assets/images/study.jpg">
+                  <div class="slide__text">Prefered type of listings</div>
+                </div>
+                <a class="next" onclick="plusSlides(-1)">&#10095;</a>
+                <a class="prev" onclick="plusSlides(1)">&#10094;</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="place-grid__item">
+          <div class="place-subscribe__container">
+            <div class="place-listings__button">
+              <h2>Subscribe </h2>
+            </div>
+            <div class="place-listings__subscribers">
+              <span class="place-listings__subscribers-number"> <a id="subscribers" href="#">100000</a>
+                people subscribed
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="subscribed-peopleJS" class="subscribed-modal">
+        <div id="subscribed-people__contentJS" class="subscribed-modal__content">
+          <div class="subscribed-modal__content-header">
+            <span id="closeJS" class="subscribed-modal__close">&times;</span>
+            <h3 class="subscribed-modal__title">Subscribed people</h3>
+          </div>
+          <div class="subscriber-modal__content-flex">
+            <div class="subscriber-container">
+              <img class="subscriber__pic" src="../assets/images/user-profile-pic.jpg">
+              <div class="subscriber__info">
+                <h3 class="subscriber__info-name">Gelu Samadau</h3>
+                <button class="subscriber__info-profile">View profile</button>
+              </div>
+            </div>
+            <div class="subscriber-container">
+              <img class="subscriber__pic" src="../assets/images/user-profile-pic.jpg">
+              <div class="subscriber__info">
+                <h3 class="subscriber__info-name">Gelu Samadau</h3>
+                <button class="subscriber__info-profile">View profile</button>
+              </div>
+            </div>
+            <div class="subscriber-container">
+              <img class="subscriber__pic" src="../assets/images/user-profile-pic.jpg">
+              <div class="subscriber__info">
+                <h3 class="subscriber__info-name">Gelu Samadau</h3>
+                <button class="subscriber__info-profile">View profile</button>
+              </div>
+            </div>
+            <div class="subscriber-container">
+              <img class="subscriber__pic" src="../assets/images/user-profile-pic.jpg">
+              <div class="subscriber__info">
+                <h3 class="subscriber__info-name">Gelu Samadau</h3>
+                <button class="subscriber__info-profile">View profile</button>
+              </div>
+            </div>
+            <div class="subscriber-container">
+              <img class="subscriber__pic" src="../assets/images/user-profile-pic.jpg">
+              <div class="subscriber__info">
+                <h3 class="subscriber__info-name">Gelu Samadau</h3>
+                <button class="subscriber__info-profile">View profile</button>
+              </div>
+            </div>
+            <div class="subscriber-container">
+              <img class="subscriber__pic" src="../assets/images/user-profile-pic.jpg">
+              <div class="subscriber__info">
+                <h3 class="subscriber__info-name">Gelu Samadau</h3>
+                <button class="subscriber__info-profile">View profile</button>
+              </div>
+            </div>
+            <div class="subscriber-container">
+              <img class="subscriber__pic" src="../assets/images/user-profile-pic.jpg">
+              <div class="subscriber__info">
+                    <h3 class="subscriber__info-name">Gelu Samadau</h3>
+                    <button class="subscriber__info-profile">View profile</button>
+              </div>
+          </div>
+          </div>
+        </div>
+
       </div>
     </section>
-    <section class="place-recommendations">
-        <div class="recommendations-container">
-           <div class="single-recomamendation">
-              <h5 class="recommendations-container--title">Carturesti</h5>
-              <img src="../assets/images/carturesti-medium.jpg">
-           </div>
-           <div class="single-recomamendation">
-              <h5 class="recommendations-container--title">Asachi</h5>
-              <img src="../assets/images/asachi-medium.jpg">
-            </div>
-            <div class="single-recomamendation">
-              <h5 class="recommendations-container--title">Bcu</h5>
-              <img src="../assets/images/bcu-medium.jpg">
-            </div>
-            <div class="single-recomamendation">
-               <h5 class="recommendations-container--title">College</h5>
-               <img src="../assets/images/college-medium.jpg">
-            </div>
-            <div class="single-recomamendation">
-                <h5 class="recommendations-container--title">Fablab</h5>
-               <img src="../assets/images/fablab-medium.jpg"> 
-             </div>
-        </div>
-    </section>
+
   </main>
 
   <footer class="footer">
@@ -129,7 +474,9 @@
       <li><a href="#">Contact</a></li>
     </ul>
   </footer>
-  
-<script src="../assets/js/mobile-nav.js"></script>
+
+  <script src="../assets/js/mobile-nav.js"></script>
+  <script src="../assets//js//single-place.js"></script>
 </body>
+
 </html>
