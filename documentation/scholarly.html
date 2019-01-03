@@ -49,10 +49,10 @@
             </li>
         </ol>
 
-        <dl typeof="sa:AuthorsList">
+        <dl itemscope itemtype="sa:AuthorsList">
             <dt>Authors</dt>
-            <dd typeof="sa:ContributorRole" property="schema:author">
-                <meta property="schema:givenName" content="Dan">
+            <dd itemtype="sa:ContributorRole" itemprop="schema:author">
+                <meta itemprop="schema:givenName" content="Dan">
                 <meta property="schema:additionalName" content="Cristian">
                 <meta property="schema:familyName" content="Chircan">
                 <a property="schema:name" href="https://github.com/chircancristi/">Chircan Dan Cristian</a>
@@ -135,7 +135,7 @@
 
         
 
-        <h3>2.2 Important ideas / concepts regarding overall design </h3>
+        <h3 id="overall-design">2.2 Important ideas / concepts regarding overall design </h3>
 
         <h4>2.2.1 PWA </h4>
         <section>
@@ -146,23 +146,24 @@
                 traditionally available only to native mobile applications. PWAs are an emerging technology that
                 combine the open standards of the web offered by modern browsers to provide benefits of a rich mobile
                 experience.
-                <br><br>
-                   For our aplication the manifest.json which will provide information about the app will look like this: <br>
+            </p>
+                <p>
+                   For our aplication the <strong>Manifest.json</strong> which will provide information about the app will look like this: <br>
                    <code>
                         { <br>
                             "short_name": "Metoo",  <br>
                             "name": "Meet-up web tool", <br>
                             "icons": [ <br>
-                              {  <br>
-                                "src": "/assets/images/icon-192.png", <br>
-                                "type": "image/png", <br>
-                                "sizes": "192x192" <br>
-                              }, <br>
-                              { <br>
-                                "src": "/images/icons-512.png", <br>
-                                "type": "image/png", <br>
-                                "sizes": "512x512" <br>
-                              } <br>
+                                {  <br>
+                                    "src": "/assets/images/icon-192.png", <br>
+                                    "type": "image/png", <br>
+                                    "sizes": "192x192" <br>
+                                }, <br>
+                                { <br>
+                                    "src": "/images/icons-512.png", <br>
+                                    "type": "image/png", <br>
+                                    "sizes": "512x512" <br>
+                                } <br>
                             ], <br>
                             "start_url": "/pages/index.html", <br>
                             "background_color": "#edf1f2", <br>
@@ -170,77 +171,84 @@
                             "orientation": "portrait", <br>
                             "scope": "/pages/", <br>
                             "theme_color": "#b7d7eb" <br>
-                          } <br>
+                        } <br>
                    </code> 
-                   <br><br>
+                </p>
+                <p>
                    The service worker will cache the app shell which will consist off:
                    <ul>
                         <li>all the html files</li>
                         <li>style.min.css</li>
                         <li>main.js</li>
                    </ul>
-                   The service worker will also cache dinamic content using the 
+                   The service worker will also store locally dinamic content using the 
                    cache then network strategy. If the user loads a page, 
-                   two request will be send asycron. One to the caching and one to the network.
-                   If the request for the caching finds data cached, it will first check if 
-                   there is any data rendender from the network. If not, the page will be rendered 
+                   two requests will be sent asynchronously: one to the cache and one to the network.
+                   If the request for the cache finds the data, it will first check if 
+                   there is any data fetched from the network. If not, the page will be rendered 
                    with the data from the cache.
                    If the request for the network finds any new data, it will cache it then will render
                    the page with the data.
             </p>
         </section>
 
-        <h4>2.2.2 Firebase </h3>
+        <h4 id="overall-design__firebase">2.2.2 Firebase </h4>
         <section>
-            <a href="https://en.wikipedia.org/wiki/Firebase" role="doc-biblioref">Firebase</a> is a mobile and web application development 
-            platform developed by Firebase, Inc. in 2011, then acquired by Google in 2014. In our aplication we will use the following 
-            features:
-               <ul>
-                    <li>Realtime Database</li>
-                    <li>Firebase Auth</li>
-                    <li>Firebase Messaging</li>
-               </ul>
-            
-            The database will look like this: 
-            <br>
-            <img src="architecture/diagrams/dataBase.png">
-            <br><br>
-             The sign-up process will be handled by firebase.auth() using the selected provider. (google,github)
-             The user will be redirected to the provider log in page.  Onced loged firebase.auth() will create
-             two tokens:
-                 <ul>
-                    <li>id token- used for checking the autentification of the user</li>
-                    <li>refresh token</li> 
-                 </ul>
-            When an user logs in for the first time, he will be inserted in the users collection from the database 
-            <br>
-            <code>
-                    { <br>
-                        id: alphanumeric, <br>
-                        email: string, (firebase.auth API -> email) <br>
-                        fullName: string, (firebase.auth API -> displayName) <br>
-                        imgUrl: string, (firebase.auth API -> photoURL) <br>
-                        skill: [string1, string2, string3, ... ], <br>
-                        location: integer, <br>
-                        listingsAuthor: alphanumeric, <br>
-                        listingsDone: alphanumeric, <br>
-                        listingsCollaborator: alphanumeric, <br>
-                        notification: alphanumeric <br>
-                    }<br>
-            </code>
-            <br><br>
-            Our aplication will suport push notifcations which will be handled by firebase messaging. When one of the event mentioned in the  <a href="#proj-specifics"> project description </a>
-            occurs, a document will be written in the notifcations collection. A listener on that collection will send notifications to all users involved, depending on the type of the notification.
-            (listings created, comment or join request)
-
+            <p>
+                <a href="https://en.wikipedia.org/wiki/Firebase" role="doc-biblioref">Firebase</a> is a mobile and web application development 
+                platform developed by Firebase, Inc. in 2011, then acquired by Google in 2014. In our aplication we will use the following 
+                features:
+                <ul>
+                        <li>Realtime Database</li>
+                        <li>Firebase Auth</li>
+                        <li>Firebase Messaging</li>
+                </ul>
+                
+                The database will have the following collections: 
+            </p>
+                <figure typeof="sa:ObjectImage">
+                    <img src="architecture/diagrams/dataBase.png">
+                    <figcaption property="caption">Figure of database collections</figcaption>
+                </figure>
+            <p>
+                The sign-up process will be handled by firebase.auth() using the selected provider. (google,github)
+                The user will be redirected to the provider log in page.  Onced loged firebase.auth() will create
+                two tokens:
+                    <ul>
+                        <li>id token- used for checking the autentification of the user</li>
+                        <li>refresh token</li> 
+                    </ul>
+                When an user logs in for the first time, he will be inserted in the users collection from the database 
+            </p>
+            <p>
+                <code id="manifest">
+                        { <br>
+                            id: alphanumeric, <br>
+                            email: string, (firebase.auth API -> email) <br>
+                            fullName: string, (firebase.auth API -> displayName) <br>
+                            imgUrl: string, (firebase.auth API -> photoURL) <br>
+                            skill: [string1, string2, string3, ... ], <br>
+                            location: integer, <br>
+                            listingsAuthor: alphanumeric, <br>
+                            listingsDone: alphanumeric, <br>
+                            listingsCollaborator: alphanumeric, <br>
+                            notification: alphanumeric <br>
+                        }<br>
+                </code>
+            </p>
+                Our aplication will suport push notifcations which will be handled by firebase messaging. When one of the event mentioned in the  <a href="#proj-specifics"> project description </a>
+                occurs, a document will be written in the notifcations collection. A listener on that collection will send notifications to all users involved, depending on the type of the notification.
+                (listings created, comment or join request)
+            </p>            
         </section>
         <h4>2.2.3 Google Maps API</h4>
         <section>
+            <p>
                 <a href="https://developers.google.com/maps/documentation/javascript/tutorial" role="doc-biblioref">Google maps API</a> will be used 
-                 to get the geolocation of the user or the location and for the presentation of the most popular places.
-                 If the users is in the proximity of a location registered to our aplication he will receive notifcations 
-                 regarding listings that are created in that place and compatible with his set of skills.
-
+                to get the geolocation of the user or the location and for the presentation of the most popular places.
+                If the users is in the proximity of a location registered to our aplication he will receive notifcations 
+                regarding listings that are created in that place and compatible with his set of skills.
+            </p>
         </section>
         <h4>2.2.4 Presentation of popular places </h4>
         <section>
@@ -263,7 +271,7 @@
     </section> <!-- proj-specifics -->
 
     <section id="#user-interaction">
-        <h2><span>3. User interaction methods</span></h2>
+        <h2>3. User interaction methods</h2>
         <section>
             <p>
                 There are several ways a user can interact with the application:
@@ -304,5 +312,4 @@
     </section> <!-- code-management -->
 
 </body>
-
 </html>
