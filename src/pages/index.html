@@ -30,13 +30,22 @@
           <li><a href="account.html">Account</a></li>
           <li><a href="about.html">About</a></li>
         </ul>
-        <div class="nav--dropdown">
-          <div class="dropdown__button"><a href="#">Sign in</a></div>
-          <div class="dropdown__content">
-            <ul>
-              <li><a href="#">Facebook</a></li>
-              <li><a href="#">Twitter</a></li>
-              <li><a href="#">Gmail</a></li>
+        <div class="nav--modal">
+          <div class="modal__button" id="signInJs"><a>Sign in</a></div>
+          <div class="modal__content" id="modalJS">
+            <ul class="modal__content-list">
+              <span id="closeJS" class="modal-content__close">&times;</span>
+              <div class="modal__content-title">
+                  <h3>Please sign in</h3>
+              </div>
+              <li class="list__element list__element--google">
+                <img src="../assets/images/google.png">
+                <div class="list__element-name"><a>Google</a></div>
+              </li>
+              <li class="list__element list__element--github">
+                  <img src="../assets/images/github.png">
+                  <div class="list__element-name"><a>Github</a></div>
+              </li>
             </ul>
           </div>
         </div>
@@ -159,5 +168,6 @@
   </div>
 
 <script src="../assets/js/mobile-nav.js"></script>
+<script src="../assets/js/navbar.js"></script>
 </body>
 </html>
