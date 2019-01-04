@@ -7,9 +7,9 @@ var config = {
   storageBucket: "metoo-c7619.appspot.com",
   messagingSenderId: "295303057551"
 };
-var provider = new firebase.auth.GoogleAuthProvider();
+let xmlhttp = new XMLHttpRequest();
+let provider = new firebase.auth.GoogleAuthProvider();
 firebase.initializeApp(config); 
-
 signInGoogle.addEventListener('click', loginWithGoogle);
 
 function loginWithGoogle(){
@@ -19,12 +19,17 @@ function loginWithGoogle(){
         var token = result.credential.accessToken;
         // The signed-in user info.
         var user = result.user;
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.open("POST", "index" , true);
-       
+        
+        xmlhttp.open("POST", "loginGoogle" , true);
+
         var data = JSON.stringify({'email':user.email , 'displayName' : user.displayName, 'imgUrl':user.photoURL});
-        console. log(data);
-    
+        
+        var now = new Date();
+        var time = now.getTime();
+        time += 3600 * 1000;
+        now.setTime(time);
+        
+        document.cookie = "username=" + user.displayName +'; expires=' + now.toUTCString() + '; path=/';
         xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         console.log(data);
         xmlhttp.send(data);

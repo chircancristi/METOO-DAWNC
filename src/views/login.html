@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#4285f4">
+  
+  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans" rel="stylesheet">
+
+  <link rel="stylesheet"  type="text/css" href="/css/styles.min.css">
+  <link rel="manifest" href="../manifest.json">
+
+  <title>MeToo - Home</title>
+</head>
+
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="title">
+        <a class="title-text" href="#">
+          <h1 class="title-text__h1">Public Study</h1>
+          <h3 class="title-text__h3">Meet study mates</h3>
+        </a>
+        <ul class="nav nav--main">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="browse-listings.html">Listings</a></li>
+          <li><a href="browse-places.html">Places</a></li>
+          <li><a href="account.html">Account</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+        <div class="nav--modal">
+          <div class="modal__content modal__login-page" id="modalJS">
+            <ul class="modal__content-list">
+              <span id="closeJS" class="modal-content__close">&times;</span>
+              <div class="modal__content-title">
+                  <h3>Please sign in</h3>
+              </div>
+              <li id="js-login-google" class="list__element list__element--google">
+                <img src="/images/google.png">
+                <div class="list__element-name"><a>Google</a></div>
+              </li>
+              <li class="list__element list__element--github">
+                  <img src="/images/github.png">
+                  <div class="list__element-name"><a>Github</a></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="mobile-header">
+        <button id="js-nav-trigger" class="menu-trigger">
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
+        </button>
+
+        <h2 class="mobile-title">Public Study</h2>
+      </div>
+      
+      <nav id="js-nav-wrapper" class="mobile-menu-wrapper">
+        <button id="js-nav-close" class="menu-close">
+          <span class="close"></span>
+          <span class="close"></span>
+        </button>
+
+        <ul class="nav--mobile">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="browse-listings.html">Listings</a></li>
+          <li><a href="browse-places.html">Places</a></li>
+          <li><a href="account.html">Account</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </header>
+
+
+
+    <footer class="footer">
+      <ul class="nav nav--footer">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Listings</a></li>
+        <li><a href="#">Places</a></li>
+        <li><a href="#">Account</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </footer>
+  </div>
+
+<script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+<script src="/js/mobile-nav.js"></script>
+<script src="/js/navbar.js"></script>
+<script src="/js/index.js"></script>
+
+</body>
+</html>

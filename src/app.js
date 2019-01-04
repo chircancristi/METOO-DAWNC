@@ -28,15 +28,6 @@ fs.readdirSync('./controllers').forEach(function (file) {
 });
 
 
-
-app.get('/',function(req,res){
-    res.sendFile(__dirname+'/views/index.html');
-  });
-
-app.get('/index.html',function(req,res){
-    res.sendFile(__dirname+'/views/index.html');
-  });  
-
 app.get('/account.html',function(req,res){
     res.sendFile(__dirname+'/views/account.html');
   });
