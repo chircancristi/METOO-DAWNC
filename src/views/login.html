@@ -29,9 +29,9 @@
           <li><a href="browse-listings.html">Listings</a></li>
           <li><a href="browse-places.html">Places</a></li>
           <li><a href="account.html">Account</a></li>
-          <li><a href="about.html">About</a></li>
+          
         </ul>
-        <div class="nav--modal">
+        <div class="nav--modal" >
           <div class="modal__content modal__login-page" id="modalJS">
             <ul class="modal__content-list">
               <span id="closeJS" class="modal-content__close">&times;</span>
@@ -42,7 +42,7 @@
                 <img src="/images/google.png">
                 <div class="list__element-name"><a>Google</a></div>
               </li>
-              <li class="list__element list__element--github">
+              <li id="js-loginGithub" class="list__element list__element--github">
                   <img src="/images/github.png">
                   <div class="list__element-name"><a>Github</a></div>
               </li>
@@ -72,7 +72,6 @@
           <li><a href="browse-listings.html">Listings</a></li>
           <li><a href="browse-places.html">Places</a></li>
           <li><a href="account.html">Account</a></li>
-          <li><a href="about.html">About</a></li>
         </ul>
       </nav>
     </header>
@@ -91,9 +90,10 @@
   </div>
 
 <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+<script src="/js/index.js"></script>
 <script src="/js/mobile-nav.js"></script>
 <script src="/js/navbar.js"></script>
-<script src="/js/index.js"></script>
+
 
 </body>
 </html>

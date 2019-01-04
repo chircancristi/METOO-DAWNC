@@ -27,32 +27,6 @@ fs.readdirSync('./controllers').forEach(function (file) {
   }
 });
 
-
-app.get('/account.html',function(req,res){
-    res.sendFile(__dirname+'/views/account.html');
-  });
-
-app.get('/add-listing.html',function(req,res){
-    res.sendFile(__dirname+'/views/add-listing.html');
-  });
-
-app.get('/browse-listings.html',function(req,res){
-    res.sendFile(__dirname+'/views/browse-listings.html');
-  });
-
-app.get('/browse-places.html',function(req,res){
-    res.sendFile(__dirname+'/views/browse-places.html');
-  });
-
-app.get('/single-listings.html',function(req,res){
-    res.sendFile(__dirname+'/views/single-listings.html');
-  });
-
-app.get('/single-place.html',function(req,res){
-    res.sendFile(__dirname+'/views/single-place.html');
-  });
-
-
 var server = app.listen(8081, function () {
    var host = server.address().address
    var port = server.address().port

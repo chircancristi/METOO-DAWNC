@@ -1,4 +1,5 @@
 var path = require('path');
+var model = require('../models/user');
 
 module.exports.controller = function(app,firebase) {
     
@@ -6,4 +7,8 @@ module.exports.controller = function(app,firebase) {
             console.log("hey");
             res.sendFile(path.resolve('views/login.html'));
           });
+    app.post('/loginUser', function (req, res) {
+            model.login(firebase,req.body);
+            
+           });
 }

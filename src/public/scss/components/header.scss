@@ -187,6 +187,10 @@
         }
         .list__element--github{
           top:65%;
+          &:hover {
+            cursor: pointer;
+            
+          }
         }
       }
     }

@@ -18,7 +18,7 @@
 
 <body>
   <div class="container">
-    <header class="header">
+    <header class="header" id="headerJs">
       <div class="title">
         <a class="title-text" href="#">
           <h1 class="title-text__h1">Public Study</h1>
@@ -29,26 +29,10 @@
           <li><a href="browse-listings.html">Listings</a></li>
           <li><a href="browse-places.html">Places</a></li>
           <li><a href="account.html">Account</a></li>
-          <li><a href="about.html">About</a></li>
+          
         </ul>
-        <div class="nav--modal">
-          <div class="modal__button" id="signInJs"><a>Sign in</a></div>
-          <div class="modal__content" id="modalJS">
-            <ul class="modal__content-list">
-              <span id="closeJS" class="modal-content__close">&times;</span>
-              <div class="modal__content-title">
-                  <h3>Please sign in</h3>
-              </div>
-              <li id="js-login-google" class="list__element list__element--google">
-                <img src="/images/google.png">
-                <div class="list__element-name"><a>Google</a></div>
-              </li>
-              <li class="list__element list__element--github">
-                  <img src="/images/github.png">
-                  <div class="list__element-name"><a>Github</a></div>
-              </li>
-            </ul>
-          </div>
+        <div class="nav--modal" id="nav--modalJS">
+         
         </div>
       </div>
 
@@ -73,7 +57,7 @@
           <li><a href="browse-listings.html">Listings</a></li>
           <li><a href="browse-places.html">Places</a></li>
           <li><a href="account.html">Account</a></li>
-          <li><a href="about.html">About</a></li>
+        
         </ul>
       </nav>
     </header>
@@ -167,11 +151,12 @@
       </ul>
     </footer>
   </div>
-
+  
 <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+<script src="/js/index.js"></script>
 <script src="/js/mobile-nav.js"></script>
 <script src="/js/navbar.js"></script>
-<script src="/js/index.js"></script>
+
 
 </body>
 </html>
