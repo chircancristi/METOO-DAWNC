@@ -1,19 +1,8 @@
 
-var config = {
-  apiKey: "AIzaSyB-wcY0u8Sk6m5WBv6dYG1B7W_4Clo5rjw",
-  authDomain: "metoo-c7619.firebaseapp.com",
-  databaseURL: "https://metoo-c7619.firebaseio.com",
-  projectId: "metoo-c7619",
-  storageBucket: "metoo-c7619.appspot.com",
-  messagingSenderId: "295303057551"
-};
-let xmlhttp = new XMLHttpRequest();
-let google = new firebase.auth.GoogleAuthProvider();
-var gitHub = new firebase.auth.GithubAuthProvider();
 let modalHtml = document.getElementById("nav--modalJS");
 let modalHtmLMobile = document.getElementById("nav--mobileJS");
 let modalButtonNav= document.getElementById("nav--mainJS");
-firebase.initializeApp(config);
+let map;
 
 
 function getCookie(cname) {
@@ -46,88 +35,37 @@ else {
   modalHtmLMobile.innerHTML= modalHtmLMobile.innerHTML+html;
   html =" <ul class='modal__content-list'> <span id='closeJS' class='modal-content__close'>&times;</span> <div class='modal__content-title'><h3>Please sign in</h3></div><li id='js-login-google' class='list__element list__element--google'><img src='/images/google.png'> <div class='list__element-name'><a>Google</a></div> </li><li id='js-loginGithub' class='list__element list__element--github'><img src='/images/github.png'><div class='list__element-name'><a>Github</a></div></li></ul>"
   modalHtml.innerHTML = html;
-
+  html=" <script src='/js/login.js'></script>"
+  document.getElementsByTagName("html").innerHTML=document.getElementsByTagName("html").innerHTML+html;
 }
 }
-let signInGoogle = document.getElementById("js-login-google");
-let signInGithub = document.getElementById("js-loginGithub");
-signInGoogle.addEventListener('click', loginWithGoogle);
-signInGithub.addEventListener('click', loginWithGithub);
-function loginWithGoogle() {
+function initMap() {
+   uluru= {lat: 47.157584, lng:  27.600021};
+   map = new google.maps.Map(
+    document.getElementById('map'), {zoom: 12, center: uluru});
 
-  firebase.auth().signInWithPopup(google).then(function (result) {
-    // This gives you a Google Access Token. You can use it to access the Google API.
-    var token = result.credential.accessToken;
-    // The signed-in user info.
-    var user = result.user;
-
-    xmlhttp.open("POST", "loginUser", true);
-
-    var data = JSON.stringify({ 'email': user.email, 'displayName': user.displayName, 'imgUrl': user.photoURL });
-
-    var now = new Date();
-    var time = now.getTime();
-    time += 3600 * 1000;
-    now.setTime(time);
-
-    document.cookie = "username=" + user.displayName + '; expires=' + now.toUTCString() + '; path=/';
-    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-   
-    xmlhttp.send(data);
-    document.location.href = "/account.html";
-
-  }).catch(function (error) {
-    // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    // The email of the user's account used.
-    var email = error.email;
-    // The firebase.auth.AuthCredential type that was used.
-    var credential = error.credential;
-    // ...
-  });
-
+  
 }
-function loginWithGithub() {
 
-  firebase.auth().signInWithPopup(gitHub).then(function (result) {
+let xmlhttp = new XMLHttpRequest();
+xmlhttp.open("POST", "favouritePlaces", true);
+xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+xmlhttp.send();
 
-    var user = result.user;
-
-    console.log(user);
-    xmlhttp.open("POST", "loginUser", true);
-
-    let displayName = "";
-
-    for (let i = 0; i < user.email.length; i++) {
-      if (user.email[i] == "@")
-        break;
-      displayName += user.email[i];
-    }
-
-    var data = JSON.stringify({ 'email': user.email, 'displayName': displayName, 'imgUrl': user.photoURL });
-
-    var now = new Date();
-    var time = now.getTime();
-    time += 3600 * 1000;
-    now.setTime(time);
-
-    document.cookie = "username=" + user.displayName + '; expires=' + now.toUTCString() + '; path=/';
-    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    console.log(data);
-    xmlhttp.send(data);
-    document.location.href = "/account";
-  }).catch(function (error) {
-    // Handle Errors here.
-    var errorCode = error.code;
-    console.log(errorCode);
-    var errorMessage = error.message;
-    console.log(errorMessage);
-    // The email of the user's account used.
-    var email = error.email;
-    // The firebase.auth.AuthCredential type that was used.
-    var credential = error.credential;
-    // ...
-  });
-
-}
+xmlhttp.onreadystatechange = function() { 
+  if (xmlhttp.readyState == 4)
+      if (xmlhttp.status == 200){
+          
+          let json_data = JSON.parse(xmlhttp.responseText); 
+          console.log(json_data);
+          
+          var uluru;
+          for (let i=0;i<json_data.length;i++)
+          {
+            console.log(json_data[i].geolocation._lat);
+            uluru = {lat:json_data[i].geolocation._lat, lng:  json_data[i].geolocation._long};
+            console.log(uluru);
+            new google.maps.Marker({position: uluru, map: map});       
+          }
+      }
+};

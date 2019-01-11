@@ -1,4 +1,4 @@
-class Index {
+class User {
 
 
     static login(firebase, data) {
@@ -38,5 +38,5 @@ class Index {
 
 }
 
-var index = Index;
-module.exports = index;
+var user = User;
+module.exports = user;

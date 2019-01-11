@@ -14,6 +14,7 @@
 @import "components/place";
 @import "components/login";
 
+
 html {
   height: 100%;
   font-size: 16px; 
@@ -39,7 +40,22 @@ html {
 
 .main-content {
   margin: 1em 5em;
+  
+  height: 80%;
+  position: relative;
+  .map{
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
 
+    width: 90%;
+    height:90%;
+
+
+  }
+
+  
   @include query-below($lap) {
     margin: 1em 2.5em;
   }
@@ -49,30 +65,9 @@ html {
   }
 }
 
-.main-content,
 .places,
 .allPlaces {
   height: 100%;
-}
-
-.places {
-  padding: 2em 7em;
-
-  .grid--main--page {
-    height: 100%;
-
-    @include query-above($small) {
-        @include home-page-grid;
-    }
-
-    @include query-below($small) {
-        @include one-column-grid;
-    }
-  }
-
-  @include query-below($lap) {
-    padding: 0;
-  }
 }
 
 .allPlaces {
