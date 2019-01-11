@@ -18,22 +18,22 @@
 
 <body>
   <div class="container">
+    <div class='modal__content' id='nav--modalJS'>
+    </div>
     <header class="header" id="headerJs">
       <div class="title">
         <a class="title-text" href="#">
           <h1 class="title-text__h1">Public Study</h1>
           <h3 class="title-text__h3">Meet study mates</h3>
         </a>
-        <ul class="nav nav--main">
+        <ul class="nav nav--main" id="nav--mainJS">
           <li><a href="index.html">Home</a></li>
           <li><a href="browse-listings.html">Listings</a></li>
           <li><a href="browse-places.html">Places</a></li>
           <li><a href="account.html">Account</a></li>
           
         </ul>
-        <div class="nav--modal" id="nav--modalJS">
-         
-        </div>
+        
       </div>
 
       <div class="mobile-header">
@@ -52,15 +52,17 @@
           <span class="close"></span>
         </button>
 
-        <ul class="nav--mobile">
+        <ul class="nav--mobile" id="nav--mobileJS">
           <li><a href="index.html">Home</a></li>
           <li><a href="browse-listings.html">Listings</a></li>
           <li><a href="browse-places.html">Places</a></li>
           <li><a href="account.html">Account</a></li>
         
         </ul>
+        
       </nav>
     </header>
+   
 
     <main class="main-content">
       <section class="places">
@@ -139,6 +141,7 @@
 
         </div>
       </section>
+      
     </main>
 
     <footer class="footer">
@@ -151,12 +154,11 @@
       </ul>
     </footer>
   </div>
-  
+
+</body>
 <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
 <script src="/js/index.js"></script>
 <script src="/js/mobile-nav.js"></script>
 <script src="/js/navbar.js"></script>
 
-
-</body>
 </html>

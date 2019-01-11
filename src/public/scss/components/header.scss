@@ -38,39 +38,6 @@
     @include flex-nav;
 
     padding-left: 3.5em;
-    
-    li {
-      @include hover-effect-nav(10px, 10px);
-
-      &:hover {
-        a {
-          color:	hsl(28, 80%, 50%);
-        }
-      }
-      
-      padding: 0.1em 0.5em;
-      position: relative;
-      
-      a {
-        text-decoration: none;
-        text-align: center;
-        color: inherit;
-
-        transition: color .1s ease-in-out;
-      }
-    }
-
-    @include query-below($desk) {
-      padding-left: 1em;
-    }
-  }
-
-  .nav--modal {
-    margin-left: 1em;
-
-    display: inline-block;
-    font-size: 1.4em;
-   
     .modal__button {
       border: none;
       
@@ -87,147 +54,39 @@
         }
       }
     }
-    .modal__content{
-      position: fixed;
-      display: none;
+    
+    li {
+      @include hover-effect-nav(10px, 10px);
 
-      z-index: 1;
-      top:0;
-      left:0;
-
-      width: 100%;
-      height: 100%;
-      overflow: auto; 
-
-      background-color: rgba(0,0,0,0.4);
+      &:hover {
+        a {
+          color:	hsl(28, 80%, 50%);
+        }
+      }
       
+      padding: 0.1em 0.5em;
+      position: relative;
+    
+      a {
+        text-decoration: none;
+        text-align: center;
+        color: inherit;
 
-      .modal__content-list{
-        position: relative;
-     
-        background-color: #EBEBF1;
-        border: 1px solid #888;
-        margin:auto;
-
-        top: 25%;
-
-        width: 30%;
-        height: 50%;
-
-        .modal-content__close {
-          position: absolute;
-          right:1%;
-          top:0;
-          color: #aaaaaa;
-
-          font-size: 2em;
-          font-weight: bold;
-
-          &:hover{
-              color: #000;
-              text-decoration: none;
-              cursor: pointer;
-         }  
-        }    
-        
-        .modal__content-title{
-          position: absolute;
-          
-          left: 50%;
-          top: 15%;
-
-          transform: translateX(-50%);
-
-        }
-
-        .list__element{
-          position: absolute;
-          width: 90%;
-
-          left: 5%;
-
-          border: 1px solid;
-          box-shadow: 3px 4px 15px hsl(184, 9%, 70%);    
-          
-          img{
-            padding: 0.5em;
-
-            height: 100%;
-            width: 15%;
-          }
-          .list__element-name{
-            position: absolute;
-            width: 80%;
-            height: 100%;
-
-            left:20%;
-            top:50%;
-            
-            transform: translateY(-50%);
-      
-            a{
-              position: absolute;
-                          
-              left:40%;
-              top: 50%;
-
-              transform: translateY(-50%);
-            }
-          }
-        
-        }
-        .list__element--google{
-          top:35%;
-
-          color: red;
-          &:hover {
-            cursor: pointer;
-            
-          }
-        }
-        .list__element--github{
-          top:65%;
-          &:hover {
-            cursor: pointer;
-            
-          }
-        }
+        transition: color .1s ease-in-out;
       }
     }
-    .modal__login-page{
-      background-color: transparent;
-      
-      display: block;
-      top:10%;
-      left:0;
 
-      width: 100%;
-      height: 100%;
+    @include query-below($desk) {
+      padding-left: 1em;
     }
-
-    &:hover .modal__button > a {
-      color: hsl(28, 80%, 50%);
-      &:before,
-      &:after {
-        opacity: 1;
-      }
-
-      &:before {
-        transform: translateX(-15px);
-      }
   
-      &:after {
-        transform: translateX(15px);
-      }
-    }
-
-
     @include query-below($desk) {
       margin-left: .5em;
     }
   }
 
   .mobile-header {
+    
     @include query-above($lap) {
       display: none;
     }
@@ -275,7 +134,7 @@
     top: 0;
     left: 0;
     height: 100%;
-    z-index: 1;
+    z-index: 2;
 
     background-color:	hsl(203, 57%, 82%);
     transition: transform .3s ease-in-out;
@@ -326,7 +185,20 @@
       justify-content: center;
       height: 100%;
       font-size: 1.5em;
-
+      .modal__button {
+        border: none;
+        
+        a { 
+          position: relative;
+          text-decoration: none;
+          color: inherit;
+  
+          &:hover {
+          
+            cursor: pointer;
+          }
+        }
+      }
       li {
         &:not(:last-of-type) {
           margin-bottom: .7em;

@@ -11,6 +11,8 @@ let xmlhttp = new XMLHttpRequest();
 let google = new firebase.auth.GoogleAuthProvider();
 var gitHub = new firebase.auth.GithubAuthProvider();
 let modalHtml = document.getElementById("nav--modalJS");
+let modalHtmLMobile = document.getElementById("nav--mobileJS");
+let modalButtonNav= document.getElementById("nav--mainJS");
 firebase.initializeApp(config);
 
 
@@ -38,8 +40,13 @@ if (username != "") {
 
 }
 else {
-  let html = " <div class='modal__button' id='signInJs'><a>Sign in</a></div> <div class='modal__content' id='modalJS'> <ul class='modal__content-list'> <span id='closeJS' class='modal-content__close'>&times;</span> <div class='modal__content-title'><h3>Please sign in</h3></div><li id='js-login-google' class='list__element list__element--google'><img src='/images/google.png'> <div class='list__element-name'><a>Google</a></div> </li><li id='js-loginGithub' class='list__element list__element--github'><img src='/images/github.png'><div class='list__element-name'><a>Github</a></div></li></ul></div>"
+  let html = " <li class='modal__button' id='signInJs'><a>Sign in</a></li>"
+  modalButtonNav.innerHTML= modalButtonNav.innerHTML+html;
+  html = " <li class='modal__button' id='signInMobileJs'><a>Sign in</a></li>"
+  modalHtmLMobile.innerHTML= modalHtmLMobile.innerHTML+html;
+  html =" <ul class='modal__content-list'> <span id='closeJS' class='modal-content__close'>&times;</span> <div class='modal__content-title'><h3>Please sign in</h3></div><li id='js-login-google' class='list__element list__element--google'><img src='/images/google.png'> <div class='list__element-name'><a>Google</a></div> </li><li id='js-loginGithub' class='list__element list__element--github'><img src='/images/github.png'><div class='list__element-name'><a>Github</a></div></li></ul>"
   modalHtml.innerHTML = html;
+
 }
 }
 let signInGoogle = document.getElementById("js-login-google");

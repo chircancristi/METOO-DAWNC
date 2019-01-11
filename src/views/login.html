@@ -6,11 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="theme-color" content="#4285f4">
-  
+
   <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans" rel="stylesheet">
 
-  <link rel="stylesheet"  type="text/css" href="/css/styles.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/styles.min.css">
   <link rel="manifest" href="../manifest.json">
 
   <title>MeToo - Home</title>
@@ -29,26 +29,9 @@
           <li><a href="browse-listings.html">Listings</a></li>
           <li><a href="browse-places.html">Places</a></li>
           <li><a href="account.html">Account</a></li>
-          
+
         </ul>
-        <div class="nav--modal" >
-          <div class="modal__content modal__login-page" id="modalJS">
-            <ul class="modal__content-list">
-              <span id="closeJS" class="modal-content__close">&times;</span>
-              <div class="modal__content-title">
-                  <h3>Please sign in</h3>
-              </div>
-              <li id="js-login-google" class="list__element list__element--google">
-                <img src="/images/google.png">
-                <div class="list__element-name"><a>Google</a></div>
-              </li>
-              <li id="js-loginGithub" class="list__element list__element--github">
-                  <img src="/images/github.png">
-                  <div class="list__element-name"><a>Github</a></div>
-              </li>
-            </ul>
-          </div>
-        </div>
+
       </div>
 
       <div class="mobile-header">
@@ -60,14 +43,14 @@
 
         <h2 class="mobile-title">Public Study</h2>
       </div>
-      
+
       <nav id="js-nav-wrapper" class="mobile-menu-wrapper">
         <button id="js-nav-close" class="menu-close">
           <span class="close"></span>
           <span class="close"></span>
         </button>
 
-        <ul class="nav--mobile">
+        <ul class="nav--mobile" >
           <li><a href="index.html">Home</a></li>
           <li><a href="browse-listings.html">Listings</a></li>
           <li><a href="browse-places.html">Places</a></li>
@@ -76,7 +59,26 @@
       </nav>
     </header>
 
-
+   
+  
+      <div class="modal__content modal__login-page" id="modalJS">
+        <ul class="modal__content-list">
+         
+          <div class="modal__content-title">
+            <h3>Please sign in</h3>
+          </div>
+          <li id="js-login-google" class="list__element list__element--google">
+            <img src="/images/google.png">
+            <div class="list__element-name"><a>Google</a></div>
+          </li>
+          <li id="js-loginGithub" class="list__element list__element--github">
+            <img src="/images/github.png">
+            <div class="list__element-name"><a>Github</a></div>
+          </li>
+        </ul>
+      </div>
+ 
+    
 
     <footer class="footer">
       <ul class="nav nav--footer">
@@ -89,11 +91,12 @@
     </footer>
   </div>
 
-<script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
-<script src="/js/index.js"></script>
-<script src="/js/mobile-nav.js"></script>
-<script src="/js/navbar.js"></script>
-
+  
 
 </body>
+  <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+  <script src="/js/index.js"></script>
+  <script src="/js/mobile-nav.js"></script>
+  <script src="/js/navbar.js"></script>
+
 </html>
