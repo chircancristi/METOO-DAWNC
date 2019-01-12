@@ -17,7 +17,7 @@
 
 html {
   height: 100%;
-  font-size: 16px; 
+  font-size: 16px;
 
   body {
     height: 100%;
@@ -40,7 +40,7 @@ html {
 
 .main-content {
   margin: 1em 5em;
-  
+
   height: 80%;
   position: relative;
   .map{
@@ -55,7 +55,7 @@ html {
 
   }
 
-  
+
   @include query-below($lap) {
     margin: 1em 2.5em;
   }

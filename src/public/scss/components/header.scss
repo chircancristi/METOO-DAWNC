@@ -38,6 +38,101 @@
     @include flex-nav;
 
     padding-left: 3.5em;
+    
+    > li {
+      @include hover-effect-nav(10px, 10px);
+      padding: 0.1em 0.5em;
+      position: relative;
+
+      &:hover {
+        a,
+        .fa-icon.fa-bell {
+          color:	hsl(28, 80%, 50%);
+        }
+      }
+
+      a {
+        text-decoration: none;
+        text-align: center;
+        color: inherit;
+
+        transition: color .1s ease-in-out;
+      }
+
+      [name="notifications-checkbox"] {
+        display: none;
+
+        & + label {
+          cursor: pointer;
+        }
+      }
+    }
+
+    // notifications dropdown
+    .notifications-container {
+      padding: 1em;
+      position: absolute;
+      top: calc(100% + 5px);
+      right: 0;
+
+      display: flex;
+      flex-flow: column;
+
+      min-height: 40%;
+      min-width: 300px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s ease-out;
+      z-index: 1;
+
+      background-color: hsl(203, 57%, 60%);
+      font-size: .6em;
+      font-family: 'IBM Plex Sans', sans-serif;
+
+      &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 6px;
+        border-top: 30px solid;
+        border-right: 30px solid;
+        border-color: hsl(203, 57%, 60%);
+        border-left-color: transparent;
+        border-right-color: transparent;
+        transform: rotate(45deg);
+      }
+
+      .notification {
+        margin: 0  0 .7em 0;
+        display: flex;
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+
+        .notification__icon {
+          margin-right: .3em;
+          font-size: 1.1em;
+        }
+      }
+    }
+
+    [name="notifications-checkbox"]:checked ~ .notifications-container {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    @include query-below($desk) {
+      padding-left: 1em;
+    }
+  }
+
+  .nav--modal {
+    margin-left: 1em;
+
+    display: inline-block;
+    font-size: 1.4em;
+   
     .modal__button {
       border: none;
       
@@ -54,7 +149,7 @@
         }
       }
     }
-    
+
     li {
       @include hover-effect-nav(10px, 10px);
 
@@ -63,10 +158,10 @@
           color:	hsl(28, 80%, 50%);
         }
       }
-      
+
       padding: 0.1em 0.5em;
       position: relative;
-    
+
       a {
         text-decoration: none;
         text-align: center;
@@ -79,14 +174,13 @@
     @include query-below($desk) {
       padding-left: 1em;
     }
-  
+
     @include query-below($desk) {
       margin-left: .5em;
     }
   }
 
   .mobile-header {
-    
     @include query-above($lap) {
       display: none;
     }
@@ -98,11 +192,12 @@
       padding: .3em;
       border: 0;
       position: relative;
-      width: 50px;
-      height: 35px;
+      width: 40px;
+      height: 30px;
       outline: 0;
       background-color: transparent;
-  
+      cursor: pointer;
+
       .burger-line {
         position: absolute;
         left: .3em;
@@ -110,14 +205,15 @@
         width: calc(100% - .6em);
         height: 4px;
         background-color: hsl(210, 29%, 24%);
-  
+        transition: transform .15s ease-out;
+
         &:nth-of-type(1) {
           top: .3em;
         }
   
         &:nth-of-type(2) {
           top: 50%;
-          transform: translateY(-50%)
+          transform: translateY(-50%);
         }
   
         &:nth-of-type(3) {
@@ -152,8 +248,9 @@
       left: 50%;
 
       width: 40px;
-      height: 40px;
+      height: 30px;
       outline: 0;
+      cursor: pointer;
       background-color: transparent;
       transform: translateX(-50%);
 
@@ -187,14 +284,14 @@
       font-size: 1.5em;
       .modal__button {
         border: none;
-        
-        a { 
+
+        a {
           position: relative;
           text-decoration: none;
           color: inherit;
-  
+
           &:hover {
-          
+
             cursor: pointer;
           }
         }
