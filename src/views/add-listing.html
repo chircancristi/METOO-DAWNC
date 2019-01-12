@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#4285f4">
+  
+  <script src="/js/cookie.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/solid.css" integrity="sha384-uKQOWcYZKOuKmpYpvT0xCFAs/wE157X5Ua3H5onoRAOCNkJAMX/6QF0iXGGQV9cP" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/fontawesome.css" integrity="sha384-HU5rcgG/yUrsDGWsVACclYdzdCcn5yU8V/3V84zSrPDHwZEdjykadlgI6RHrxGrJ" crossorigin="anonymous">
+  <link rel="stylesheet"  type="text/css" href="/css/styles.min.css">
+  <title>Add a listing!</title>
+</head>
+
+<body class="add__listing">
+  <header class="header">
+    <div class="title">
+      <a class="title-text" href="#">
+        <h1 class="title-text__h1">Public Study</h1>
+        <h3 class="title-text__h3">Meet study mates</h3>
+      </a>
+      <ul class="nav nav--main">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="browse-listings.html">Listings</a></li>
+        <li><a href="browse-places.html">Places</a></li>
+        <li><a href="account.html">Account</a></li>
+
+      </ul>
+      
+    </div>
+
+    <div class="mobile-header">
+      <button id="js-nav-trigger" class="menu-trigger">
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+      </button>
+
+      <h2 class="mobile-title">Public Study</h2>
+    </div>
+    
+    <nav id="js-nav-wrapper" class="mobile-menu-wrapper">
+      <button id="js-nav-close" class="menu-close">
+        <span class="close"></span>
+        <span class="close"></span>
+      </button>
+
+      <ul class="nav--mobile">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="browse-listings.html">Listings</a></li>
+        <li><a href="browse-places.html">Places</a></li>
+        <li><a href="account.html">Account</a></li>
+        
+      </ul>
+    </nav>
+  </header>
+  
+  <main class="main-content main-content--add-listing">
+  <div class="slider" id="js-slider">
+    <form class="listing-form " id="js-listing-implement">
+      <ul class="listings__form-list">
+        <li class="list-step" id="implement-first"><span>1</span></li>
+        <li class="list-step" id="implement-second"><span>2</span></li>
+        <li class="list-step" id="implement-third"><span>3</span></li>
+        <li class="list-step" id="implement-fourth"><span>4</span></li>
+        <li class="list-step" id="implement-fifth"><span>5</span></li>
+      
+      </ul>
+      <section id="implement-firstQuestion" class="form__section  is-visible">
+        <div class="form__section--curentQuestion">First question</div>
+        <h1 class="form__section--h1">Public Study</h1>
+        <p class="form__section--p">The title of the project is <input type="textarea" class="form__section--input" required>
+        </p>
+        <div class="form__section--inputWrapper">
+          <button type="button" id="next" class="form__section--button">Next</button>
+          <button type="button" id="back" class="form__section--button">Back</button>
+        </div>
+      </section>
+      <section id="implement-secondQuestion" class="form__section hidden">
+        <div class="form__section--curentQuestion">Second question</div>
+        <h1 class="form__section--h1">Public Study</h1>
+        <p class="form__section--p">The place I am working in is <input type="textarea" class="form__section--input" required>
+        </p>
+        <div class="form__section--inputWrapper">
+          <button type="button" id="next" class="form__section--button">Next</button>
+          <button type="button" id="back" class="form__section--button">Back</button>
+        </div>
+      </section>
+      <section id="implement-thirdQuestion" class="form__section hidden">
+        <div class="form__section--curentQuestion">Third question</div>
+        <h1 class="form__section--h1">Public Study</h1>
+        <p class="form__section--p">The programming language/Framework I am working in is  <input type="textarea" class="form__section--input" required>
+        </p>
+        <div class="form__section--inputWrapper">
+          <button type="button" id="next" class="form__section--button">Next</button>
+          <button type="button" id="back" class="form__section--button">Back</button>
+        </div>
+      </section>
+      <section id="implement-fourthQuestion" class="form__section hidden">
+        <div class="form__section--curentQuestion">Fourth question</div>
+        <h1 class="form__section--h1">Public Study</h1>
+        <p class="form__section--p">My project is  <input type="textarea" class="form__section--input" required>
+        </p>
+        <div class="form__section--inputWrapper">
+          <button type="button" id="next" class="form__section--button">Next</button>
+          <button type="button" id="back" class="form__section--button">Back</button>
+        </div>
+      </section>
+      <section id="implement-fifthQuestion" class="form__section hidden">
+        <div class="form__section--curentQuestion">Fifth question</div>
+        <h1 class="form__section--h1">Public Study</h1>
+        <p class="form__section--p"> The skills of the persons that I want to work with me are <input type="textarea" class="form__section--input" required>
+        </p>
+        <div class="form__section--inputWrapper">
+          <button type="button" id="next" class="form__section--button">Next</button>
+          <button type="button" id="back" class="form__section--button">Back</button>
+        </div>
+      </section>
+    
+      <!-- <button class="reset" id="reset">Reset</button> -->
+    </form>
+
+    <div class="listing-type" id="js-listing-type">
+        <div class="type-wrapper">
+          <div class="study"  id="js-study">
+             <h3 class="title">Implement</h1>
+             <i class="fas fa-code"></i>
+          </div>
+          <div class="implement" id="js-implement">
+            <h3 class="title">Study</h3>
+            <i class="fas fa-book"></i>
+          </div>
+        </div>
+    </div>
+
+    <form class="listing-form " id="js-listing-study">
+        <ul class="listings__form-list">
+            <li class="list-step" id="study-first"><span>1</span></li>
+            <li class="list-step" id="study-second"><span>2</span></li>
+            <li class="list-step" id="study-third"><span>3</span></li>
+            <li class="list-step" id="study-fourth"><span>4</span></li>
+            <li class="list-step" id="study-fifth"><span>5</span></li>
+           
+          </ul>
+          <section id="study-firstQuestion" class="form__section  is-visible">
+            <div class="form__section--curentQuestion">First question</div>
+            <h1 class="form__section--h1">Public Study</h1>
+            <p class="form__section--p">The title of the project is <input type="textarea" class="form__section--input" required>
+            </p>
+            <div class="form__section--inputWrapper">
+                <button type="button" id="next" class="form__section--button">Next</button>
+                <button type="button" id="back" class="form__section--button">Back</button>
+            </div>
+          </section>
+          <section id="study-secondQuestion" class="form__section hidden">
+            <div class="form__section--curentQuestion">Second question</div>
+            <h1 class="form__section--h1">Public Study</h1>
+            <p class="form__section--p">The place I am working in is <input type="textarea" class="form__section--input" required>
+            </p>
+            <div class="form__section--inputWrapper">
+                <button type="button" id="next" class="form__section--button">Next</button>
+                <button type="button" id="back" class="form__section--button">Back</button>
+            </div>
+          </section>
+          <section id="study-thirdQuestion" class="form__section hidden">
+            <div class="form__section--curentQuestion">Third question</div>
+            <h1 class="form__section--h1">Public Study</h1>
+            <p class="form__section--p">The concept/tehnology I am studying is <input type="textarea" class="form__section--input" required>
+            </p>
+            <div class="form__section--inputWrapper">
+                <button type="button" id="next" class="form__section--button">Next</button>
+                <button type="button" id="back" class="form__section--button">Back</button>
+            </div>
+          </section>
+          <section id="study-fourthQuestion" class="form__section hidden">
+            <div class="form__section--curentQuestion">Fourth question</div>
+            <h1 class="form__section--h1">Public Study</h1>
+            <p class="form__section--p">Short Description  <input type="textarea" class="form__section--input" required>
+            </p>
+            <div class="form__section--inputWrapper">
+                <button type="button" id="next" class="form__section--button">Next</button>
+                <button type="button" id="back" class="form__section--button">Back</button>
+            </div>
+          </section>
+          <section id="study-fifthQuestion" class="form__section hidden">
+            <div class="form__section--curentQuestion">Fifth question</div>
+            <h1 class="form__section--h1">Public Study</h1>
+            <p class="form__section--p"> The skills of the persons that I want to work with me are <input type="textarea" class="form__section--input" required>
+            </p>
+            <div class="form__section--inputWrapper">
+                <button type="button" id="next" class="form__section--button">Next</button>
+                <button type="button" id="back" class="form__section--button">Back</button>
+            </div>
+          </section>
+      
+          <!-- <button class="reset" id="reset">Reset</button> -->
+        </form>
+  </div>
+  </main>
+  
+<script src="/js/mobile-nav.js"></script>
+<script src="/js/add-listing.js"></script>
+
+</body>
+
+</html>

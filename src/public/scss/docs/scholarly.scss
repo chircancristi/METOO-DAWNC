@@ -1,0 +1,65 @@
+html {
+  font-size: 16px; 
+} 
+
+body {
+  padding: .8em;
+  margin: 0 8em 0 3em;
+  font-family: 'IBM Plex Sans', sans-serif;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  h3,
+  h3 + section {
+    padding-left: .45em;
+  }
+
+  h4,
+  h4 + section {
+    padding-left: 1.2em;
+  }
+
+  code {
+    padding: .2em .4em;
+    margin: .3em 0 .3em 0;
+    
+    display: inline-block;
+    font-size: 0.9em;
+    background-color: lightskyblue;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  figure {
+    margin: 0;
+    width: 100%;
+
+    img {
+      width: 100%;
+      height: auto;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    figcaption {
+      text-align: center;
+      font-style: italic;
+    }
+  }
+
+  .level-one {
+    list-style: lower-latin;
+  }
+
+  .level-two {
+    list-style: lower-roman;
+  }
+}
+
