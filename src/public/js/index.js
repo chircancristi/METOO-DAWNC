@@ -40,9 +40,9 @@ else {
 }
 }
 function initMap() {
-   uluru= {lat: 47.157584, lng:  27.600021};
+   uluru= {lat: 47.166478, lng: 27.580477};
    map = new google.maps.Map(
-    document.getElementById('map'), {zoom: 12, center: uluru});
+    document.getElementById('map'), {zoom: 13, center: uluru});
 
   
 }
@@ -58,14 +58,39 @@ xmlhttp.onreadystatechange = function() {
           
           let json_data = JSON.parse(xmlhttp.responseText); 
           console.log(json_data);
-          
+          let sizeX=60;
+          let sizeY=60;
+          var icon = {
+            url: "../images/place5.png", // url
+            scaledSize: new google.maps.Size(sizeX, sizeY), // scaled size
+            origin: new google.maps.Point(0,0), // origin
+            anchor: new google.maps.Point(0, 0) // anchor
+        };
           var uluru;
-          for (let i=0;i<json_data.length;i++)
+          for (let i=json_data.length-1;i>=0;i--)
           {
             console.log(json_data[i].geolocation._lat);
             uluru = {lat:json_data[i].geolocation._lat, lng:  json_data[i].geolocation._long};
             console.log(uluru);
-            new google.maps.Marker({position: uluru, map: map});       
+            marker=new google.maps.Marker({position: uluru, map: map,icon:icon });  
+            attachSecretMessage(marker, json_data[i].name);
+           
+            sizeX=sizeX+20;
+            sizeY=sizeY+20;
+            icon={
+              url: "../images/place"+(i+1)+".png", // url
+              scaledSize: new google.maps.Size(sizeX, sizeY), // scaled size
+              origin: new google.maps.Point(0,0), // origin
+              anchor: new google.maps.Point(0, 0) // anchor
+            }
           }
       }
 };
+function attachSecretMessage(marker, secretMessage) {
+  marker.addListener('click', function() {
+    infowindow.open(marker.get('map'), marker);
+  });
+  var infowindow = new google.maps.InfoWindow({
+    content: secretMessage
+  })
+}
