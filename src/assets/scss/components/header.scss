@@ -39,8 +39,10 @@
 
     padding-left: 3.5em;
     
-    li {
+    > li {
       @include hover-effect-nav(10px, 10px);
+      padding: 0.1em 0.5em;
+      position: relative;
 
       &:hover {
         a,
@@ -48,9 +50,6 @@
           color:	hsl(28, 80%, 50%);
         }
       }
-      
-      padding: 0.1em 0.5em;
-      position: relative;
       
       a {
         text-decoration: none;
@@ -62,39 +61,65 @@
 
       [name="notifications-checkbox"] {
         display: none;
+
+        & + label {
+          cursor: pointer;
+        }
       }
     }
 
     // notifications dropdown
     .notifications-container {
-      position: fixed;
-      height: 100%;
-      width: 25%;
-      top: 0;
-      right: 100%;
-      // opacity: 0;
-      // pointer-events: none;
-      transition: opacity .3s ease-in-out,
-                  transform .2s ease-in-out;
-      background-color: hsl(203, 57%, 60%);
-      z-index: 1;
+      padding: 1em;
+      position: absolute;
+      top: calc(100% + 5px);
+      right: 0;
 
-      font-size: .7em;
+      display: flex;
+      flex-flow: column;
+
+      min-height: 40%;
+      min-width: 300px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s ease-out;
+      z-index: 1;
+      
+      background-color: hsl(203, 57%, 60%);
+      font-size: .6em;
       font-family: 'IBM Plex Sans', sans-serif;
 
+      &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 6px;
+        border-top: 30px solid;
+        border-right: 30px solid;
+        border-color: hsl(203, 57%, 60%);
+        border-left-color: transparent;
+        border-right-color: transparent;
+        transform: rotate(45deg);
+      }
+
       .notification {
+        margin: 0  0 .7em 0;
         display: flex;
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
 
         .notification__icon {
           margin-right: .3em;
+          font-size: 1.1em;
         }
       }
     }
 
     [name="notifications-checkbox"]:checked ~ .notifications-container {
-      // opacity: 1;
-      // pointer-events: auto;
-      transform: translateX(100%);
+      opacity: 1;
+      pointer-events: auto;
     }
 
     @include query-below($desk) {
