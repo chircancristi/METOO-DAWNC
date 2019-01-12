@@ -6,9 +6,11 @@ const loginInButtonMobile = document.getElementById("signInMobileJs");
 loginInButtonMobile.onclick = function () {
   modal.style.display = "block";
 }
+
 logInButton.onclick = function () {
   modal.style.display = "block";
 }
+
 close.onclick = function () {
   modal.style.display = "none";
 }
