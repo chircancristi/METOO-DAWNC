@@ -1,4 +1,3 @@
-
 var config = {
     apiKey: "AIzaSyB-wcY0u8Sk6m5WBv6dYG1B7W_4Clo5rjw",
     authDomain: "metoo-c7619.firebaseapp.com",
@@ -6,16 +5,19 @@ var config = {
     projectId: "metoo-c7619",
     storageBucket: "metoo-c7619.appspot.com",
     messagingSenderId: "295303057551"
-  };
-let xmlhttp = new XMLHttpRequest();
-let google = new firebase.auth.GoogleAuthProvider();
-var gitHub = new firebase.auth.GithubAuthProvider();
+};
+
 firebase.initializeApp(config);
+
 let signInGoogle = document.getElementById("js-login-google");
 let signInGithub = document.getElementById("js-loginGithub");
 signInGoogle.addEventListener('click', loginWithGoogle);
 signInGithub.addEventListener('click', loginWithGithub);
+
+let loginXmlhttp = new XMLHttpRequest();
+
 function loginWithGoogle() {
+  let google = new firebase.auth.GoogleAuthProvider();
 
   firebase.auth().signInWithPopup(google).then(function (result) {
     // This gives you a Google Access Token. You can use it to access the Google API.
@@ -23,7 +25,7 @@ function loginWithGoogle() {
     // The signed-in user info.
     var user = result.user;
 
-    xmlhttp.open("POST", "loginUser", true);
+    loginXmlhttp.open("POST", "loginUser", true);
 
     var data = JSON.stringify({ 'email': user.email, 'displayName': user.displayName, 'imgUrl': user.photoURL });
 
@@ -33,9 +35,9 @@ function loginWithGoogle() {
     now.setTime(time);
 
     document.cookie = "username=" + user.displayName + '; expires=' + now.toUTCString() + '; path=/';
-    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    loginXmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
    
-    xmlhttp.send(data);
+    loginXmlhttp.send(data);
     document.location.href = "/account.html";
 
   }).catch(function (error) {
@@ -48,16 +50,16 @@ function loginWithGoogle() {
     var credential = error.credential;
     // ...
   });
-
 }
+
 function loginWithGithub() {
+  let gitHub = new firebase.auth.GithubAuthProvider();
 
   firebase.auth().signInWithPopup(gitHub).then(function (result) {
 
     var user = result.user;
 
-    console.log(user);
-    xmlhttp.open("POST", "loginUser", true);
+    loginXmlhttp.open("POST", "loginUser", true);
 
     let displayName = "";
 
@@ -75,9 +77,8 @@ function loginWithGithub() {
     now.setTime(time);
 
     document.cookie = "username=" + user.displayName + '; expires=' + now.toUTCString() + '; path=/';
-    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    console.log(data);
-    xmlhttp.send(data);
+    loginXmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    loginXmlhttp.send(data);
     document.location.href = "/account";
   }).catch(function (error) {
     // Handle Errors here.
