@@ -19,37 +19,44 @@ let loginXmlhttp = new XMLHttpRequest();
 function loginWithGoogle() {
   let google = new firebase.auth.GoogleAuthProvider();
 
-  firebase.auth().signInWithPopup(google).then(function (result) {
-    // This gives you a Google Access Token. You can use it to access the Google API.
-    var token = result.credential.accessToken;
-    // The signed-in user info.
-    var user = result.user;
+  firebase
+    .auth()
+    .signInWithPopup(google)
+    .then(function(result) {
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      var token = result.credential.accessToken;
+      // The signed-in user info.
+      var user = result.user;
 
-    loginXmlhttp.open("POST", "loginUser", true);
+      loginXmlhttp.open("POST", "loginUser", true);
 
-    var data = JSON.stringify({ 'email': user.email, 'displayName': user.displayName, 'imgUrl': user.photoURL });
+      var data = JSON.stringify({
+        email: user.email,
+        displayName: user.displayName,
+        imgUrl: user.photoURL
+      });
 
-    var now = new Date();
-    var time = now.getTime();
-    time += 3600 * 1000;
-    now.setTime(time);
+      var now = new Date();
+      var time = now.getTime();
+      time += 3600 * 1000;
+      now.setTime(time);
 
-    document.cookie = "username=" + user.displayName + '; expires=' + now.toUTCString() + '; path=/';
-    loginXmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-   
-    loginXmlhttp.send(data);
-    document.location.href = "/account.html";
+      document.cookie = "username=" + user.displayName + "; expires=" + now.toUTCString() + "; path=/";
+      loginXmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
-  }).catch(function (error) {
-    // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    // The email of the user's account used.
-    var email = error.email;
-    // The firebase.auth.AuthCredential type that was used.
-    var credential = error.credential;
-    // ...
-  });
+      loginXmlhttp.send(data);
+      document.location.href = "/account.html";
+    })
+    .catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // The email of the user's account used.
+      var email = error.email;
+      // The firebase.auth.AuthCredential type that was used.
+      var credential = error.credential;
+      // ...
+    });
 }
 
 function loginWithGithub() {
