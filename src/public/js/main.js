@@ -4,7 +4,8 @@ import * as navbarEvents from "./Listeners/NavbarEvents.listeners.js";
 import * as pagesEvents from "./Listeners/PagesEvents.listeners.js";
 
 window.onload = function () {
-    if (window.location.pathname == "/index.html") {
+   
+    if (window.location.pathname == "/index.html" || window.location.pathname == "/" ) {
        
         if (login.checkIfUserIsLogged() == false) {
             render.renderLoginModal();
@@ -12,7 +13,7 @@ window.onload = function () {
             login.login();
         }
         navbarEvents.addNavbarEvents();
-        document.getElementById("js-google-maps-api").addEventListener("load", render.renderMainPage());
+         render.renderMainPage();
         
     }
     if (window.location.pathname == "/login.html") {
@@ -22,27 +23,27 @@ window.onload = function () {
     }
     if (window.location.pathname == "/single-listing.html") {
     
-        render.basicPageRendering();
+        render.renderBasicPage();
       
     }
     if (window.location.pathname == "/single-place.html") {
-        render.basicPageRendering();
+        render.renderBasicPage();
         pagesEvents.singlePlaceEvents();
     }
     if (window.location.pathname == "/account.html") {
-        render.basicPageRendering();
-        render.accountPageRendering();
+        render.renderBasicPage();
+        render.renderAccountPage();
     }
     if (window.location.pathname == "/add-listing.html") {
-        render.basicPageRendering();
+        render.renderBasicPage();
         pagesEvents.addListingPageEvents();
     }
     if (window.location.pathname == "/browse-listings.html") {
-        render.basicPageRendering();
+        render.renderBasicPage();
         pagesEvents.browseListingsEvents();
     }
     if (window.location.pathname == "/browse-places.html") {
-        render.basicPageRendering();
+        render.renderBasicPage();
     }
 
 }

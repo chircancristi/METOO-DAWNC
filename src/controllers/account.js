@@ -7,7 +7,7 @@ module.exports.controller = async function (app, firebase) {
     });
     app.post("/userInformation", function (req, res) {
         
-        console.log("aici am primit asta: " +req.body.username);
+      
         let data = model.getUserInformation(firebase, req.body.username);
 
         data.then(function (value) {

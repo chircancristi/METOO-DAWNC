@@ -1,6 +1,6 @@
 import * as login from "./Login.functions.js";
 import * as events from "../Listeners/NavbarEvents.listeners.js";
-export function basicPageRendering() {
+export function renderBasicPage() {
     if (login.checkIfUserIsLogged() == false)
         document.location.href = "/login"
     events.addNavbarEvents();
@@ -15,14 +15,27 @@ export function renderLoginModal() {
     modalButtonNav.innerHTML = modalButtonNav.innerHTML + html;
     html = " <li class='modal__button' id='signInMobileJs'><a>Sign in</a></li>"
     modalHtmLMobile.innerHTML = modalHtmLMobile.innerHTML + html;
-    html = ` <ul class='modal__content-list'><span id='closeJS' class='modal-content__close'>&times;</span> <div class='modal__content-title'><h3>Please sign in</h3></div><li id='js-login-google' class='list__element list__element--google'><img src='/images/google.png'> <div class='list__element-name'><a>Google</a></div> </li><li id='js-loginGithub' class='list__element list__element--github'><img src='/images/github.png'><div class='list__element-name'><a>Github</a></div></li></ul> `
+    html = `
+    <ul class='modal__content-list'>
+        <span id='closeJS'class='modal-content__close'>&times;</span> 
+        <div class='modal__content-title'><h3>Please sign in</h3>
+        </div>
+        <li id='js-login-google' class='list__element list__element--google'>
+            <img src='/images/google.png'> 
+            <div class='list__element-name'><a>Google</a></div> 
+        </li>
+        <li id='js-loginGithub' class='list__element list__element--github'>
+            <img src='/images/github.png'>
+            <div class='list__element-name'><a>Github</a></div>
+        </li>
+    </ul> `
     modalHtml.innerHTML = html;
     html = " <script src='/js/login.js'></script>"
     document.getElementsByTagName("html").innerHTML = document.getElementsByTagName("html").innerHTML + html;
 
 }
 let map;
- function initMap() {
+function initMap() {
     let uluru = { lat: 47.166478, lng: 27.580477 };
     map = new google.maps.Map(
         document.getElementById('map'),
@@ -37,9 +50,8 @@ export function renderMainPage() {
     fetch("favouritePlaces")
         .then((resp) => resp.json())
         .then(function (json_data) {
-          
-            let sizeX = 60;
-            let sizeY = 60;
+            let sizeY;
+            let sizeX = sizeY = 60;
             var icon = {
                 url: "../images/place5.png", // url
                 scaledSize: new google.maps.Size(sizeX, sizeY), // scaled size
@@ -73,22 +85,22 @@ export function renderMainPage() {
         });
 
 }
-export function accountPageRendering() {
+export function renderAccountPage() {
     let displayName = document.getElementById("nameJS");
     let profilePic = document.getElementById("profilePicJS");
     let likes = document.getElementById("likesJS");
     let dislikes = document.getElementById("dislikesJS");
-    let data={
+    let data = {
         username: login.getCookie("username")
     }
- 
+
     let request = new Request("userInformation", {
-        method: 'POST', 
-        body: JSON.stringify(data), 
+        method: 'POST',
+        body: JSON.stringify(data),
         headers: new Headers({
-            'Content-Type': 'application/json'  
-        })    
-        });
+            'Content-Type': 'application/json'
+        })
+    });
     fetch(request)
         .then((resp) => resp.json())
         .then(function (json_data) {
@@ -97,6 +109,6 @@ export function accountPageRendering() {
             profilePic.src = json_data.imgUrl;
             likes.innerHTML = json_data.likes;
             dislikes.innerHTML = json_data.dislikes;
-   
+
         });
 }
