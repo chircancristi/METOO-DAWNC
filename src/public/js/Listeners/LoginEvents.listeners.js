@@ -1,64 +1,47 @@
-var config = {
-    apiKey: "AIzaSyB-wcY0u8Sk6m5WBv6dYG1B7W_4Clo5rjw",
-    authDomain: "metoo-c7619.firebaseapp.com",
-    databaseURL: "https://metoo-c7619.firebaseio.com",
-    projectId: "metoo-c7619",
-    storageBucket: "metoo-c7619.appspot.com",
-    messagingSenderId: "295303057551"
-};
-
-firebase.initializeApp(config);
-
-let signInGoogle = document.getElementById("js-login-google");
-let signInGithub = document.getElementById("js-loginGithub");
-signInGoogle.addEventListener('click', loginWithGoogle);
-signInGithub.addEventListener('click', loginWithGithub);
-
-let loginXmlhttp = new XMLHttpRequest();
-
-function loginWithGoogle() {
+import *  as requests from "../Functions/Requests.functions.js";
+export function addLoginEvents(firebase) {
+  let signInGoogle = document.getElementById("js-login-google");
+  let signInGithub = document.getElementById("js-loginGithub");
+  signInGoogle.addEventListener('click', function () {
+    loginWithGoogle(firebase);
+  });
+  signInGithub.addEventListener('click', function () {
+    loginWithGithub(firebase);
+  });
+}
+function loginWithGoogle(firebase) {
   let google = new firebase.auth.GoogleAuthProvider();
 
   firebase
     .auth()
     .signInWithPopup(google)
-    .then(function(result) {
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      var token = result.credential.accessToken;
-      // The signed-in user info.
+    .then(function (result) {
+
       var user = result.user;
 
-      loginXmlhttp.open("POST", "loginUser", true);
-
-      var data = JSON.stringify({
+      let data = {
         email: user.email,
         displayName: user.displayName,
         imgUrl: user.photoURL
-      });
-
+    
+      }
+      requests.postDataToServer("loginUser", data);
       var now = new Date();
       var time = now.getTime();
       time += 3600 * 1000;
       now.setTime(time);
 
       document.cookie = "username=" + user.displayName + "; expires=" + now.toUTCString() + "; path=/";
-      loginXmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
-      loginXmlhttp.send(data);
       document.location.href = "/account.html";
     })
-    .catch(function(error) {
-      // Handle Errors here.
+    .catch(function (error) {
       var errorCode = error.code;
       var errorMessage = error.message;
-      // The email of the user's account used.
       var email = error.email;
-      // The firebase.auth.AuthCredential type that was used.
       var credential = error.credential;
-      // ...
     });
 }
-
 function loginWithGithub() {
   let gitHub = new firebase.auth.GithubAuthProvider();
 
@@ -66,7 +49,7 @@ function loginWithGithub() {
 
     var user = result.user;
 
-    loginXmlhttp.open("POST", "loginUser", true);
+
 
     let displayName = "";
 
@@ -75,8 +58,14 @@ function loginWithGithub() {
         break;
       displayName += user.email[i];
     }
-
-    var data = JSON.stringify({ 'email': user.email, 'displayName': displayName, 'imgUrl': user.photoURL });
+    let data = {
+      email: user.email,
+      displayName: displayName,
+      imgUrl: user.photoURL
+  
+    }
+   
+    requests.postDataToServer("loginUser", data);
 
     var now = new Date();
     var time = now.getTime();
@@ -84,8 +73,7 @@ function loginWithGithub() {
     now.setTime(time);
 
     document.cookie = "username=" + user.displayName + '; expires=' + now.toUTCString() + '; path=/';
-    loginXmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    loginXmlhttp.send(data);
+
     document.location.href = "/account";
   }).catch(function (error) {
     // Handle Errors here.

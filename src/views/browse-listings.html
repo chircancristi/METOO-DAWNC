@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="theme-color" content="#4285f4">
   
-  <script src="/js/cookie.js"></script>
+ 
   <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans" rel="stylesheet">
   <link rel="stylesheet"  type="text/css" href="/css/styles.min.css">
@@ -299,43 +299,9 @@
     </ul>
   </footer>
 
-  <script src="/js/mobile-nav.js"></script>
-  <script src="/js/browse-listings.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase.js"></script>
+  <script type="module" src="/js/main.js"></script>
 
-  <script>
-    // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyB-wcY0u8Sk6m5WBv6dYG1B7W_4Clo5rjw",
-      authDomain: "metoo-c7619.firebaseapp.com",
-      databaseURL: "https://metoo-c7619.firebaseio.com",
-      projectId: "metoo-c7619",
-      storageBucket: "metoo-c7619.appspot.com",
-      messagingSenderId: "295303057551"
-    };
-
-    firebase.initializeApp(config);
-
-    const firestore = firebase.firestore();
-    const settings = {
-      timestampsInSnapshots: true
-    };
-
-    firestore.settings(settings);
-
-    var docRef = firestore.collection("Listing").doc("l1");
-
-    docRef.get().then(function(doc) {
-        if (doc.exists) {
-            console.log("Document data:", doc.data());
-        } else {
-            // doc.data() will be undefined in this case
-            console.log("No such document!");
-        }
-    }).catch(function(error) {
-        console.log("Error getting document:", error);
-    });
-  </script>
+  
 </body>
 
 </html>
