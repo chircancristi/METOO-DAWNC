@@ -37,6 +37,7 @@ window.onload = function () {
     if (window.location.pathname == "/add-listing.html") {
         render.renderBasicPage();
         pagesEvents.addListingPageEvents();
+        render.renderAddListing();
     }
     if (window.location.pathname == "/browse-listings.html") {
         render.renderBasicPage();

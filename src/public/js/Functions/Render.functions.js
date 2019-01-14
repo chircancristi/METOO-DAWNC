@@ -112,3 +112,17 @@ export function renderAccountPage() {
 
         });
 }
+export function renderAddListing(){
+    let placesImplmement = document.getElementById("js-place-implement");
+    let placesStudy = document.getElementById("js-place-study");
+    fetch("getPlaces")
+    .then((resp) => resp.json())
+    .then(function (json_data) {
+        for (let i=0;i<json_data.length;i++){
+        placesImplmement.innerHTML=placesImplmement.innerHTML+
+        `<option value="`+json_data[i].name+`">`+json_data[i].name+`</option>`;
+        placesStudy.innerHTML=placesStudy.innerHTML+
+        `<option value="`+json_data[i].name+`">`+json_data[i].name+`</option>`;
+        }
+    })
+}
