@@ -26,6 +26,9 @@ let nextItemId;
 const blue = "hsl(28, 80%, 50%)";
 const slider = document.getElementById("js-slider");
 export function changeQuestion(target, type) {
+    let errors=document.getElementsByClassName("error");
+    for (let i=0;i<errors.length;i++)
+        errors[i].innerHTML="";
 
     // if (target.id==="reset"){
     //     if (type==="study") {
@@ -73,13 +76,12 @@ export function changeQuestion(target, type) {
         }
     }
     if (target.id === "next") {
-    
-           
+              
         if (target.value === "title") {
             if (listingType === "implement") {
                 if (document.getElementById("js-input-title-implement").value=="")
                 {
-                    alert("Please Fill All Required Field");
+                    document.getElementById("js-error-title-implement").innerText="Please fill the field";
                     return false;
     
                 }
@@ -89,7 +91,7 @@ export function changeQuestion(target, type) {
             if (listingType === "study") {
                 if (document.getElementById("js-input-title-study").value=="")
                 {
-                    alert("Please Fill All Required Field");
+                    document.getElementById("js-error-title-study").innerText="Please fill the field";
                     return false;
     
                 }
@@ -112,7 +114,7 @@ export function changeQuestion(target, type) {
             if (listingType === "implement") {
                 if (document.getElementById("js-input-concept-implement").value=="")
                 {
-                    alert("Please Fill All Required Field");
+                    document.getElementById("js-error-concept-implement").innerText="Please fill the field";
                     return false;
     
                 }
@@ -122,7 +124,7 @@ export function changeQuestion(target, type) {
             if (listingType === "study") {
                 if (document.getElementById("js-input-concept-study").value=="")
                 {
-                    alert("Please Fill All Required Field");
+                    document.getElementById("js-error-concept-study").innerText="Please fill the field";
                     return false;
     
                 }
@@ -134,7 +136,7 @@ export function changeQuestion(target, type) {
             if (listingType === "implement") {
                 if (document.getElementById("js-input-description-implement").value=="")
                 {
-                    alert("Please Fill All Required Field");
+                    document.getElementById("js-error-description-implement").innerText="Please fill the field";
                     return false;
     
                 }
@@ -144,7 +146,7 @@ export function changeQuestion(target, type) {
             if (listingType === "study") {
                 if (document.getElementById("js-input-description-study").value=="")
                 {
-                    alert("Please Fill All Required Field");
+                    document.getElementById("js-error-description-study").innerText="Please fill the field";
                     return false;
     
                 }
@@ -156,7 +158,7 @@ export function changeQuestion(target, type) {
             if (listingType === "implement") {
                 if (document.getElementById("js-input-skills-implement").value=="")
                 {
-                    alert("Please Fill All Required Field");
+                    document.getElementById("js-error-skills-implement").innerText="Please fill the field";
                     return false;
     
                 }
@@ -166,7 +168,7 @@ export function changeQuestion(target, type) {
             if (listingType === "study") {
                 if (document.getElementById("js-input-skills-study").value=="")
                 {
-                    alert("Please Fill All Required Field");
+                    document.getElementById("js-error-skills-study").innerText="Please fill the field";
                     return false;
     
                 }
@@ -175,7 +177,7 @@ export function changeQuestion(target, type) {
             }  
            
             let username=login.getCookie("username");
-            console.log(username);
+         
             let data={
                 author : username,
                 type : listingType,

@@ -18,7 +18,7 @@ class Listing {
                  "place":data.place,
                  "concept":data.concept,
                  "comments":[],
-                 "constribuitors":[]
+                 "contributors":[]
             }).then(() => {
                 place.updatePlaceWithListing(firebase,data.place,listingId)
                 console.log('Document succesfully written! ✅')

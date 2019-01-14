@@ -113,13 +113,13 @@ export function renderAccountPage() {
         });
 }
 export function renderAddListing(){
-    let placesImplmement = document.getElementById("js-input-place-implement");
+    let placesImplement = document.getElementById("js-input-place-implement");
     let placesStudy = document.getElementById("js-input-place-study");
     fetch("getPlaces")
     .then((resp) => resp.json())
     .then(function (json_data) {
         for (let i=0;i<json_data.length;i++){
-        placesImplmement.innerHTML=placesImplmement.innerHTML+
+        placesImplement.innerHTML=placesImplement.innerHTML+
         `<option value="`+json_data[i].name+`">`+json_data[i].name+`</option>`;
         placesStudy.innerHTML=placesStudy.innerHTML+
         `<option value="`+json_data[i].name+`">`+json_data[i].name+`</option>`;
