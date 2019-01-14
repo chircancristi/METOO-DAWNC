@@ -113,8 +113,8 @@ export function renderAccountPage() {
         });
 }
 export function renderAddListing(){
-    let placesImplmement = document.getElementById("js-place-implement");
-    let placesStudy = document.getElementById("js-place-study");
+    let placesImplmement = document.getElementById("js-input-place-implement");
+    let placesStudy = document.getElementById("js-input-place-study");
     fetch("getPlaces")
     .then((resp) => resp.json())
     .then(function (json_data) {

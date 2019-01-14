@@ -16,6 +16,7 @@ class Listing {
                 "description": data.description,
                  "skills":data.skills,
                  "place":data.place,
+                 "concept":data.concept,
                  "comments":[],
                  "constribuitors":[]
             }).then(() => {

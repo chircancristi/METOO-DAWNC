@@ -50,13 +50,15 @@ export function addListingPageEvents() {
     });
 
     document.getElementById("js-listing-implement").addEventListener("click", (e) => {
-        addListing.changeQuestion(e.target, "implement");
         addListing.setType("implement");
+        addListing.changeQuestion(e.target, "implement");
+       
     });
 
     document.getElementById("js-listing-study").addEventListener("click", (e) => {
-        addListing.changeQuestion(e.target, "study");
         addListing.setType("study");
+        addListing.changeQuestion(e.target, "study");
+   
     });
 }
 //browse listings

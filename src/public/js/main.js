@@ -16,7 +16,7 @@ window.onload = function () {
          render.renderMainPage();
         
     }
-    if (window.location.pathname == "/login.html") {
+    if (window.location.pathname == "/login.html" || window.location.pathname == "/login") {
         login.login();
         navbarEvents.addNavbarEvents();
         

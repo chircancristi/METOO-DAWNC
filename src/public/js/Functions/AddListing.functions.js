@@ -73,27 +73,107 @@ export function changeQuestion(target, type) {
         }
     }
     if (target.id === "next") {
+    
+           
         if (target.value === "title") {
-            listingName = document.getElementById("js-input-title").value; 
+            if (listingType === "implement") {
+                if (document.getElementById("js-input-title-implement").value=="")
+                {
+                    alert("Please Fill All Required Field");
+                    return false;
+    
+                }
+                listingName = document.getElementById("js-input-title-implement").value
+                
+            }
+            if (listingType === "study") {
+                if (document.getElementById("js-input-title-study").value=="")
+                {
+                    alert("Please Fill All Required Field");
+                    return false;
+    
+                }
+                listingName = document.getElementById("js-input-title-study").value                
+            }           
         }
         if (target.value === "place") {
             if (listingType === "implement") {
-                let dropDownElement = document.getElementById("js-place-implement")
+               
+                let dropDownElement = document.getElementById("js-input-place-implement")
                 listingLocation = dropDownElement.options[dropDownElement.selectedIndex].value;
             }
             if (listingType === "study") {
-                let dropDownElement = document.getElementById("js-place-study")
+               
+                let dropDownElement = document.getElementById("js-input-place-study")
                 listingLocation = dropDownElement.options[dropDownElement.selectedIndex].value;
             }           
         }
         if (target.value === "concept"){
-            listingConcept = document.getElementById("js-input-concept").value; 
+            if (listingType === "implement") {
+                if (document.getElementById("js-input-concept-implement").value=="")
+                {
+                    alert("Please Fill All Required Field");
+                    return false;
+    
+                }
+                listingConcept= document.getElementById("js-input-concept-implement").value
+                
+            }
+            if (listingType === "study") {
+                if (document.getElementById("js-input-concept-study").value=="")
+                {
+                    alert("Please Fill All Required Field");
+                    return false;
+    
+                }
+                listingConcept = document.getElementById("js-input-concept-study").value
+                
+            }    
         }
         if (target.value === "description"){
-            listingShortDescription = document.getElementById("js-input-description").value; 
+            if (listingType === "implement") {
+                if (document.getElementById("js-input-description-implement").value=="")
+                {
+                    alert("Please Fill All Required Field");
+                    return false;
+    
+                }
+                listingShortDescription= document.getElementById("js-input-description-implement").value
+                
+            }
+            if (listingType === "study") {
+                if (document.getElementById("js-input-description-study").value=="")
+                {
+                    alert("Please Fill All Required Field");
+                    return false;
+    
+                }
+                listingShortDescription = document.getElementById("js-input-description-study").value
+                
+            }  
         }
         if (target.value==="skills"){
-            listingSkills = document.getElementById("js-input-skills").value.split(" ");
+            if (listingType === "implement") {
+                if (document.getElementById("js-input-skills-implement").value=="")
+                {
+                    alert("Please Fill All Required Field");
+                    return false;
+    
+                }
+                listingSkills = document.getElementById("js-input-skills-implement").value.split(" ");
+                
+            }
+            if (listingType === "study") {
+                if (document.getElementById("js-input-skills-study").value=="")
+                {
+                    alert("Please Fill All Required Field");
+                    return false;
+    
+                }
+                listingSkills = document.getElementById("js-input-skills-study").value.split(" ");
+                
+            }  
+           
             let username=login.getCookie("username");
             console.log(username);
             let data={
@@ -102,11 +182,12 @@ export function changeQuestion(target, type) {
                 title : listingName,
                 description: listingShortDescription,
                 skills : listingSkills,
-                place : listingLocation
+                place : listingLocation,
+                concept:listingConcept
             }
             requests.postDataToServer("addListing",data);
 
-            //document.location.href = "/browse-listings";
+            document.location.href = "/browse-listings.html";
             
         }
         let nextItemSpanSelector = "#" + nextItemId + " span";
