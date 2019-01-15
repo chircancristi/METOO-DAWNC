@@ -112,17 +112,46 @@ export function renderAccountPage() {
 
         });
 }
-export function renderAddListing(){
+export function renderAddListing() {
     let placesImplement = document.getElementById("js-input-place-implement");
     let placesStudy = document.getElementById("js-input-place-study");
     fetch("getPlaces")
-    .then((resp) => resp.json())
-    .then(function (json_data) {
-        for (let i=0;i<json_data.length;i++){
-        placesImplement.innerHTML=placesImplement.innerHTML+
-        `<option value="`+json_data[i].name+`">`+json_data[i].name+`</option>`;
-        placesStudy.innerHTML=placesStudy.innerHTML+
-        `<option value="`+json_data[i].name+`">`+json_data[i].name+`</option>`;
-        }
-    })
+        .then((resp) => resp.json())
+        .then(function (json_data) {
+            for (let i = 0; i < json_data.length; i++) {
+                placesImplement.innerHTML = placesImplement.innerHTML +
+                    `<option value="` + json_data[i].name + `">` + json_data[i].name + `</option>`;
+                placesStudy.innerHTML = placesStudy.innerHTML +
+                    `<option value="` + json_data[i].name + `">` + json_data[i].name + `</option>`;
+            }
+        })
+}
+export function renderAllPlaces() {
+    let placesGrid = document.getElementById("js-places-grid");
+    fetch("getPlaces")
+        .then((resp) => resp.json())
+        .then(function (json_data) {
+            for (let i = 0; i < json_data.length; i++) {
+                placesGrid.innerHTML = placesGrid.innerHTML +
+                    `<a href="#" class="grid__item">
+          <article class="card">
+            <div class="card__content">
+              <h2 class="card__title">`+json_data[i].name+`</h2>
+            </div>
+            <picture class="card_image">
+              <source media="(min-width: 800px)" srcset="`+json_data[i].img[0]+`" type="image/webp">
+              <source media="(min-width: 800px)" srcset="`+json_data[i].img[1]+`" type="image/jpg">
+              <source media="(min-width: 600px)" srcset="`+json_data[i].img[2]+`"  type="image/webp">
+              <source media="(min-width: 600px)" srcset="`+json_data[i].img[3]+`"  type="image/jpg">
+              <source media="(min-width: 300px)" srcset="`+json_data[i].img[4]+`"  type="image/webp">
+              <source media="(min-width: 300px)" srcset="`+json_data[i].img[5]+`"  type="image/jpg">
+            
+              <img src="`+json_data[i].img[3]+`" style="width:100%;height: 100%;">
+            </picture>
+          </article>
+        </a>`
+            }
+        })
+    //background: url("../images/carturesti-medium.jpg") rgba(0, 0, 0, 0.075) center no-repeat;
+
 }

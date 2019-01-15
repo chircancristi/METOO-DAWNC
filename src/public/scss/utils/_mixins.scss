@@ -200,6 +200,7 @@
   grid-row-gap: 1.2em;
   grid-template-columns: 100%;
   grid-auto-rows: 80%;
+  grid-template-areas: "a";
 
   .grid__item {
     text-decoration: none;
@@ -230,9 +231,9 @@
   display: grid;
   grid-row-gap: 1.2em;
   grid-template-areas: "a a";
-  grid-column-gap: 0.2em;
-  grid-auto-rows: 60%;
-
+  grid-column-gap: 1.5em;
+  grid-auto-rows: 80%;
+  height: 100%;
   .grid__item{
      @include hover-effect-photo();
     text-decoration: none;
