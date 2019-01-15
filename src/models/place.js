@@ -55,8 +55,21 @@ class Place {
                     });
                 })
             })
-
-
+    }
+    static getPlaceByName(name,firebase){
+        const db = firebase.firestore();
+        let data;
+        return db.collection("Place").where("name", "==", name).get()
+            .then(function (querySnapshot) {
+                querySnapshot.forEach(function (doc) {
+                    // doc.data() is never undefined for query doc snapshots
+                    
+                     data=doc.data();
+                     
+                })
+               
+                return data;
+            })
     }
 }
 var place = Place;

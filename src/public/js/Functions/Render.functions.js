@@ -1,5 +1,6 @@
 import * as login from "./Login.functions.js";
 import * as events from "../Listeners/NavbarEvents.listeners.js";
+import * as pagesEvents from "../Listeners/PagesEvents.listeners.js"
 export function renderBasicPage() {
     if (login.checkIfUserIsLogged() == false)
         document.location.href = "/login"
@@ -133,7 +134,7 @@ export function renderAllPlaces() {
         .then(function (json_data) {
             for (let i = 0; i < json_data.length; i++) {
                 placesGrid.innerHTML = placesGrid.innerHTML +
-                    `<a href="#" class="grid__item">
+                    `<a href="/single-place" id=`+json_data[i].name+` class="grid__item">
           <article class="card">
             <div class="card__content">
               <h2 class="card__title">`+json_data[i].name+`</h2>
@@ -144,14 +145,41 @@ export function renderAllPlaces() {
               <source media="(min-width: 600px)" srcset="`+json_data[i].img[2]+`"  type="image/webp">
               <source media="(min-width: 600px)" srcset="`+json_data[i].img[3]+`"  type="image/jpg">
               <source media="(min-width: 300px)" srcset="`+json_data[i].img[4]+`"  type="image/webp">
-              <source media="(min-width: 300px)" srcset="`+json_data[i].img[5]+`"  type="image/jpg">
-            
+              <source media="(min-width: 300px)" srcset="`+json_data[i].img[5]+`"  type="image/jpg">  
               <img src="`+json_data[i].img[3]+`" style="width:100%;height: 100%;">
             </picture>
           </article>
         </a>`
             }
+            pagesEvents.browsePlacesEvents();
         })
-    //background: url("../images/carturesti-medium.jpg") rgba(0, 0, 0, 0.075) center no-repeat;
-
+}
+export function renderSinglePlacePage(){
+    let data = {
+        name: login.getCookie("place")
+    }
+    let request = new Request("getLocationInformation", {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: new Headers({
+            'Content-Type': 'application/json'
+        })
+    });
+    fetch(request)
+        .then((resp) => resp.json())
+        .then(function (json_data) {
+            console.log(json_data);
+            document.getElementById("js-place-img").innerHTML= `
+            <picture class="card_image">
+            <source media="(min-width: 800px)" srcset="`+json_data.locationInformation.img[0]+`" type="image/webp">
+            <source media="(min-width: 800px)" srcset="`+json_data.locationInformation.img[1]+`" type="image/jpg">
+            <source media="(min-width: 600px)" srcset="`+json_data.locationInformation.img[2]+`"  type="image/webp">
+            <source media="(min-width: 600px)" srcset="`+json_data.locationInformation.img[3]+`"  type="image/jpg">
+            <source media="(min-width: 300px)" srcset="`+json_data.locationInformation.img[4]+`"  type="image/webp">
+            <source media="(min-width: 300px)" srcset="`+json_data.locationInformation.img[5]+`"  type="image/jpg">  
+            <img src="`+json_data.locationInformation.img[3]+`" style="width:100%;height: 100%;">
+             </picture>`
+            document.getElementById("js-place-name").innerText=json_data.locationInformation.name;
+            pagesEvents.singlePageEvents();
+        });
 }

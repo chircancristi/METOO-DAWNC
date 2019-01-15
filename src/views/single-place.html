@@ -60,11 +60,11 @@
   <main class="main-content-place">
     <section class="place-info">
       <div class="place-grid">
-        <div class="place-grid__item">
-          <img src=" /images/carturesti-medium.jpg">
+        <div class="place-grid__item" id="js-place-img">
+         
         </div>
         <div class="place-grid__item">
-          <h2 class="place-info__title">Carturesti</h2>
+          <h2 id="js-place-name" class="place-info__title"></h2>
           <div class="place-info__container">
             <div class="place-info__listings-container">
               <div class="place-listings__selector">
@@ -359,29 +359,12 @@
                 </div>
               </div>
             </div>
-            <div class="place-info__details-container">
-              <div class="place-info__slideshow-container">
-                <div class="slide">
-                  <img src=" /images/user-exemple.jpg">
-                  <div class="slide__text"> Most active user</div>
-                </div>
-                <div class="slide">
-                  <img src=" /images/java.png">
-                  <div class="slide__text"> Favourite language</div>
-                </div>
-                <div class="slide">
-                  <img src=" /images/study.jpg">
-                  <div class="slide__text">Prefered type of listings</div>
-                </div>
-                <a class="next" onclick="plusSlides(-1)">&#10095;</a>
-                <a class="prev" onclick="plusSlides(1)">&#10094;</a>
-              </div>
-            </div>
+            
           </div>
         </div>
         <div class="place-grid__item">
           <div class="place-subscribe__container">
-            <div class="place-listings__button">
+            <div id="js-subscribe-button" class="place-listings__button">
               <h2>Subscribe </h2>
             </div>
             <div class="place-listings__subscribers">
