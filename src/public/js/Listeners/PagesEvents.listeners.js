@@ -7,7 +7,7 @@ export function singlePlaceEvents() {
  
     
     var modal = document.getElementById('subscribed-peopleJS')
-    var subscribersButton = document.getElementById("subscribers");
+    var subscribersButton = document.getElementById("js-subscribers-count");
     var close = document.getElementById("closeJS");
 
 

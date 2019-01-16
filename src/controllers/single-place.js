@@ -19,10 +19,10 @@ module.exports.controller = function (app, firebase) {
         promise.then(function (data) {
 
             for ( i = 0; i < data.subscribedUsers.length; i++)
-                user.getUserInformation(data.subcribedUsers[i]).then(function (userData) {
-                    subscribers.push();
+                user.getUserInformation(firebase,data.subscribedUsers[i]).then(function (userData) {
+                    subscribers.push(userData);
                 })
-          
+
             listing.getListingsAtLocation(req.body.name, firebase).then(function (listingData) {
               
                 for (let i = 0; i < listingData.length; i++) {
@@ -45,6 +45,9 @@ module.exports.controller = function (app, firebase) {
                     res.send(response);
                 })
         })
+    })
+    app.post("/subscribe",function(req,res){
+        place.subscribeToPlace(req.body.placeName, req.body.username, firebase)
 
     })
 }

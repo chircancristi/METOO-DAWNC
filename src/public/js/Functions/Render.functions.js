@@ -134,19 +134,19 @@ export function renderAllPlaces() {
         .then(function (json_data) {
             for (let i = 0; i < json_data.length; i++) {
                 placesGrid.innerHTML = placesGrid.innerHTML +
-                    `<a href="/single-place" id=`+json_data[i].name+` class="grid__item">
+                    `<a href="/single-place" id=` + json_data[i].name + ` class="grid__item">
           <article class="card">
             <div class="card__content">
-              <h2 class="card__title">`+json_data[i].name+`</h2>
+              <h2 class="card__title">`+ json_data[i].name + `</h2>
             </div>
             <picture class="card_image">
-              <source media="(min-width: 800px)" srcset="`+json_data[i].img[0]+`" type="image/webp">
-              <source media="(min-width: 800px)" srcset="`+json_data[i].img[1]+`" type="image/jpg">
-              <source media="(min-width: 600px)" srcset="`+json_data[i].img[2]+`"  type="image/webp">
-              <source media="(min-width: 600px)" srcset="`+json_data[i].img[3]+`"  type="image/jpg">
-              <source media="(min-width: 300px)" srcset="`+json_data[i].img[4]+`"  type="image/webp">
-              <source media="(min-width: 300px)" srcset="`+json_data[i].img[5]+`"  type="image/jpg">  
-              <img src="`+json_data[i].img[3]+`" style="width:100%;height: 100%;">
+              <source media="(min-width: 800px)" srcset="`+ json_data[i].img[0] + `" type="image/webp">
+              <source media="(min-width: 800px)" srcset="`+ json_data[i].img[1] + `" type="image/jpg">
+              <source media="(min-width: 600px)" srcset="`+ json_data[i].img[2] + `"  type="image/webp">
+              <source media="(min-width: 600px)" srcset="`+ json_data[i].img[3] + `"  type="image/jpg">
+              <source media="(min-width: 300px)" srcset="`+ json_data[i].img[4] + `"  type="image/webp">
+              <source media="(min-width: 300px)" srcset="`+ json_data[i].img[5] + `"  type="image/jpg">  
+              <img src="`+ json_data[i].img[3] + `" style="width:100%;height: 100%;">
             </picture>
           </article>
         </a>`
@@ -154,7 +154,7 @@ export function renderAllPlaces() {
             pagesEvents.browsePlacesEvents();
         })
 }
-export function renderSinglePlacePage(){
+export function renderSinglePlacePage() {
     let data = {
         name: login.getCookie("place")
     }
@@ -168,18 +168,116 @@ export function renderSinglePlacePage(){
     fetch(request)
         .then((resp) => resp.json())
         .then(function (json_data) {
+            let subscribersModal=document.getElementById("js-subscribers-modal");
+            let subscribersCount=document.getElementById("js-subscribers-count");
+            let listingsInProgress= document.getElementById("js-listings-in-progress");
+            let listingsFinished= document.getElementById("js-finished-listings");
+
             console.log(json_data);
-            document.getElementById("js-place-img").innerHTML= `
+            document.getElementById("js-place-img").innerHTML = `
             <picture class="card_image">
-            <source media="(min-width: 800px)" srcset="`+json_data.locationInformation.img[0]+`" type="image/webp">
-            <source media="(min-width: 800px)" srcset="`+json_data.locationInformation.img[1]+`" type="image/jpg">
-            <source media="(min-width: 600px)" srcset="`+json_data.locationInformation.img[2]+`"  type="image/webp">
-            <source media="(min-width: 600px)" srcset="`+json_data.locationInformation.img[3]+`"  type="image/jpg">
-            <source media="(min-width: 300px)" srcset="`+json_data.locationInformation.img[4]+`"  type="image/webp">
-            <source media="(min-width: 300px)" srcset="`+json_data.locationInformation.img[5]+`"  type="image/jpg">  
-            <img src="`+json_data.locationInformation.img[3]+`" style="width:100%;height: 100%;">
+            <source media="(min-width: 800px)" srcset="`+ json_data.locationInformation.img[0] + `" type="image/webp">
+            <source media="(min-width: 800px)" srcset="`+ json_data.locationInformation.img[1] + `" type="image/jpg">
+            <source media="(min-width: 600px)" srcset="`+ json_data.locationInformation.img[2] + `"  type="image/webp">
+            <source media="(min-width: 600px)" srcset="`+ json_data.locationInformation.img[3] + `"  type="image/jpg">
+            <source media="(min-width: 300px)" srcset="`+ json_data.locationInformation.img[4] + `"  type="image/webp">
+            <source media="(min-width: 300px)" srcset="`+ json_data.locationInformation.img[5] + `"  type="image/jpg">  
+            <img src="`+ json_data.locationInformation.img[3] + `" style="width:100%;height: 100%;">
              </picture>`
-            document.getElementById("js-place-name").innerText=json_data.locationInformation.name;
+             
+             let value=0;
+             
+            document.getElementById("js-place-name").innerText = json_data.locationInformation.name;
             pagesEvents.singlePageEvents();
+            for (let i = 0; i < json_data.subscribers.length; i++) {
+                if (json_data.subscribers[i].fullName === login.getCookie("username")) {
+                    document.getElementById("js-subscribe-title").innerHTML = "Unsubscribe";
+                    value=-1;
+                }
+                else {
+                 subscribersModal.innerHTML=subscribersModal.innerHTML+
+                `<div class="subscriber-container">
+                    <img class="subscriber__pic" src="`+json_data.subscribers[i].imgUrl+`">
+                    <div class="subscriber__info">
+                        <h3 class="subscriber__info-name">`+json_data.subscribers[i].fullName+`</h3>
+                        <button class="subscriber__info-profile">View profile</button>
+                    </div>
+                 </div>`
+                }
+            }
+            subscribersCount.innerText=json_data.subscribers.length+value;
+            let body=""
+            for (let i=0;i<json_data.openListings.length;i++){
+            
+                body=body+
+                `
+                <div class="flex__item">
+                    <article class="listing">
+                    <div class="listing__content">
+                        <h3 class="title">`+json_data.openListings[i].title+`</h3>
+                        <ul id="js-skills" class="skills-req">
+                `;
+              
+                for (let j=0;j<json_data.openListings[i].skills.length;j++)
+                {
+                    
+                    body=body+
+                    `<li>`+json_data.openListings[i].skills[j]+`</li>`
+                }
+                console.log(listingsInProgress.innerHTML);
+                body=body+
+                    ` </ul>
+                        <div class="actions">
+                        <button id="js-join" class="join">Join</button>
+                        <a href="" class="view-listing">View Listing</a>
+                        </div>
+                    </div>
+                    <div class="listing__meta">
+                        <a href="#">
+                        <span class="author">`+json_data.openListings[i].author+`</span>
+                        </a>
+                        <a href="#"><span class="place">`+json_data.openListings[i].place+`</span></a>
+                    </div>
+                    <span class="listing__type">`+json_data.openListings[i].type+`</span>
+                    </article>
+                </div>
+                `
+            }
+            listingsInProgress.innerHTML=body;
+            body=""
+            for (let i=0;i<json_data.closeListings.length;i++){
+                body=body+
+                `
+                <div class="flex__item">
+                    <article class="listing">
+                    <div class="listing__content">
+                        <h3 class="title">`+json_data.closeListings[i].title+`</h3>
+                        <ul id="js-skills" class="skills-req">
+                `;
+                for (let j=0;j<json_data.closeListings.skills[i].length;j++)
+                {
+                    body=body+
+                    `<li>`+json_data.closeListings[i].skills[j]+`</li>`
+                }
+                body=body+
+                    ` </ul>
+                        <div class="actions">
+                        <button id="js-join" class="join">Join</button>
+                        <a href="" class="view-listing">View Listing</a>
+                        </div>
+                    </div>
+                    <div class="listing__meta">
+                        <a href="#">
+                        <span class="author">`+json_data.closeListings[i].author+`</span>
+                        </a>
+                        <a href="#"><span class="place">`+json_data.closeListings[i].place+`</span></a>
+                    </div>
+                    <span class="listing__type">`+json_data.closeListings[i].type+`</span>
+                    </article>
+                </div>
+                `
+            }
+            listingsFinished.innerHTML=body;
+           
         });
 }

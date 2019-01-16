@@ -1,16 +1,19 @@
-import * as login from "./Login.functions"
+import * as login from "./Login.functions.js"
+import * as requests from "./Requests.functions.js"
 export function  subscribe()
 {
     let data = {
         placeName: login.getCookie("place"),
-        userName: login.getCookie("username")
+        username: login.getCookie("username")
     }
-    let request = new Request("subscribe", {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: new Headers({
-            'Content-Type': 'application/json'
-        })
-    });
-  
+   
+  requests.postDataToServer("/subscribe",data);
+  if (document.getElementById("js-subscribe-title").innerHTML==="Subscribe")
+  {
+    document.getElementById("js-subscribe-title").innerHTML="Unsubscribe";
+  }
+  else {
+    document.getElementById("js-subscribe-title").innerHTML="Subscribe";
+  }
+
 }

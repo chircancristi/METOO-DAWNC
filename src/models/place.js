@@ -71,6 +71,29 @@ class Place {
                 return data;
             })
     }
+    static subscribeToPlace(namePlace,username,firebase){
+        const db = firebase.firestore();
+        let subscribers=[];
+        db.collection("Place").where("name", "==", namePlace).get()
+            .then(function (querySnapshot) {
+                querySnapshot.forEach(function (doc) {
+                    subscribers=doc.data().subscribedUsers;                     
+                
+                let index=subscribers.indexOf(username);
+                if (index==-1){
+                    subscribers.push(username);
+                }
+                else{
+                    subscribers.splice(index, 1);
+                }
+                db.collection("Place").doc(doc.id).update({
+                    "subscribedUsers": subscribers
+                });
+            })
+                
+            })
+
+    }
 }
 var place = Place;
 module.exports = place;
