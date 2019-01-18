@@ -55,6 +55,10 @@ class Place {
                     });
                 })
             })
+            .catch((error)=>
+            {
+                console.log(error);
+            })
 
 
     }

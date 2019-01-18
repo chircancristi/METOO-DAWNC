@@ -155,3 +155,27 @@ export function renderAllPlaces() {
     //background: url("../images/carturesti-medium.jpg") rgba(0, 0, 0, 0.075) center no-repeat;
 
 }
+export function  renderListingsPage()
+{
+    let data = {
+        status: login.getCookie("status"),
+        latitude: login.getCookie("latitude"),
+        longitude: login.getCookie("longitude")
+    }
+
+    let request = new Request("listingsAfterLocation", {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: new Headers({
+            'Content-Type': 'application/json'
+        })
+    });
+    fetch(request)
+    .then((resp) => resp.json())
+    .then(function (json_data) {
+            console.log(json_data);
+        
+    })
+
+
+}
