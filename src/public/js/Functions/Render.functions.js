@@ -160,7 +160,8 @@ export function  renderListingsPage()
     let data = {
         status: login.getCookie("status"),
         latitude: login.getCookie("latitude"),
-        longitude: login.getCookie("longitude")
+        longitude: login.getCookie("longitude"),
+        username: login.getCookie("username")
     }
 
     let request = new Request("listingsAfterLocation", {
