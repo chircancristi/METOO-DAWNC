@@ -174,7 +174,46 @@ export function  renderListingsPage()
     fetch(request)
     .then((resp) => resp.json())
     .then(function (json_data) {
-            console.log(json_data);
+        console.log(json_data);
+        let listings= document.getElementById("js-listings-flex");
+        let body=""
+        for (let i=0;i<json_data.length;i++){
+            
+            body=body+
+            `
+            <div class="flex__item">
+                <article class="listing">
+                <div class="listing__content">
+                    <h3 class="title">`+json_data[i].title+`</h3>
+                    <ul id="js-skills" class="skills-req">
+            `;
+            
+            for (let j=0;j<json_data[i].skills.length;j++)
+            {
+                
+                body=body+
+                `<li>`+json_data[i].skills[j]+`</li>`
+            }
+        
+            body=body+
+                ` </ul>
+                    <div class="actions">
+                    <button id="js-join" class="join">Join</button>
+                    <a href="" class="view-listing">View Listing</a>
+                    </div>
+                </div>
+                <div class="listing__meta">
+                    <a href="#">
+                    <span class="author">`+json_data[i].author+`</span>
+                    </a>
+                    <a href="#"><span class="place">`+json_data[i].place+`</span></a>
+                </div>
+                <span class="listing__type">`+json_data[i].type+`</span>
+                </article>
+            </div>
+            `
+        }
+        listings.innerHTML=body;
         
     })
 

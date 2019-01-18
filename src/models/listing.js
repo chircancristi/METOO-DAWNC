@@ -18,75 +18,70 @@ class Listing {
         var d = Math.sqrt(x * x + y * y) * R;
         return d;
     }
-    static getCommunCh(str1,str2){
-        let communCh=0;
-        for (let j=0;j<str1.length;j++){
-            for (let k=0;k<str2.length;k++)
-            {
-                if (str1[j]==str2[k]){
-                    communCh=communCh+1;
+    static getCommunCh(str1, str2) {
+        let communCh = 0;
+        for (let j = 0; j < str1.length; j++) {
+            for (let k = 0; k < str2.length; k++) {
+                if (str1[j] == str2[k]) {
+                    communCh = communCh + 1;
                 }
             }
         }
         return communCh;
     }
     static getUsersListings(firebase, data) {
-        console.log(typeof this.PythagorasEquirectangular)
+        console.log(data)
         return user.getUserInformation(firebase, data.username)
-             .then((userData) => {
-              return  place.getAllPlaces(firebase)
-                    .then((places) => {
-                        if (data.status != "" && data.status != "denied") {
+            .then((userData) => {
+                return place.getAllPlaces(firebase)
+                    .then(async (places) => {
+                        if (data.latitude!='') {
                             places.sort((a, b) => {
                                 let Avalue = this.PythagorasEquirectangular(a.geolocation.latitude, a.geolocation.longitude, data.latitude, data.longitude);
                                 let Bvalue = this.PythagorasEquirectangular(b.geolocation.latitude, b.geolocation.longitude, data.latitude, data.longitude);
                                 return Avalue - Bvalue;
                             })
                             let finalListings = []
-                            
-                            for (let i = 0; i < places.length-1; i++){
-                                 this.getListingsAtLocation(places[i].name,firebase)
-                                .then((listings) => {
-                                    listings.sort((a, b) => {
-                                        
-                                        let communChA=this.getCommunCh(a.skills,userData.skills);
-                                        let communChB=this.getCommunCh(b.skills,userData.skills);
-                                        return communChB-communChA;
+
+                            for (let i = 0; i < places.length; i++) {
+                                await this.getListingsAtLocation(places[i].name, firebase)
+                                    .then((listings) => {
+                                        listings.sort((a, b) => {
+
+                                            let communChA = this.getCommunCh(a.skills, userData.skills);
+                                            let communChB = this.getCommunCh(b.skills, userData.skills);
+                                            return communChB - communChA;
+                                        })
+                                        finalListings = finalListings.concat(listings);
                                     })
-                                    finalListings=finalListings.concat(listings);
-                                })
-                           return  this.getListingsAtLocation(places[places.length-1].name,firebase)
-                                .then((listings) => {
-                                    listings.sort((a, b) => {
-                                        
-                                        let communChA=this.getCommunCh(a.skills,userData.skills);
-                                        let communChB=this.getCommunCh(b.skills,userData.skills);
-                                        return communChB-communChA;
-                                    })
-                                    finalListings=finalListings.concat(listings);
-                                    return finalListings;
-                                }) 
                             }
+                            return finalListings;
                         }
-                        else{
+                        else {
                             let finalListings = []
-                            
-                            for (let i = 0; i < places.length-1; i++){
-                                 this.getListingsAtLocation(places[i].name,firebase)
-                                .then((listings) => {
-                                    finalListings=finalListings.concat(listings);
-                                })
+                            for (let i = 0; i < places.length; i++) {
+                                await this.getListingsAtLocation(places[i].name, firebase)
+                                    .then((listings) => {
+                                        finalListings = finalListings.concat(listings);
+                                    })
                             }
+                            console.log(userData);
+                            finalListings.sort((a, b) => {
+                                console.log(a.skills, userData.skills);
+                                let communChA = this.getCommunCh(a.skills, userData.skills);
+                                let communChB = this.getCommunCh(b.skills, userData.skills);
+                                return communChB - communChA;
+                            })
+                            return finalListings;
                         }
-                        
                     }
                     ).catch((error) => {
                         console.log(error);
                     })
             }
-        ).catch((error) => {
-            console.log(error);
-        })
+            ).catch((error) => {
+                console.log(error);
+            })
     }
     static addListing(firebase, data) {
         const db = firebase.firestore();

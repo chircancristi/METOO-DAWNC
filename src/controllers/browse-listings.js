@@ -8,7 +8,7 @@ module.exports.controller = function(app,firebase) {
           });
     app.post('/listingsAfterLocation',function(req,res){
       listing.getUsersListings(firebase,req.body).then(function(listings){
-        console.log(listings);
+            res.send(listings);
       })
     })
   

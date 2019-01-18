@@ -11,6 +11,10 @@ function savePosition(position) {
 }
 
 function showError(error) {
+    var now = new Date();
+    var time = now.getTime();
+    time += 3600 * 1000;
+    now.setTime(time);
     switch (error.code) {
         case error.PERMISSION_DENIED:
             document.cookie = "status='denied'; expires=" + now.toUTCString() + '; path=/';
