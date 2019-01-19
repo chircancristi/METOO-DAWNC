@@ -25,7 +25,7 @@ class Place {
             return places;
         }).catch(function (error) {
             console.log("Error getting places:", error);
-        });;
+        });
 
     }
     static getAllPlaces(firebase) {
@@ -40,7 +40,7 @@ class Place {
             return places;
         }).catch(function (error) {
             console.log("Error getting places:", error);
-        });;
+        });
     }
     static updatePlaceWithListing(firebase, place, listing) {
         const db = firebase.firestore();
@@ -55,8 +55,6 @@ class Place {
                     });
                 })
             })
-
-
     }
 }
 var place = Place;
