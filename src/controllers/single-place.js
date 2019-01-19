@@ -16,14 +16,19 @@ module.exports.controller = function (app, firebase) {
         let closedListings = [];
         let openListings = [];
         let i;
-        promise.then(function (data) {
+        promise.then(async function (data) {
 
             for ( i = 0; i < data.subscribedUsers.length; i++)
-                user.getUserInformation(firebase,data.subscribedUsers[i]).then(function (userData) {
+                await user.getUserInformation(firebase,data.subscribedUsers[i]).
+                then(function (userData) {
                     subscribers.push(userData);
                 })
+                .catch(function (error) {
+                    console.log("Error getting users:", error);
+                });
 
-            listing.getListingsAtLocation(req.body.name, firebase).then(function (listingData) {
+            listing.getListingsAtLocation(req.body.name, firebase).
+            then(function (listingData) {
               
                 for (let i = 0; i < listingData.length; i++) {
                     if (listingData[i].status === "opened") {
@@ -34,7 +39,7 @@ module.exports.controller = function (app, firebase) {
                     }
                 }
             })
-                .finally(function () {
+            .finally(function () {
                     let response = {
                         "locationInformation": data,
                         "subscribers": subscribers,
@@ -43,7 +48,10 @@ module.exports.controller = function (app, firebase) {
                     }
 
                     res.send(response);
-                })
+            })
+            .catch(function (error) {
+                console.log("Error getting places:", error);
+            });
         })
     })
     app.post("/subscribe",function(req,res){

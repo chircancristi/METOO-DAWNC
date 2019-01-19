@@ -1,5 +1,5 @@
 import * as addListing from "../Functions/AddListing.functions.js"
-import * as place from "..//Functions/Places.functions.js"
+import * as place from "../Functions/Places.functions.js"
 
 export function singlePlaceEvents() {
    

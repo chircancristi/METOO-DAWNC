@@ -8,12 +8,8 @@ export function  subscribe()
     }
    
   requests.postDataToServer("/subscribe",data);
-  if (document.getElementById("js-subscribe-title").innerHTML==="Subscribe")
-  {
-    document.getElementById("js-subscribe-title").innerHTML="Unsubscribe";
-  }
-  else {
-    document.getElementById("js-subscribe-title").innerHTML="Subscribe";
-  }
+  let subscribeBtnText = document.getElementById("js-subscribe-title");
+ 
+  subscribeBtnText.innerHTML === "Subscribe" ? subscribeBtnText.innerHTML="Unsubscribe" : subscribeBtnText.innerHTML="Subscribe"; 
 
 }

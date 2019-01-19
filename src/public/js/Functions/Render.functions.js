@@ -87,10 +87,10 @@ export function renderMainPage() {
 
 }
 export function renderAccountPage() {
-    let displayName = document.getElementById("nameJS");
-    let profilePic = document.getElementById("profilePicJS");
-    let likes = document.getElementById("likesJS");
-    let dislikes = document.getElementById("dislikesJS");
+    let displayName = document.getElementById("js-name");
+    let profilePic = document.getElementById("js-profile-pic");
+    let likes = document.getElementById("js-likes");
+    let dislikes = document.getElementById("js-dislikes");
     let data = {
         username: login.getCookie("username")
     }
@@ -121,9 +121,9 @@ export function renderAddListing() {
         .then(function (json_data) {
             for (let i = 0; i < json_data.length; i++) {
                 placesImplement.innerHTML = placesImplement.innerHTML +
-                    `<option value="` + json_data[i].name + `">` + json_data[i].name + `</option>`;
+                    `<option value="${json_data[i].name}">${json_data[i].name} </option>`;
                 placesStudy.innerHTML = placesStudy.innerHTML +
-                    `<option value="` + json_data[i].name + `">` + json_data[i].name + `</option>`;
+                    `<option value=" ${json_data[i].name} "> ${json_data[i].name} </option>`;
             }
         })
 }
@@ -134,19 +134,19 @@ export function renderAllPlaces() {
         .then(function (json_data) {
             for (let i = 0; i < json_data.length; i++) {
                 placesGrid.innerHTML = placesGrid.innerHTML +
-                    `<a href="/single-place" id=` + json_data[i].name + ` class="grid__item">
+                    `<a href="/single-place" id= ${json_data[i].name}  class="grid__item">
           <article class="card">
             <div class="card__content">
               <h2 class="card__title">`+ json_data[i].name + `</h2>
             </div>
             <picture class="card_image">
-              <source media="(min-width: 800px)" srcset="`+ json_data[i].img[0] + `" type="image/webp">
-              <source media="(min-width: 800px)" srcset="`+ json_data[i].img[1] + `" type="image/jpg">
-              <source media="(min-width: 600px)" srcset="`+ json_data[i].img[2] + `"  type="image/webp">
-              <source media="(min-width: 600px)" srcset="`+ json_data[i].img[3] + `"  type="image/jpg">
-              <source media="(min-width: 300px)" srcset="`+ json_data[i].img[4] + `"  type="image/webp">
-              <source media="(min-width: 300px)" srcset="`+ json_data[i].img[5] + `"  type="image/jpg">  
-              <img src="`+ json_data[i].img[3] + `" style="width:100%;height: 100%;">
+              <source media="(min-width: 800px)" srcset="${json_data[i].img[0]} " type="image/webp">
+              <source media="(min-width: 800px)" srcset="${json_data[i].img[1]}" type="image/jpg">
+              <source media="(min-width: 600px)" srcset="${json_data[i].img[2]}"  type="image/webp">
+              <source media="(min-width: 600px)" srcset="${json_data[i].img[3]}"  type="image/jpg">
+              <source media="(min-width: 300px)" srcset="${json_data[i].img[4]}"  type="image/webp">
+              <source media="(min-width: 300px)" srcset="${json_data[i].img[5]}"  type="image/jpg">  
+              <img src="${json_data[i].img[3]}" style="width:100%;height: 100%;">
             </picture>
           </article>
         </a>`
@@ -176,13 +176,13 @@ export function renderSinglePlacePage() {
             console.log(json_data);
             document.getElementById("js-place-img").innerHTML = `
             <picture class="card_image">
-            <source media="(min-width: 800px)" srcset="`+ json_data.locationInformation.img[0] + `" type="image/webp">
-            <source media="(min-width: 800px)" srcset="`+ json_data.locationInformation.img[1] + `" type="image/jpg">
-            <source media="(min-width: 600px)" srcset="`+ json_data.locationInformation.img[2] + `"  type="image/webp">
-            <source media="(min-width: 600px)" srcset="`+ json_data.locationInformation.img[3] + `"  type="image/jpg">
-            <source media="(min-width: 300px)" srcset="`+ json_data.locationInformation.img[4] + `"  type="image/webp">
-            <source media="(min-width: 300px)" srcset="`+ json_data.locationInformation.img[5] + `"  type="image/jpg">  
-            <img src="`+ json_data.locationInformation.img[3] + `" style="width:100%;height: 100%;">
+            <source media="(min-width: 800px)" srcset="${json_data.locationInformation.img[0]}" type="image/webp">
+            <source media="(min-width: 800px)" srcset="${json_data.locationInformation.img[1]}" type="image/jpg">
+            <source media="(min-width: 600px)" srcset="${json_data.locationInformation.img[3]}"  type="image/webp">
+            <source media="(min-width: 600px)" srcset="${json_data.locationInformation.img[4]}"  type="image/jpg">
+            <source media="(min-width: 300px)" srcset="${json_data.locationInformation.img[5]}"  type="image/webp">
+            <source media="(min-width: 300px)" srcset="${json_data.locationInformation.img[6]}"  type="image/jpg">  
+            <img src="${json_data.locationInformation.img[7]}" style="width:100%;height: 100%;">
              </picture>`
              
              let value=0;
@@ -197,9 +197,9 @@ export function renderSinglePlacePage() {
                 else {
                  subscribersModal.innerHTML=subscribersModal.innerHTML+
                 `<div class="subscriber-container">
-                    <img class="subscriber__pic" src="`+json_data.subscribers[i].imgUrl+`">
+                    <img class="subscriber__pic" src="${json_data.subscribers[i].imgUrl}">
                     <div class="subscriber__info">
-                        <h3 class="subscriber__info-name">`+json_data.subscribers[i].fullName+`</h3>
+                        <h3 class="subscriber__info-name">${json_data.subscribers[i].fullName}</h3>
                         <button class="subscriber__info-profile">View profile</button>
                     </div>
                  </div>`
@@ -214,7 +214,7 @@ export function renderSinglePlacePage() {
                 <div class="flex__item">
                     <article class="listing">
                     <div class="listing__content">
-                        <h3 class="title">`+json_data.openListings[i].title+`</h3>
+                        <h3 class="title">${json_data.openListings[i].title}</h3>
                         <ul id="js-skills" class="skills-req">
                 `;
               
@@ -222,7 +222,7 @@ export function renderSinglePlacePage() {
                 {
                     
                     body=body+
-                    `<li>`+json_data.openListings[i].skills[j]+`</li>`
+                    `<li>${json_data.openListings[i].skills[j]}</li>`
                 }
                 console.log(listingsInProgress.innerHTML);
                 body=body+
@@ -234,11 +234,11 @@ export function renderSinglePlacePage() {
                     </div>
                     <div class="listing__meta">
                         <a href="#">
-                        <span class="author">`+json_data.openListings[i].author+`</span>
+                        <span class="author">${json_data.openListings[i].author}</span>
                         </a>
-                        <a href="#"><span class="place">`+json_data.openListings[i].place+`</span></a>
+                        <a href="#"><span class="place">${json_data.openListings[i].place}</span></a>
                     </div>
-                    <span class="listing__type">`+json_data.openListings[i].type+`</span>
+                    <span class="listing__type">${json_data.openListings[i].type}</span>
                     </article>
                 </div>
                 `
@@ -251,13 +251,13 @@ export function renderSinglePlacePage() {
                 <div class="flex__item">
                     <article class="listing">
                     <div class="listing__content">
-                        <h3 class="title">`+json_data.closeListings[i].title+`</h3>
+                        <h3 class="title">${json_data.closeListings[i].title}</h3>
                         <ul id="js-skills" class="skills-req">
                 `;
                 for (let j=0;j<json_data.closeListings.skills[i].length;j++)
                 {
                     body=body+
-                    `<li>`+json_data.closeListings[i].skills[j]+`</li>`
+                    `<li>${json_data.closeListings[i].skills[j]}</li>`
                 }
                 body=body+
                     ` </ul>
@@ -268,11 +268,11 @@ export function renderSinglePlacePage() {
                     </div>
                     <div class="listing__meta">
                         <a href="#">
-                        <span class="author">`+json_data.closeListings[i].author+`</span>
+                        <span class="author">${json_data.closeListings[i].author}</span>
                         </a>
-                        <a href="#"><span class="place">`+json_data.closeListings[i].place+`</span></a>
+                        <a href="#"><span class="place">${json_data.closeListings[i].place}</span></a>
                     </div>
-                    <span class="listing__type">`+json_data.closeListings[i].type+`</span>
+                    <span class="listing__type">${json_data.closeListings[i].type}</span>
                     </article>
                 </div>
                 `
