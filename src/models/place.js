@@ -55,7 +55,43 @@ class Place {
                     });
                 })
             })
-
+    }
+    static getPlaceByName(name,firebase){
+        const db = firebase.firestore();
+        let data;
+        return db.collection("Place").where("name", "==", name).get()
+            .then(function (querySnapshot) {
+                querySnapshot.forEach(function (doc) {
+                    // doc.data() is never undefined for query doc snapshots
+                    
+                     data=doc.data();
+                     
+                })
+               
+                return data;
+            })
+    }
+    static subscribeToPlace(namePlace,username,firebase){
+        const db = firebase.firestore();
+        let subscribers=[];
+        db.collection("Place").where("name", "==", namePlace).get()
+            .then(function (querySnapshot) {
+                querySnapshot.forEach(function (doc) {
+                    subscribers=doc.data().subscribedUsers;                     
+                
+                let index=subscribers.indexOf(username);
+                if (index==-1){
+                    subscribers.push(username);
+                }
+                else{
+                    subscribers.splice(index, 1);
+                }
+                db.collection("Place").doc(doc.id).update({
+                    "subscribedUsers": subscribers
+                });
+            })
+                
+            })
 
     }
 }
