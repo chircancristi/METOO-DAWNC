@@ -58,7 +58,7 @@
       </ul>
     </nav>
   </header>
-  
+ 
   <main class="main-content main-content--add-listing">
   <div class="slider" id="js-slider">
     <form class="listing-form " id="js-listing-implement">
@@ -71,52 +71,63 @@
       
       </ul>
       <section id="implement-firstQuestion" class="form__section  is-visible">
+          <p class="error" id="js-error-title-implement"></p>
         <div class="form__section--curentQuestion">First question</div>
         <h1 class="form__section--h1">Public Study</h1>
-        <p class="form__section--p">The title of the project is <input type="textarea" class="form__section--input" required>
+        <p class="form__section--p">The title of the project is
+           <input id="js-input-title-implement" type="textarea" class="form__section--input" required>
         </p>
         <div class="form__section--inputWrapper">
-          <button type="button" id="next" class="form__section--button">Next</button>
+          <button type="button" value="title" id="next" class="form__section--button">Next</button>
           <button type="button" id="back" class="form__section--button">Back</button>
         </div>
       </section>
       <section id="implement-secondQuestion" class="form__section hidden">
+          <p class="error" id="js-error-location-implement"></p>
         <div class="form__section--curentQuestion">Second question</div>
         <h1 class="form__section--h1">Public Study</h1>
-        <p class="form__section--p">The place I am working in is <input type="textarea" class="form__section--input" required>
+        <p class="form__section--p">The place I am working in is 
+            <select id="js-input-place-implement">
+              </select>
         </p>
         <div class="form__section--inputWrapper">
-          <button type="button" id="next" class="form__section--button">Next</button>
+          <button type="button" value="place" id="next" class="form__section--button">Next</button>
           <button type="button" id="back" class="form__section--button">Back</button>
         </div>
       </section>
       <section id="implement-thirdQuestion" class="form__section hidden">
+          <p class="error" id="js-error-concept-implement"></p>
         <div class="form__section--curentQuestion">Third question</div>
         <h1 class="form__section--h1">Public Study</h1>
-        <p class="form__section--p">The programming language/Framework I am working in is  <input type="textarea" class="form__section--input" required>
+        <p class="form__section--p">The programming language/Framework I am working in is  
+          <input  id="js-input-concept-implement" type="textarea" class="form__section--input" required>
         </p>
         <div class="form__section--inputWrapper">
-          <button type="button" id="next" class="form__section--button">Next</button>
+          <button type="button" value="concept" id="next" class="form__section--button">Next</button>
           <button type="button" id="back" class="form__section--button">Back</button>
         </div>
       </section>
       <section id="implement-fourthQuestion" class="form__section hidden">
+          <p class="error" id="js-error-description-implement"></p>
         <div class="form__section--curentQuestion">Fourth question</div>
         <h1 class="form__section--h1">Public Study</h1>
-        <p class="form__section--p">My project is  <input type="textarea" class="form__section--input" required>
+        <p class="form__section--p">My project is  
+          <input  id="js-input-description-implement" type="textarea" class="form__section--input" required>
         </p>
         <div class="form__section--inputWrapper">
-          <button type="button" id="next" class="form__section--button">Next</button>
+          <button type="button" value="description" id="next" class="form__section--button">Next</button>
           <button type="button" id="back" class="form__section--button">Back</button>
         </div>
       </section>
       <section id="implement-fifthQuestion" class="form__section hidden">
+          <p class="error" id="js-error-skills-implement"></p>
         <div class="form__section--curentQuestion">Fifth question</div>
         <h1 class="form__section--h1">Public Study</h1>
-        <p class="form__section--p"> The skills of the persons that I want to work with me are <input type="textarea" class="form__section--input" required>
+        <p class="form__section--p"> The skills of the persons that I want to work with me are 
+          <input  id="js-input-skills-implement" type="textarea" class="form__section--input" required>
         </p>
         <div class="form__section--inputWrapper">
-          <button type="button" id="next" class="form__section--button">Next</button>
+          <button type="button" value="skills" id="next" class="form__section--button">Submit</button>
           <button type="button" id="back" class="form__section--button">Back</button>
         </div>
       </section>
@@ -147,52 +158,64 @@
            
           </ul>
           <section id="study-firstQuestion" class="form__section  is-visible">
+              <p class="error" id="js-error-title-study"></p>
             <div class="form__section--curentQuestion">First question</div>
             <h1 class="form__section--h1">Public Study</h1>
-            <p class="form__section--p">The title of the project is <input type="textarea" class="form__section--input" required>
+            <p class="form__section--p">The title of the project is 
+              <input id="js-input-title-study"  type="textarea" class="form__section--input" required>
             </p>
             <div class="form__section--inputWrapper">
-                <button type="button" id="next" class="form__section--button">Next</button>
+                <button type="button" id="next" value="title" class="form__section--button">Next</button>
                 <button type="button" id="back" class="form__section--button">Back</button>
             </div>
           </section>
           <section id="study-secondQuestion" class="form__section hidden">
+              <p class="error" id="js-error-location-study"></p>
             <div class="form__section--curentQuestion">Second question</div>
             <h1 class="form__section--h1">Public Study</h1>
-            <p class="form__section--p">The place I am working in is <input type="textarea" class="form__section--input" required>
+            <p class="form__section--p">The place I am working in is 
+                <select id="js-input-place-study">
+                  
+                </select>
             </p>
             <div class="form__section--inputWrapper">
-                <button type="button" id="next" class="form__section--button">Next</button>
+                <button type="button" id="next" value="place" class="form__section--button">Next</button>
                 <button type="button" id="back" class="form__section--button">Back</button>
             </div>
           </section>
           <section id="study-thirdQuestion" class="form__section hidden">
+              <p class="error" id="js-error-concept-study"></p>
             <div class="form__section--curentQuestion">Third question</div>
             <h1 class="form__section--h1">Public Study</h1>
-            <p class="form__section--p">The concept/tehnology I am studying is <input type="textarea" class="form__section--input" required>
+            <p class="form__section--p">The concept/tehnology I am studying is 
+              <input  id="js-input-concept-study" type="textarea" class="form__section--input" required>
             </p>
             <div class="form__section--inputWrapper">
-                <button type="button" id="next" class="form__section--button">Next</button>
+                <button type="button" id="next" value="concept" class="form__section--button">Next</button>
                 <button type="button" id="back" class="form__section--button">Back</button>
             </div>
           </section>
           <section id="study-fourthQuestion" class="form__section hidden">
+              <p class="error" id="js-error-description-study"></p>
             <div class="form__section--curentQuestion">Fourth question</div>
             <h1 class="form__section--h1">Public Study</h1>
-            <p class="form__section--p">Short Description  <input type="textarea" class="form__section--input" required>
+            <p class="form__section--p">Short Description  
+              <input id="js-input-description-study" type="textarea" class="form__section--input" required>
             </p>
             <div class="form__section--inputWrapper">
-                <button type="button" id="next" class="form__section--button">Next</button>
+                <button type="button" id="next" value="description" class="form__section--button">Next</button>
                 <button type="button" id="back" class="form__section--button">Back</button>
             </div>
           </section>
           <section id="study-fifthQuestion" class="form__section hidden">
+              <p class="error" id="js-error-skills-study"></p>
             <div class="form__section--curentQuestion">Fifth question</div>
             <h1 class="form__section--h1">Public Study</h1>
-            <p class="form__section--p"> The skills of the persons that I want to work with me are <input type="textarea" class="form__section--input" required>
+            <p class="form__section--p"> The skills of the persons that I want to work with me are 
+              <input  id="js-input-skills-study"  type="textarea" class="form__section--input" required>
             </p>
             <div class="form__section--inputWrapper">
-                <button type="button" id="next" class="form__section--button">Next</button>
+                <button value="skills" type="button" id="next" class="form__section--button">Submit</button>
                 <button type="button" id="back" class="form__section--button">Back</button>
             </div>
           </section>

@@ -16,7 +16,7 @@ window.onload = function () {
          render.renderMainPage();
         
     }
-    if (window.location.pathname == "/login.html") {
+    if (window.location.pathname == "/login.html" || window.location.pathname == "/login") {
         login.login();
         navbarEvents.addNavbarEvents();
         
@@ -37,6 +37,7 @@ window.onload = function () {
     if (window.location.pathname == "/add-listing.html") {
         render.renderBasicPage();
         pagesEvents.addListingPageEvents();
+        render.renderAddListing();
     }
     if (window.location.pathname == "/browse-listings.html") {
         render.renderBasicPage();
