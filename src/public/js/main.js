@@ -2,6 +2,7 @@ import * as login from "./Functions/Login.functions.js";
 import * as render from "./Functions/Render.functions.js";
 import * as navbarEvents from "./Listeners/NavbarEvents.listeners.js";
 import * as pagesEvents from "./Listeners/PagesEvents.listeners.js";
+import * as locationFunctions from "./Functions/Location.functions.js";
 
 window.onload = function () {
    
@@ -41,7 +42,12 @@ window.onload = function () {
         render.renderAddListing();
     }
     if (window.location.pathname == "/browse-listings.html") {
+      
+        if(login.getCookie("status")=="" && login.getCookie("status")!="denied"){
+            locationFunctions.saveLocation();
+        }
         render.renderBasicPage();
+        render.renderListingsPage();
         pagesEvents.browseListingsEvents();
     }
     if (window.location.pathname == "/browse-places.html") {

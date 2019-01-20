@@ -40,7 +40,7 @@ export function login() {
 }
 export function loginWithGoogle(firebase) {
   let google = new firebase.auth.GoogleAuthProvider();
-  
+
   firebase
     .auth()
     .signInWithPopup(google)
@@ -52,14 +52,14 @@ export function loginWithGoogle(firebase) {
         email: user.email,
         displayName: user.displayName,
         imgUrl: user.photoURL
-    
+
       }
       requests.postDataToServer("loginUser", data);
       var now = new Date();
       var time = now.getTime();
       time += 3600 * 1000;
       now.setTime(time);
-     
+
       document.cookie = "username=" + user.displayName + "; expires=" + now.toUTCString() + "; path=/";
 
       document.location.href = "/account.html";
@@ -92,9 +92,9 @@ export function loginWithGithub() {
       email: user.email,
       displayName: displayName,
       imgUrl: user.photoURL
-  
+
     }
-   
+
     requests.postDataToServer("loginUser", data);
 
     var now = new Date();

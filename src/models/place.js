@@ -24,8 +24,8 @@ class Place {
             }
             return places;
         }).catch(function (error) {
-            console.log("Error getting places:", error);
-        });
+            throw new Error(error);
+        });;
 
     }
     static getAllPlaces(firebase) {
@@ -39,8 +39,8 @@ class Place {
             });
             return places;
         }).catch(function (error) {
-            console.log("Error getting places:", error);
-        });
+            throw new Error(error);
+        });;
     }
     static updatePlaceWithListing(firebase, place, listing) {
         const db = firebase.firestore();
@@ -55,6 +55,11 @@ class Place {
                     });
                 })
             })
+            .catch((error)=>
+            {
+                throw new Error(error);
+            })
+
     }
     static getPlaceByName(name,firebase){
         const db = firebase.firestore();
@@ -63,11 +68,11 @@ class Place {
             .then(function (querySnapshot) {
                 querySnapshot.forEach(function (doc) {
                     // doc.data() is never undefined for query doc snapshots
-                    
+
                      data=doc.data();
-                     
+
                 })
-               
+
                 return data;
             })
     }
@@ -77,8 +82,8 @@ class Place {
         db.collection("Place").where("name", "==", namePlace).get()
             .then(function (querySnapshot) {
                 querySnapshot.forEach(function (doc) {
-                    subscribers=doc.data().subscribedUsers;                     
-                
+                    subscribers=doc.data().subscribedUsers;
+
                 let index=subscribers.indexOf(username);
                 if (index==-1){
                     subscribers.push(username);
@@ -90,7 +95,7 @@ class Place {
                     "subscribedUsers": subscribers
                 });
             })
-                
+
             })
 
     }
