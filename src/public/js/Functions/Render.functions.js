@@ -81,7 +81,7 @@ export function renderMainPage() {
 
         })
         .catch(function (error) {
-            console.log(error);
+            throw new Error(error);
         });
 
 }
@@ -174,7 +174,6 @@ export function  renderListingsPage()
     fetch(request)
     .then((resp) => resp.json())
     .then(function (json_data) {
-        console.log(json_data);
         let listings= document.getElementById("js-listings-flex");
         let body=""
         for (let i=0;i<json_data.length;i++){
@@ -216,6 +215,7 @@ export function  renderListingsPage()
         listings.innerHTML=body;
         
     })
-
-
+    .catch(function(){
+        throw new Error("Error at getting data from the server for the listings elements")
+    })
 }

@@ -29,29 +29,37 @@ class Listing {
         }
         return communCh;
     }
+    static sortPlaces(places,data){
+        places.sort((a, b) => {
+            let Avalue = this.PythagorasEquirectangular(a.geolocation.latitude, a.geolocation.longitude, data.latitude, data.longitude);
+            let Bvalue = this.PythagorasEquirectangular(b.geolocation.latitude, b.geolocation.longitude, data.latitude, data.longitude);
+            return Avalue - Bvalue;
+        })
+        return places;
+    }
+    static sortListings(listings,userData){
+        listings.sort((a, b) => {
+
+            let communChA = this.getCommunCh(a.skills, userData.skills);
+            let communChB = this.getCommunCh(b.skills, userData.skills);
+            return communChB - communChA;
+        })
+        return listings
+    }
     static getUsersListings(firebase, data) {
-        console.log(data)
-        return user.getUserInformation(firebase, data.username)
+        let getListings= user.getUserInformation(firebase, data.username)
             .then((userData) => {
-                return place.getAllPlaces(firebase)
+                let getPlaces=place.getAllPlaces(firebase)
                     .then(async (places) => {
                         if (data.latitude!='') {
-                            places.sort((a, b) => {
-                                let Avalue = this.PythagorasEquirectangular(a.geolocation.latitude, a.geolocation.longitude, data.latitude, data.longitude);
-                                let Bvalue = this.PythagorasEquirectangular(b.geolocation.latitude, b.geolocation.longitude, data.latitude, data.longitude);
-                                return Avalue - Bvalue;
-                            })
+                            places=this.sortPlaces(places,data);
+                           
                             let finalListings = []
 
                             for (let i = 0; i < places.length; i++) {
                                 await this.getListingsAtLocation(places[i].name, firebase)
                                     .then((listings) => {
-                                        listings.sort((a, b) => {
-
-                                            let communChA = this.getCommunCh(a.skills, userData.skills);
-                                            let communChB = this.getCommunCh(b.skills, userData.skills);
-                                            return communChB - communChA;
-                                        })
+                                        listings=this.sortListings(listings,userData);
                                         finalListings = finalListings.concat(listings);
                                     })
                             }
@@ -65,23 +73,19 @@ class Listing {
                                         finalListings = finalListings.concat(listings);
                                     })
                             }
-                            console.log(userData);
-                            finalListings.sort((a, b) => {
-                                console.log(a.skills, userData.skills);
-                                let communChA = this.getCommunCh(a.skills, userData.skills);
-                                let communChB = this.getCommunCh(b.skills, userData.skills);
-                                return communChB - communChA;
-                            })
+                            finalListings=this.sortListings(finalListings,userData);
                             return finalListings;
                         }
                     }
                     ).catch((error) => {
-                        console.log(error);
+                       throw new Error(error);
                     })
+                return getPlaces;
             }
             ).catch((error) => {
-                console.log(error);
+                throw new Error(error);
             })
+            return getListings;
     }
     static addListing(firebase, data) {
         const db = firebase.firestore();
@@ -104,7 +108,7 @@ class Listing {
                 place.updatePlaceWithListing(firebase, data.place, listingId)
                 console.log('Document succesfully written! ✅')
             }).catch((error) => {
-                console.error('Failed writing document:', error);
+               throw new Error(error);
             });
         });
     }
@@ -119,7 +123,7 @@ class Listing {
                 });
                 return listings;
             }).catch((error) => {
-                console.error('Failed to get listings:', error);
+                throw new error(error);
             });
     }
 

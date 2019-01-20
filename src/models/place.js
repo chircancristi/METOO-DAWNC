@@ -24,7 +24,7 @@ class Place {
             }
             return places;
         }).catch(function (error) {
-            console.log("Error getting places:", error);
+            throw new Error(error);
         });;
 
     }
@@ -39,7 +39,7 @@ class Place {
             });
             return places;
         }).catch(function (error) {
-            console.log("Error getting places:", error);
+            throw new Error(error);
         });;
     }
     static updatePlaceWithListing(firebase, place, listing) {
@@ -57,7 +57,7 @@ class Place {
             })
             .catch((error)=>
             {
-                console.log(error);
+                throw new Error(error);
             })
 
 

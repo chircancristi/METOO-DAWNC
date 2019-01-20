@@ -11,8 +11,8 @@ function savePosition(position) {
 }
 
 function showError(error) {
-    var now = new Date();
-    var time = now.getTime();
+    let now = new Date();
+    let time = now.getTime();
     time += 3600 * 1000;
     now.setTime(time);
     switch (error.code) {
@@ -20,14 +20,11 @@ function showError(error) {
             document.cookie = "status='denied'; expires=" + now.toUTCString() + '; path=/';
             break;
         case error.POSITION_UNAVAILABLE:
-            x.innerHTML = "Location information is unavailable."
-            break;
+            throw new Error("Postion unavaible");
         case error.TIMEOUT:
-            x.innerHTML = "The request to get user location timed out."
-            break;
+            throw new Error("Timeout");
         case error.UNKNOWN_ERROR:
-            x.innerHTML = "An unknown error occurred."
-            break;
+            throw new Error("Something went wrong");
     }
 }
 export function saveLocation() {
