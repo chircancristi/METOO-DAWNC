@@ -1,4 +1,4 @@
-var path = require('path');
+const path = require('path');
 const place = require('../models/place');
 const listing = require('../models/listing');
 

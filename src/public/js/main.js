@@ -27,9 +27,10 @@ window.onload = function () {
         render.renderBasicPage();
       
     }
-    if (window.location.pathname == "/single-place.html") {
+    if (window.location.pathname == "/single-place.html" || window.location.pathname == "/single-place") {
         render.renderBasicPage();
         pagesEvents.singlePlaceEvents();
+        render.renderSinglePlacePage();
     }
     if (window.location.pathname == "/account.html") {
         render.renderBasicPage();
@@ -52,6 +53,7 @@ window.onload = function () {
     if (window.location.pathname == "/browse-places.html") {
         render.renderBasicPage();
         render.renderAllPlaces();
+   
     }
 
 }
