@@ -168,10 +168,10 @@ export function renderSinglePlacePage() {
     fetch(request)
         .then((resp) => resp.json())
         .then(function (json_data) {
-            let subscribersModal=document.getElementById("js-subscribers-modal");
-            let subscribersCount=document.getElementById("js-subscribers-count");
-            let listingsInProgress= document.getElementById("js-listings-in-progress");
-            let listingsFinished= document.getElementById("js-finished-listings");
+            let subscribersModal = document.getElementById("js-subscribers-modal");
+            let subscribersCount = document.getElementById("js-subscribers-count");
+            let listingsInProgress = document.getElementById("js-listings-in-progress");
+            let listingsFinished = document.getElementById("js-finished-listings");
 
             console.log(json_data);
             document.getElementById("js-place-img").innerHTML = `
@@ -185,18 +185,18 @@ export function renderSinglePlacePage() {
             <img src="${json_data.locationInformation.img[7]}" style="width:100%;height: 100%;">
              </picture>`
 
-             let value=0;
+            let value = 0;
 
             document.getElementById("js-place-name").innerText = json_data.locationInformation.name;
             pagesEvents.singlePageEvents();
             for (let i = 0; i < json_data.subscribers.length; i++) {
                 if (json_data.subscribers[i].fullName === login.getCookie("username")) {
                     document.getElementById("js-subscribe-title").innerHTML = "Unsubscribe";
-                    value=-1;
+                    value = -1;
                 }
                 else {
-                 subscribersModal.innerHTML=subscribersModal.innerHTML+
-                `<div class="subscriber-container">
+                    subscribersModal.innerHTML = subscribersModal.innerHTML +
+                        `<div class="subscriber-container">
                     <img class="subscriber__pic" src="${json_data.subscribers[i].imgUrl}">
                     <div class="subscriber__info">
                         <h3 class="subscriber__info-name">${json_data.subscribers[i].fullName}</h3>
@@ -205,12 +205,12 @@ export function renderSinglePlacePage() {
                  </div>`
                 }
             }
-            subscribersCount.innerText=json_data.subscribers.length+value;
-            let body=""
-            for (let i=0;i<json_data.openListings.length;i++){
+            subscribersCount.innerText = json_data.subscribers.length + value;
+            let body = ""
+            for (let i = 0; i < json_data.openListings.length; i++) {
 
-                body=body+
-                `
+                body = body +
+                    `
                 <div class="flex__item">
                     <article class="listing">
                     <div class="listing__content">
@@ -218,14 +218,13 @@ export function renderSinglePlacePage() {
                         <ul id="js-skills" class="skills-req">
                 `;
 
-                for (let j=0;j<json_data.openListings[i].skills.length;j++)
-                {
+                for (let j = 0; j < json_data.openListings[i].skills.length; j++) {
 
-                    body=body+
-                    `<li>${json_data.openListings[i].skills[j]}</li>`
+                    body = body +
+                        `<li>${json_data.openListings[i].skills[j]}</li>`
                 }
                 console.log(listingsInProgress.innerHTML);
-                body=body+
+                body = body +
                     ` </ul>
                         <div class="actions">
                         <button id="js-join" class="join">Join</button>
@@ -243,23 +242,22 @@ export function renderSinglePlacePage() {
                 </div>
                 `
             }
-            listingsInProgress.innerHTML=body;
-            body=""
-            for (let i=0;i<json_data.closeListings.length;i++){
-                body=body+
-                `
+            listingsInProgress.innerHTML = body;
+            body = ""
+            for (let i = 0; i < json_data.closeListings.length; i++) {
+                body = body +
+                    `
                 <div class="flex__item">
                     <article class="listing">
                     <div class="listing__content">
                         <h3 class="title">${json_data.closeListings[i].title}</h3>
                         <ul id="js-skills" class="skills-req">
                 `;
-                for (let j=0;j<json_data.closeListings.skills[i].length;j++)
-                {
-                    body=body+
-                    `<li>${json_data.closeListings[i].skills[j]}</li>`
+                for (let j = 0; j < json_data.closeListings.skills[i].length; j++) {
+                    body = body +
+                        `<li>${json_data.closeListings[i].skills[j]}</li>`
                 }
-                body=body+
+                body = body +
                     ` </ul>
                         <div class="actions">
                         <button id="js-join" class="join">Join</button>
@@ -277,72 +275,84 @@ export function renderSinglePlacePage() {
                 </div>
                 `
             }
-            listingsFinished.innerHTML=body;
+            listingsFinished.innerHTML = body;
 
         });
 }
-export function  renderListingsPage()
-{
+function updateListingsPage(json_data) {
+    let listings = document.getElementById("js-listings-flex");
+    let body = ""
+    for (let i = 0; i < json_data.length; i++) {
+
+        body = body +
+            `
+        <div class="flex__item">
+            <article class="listing">
+            <div class="listing__content">
+                <h3 class="title">${json_data[i].title}</h3>
+                <ul id="js-skills" class="skills-req">
+        `;
+
+        for (let j = 0; j < json_data[i].skills.length; j++) {
+
+            body = body +
+                `<li>${json_data[i].skills[j]}</li>`
+        }
+
+        body = body +
+            ` </ul>
+                <div class="actions">
+                <button id="js-join" class="join">Join</button>
+                <a href="" class="view-listing">View Listing</a>
+                </div>
+            </div>
+            <div class="listing__meta">
+                <a href="#">
+                <span class="author">${json_data[i].author}</span>
+                </a>
+                <a href="#"><span class="place">${json_data[i].place}</span></a>
+            </div>
+            <span class="listing__type">${json_data[i].type}</span>
+            </article>
+        </div>
+        `
+    }
+    listings.innerHTML = body;
+}
+export function renderListingsPage() {
     let data = {
         status: login.getCookie("status"),
         latitude: login.getCookie("latitude"),
         longitude: login.getCookie("longitude"),
         username: login.getCookie("username")
     }
+    let networkDataReceived = false;
 
-    let request = new Request("listingsAfterLocation", {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: new Headers({
-            'Content-Type': 'application/json'
+    let networkUpdate = fetch(`listingsAfterLocation?latitude=${login.getCookie("latitude")}&longtitude=${login.getCookie("longitude")}&username=${login.getCookie("username")}`)
+        .then((resp) => resp.json())
+        .then(function (json_data) {
+            networkDataReceived = true;
+            updateListingsPage(json_data);
         })
-    });
-    fetch(request)
-    .then((resp) => resp.json())
-    .then(function (json_data) {
-        let listings= document.getElementById("js-listings-flex");
-        let body=""
-        for (let i=0;i<json_data.length;i++){
-
-            body=body+
-            `
-            <div class="flex__item">
-                <article class="listing">
-                <div class="listing__content">
-                    <h3 class="title">`+json_data[i].title+`</h3>
-                    <ul id="js-skills" class="skills-req">
-            `;
-
-            for (let j=0;j<json_data[i].skills.length;j++)
-            {
-
-                body=body+
-                `<li>`+json_data[i].skills[j]+`</li>`
+        .catch(function () {
+            throw new Error("Error at getting data from the server for the listings elements")
+        })
+    caches.open('mysite-dynamic').then(function (cache) {
+        console.log(cache);
+        cache.match(`http://localhost:8081/listingsAfterLocation?latitude=${login.getCookie("latitude")}&longtitude=${login.getCookie("longitude")}&username=${login.getCookie("username")}`).then(function (response) {
+            console.log(response);
+            if (!response) throw Error("No data");
+            return response.json();
+        }).then(function (data) {
+            // don't overwrite newer network data
+            console.log(data);
+            if (!networkDataReceived) {
+                updateListingsPage(data);
             }
+        }).catch(function () {
 
-            body=body+
-                ` </ul>
-                    <div class="actions">
-                    <button id="js-join" class="join">Join</button>
-                    <a href="" class="view-listing">View Listing</a>
-                    </div>
-                </div>
-                <div class="listing__meta">
-                    <a href="#">
-                    <span class="author">`+json_data[i].author+`</span>
-                    </a>
-                    <a href="#"><span class="place">`+json_data[i].place+`</span></a>
-                </div>
-                <span class="listing__type">`+json_data[i].type+`</span>
-                </article>
-            </div>
-            `
-        }
-        listings.innerHTML=body;
-
-    })
-    .catch(function(){
-        throw new Error("Error at getting data from the server for the listings elements")
+            return networkUpdate;
+        })
     })
 }
 

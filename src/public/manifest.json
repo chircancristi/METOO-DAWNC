@@ -1,0 +1,11 @@
+{
+  "short_name": "Metoo",
+  "name": "Meet-up web tool",
+  
+  "start_url": "index.html",
+  "background_color": "#edf1f2",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "theme_color": "#b7d7eb"
+}
