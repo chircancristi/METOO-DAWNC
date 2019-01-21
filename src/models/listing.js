@@ -29,7 +29,7 @@ class Listing {
         }
         return communCh;
     }
-    static sortPlaces(places,data){
+    static sortPlaces(places, data) {
         places.sort((a, b) => {
             let Avalue = this.PythagorasEquirectangular(a.geolocation.latitude, a.geolocation.longitude, data.latitude, data.longitude);
             let Bvalue = this.PythagorasEquirectangular(b.geolocation.latitude, b.geolocation.longitude, data.latitude, data.longitude);
@@ -37,7 +37,7 @@ class Listing {
         })
         return places;
     }
-    static sortListings(listings,userData){
+    static sortListings(listings, userData) {
         listings.sort((a, b) => {
 
             let communChA = this.getCommunCh(a.skills, userData.skills);
@@ -47,19 +47,19 @@ class Listing {
         return listings
     }
     static getUsersListings(firebase, data) {
-        let getListings= user.getUserInformation(firebase, data.username)
+        let getListings = user.getUserInformation(firebase, data.username)
             .then((userData) => {
-                let getPlaces=place.getAllPlaces(firebase)
+                let getPlaces = place.getAllPlaces(firebase)
                     .then(async (places) => {
-                        if (data.latitude!='') {
-                            places=this.sortPlaces(places,data);
-                           
+                        if (data.latitude != '') {
+                            places = this.sortPlaces(places, data);
+
                             let finalListings = []
 
                             for (let i = 0; i < places.length; i++) {
                                 await this.getListingsAtLocation(places[i].name, firebase)
                                     .then((listings) => {
-                                        listings=this.sortListings(listings,userData);
+                                        listings = this.sortListings(listings, userData);
                                         finalListings = finalListings.concat(listings);
                                     })
                             }
@@ -73,19 +73,19 @@ class Listing {
                                         finalListings = finalListings.concat(listings);
                                     })
                             }
-                            finalListings=this.sortListings(finalListings,userData);
+                            finalListings = this.sortListings(finalListings, userData);
                             return finalListings;
                         }
                     }
                     ).catch((error) => {
-                       throw new Error(error);
+                        throw new Error(error);
                     })
                 return getPlaces;
             }
             ).catch((error) => {
                 throw new Error(error);
             })
-            return getListings;
+        return getListings;
     }
     static addListing(firebase, data) {
         const db = firebase.firestore();
@@ -103,12 +103,12 @@ class Listing {
                 "place": data.place,
                 "concept": data.concept,
                 "comments": [],
-                "contributors": []
+                "contribuitors": []
             }).then(() => {
                 place.updatePlaceWithListing(firebase, data.place, listingId)
                 console.log('Document succesfully written! ✅')
             }).catch((error) => {
-               throw new Error(error);
+                throw new Error(error);
             });
         });
     }
@@ -125,6 +125,30 @@ class Listing {
             }).catch((error) => {
                 throw new error(error);
             });
+    }
+    static getUserListing(username, firebase) {
+        const db = firebase.firestore();
+        return db.collection("Listing").get()
+        .then(
+            function (querySnapshot) {
+            let listings = []
+                 querySnapshot.forEach(function (doc) {
+                    if (doc.data().author === username) {
+                        listings.push(doc.data());
+                    }
+
+                    else {
+                        for (let i = 0; i < doc.data().contribuitors.length; i++) {
+                            if (doc.data().contribuitors[i] === username) {
+                                listings.push(doc.data());
+                            }
+                        }
+                    }
+                });
+            return listings;
+
+        })
+        
     }
 
 }

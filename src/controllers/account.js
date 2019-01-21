@@ -1,5 +1,7 @@
 var path = require('path');
-var model = require('../models/user');
+var user = require('../models/user');
+var listing = require('../models/listing');
+
 module.exports.controller = async function (app, firebase) {
 
     app.get('/account.html', function (req, res) {
@@ -8,11 +10,19 @@ module.exports.controller = async function (app, firebase) {
     app.post("/userInformation", function (req, res) {
         
       
-        let data = model.getUserInformation(firebase, req.body.username);
+        let data = user.getUserInformation(firebase, req.body.username);
 
         data.then(function (value) {
-
-            res.send(value);
+            listing.getUserListing(req.body.username,firebase).
+            then(function(listings)
+            {
+                let response={
+                    "listings":listings,
+                    "userData":value
+                }
+                res.send(response);
+            });
+           
         });
     });
 }

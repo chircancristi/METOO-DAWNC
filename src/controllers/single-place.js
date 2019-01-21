@@ -5,13 +5,13 @@ const listing = require('../models/listing');
 
 module.exports.controller = function (app, firebase) {
 
-    app.get('/single-place', function (req, res) {
+    app.get('/single-place.html', function (req, res) {
 
         res.sendFile(path.resolve('views/single-place.html'));
     });
-    app.post('/getLocationInformation', function (req, res) {
-
-        let promise = place.getPlaceByName(req.body.name, firebase);
+    app.get('/getLocationInformation/:placeName', function (req, res) {
+       
+        let promise = place.getPlaceByName(req.params.placeName, firebase);
         let subscribers = [];
         let closedListings = [];
         let openListings = [];
@@ -27,7 +27,7 @@ module.exports.controller = function (app, firebase) {
                     console.log("Error getting users:", error);
                 });
 
-            listing.getListingsAtLocation(req.body.name, firebase).
+            listing.getListingsAtLocation(req.params.placeName, firebase).
             then(function (listingData) {
               
                 for (let i = 0; i < listingData.length; i++) {

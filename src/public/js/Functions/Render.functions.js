@@ -86,11 +86,128 @@ export function renderMainPage() {
         });
 
 }
-export function renderAccountPage() {
+function updateAccountPage(json_data){
     let displayName = document.getElementById("js-name");
     let profilePic = document.getElementById("js-profile-pic");
     let likes = document.getElementById("js-likes");
     let dislikes = document.getElementById("js-dislikes");
+    let skills= document.getElementById("js-skills");
+    let favouritePlace= document.getElementById("js-favourite-place");
+    let listingsCompleted= document.getElementById("js-listings-completed");
+    let listingsActive= document.getElementById("js-listings-active");
+
+    let username=login.getCookie("username");
+    let min=-1;
+    let favouritePlaceName="";
+    let placesName=[];
+    let placeNames=[]
+    
+    displayName.innerHTML = json_data.userData.fullName;
+    profilePic.src = json_data.userData.imgUrl;
+    likes.innerHTML = json_data.userData.likes;
+    dislikes.innerHTML = json_data.userData.dislikes;
+    skills.innerHTML=""
+    listingsActive.innerHTML=""
+    listingsCompleted.innerHTML=""
+    for (let i=0;i<json_data.userData.skills.length;i++){
+        skills.innerHTML=skills.innerHTML+
+        ` <li class="skill">${json_data.userData.skills[i]}</li>`
+    }
+    for (let i=0;i<json_data.listings.length;i++){
+        if (json_data.listings[i].author==username){
+            if(!placesName[json_data.listings[i].place]){
+                placesName[json_data.listings[i].place]=0;
+                placeNames.push(json_data.listings[i].place);
+            }
+            placesName[json_data.listings[i].place]++;
+        }
+        let body=""
+        if (json_data.listings[i].status==="opened"){
+                body = body +
+                `
+            <div class="flex__item">
+                <article class="listing">
+                <div class="listing__content">
+                    <h3 class="title">${json_data.listings[i].title}</h3>
+                    <ul id="js-skills" class="skills-req">
+            `;
+
+            for (let j = 0; j < json_data.listings[i].skills.length; j++) {
+
+                body = body +
+                    `<li>${json_data.listings[i].skills[j]}</li>`
+            }
+
+            body = body +
+                ` </ul>
+                    <div class="actions">
+                    <button id="js-join" class="join">Join</button>
+                    <a href="" class="view-listing">View Listing</a>
+                    </div>
+                </div>
+                <div class="listing__meta">
+                    <a href="#">
+                    <span class="author">${json_data.listings[i].author}</span>
+                    </a>
+                    <a href="#"><span class="place">${json_data.listings[i].place}</span></a>
+                </div>
+                <span class="listing__type">${json_data.listings[i].type}</span>
+                </article>
+            </div>
+            `
+            listingsActive.innerHTML =  listingsActive.innerHTML+ body;
+        }
+        else{
+            body = body +
+            `
+        <div class="flex__item">
+            <article class="listing">
+            <div class="listing__content">
+                <h3 class="title">${json_data.listings[i].title}</h3>
+                <ul id="js-skills" class="skills-req">
+        `;
+
+        for (let j = 0; j < json_data.listings[i].skills.length; j++) {
+
+            body = body +
+                `<li>${json_data.listings[i].skills[j]}</li>`
+        }
+
+        body = body +
+            ` </ul>
+                <div class="actions">
+                <button id="js-join" class="join">Join</button>
+                <a href="" class="view-listing">View Listing</a>
+                </div>
+            </div>
+            <div class="listing__meta">
+                <a href="#">
+                <span class="author">${json_data.listings[i].author}</span>
+                </a>
+                <a href="#"><span class="place">${json_data.listings[i].place}</span></a>
+            </div>
+            <span class="listing__type">${json_data.listings[i].type}</span>
+            </article>
+        </div>
+        `
+        listingsCompleted.innerHTML =  listingsActive.innerHTML+ body;
+
+        }
+        
+    }
+    for (let i=0;i<placeNames.length;i++)
+    {
+        if(placesName[placeNames[i]]>min){
+            min=placesName[placeNames[i]];
+            favouritePlaceName=placeNames[i];
+        }
+    }
+    favouritePlace.innerText=favouritePlaceName;
+
+}
+export function renderAccountPage() {
+    
+    let networkDataReceived=false;
     let data = {
         username: login.getCookie("username")
     }
@@ -105,12 +222,21 @@ export function renderAccountPage() {
     fetch(request)
         .then((resp) => resp.json())
         .then(function (json_data) {
+            networkDataReceived=true;
+            updateAccountPage(json_data);
+        });
+    localforage.getItem(`/userInformation`
+        , function (err, value) {
+            if (!value) throw Error("No data");
+            return value;
+        }).then(function (data) {
+            // don't overwrite newer network data
 
-            displayName.innerHTML = json_data.fullName;
-            profilePic.src = json_data.imgUrl;
-            likes.innerHTML = json_data.likes;
-            dislikes.innerHTML = json_data.dislikes;
-
+            if (!networkDataReceived) {
+                updateAccountPage(data);
+            }
+        }).catch(function (error) {
+            throw new Error("Problem acessing the cache",error)
         });
 }
 export function renderAddListing() {
@@ -127,156 +253,184 @@ export function renderAddListing() {
             }
         })
 }
-export function renderAllPlaces() {
+function updateAllplaces(json_data) {
     let placesGrid = document.getElementById("js-places-grid");
+    placesGrid.innerHTML = "";
+    for (let i = 0; i < json_data.length; i++) {
+        placesGrid.innerHTML = placesGrid.innerHTML +
+            `<a href="/single-place.html" id= ${json_data[i].name}  class="grid__item">
+  <article class="card">
+    <div class="card__content">
+      <h2 class="card__title">`+ json_data[i].name + `</h2>
+    </div>
+    <picture class="card_image">
+      <source media="(min-width: 800px)" srcset="${json_data[i].img[0]}" type="image/webp">
+      <source media="(min-width: 800px)" srcset="${json_data[i].img[1]}" type="image/jpg">
+      <source media="(min-width: 600px)" srcset="${json_data[i].img[2]}"  type="image/webp">
+      <source media="(min-width: 600px)" srcset="${json_data[i].img[3]}"  type="image/jpg">
+      <source media="(min-width: 300px)" srcset="${json_data[i].img[4]}"  type="image/webp">
+      <source media="(min-width: 300px)" srcset="${json_data[i].img[5]}"  type="image/jpg">  
+      <img src="${json_data[i].img[3]}" style="width:100%;height: 100%;">
+    </picture>
+  </article>
+   </a>`
+    }
+    pagesEvents.browsePlacesEvents();
+}
+export function renderAllPlaces() {
+    let networkDataReceived = false;
     fetch("getPlaces")
         .then((resp) => resp.json())
         .then(function (json_data) {
-            for (let i = 0; i < json_data.length; i++) {
-                placesGrid.innerHTML = placesGrid.innerHTML +
-                    `<a href="/single-place" id= ${json_data[i].name}  class="grid__item">
-          <article class="card">
-            <div class="card__content">
-              <h2 class="card__title">`+ json_data[i].name + `</h2>
-            </div>
-            <picture class="card_image">
-              <source media="(min-width: 800px)" srcset="${json_data[i].img[0]} " type="image/webp">
-              <source media="(min-width: 800px)" srcset="${json_data[i].img[1]}" type="image/jpg">
-              <source media="(min-width: 600px)" srcset="${json_data[i].img[2]}"  type="image/webp">
-              <source media="(min-width: 600px)" srcset="${json_data[i].img[3]}"  type="image/jpg">
-              <source media="(min-width: 300px)" srcset="${json_data[i].img[4]}"  type="image/webp">
-              <source media="(min-width: 300px)" srcset="${json_data[i].img[5]}"  type="image/jpg">  
-              <img src="${json_data[i].img[3]}" style="width:100%;height: 100%;">
-            </picture>
-          </article>
-        </a>`
-            }
-            pagesEvents.browsePlacesEvents();
+            networkDataReceived = true;
+            updateAllplaces(json_data);
+
         })
+    localforage.getItem("/getPlaces"
+        , function (err, value) {
+            if (!value) throw Error("No data");
+            return value;
+        }).then(function (data) {
+            // don't overwrite newer network data
+
+            if (!networkDataReceived) {
+                updateAllplaces(data);
+            }
+        }).catch(function (error) {
+
+            throw new Error("Problem acessing the cache",error)
+        });
+}
+function updateSinglePlacePage(json_data) {
+    let subscribersModal = document.getElementById("js-subscribers-modal");
+    let subscribersCount = document.getElementById("js-subscribers-count");
+    let listingsInProgress = document.getElementById("js-listings-in-progress");
+    let listingsFinished = document.getElementById("js-finished-listings");
+
+
+    document.getElementById("js-place-img").innerHTML = `
+    <picture class="card_image">
+    <source media="(min-width: 800px)" srcset="${json_data.locationInformation.img[0]}" type="image/webp">
+    <source media="(min-width: 800px)" srcset="${json_data.locationInformation.img[1]}" type="image/jpg">
+    <source media="(min-width: 600px)" srcset="${json_data.locationInformation.img[3]}"  type="image/webp">
+    <source media="(min-width: 600px)" srcset="${json_data.locationInformation.img[4]}"  type="image/jpg">
+    <source media="(min-width: 300px)" srcset="${json_data.locationInformation.img[5]}"  type="image/webp">
+    <source media="(min-width: 300px)" srcset="${json_data.locationInformation.img[6]}"  type="image/jpg">  
+    <img src="${json_data.locationInformation.img[7]}" style="width:100%;height: 100%;">
+     </picture>`
+
+    let value = 0;
+
+    document.getElementById("js-place-name").innerText = json_data.locationInformation.name;
+    pagesEvents.singlePageEvents();
+    for (let i = 0; i < json_data.subscribers.length; i++) {
+        if (json_data.subscribers[i].fullName === login.getCookie("username")) {
+            document.getElementById("js-subscribe-title").innerHTML = "Unsubscribe";
+            value = -1;
+        }
+        else {
+            subscribersModal.innerHTML = subscribersModal.innerHTML +
+                `<div class="subscriber-container">
+            <img class="subscriber__pic" src="${json_data.subscribers[i].imgUrl}">
+            <div class="subscriber__info">
+                <h3 class="subscriber__info-name">${json_data.subscribers[i].fullName}</h3>
+                <button class="subscriber__info-profile">View profile</button>
+            </div>
+         </div>`
+        }
+    }
+    subscribersCount.innerText = json_data.subscribers.length + value;
+    let body = ""
+    for (let i = 0; i < json_data.openListings.length; i++) {
+
+        body = body +
+            `
+        <div class="flex__item">
+            <article class="listing">
+            <div class="listing__content">
+                <h3 class="title">${json_data.openListings[i].title}</h3>
+                <ul id="js-skills" class="skills-req">
+        `;
+
+        for (let j = 0; j < json_data.openListings[i].skills.length; j++) {
+
+            body = body +
+                `<li>${json_data.openListings[i].skills[j]}</li>`
+        }
+
+        body = body +
+            ` </ul>
+                <div class="actions">
+                <button id="js-join" class="join">Join</button>
+                <a href="" class="view-listing">View Listing</a>
+                </div>
+            </div>
+            <div class="listing__meta">
+                <a href="#">
+                <span class="author">${json_data.openListings[i].author}</span>
+                </a>
+                <a href="#"><span class="place">${json_data.openListings[i].place}</span></a>
+            </div>
+            <span class="listing__type">${json_data.openListings[i].type}</span>
+            </article>
+        </div>
+        `
+    }
+    listingsInProgress.innerHTML = body;
+    body = ""
+    for (let i = 0; i < json_data.closeListings.length; i++) {
+        body = body +
+            `
+        <div class="flex__item">
+            <article class="listing">
+            <div class="listing__content">
+                <h3 class="title">${json_data.closeListings[i].title}</h3>
+                <ul id="js-skills" class="skills-req">
+        `;
+        for (let j = 0; j < json_data.closeListings.skills[i].length; j++) {
+            body = body +
+                `<li>${json_data.closeListings[i].skills[j]}</li>`
+        }
+        body = body +
+            ` </ul>
+                <div class="actions">
+                <button id="js-join" class="join">Join</button>
+                <a href="" class="view-listing">View Listing</a>
+                </div>
+            </div>
+            <div class="listing__meta">
+                <a href="#">
+                <span class="author">${json_data.closeListings[i].author}</span>
+                </a>
+                <a href="#"><span class="place">${json_data.closeListings[i].place}</span></a>
+            </div>
+            <span class="listing__type">${json_data.closeListings[i].type}</span>
+            </article>
+        </div>
+        `
+    }
+    listingsFinished.innerHTML = body;
 }
 export function renderSinglePlacePage() {
-    let data = {
-        name: login.getCookie("place")
-    }
-    let request = new Request("getLocationInformation", {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: new Headers({
-            'Content-Type': 'application/json'
-        })
-    });
-    fetch(request)
+    let networkDataReceived = false;
+    fetch(`getLocationInformation/${login.getCookie("place")}`)
         .then((resp) => resp.json())
         .then(function (json_data) {
-            let subscribersModal = document.getElementById("js-subscribers-modal");
-            let subscribersCount = document.getElementById("js-subscribers-count");
-            let listingsInProgress = document.getElementById("js-listings-in-progress");
-            let listingsFinished = document.getElementById("js-finished-listings");
+            networkDataReceived = true;
+            updateSinglePlacePage(json_data);
+        });
+    localforage.getItem(`/getLocationInformation/${login.getCookie("place")}`
+        , function (err, value) {
+            if (!value) throw Error("No data");
+            return value;
+        }).then(function (data) {
+            // don't overwrite newer network data
 
-            console.log(json_data);
-            document.getElementById("js-place-img").innerHTML = `
-            <picture class="card_image">
-            <source media="(min-width: 800px)" srcset="${json_data.locationInformation.img[0]}" type="image/webp">
-            <source media="(min-width: 800px)" srcset="${json_data.locationInformation.img[1]}" type="image/jpg">
-            <source media="(min-width: 600px)" srcset="${json_data.locationInformation.img[3]}"  type="image/webp">
-            <source media="(min-width: 600px)" srcset="${json_data.locationInformation.img[4]}"  type="image/jpg">
-            <source media="(min-width: 300px)" srcset="${json_data.locationInformation.img[5]}"  type="image/webp">
-            <source media="(min-width: 300px)" srcset="${json_data.locationInformation.img[6]}"  type="image/jpg">  
-            <img src="${json_data.locationInformation.img[7]}" style="width:100%;height: 100%;">
-             </picture>`
-
-            let value = 0;
-
-            document.getElementById("js-place-name").innerText = json_data.locationInformation.name;
-            pagesEvents.singlePageEvents();
-            for (let i = 0; i < json_data.subscribers.length; i++) {
-                if (json_data.subscribers[i].fullName === login.getCookie("username")) {
-                    document.getElementById("js-subscribe-title").innerHTML = "Unsubscribe";
-                    value = -1;
-                }
-                else {
-                    subscribersModal.innerHTML = subscribersModal.innerHTML +
-                        `<div class="subscriber-container">
-                    <img class="subscriber__pic" src="${json_data.subscribers[i].imgUrl}">
-                    <div class="subscriber__info">
-                        <h3 class="subscriber__info-name">${json_data.subscribers[i].fullName}</h3>
-                        <button class="subscriber__info-profile">View profile</button>
-                    </div>
-                 </div>`
-                }
+            if (!networkDataReceived) {
+                updateSinglePlacePage(data);
             }
-            subscribersCount.innerText = json_data.subscribers.length + value;
-            let body = ""
-            for (let i = 0; i < json_data.openListings.length; i++) {
-
-                body = body +
-                    `
-                <div class="flex__item">
-                    <article class="listing">
-                    <div class="listing__content">
-                        <h3 class="title">${json_data.openListings[i].title}</h3>
-                        <ul id="js-skills" class="skills-req">
-                `;
-
-                for (let j = 0; j < json_data.openListings[i].skills.length; j++) {
-
-                    body = body +
-                        `<li>${json_data.openListings[i].skills[j]}</li>`
-                }
-                console.log(listingsInProgress.innerHTML);
-                body = body +
-                    ` </ul>
-                        <div class="actions">
-                        <button id="js-join" class="join">Join</button>
-                        <a href="" class="view-listing">View Listing</a>
-                        </div>
-                    </div>
-                    <div class="listing__meta">
-                        <a href="#">
-                        <span class="author">${json_data.openListings[i].author}</span>
-                        </a>
-                        <a href="#"><span class="place">${json_data.openListings[i].place}</span></a>
-                    </div>
-                    <span class="listing__type">${json_data.openListings[i].type}</span>
-                    </article>
-                </div>
-                `
-            }
-            listingsInProgress.innerHTML = body;
-            body = ""
-            for (let i = 0; i < json_data.closeListings.length; i++) {
-                body = body +
-                    `
-                <div class="flex__item">
-                    <article class="listing">
-                    <div class="listing__content">
-                        <h3 class="title">${json_data.closeListings[i].title}</h3>
-                        <ul id="js-skills" class="skills-req">
-                `;
-                for (let j = 0; j < json_data.closeListings.skills[i].length; j++) {
-                    body = body +
-                        `<li>${json_data.closeListings[i].skills[j]}</li>`
-                }
-                body = body +
-                    ` </ul>
-                        <div class="actions">
-                        <button id="js-join" class="join">Join</button>
-                        <a href="" class="view-listing">View Listing</a>
-                        </div>
-                    </div>
-                    <div class="listing__meta">
-                        <a href="#">
-                        <span class="author">${json_data.closeListings[i].author}</span>
-                        </a>
-                        <a href="#"><span class="place">${json_data.closeListings[i].place}</span></a>
-                    </div>
-                    <span class="listing__type">${json_data.closeListings[i].type}</span>
-                    </article>
-                </div>
-                `
-            }
-            listingsFinished.innerHTML = body;
-
+        }).catch(function (error) {
+            throw new Error("Problem acessing the cache",error)
         });
 }
 function updateListingsPage(json_data) {
@@ -320,15 +474,9 @@ function updateListingsPage(json_data) {
     listings.innerHTML = body;
 }
 export function renderListingsPage() {
-    let data = {
-        status: login.getCookie("status"),
-        latitude: login.getCookie("latitude"),
-        longitude: login.getCookie("longitude"),
-        username: login.getCookie("username")
-    }
     let networkDataReceived = false;
 
-    let networkUpdate = fetch(`listingsAfterLocation?latitude=${login.getCookie("latitude")}&longtitude=${login.getCookie("longitude")}&username=${login.getCookie("username")}`)
+     fetch(`listingsAfterLocation?latitude=${login.getCookie("latitude")}&longtitude=${login.getCookie("longitude")}&username=${login.getCookie("username")}`)
         .then((resp) => resp.json())
         .then(function (json_data) {
             networkDataReceived = true;
@@ -337,22 +485,21 @@ export function renderListingsPage() {
         .catch(function () {
             throw new Error("Error at getting data from the server for the listings elements")
         })
-    caches.open('mysite-dynamic').then(function (cache) {
-        console.log(cache);
-        cache.match(`http://localhost:8081/listingsAfterLocation?latitude=${login.getCookie("latitude")}&longtitude=${login.getCookie("longitude")}&username=${login.getCookie("username")}`).then(function (response) {
-            console.log(response);
-            if (!response) throw Error("No data");
-            return response.json();
+    localforage.getItem(`/listingsAfterLocation`
+        , function (err, value) {
+            if (!value) throw Error("No data");
+            return value;
         }).then(function (data) {
             // don't overwrite newer network data
-            console.log(data);
+
             if (!networkDataReceived) {
                 updateListingsPage(data);
             }
-        }).catch(function () {
+        }).catch(function (error) {
 
-            return networkUpdate;
-        })
-    })
+            throw new Error("Problem acessing the cache",error)
+        });
+
+
 }
 

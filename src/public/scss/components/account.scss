@@ -133,9 +133,11 @@
           position: absolute;
           top: 2em;
           left: 0;
-
+          
+          width: 100%;
           display: none;
           transition: all .3s ease-in-out;
+          @include listings;
         }
       }
     }

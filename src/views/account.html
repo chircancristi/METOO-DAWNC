@@ -83,16 +83,13 @@
   
           <div class="details__skills">
             <h3 class="title">Skills</h3>
-            <ul class="skills">
-              <li class="skill">CSS3</li>
-              <li class="skill">HTML5</li>
-              <li class="skill">JavaScript</li>
+            <ul id="js-skills" class="skills">
             </ul>
           </div>
           
           <div class="details__fav-place">
             <h3 class="title">Favourite place</h3>
-            <span>Biblioteca Centrală Universitară</span>
+            <span id="js-favourite-place"></span>
           </div>
         </div>
       </div>
@@ -107,25 +104,19 @@
           <div class="tab">
             <input id="listings--active" type="radio" name="checkbox-group" class="tab__checkbox" checked>
             <label for="listings--active">Active</label>
-            <div class="tab__content">
-              <ul>
+            <div  class="tab__content">
+              <div id="js-listings-active"  class="flex">
 
-              </ul>
-              <p>
-                Look at that text! Would anyone use that? Can you imagine that, the text of your next webpage?! Trump Ipsum is calling for a total and complete shutdown of Muslim text entering your website. I don't think anybody knows it was Russia that wrote Lorem Ipsum, but I don't know, maybe it was. It could be Russia, but it could also be China.
-              </p>
+              </div>
             </div>
           </div>
           <div class="tab">
             <input id="listings--completed" type="radio" name="checkbox-group" class="tab__checkbox">
             <label for="listings--completed">Completed</label>
             <div class="tab__content">
-              <ul>
+              <div id="js-listings-completed"  class="flex">
 
-              </ul>
-              <p>
-                Using Radio Buttons: Only one radio button can be selected from a same group of radio buttons. We can take the same idea and create tabbed area using radio buttons as tabs. Using this method we can avoid Javascript completely.
-              </p>
+              </div>
             </div>
           </div>
 
@@ -133,10 +124,7 @@
             <input id="listings--requests" type="radio" name="checkbox-group" class="tab__checkbox">
             <label for="listings--requests">Request</label>
             <div class="tab__content">
-              <ul></ul>
-              <p>
-                Using :target Selector: This is the most preferred way of creating tabbed area. To learn more about :target selector Click Here. In this method we have to make use of Javascript for better user experience.
-              </p>
+              
             </div>
           </div>
         </div>
@@ -153,6 +141,7 @@
       <li><a href="#">Contact</a></li>
     </ul>
   </footer>
+  <script src="/js/Utilities/localforage.js"></script>
   <script type="module" src="/js/main.js"></script>
 
 </body>
