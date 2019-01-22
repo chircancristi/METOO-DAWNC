@@ -18,7 +18,9 @@ var config = {
 firebase.initializeApp(config); 
 
 app.set('views', __dirname + '/views');
+
 app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/views'));
 
 fs.readdirSync('./controllers').forEach(function (file) {
   if(file.substr(-3) == '.js') {

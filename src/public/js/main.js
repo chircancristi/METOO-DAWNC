@@ -4,7 +4,16 @@ import * as navbarEvents from "./Listeners/NavbarEvents.listeners.js";
 import * as pagesEvents from "./Listeners/PagesEvents.listeners.js";
 import * as locationFunctions from "./Functions/Location.functions.js";
 
+
 window.onload = function () {
+    if('serviceWorker' in navigator){
+        try {
+            navigator.serviceWorker.register("/sw.js")
+        } catch (error) {
+            throw new Error(error);
+        }
+    }
+    
    
     if (window.location.pathname == "/index.html" || window.location.pathname == "/" ) {
        
