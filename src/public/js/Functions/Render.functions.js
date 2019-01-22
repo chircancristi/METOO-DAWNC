@@ -9,7 +9,7 @@ export function renderBasicPage() {
 export function renderLoginModal() {
     let modalHtml = document.getElementById("nav--modalJS");
     let modalHtmLMobile = document.getElementById("nav--mobileJS");
-    let modalButtonNav = document.getElementById("nav--mainJS");
+    let modalButtonNav = document.getElementById('nav--mainJS');
 
 
     let html = " <li class='modal__button' id='signInJs'><a>Sign in</a></li>"
