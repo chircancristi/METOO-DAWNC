@@ -6,75 +6,144 @@
     padding: 1em 5em;
 
     .listing__info {
-      padding: .5em 0;
+      margin-bottom: 1em;
 
       .header--listing {
-        margin-bottom: .5em;
+        margin-bottom: .75em;
         display: flex;
+        flex-direction: column;
         justify-content: space-between;
         align-content: center;
-        font-family: 'IBM Plex Mono', monospace;  
+        font-family: 'IBM Plex Mono', monospace;
+
+        .title {
+          margin-bottom: .5em;
+        }
+
+        .type {
+          margin-bottom: .5em;
+          position: relative;
+
+          &:before {
+            content: "Type";
+          }
+        }
 
         .author {
           position: relative;
           text-decoration: none;
+          color: hsl(204, 70%, 53%);
           font-size: 1.1em;
 
           &:before {
             content: "Author";
-            display: block;
-            position: absolute;
-            top: 50%;
-            left: -10px;
-            color: hsl(210, 25%, 70%);
-            transition: all .15s ease-in-out;
-            transform: translate(-100%, -50%) rotate(170deg);
-            pointer-events: none;
-          }
-
-          &:hover:before {
-            color: hsl(28, 80%, 50%);
-            transform: translate(-100%, -50%) rotate(-10deg);
           }
         }
       }
 
-
-      .skills-required {
+      .skills-container {
         margin-bottom: .5em;
-        position: relative;
-        display: flex;
+        display: inline-block;
+        max-width: 100%;
 
-        &:before {
-          content: "Skills required";
-          display: block;
-          position: absolute;
-          top: 50%;
-          left: -10px;
-          color: hsl(210, 25%, 70%);
-          transition: all .15s ease-in-out;
-          transform: translate(-100%, -50%) rotate(-165deg);
-          pointer-events: none;
-        }
-
-        &:hover:before {
-          color: hsl(28, 80%, 50%);
-          transform: translate(-100%, -50%) rotate(10deg);
-        }
-
-        .skill {
-          padding: .2em .3em;
-          border: 1px solid #354a5f;
-        
-          &:not(:last-of-type) {
-            margin-right: .5em;
+        .skills-required {
+          position: relative;
+          display: flex;
+          flex-wrap: wrap;
+  
+          &:before {
+            content: "Skills required";
+          }
+  
+          .skill {
+            padding: .2em .3em;
+            border: 1px solid #354a5f;
+  
+            &:not(:last-of-type) {
+              margin-right: .5em;
+            }
           }
         }
+      }
+
+      .header--listing .type:before,
+      .header--listing .author:before,
+      .skills-container .skills-required:before,
+      .desc:before {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: -15px;
+        color: hsl(210, 25%, 70%);
+        transition: color .15s ease-in-out;
+        transform: translate(-100%, -50%);
+        pointer-events: none;
+        font-family: 'IBM Plex Sans', sans-serif;
+      }
+
+      .header--listing .type:hover:before,
+      .header--listing .author:hover:before,
+      .skills-container .skills-required:hover:before,
+      .desc:hover:before {
+        color: hsl(28, 80%, 50%);
       }
 
       .desc {
+        margin-bottom: .5em;
+        position: relative;
         text-align: justify;
         line-height: 1.25;
+
+        &:before {
+          content: "Description";
+          top: 0;
+          transform: translateX(-100%);
+        }
+      }
+
+      .contributors-container {
+
+        .header--contributors {
+          margin-bottom: .5em;
+          display: flex;
+
+          .pill {
+            padding: .3em .4em;
+            border-radius: 50%;
+            margin-left: .5em;
+            align-self: center;
+            font-size: .8em;
+            font-weight: 600;
+            color: white;
+            background-color: hsl(145, 63%, 49%);
+            font-family: 'IBM Plex Sans', sans-serif;
+          
+            &:empty {
+              display: none;
+            }
+          }
+        }
+        
+        .contributors {
+          display: flex;
+          flex-wrap: wrap;
+  
+          .contributor:not(:last-of-type) {
+            margin-right: .3em;
+          }
+  
+          .contributor a {
+            text-decoration: none;
+            color: hsl(204, 70%, 53%);
+            font-size: 1.1em;
+          }
+
+          .contributor:not(:last-of-type):after {
+            content: "|";
+            display: inline-block;
+            margin-left: .3em;
+          }
+        }
       }
     }
   }
