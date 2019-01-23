@@ -3,7 +3,7 @@
   color: hsl(210, 28%, 29%);
 
   .listing {
-    padding: 1em 5em;
+    padding: 1em 20em;
     cursor: default;
 
     .listing__info {
@@ -19,18 +19,23 @@
         align-content: center;
         font-family: 'IBM Plex Mono', monospace;
 
-        .title {
+        .title,
+        .type,
+        .place {
           margin-bottom: .5em;
-          // text-shadow: 2px 2px 0px hsl(203, 45%, 75%);
+        }
+        
+        .type,
+        .place {
+          position: relative;
         }
 
-        .type {
-          margin-bottom: .5em;
-          position: relative;
+        .place:before {
+          content: "Place";
+        }
 
-          &:before {
-            content: "Type";
-          }
+        .type:before {
+          content: "Type";
         }
 
         .author {
@@ -73,6 +78,7 @@
       }
 
       .header--listing .type:before,
+      .header--listing .place:before,
       .header--listing .author:before,
       .skills-container .skills-required:before,
       .desc:before {
@@ -85,9 +91,14 @@
         transform: translate(-100%, -50%);
         pointer-events: none;
         font-family: 'IBM Plex Sans', sans-serif;
+
+        @include query-below($small) {
+          display: none;
+        }
       }
 
       .header--listing .type:hover:before,
+      .header--listing .place:hover:before,
       .header--listing .author:hover:before,
       .skills-container .skills-required:hover:before,
       .desc:hover:before {
@@ -95,7 +106,7 @@
       }
 
       .desc {
-        margin-bottom: .5em;
+        margin-bottom: 1em;
         position: relative;
         text-align: justify;
         line-height: 1.25;
@@ -161,6 +172,8 @@
         }
       }
     }
+
+    @include content-container-padding;
   }
 
   @import "comments";

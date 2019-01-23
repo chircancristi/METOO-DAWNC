@@ -117,7 +117,7 @@ class Listing {
 						place: data.place,
 						concept: data.concept,
 						comments: [],
-						contribuitors: [],
+						contributors: [],
 					})
 					.then(() => {
 						place.updatePlaceWithListing(firebase, data.place, listingId);
@@ -166,8 +166,8 @@ class Listing {
 					if (doc.data().author === username) {
 						listings.push(doc.data());
 					} else {
-						for (let i = 0; i < doc.data().contribuitors.length; i++) {
-							if (doc.data().contribuitors[i] === username) {
+						for (let i = 0; i < doc.data().contributors.length; i++) {
+							if (doc.data().contributors[i] === username) {
 								listings.push(doc.data());
 							}
 						}

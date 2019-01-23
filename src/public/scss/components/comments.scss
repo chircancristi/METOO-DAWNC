@@ -1,21 +1,82 @@
 .listing__comments {
   h2 {
-    margin-bottom: .5em;
+    margin-bottom: 1em;
+  }
+
+  .comment {
+    padding: 0 1em;
+    border-radius: 3px;
+    margin-bottom: 1.5em;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-areas: "author"
+                         "content";
+    
+    .comment__author {
+      grid-area: author;
+      display: flex;
+      
+      .comment__meta {
+        flex: 1 0 auto;
+        display: flex;
+        flex-direction: column;
+        
+        .u-name,
+        .u-role {
+          font-weight: 600;
+        }
+        
+        .u-role--author {
+          color: hsl(48, 89%, 50%);
+        }
+        
+        .u-role--contributor {
+          color: hsl(168, 76%, 42%);
+        }
+      }
+
+      .profile-pic {
+        padding: 2px;
+        border: 2px solid hsl(210, 28%, 29%);
+        border-radius: 10px;
+        margin-right: .5em;
+        
+        order: -1;
+        flex: 0 0 auto;
+        max-width: 60px;
+        max-height: 60px;
+
+        &.author {
+          border-color: hsl(48, 89%, 50%);
+
+        }
+
+        &.contributor{
+          border-color: hsl(168, 76%, 42%);
+        }
+      }
+    }
+
+    .comment__content {
+      grid-area: content;
+      text-align: justify;
+    }
   }
 
   .post-comment {
+    margin-bottom: 1em;
     display: flex;
     justify-content: space-between;
 
     .textarea {
       padding: .5em 1em;
-      border: 1px solid hsl(210, 28%, 60%);
+      border: 1px solid hsl(282, 44%, 47%);
       border-radius: 3px;
+      margin-right: .5em;
 
       position: relative;
-      flex: 0 0 80%;
+      flex: 1 1 auto;
       background-color: white;
-      text-align: justify;
 
       &:after {
         content: "Join the discussion!";
@@ -60,6 +121,8 @@
       padding: .5em .8em;
       border: 1px solid hsl(282, 44%, 47%);
       border-radius: 3px;
+
+      flex: 0 0 20%;
       align-self: center;
       font-weight: 600;
       color: hsl(282, 44%, 47%);
@@ -71,6 +134,5 @@
         background-color: hsl(282, 44%, 47%);
       }
     }
-    
   }
 }

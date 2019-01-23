@@ -62,6 +62,7 @@
         <header class="header--listing">
           <h2 id="js-listing-title" class="title">A very long marvelous incredible title of listing is in effect</h2>
           <span id="js-listing-type" class="type">Implement / Study</span>
+          <span id="js-listing-place" class="place">BCU</span>
           <a href="" class="author">Răzvan Sbîngu</a>
         </header>
 
@@ -103,29 +104,35 @@
       </section>
       <section class="listing__comments">
         <h2>Comments</h2>
+        <section class="post-comment">
+          <p id="js-post-comment-content" class="textarea" contenteditable="true"></p>
+          <button id="js-post-comment" class="submit">Post</button>
+        </section>
+
         <section class="posted-comments">
           <article class="comment">
             <section class="comment__author">
-              <img src="" alt="" class="profile-pic">
-              <p class="name">
+              <section class="comment__meta">
+                <p class="u-name">
+                  Gelu Costeleanos
+                </p>
+  
+                <span class="u-role u-role--author">Author</span>
+                <span class="time">4 hours ago</span>
+              </section>
 
-              </p>
-            </section>
+              <img class="profile-pic author" src="https://lh4.googleusercontent.com/-jVeZqV0z--8/AAAAAAAAAAI/AAAAAAAAHO8/rE7uL1lvkZQ/photo.jpg" alt="User profile picture">
+          </section>
 
             <section class="comment__content">
-              <p></p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad fugit nam magni reiciendis magnam beatae doloribus voluptas aspernatur perspiciatis assumenda quae ducimus consectetur omnis molestias, sunt odio blanditiis similique animi?
+              Nam nihil sint repellendus praesentium culpa quo ab fuga aut, consequuntur quidem nulla autem placeat aliquid id quia error exercitationem dicta ea repudiandae. Nemo cupiditate reiciendis praesentium nam reprehenderit tempora?
+              Molestiae provident consectetur maxime eius numquam, doloremque quis accusantium id saepe enim, temporibus quas earum laborum aperiam quasi dolorum esse ea et nam non ducimus quo ut ad. Ipsum, sed!</p>
             </section>
 
-            <section class="comment__meta">
-              <span class="meta__time"></span>
-            </section>
           </article>
         </section>
 
-        <section class="post-comment">
-          <p id="js-post-comment-content" class="textarea" contenteditable="true"></p>
-          <button id="js-post-comment" class="submit">Post comment</button>
-        </section>
       </section>
     </article>
   </main>
