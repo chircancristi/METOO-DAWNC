@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html property="https://schema.org/ScholarlyArticle">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="scholarly.min.css">
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono|IBM+Plex+Sans" rel="stylesheet">
+
+    <title>MeeToo - Scholarly Doc</title>
+</head>
+
+<body prefix="schema: http://schema.org">
+    <header>
+        <h1>MeeToo, a social app for co-working</h1>
+    </header>
+
+    <div role="contentinfo">
+        <ol role="directory" class="level-zero">
+            <li> <a href="#abstract">Abstract</a> </li>
+            <li>
+                <a href="#proj-specifics">How to use</a>
+            </li>
+        
+        </ol>
+
+        <dl itemscope itemtype="sa:AuthorsList">
+            <dt>Authors</dt>
+            <dd itemtype="sa:ContributorRole" itemprop="schema:author">
+                <meta itemprop="schema:givenName" content="Dan">
+                <meta property="schema:additionalName" content="Cristian">
+                <meta property="schema:familyName" content="Chircan">
+                <a property="schema:name" href="https://github.com/chircancristi/">Chircan Dan Cristian</a>
+            </dd>
+
+            <dd typeof="sa:ContributorRole" property="schema:author">
+                <meta property="schema:givenName" content="Răzvan">
+                <meta property="schema:familyName" content="Sbîngu">
+                <a href="https://github.com/srzvan/" property="schema:name">Sbîngu Răzvan</a>
+            </dd>
+        </dl>
+        <section typeof="sa:Affiliations">
+            <h2>Affiliations</h2>
+            <ul>
+                <li id="sa">
+                <span typeof="schema:Organization" resource="http://www.info.uaic.ro/bin/Admission/Admission?language=ro">
+                    <span property="schema:name">Faculty of computer science</span>,
+                    <span property="schema:parentOrganization">
+                    <span typeof="schema:Organization">
+                        <span property="schema:name">CLIW</span>
+                        —
+                        <span property="schema:location" typeof="schema:Place">
+                            <span property="schema:addressLocality">IS</span>,
+                            <span property="schema:addressCountry">RO</span>
+                        </span>
+                        </span>
+                    </span>
+                    </span>
+                </span>
+                </li>
+            </ul>
+        </section>
+            
+    </div> <!-- contentinfo -->
+
+    <section typeof="sa:Abstract" id="abstract" role="doc-abstract">
+        <h2 property="schema:title"><span>1. Abstract</span></h2>
+        <p>
+            A PWA (Progressive Web App) meant to stimulate interaction between the people that study/work in local
+            public places (e.g. libraries, cafes or co-working spaces).
+        </p>
+    </section> <!-- abstract -->
+
+    <section id="proj-specifics">
+        <h2>2. How to use </h2>
+
+        <h3 >2.1 Main page</h3>
+        <section>
+            <p>
+              On the first page you will be greeded with a map containing the most popular places in our application.
+              The bigger the marker the more popular is that place. <br>
+              <img  src="img/map.PNG">
+            </p>
+        </section>
+        <h3 >2.2 Log in </h3>
+        <section>
+            <p>
+               If you want to use our app, your must first log in thru google or github. <br>
+               <img  src="img/login.PNG"><br>
+               After you log in you will be redirect to the account page, where you can add 
+               your skills.
+                
+            </p>
+        </section>
+        <h3 >2.3  Listing </h3>
+        <section>
+            <p>
+               Our application is based around listings. A listing is an invitation to study.
+               If you enter the listings page, the application will request your geolocation.
+               If you accept to share it, on the page will appear the listings that are the closest 
+               to you, if you don't accept on the page will appear the listings that match your skills. If you want 
+               something more specific you can search by the location. <br>
+               <img src="img/listings.PNG"> <br> 
+               If you want too a listing of your own, you can do that by pressing the add listing button.
+               First you will be asked if you want to study or the implement something. Then you will have 
+               to answer some short questions regarding your location, the subject you want to adress and so on. <br>
+               <img src="./img/addlisting.PNG">  <br>
+               If anybody wants to join your listing, you will receive a notifcation and you can accept or decline from 
+               the account page. <br>
+               On the listing page you can read more details about that listing and if you are accepted on that listing
+               you can write comments and participate in the process of studying.
+            </p>
+        </section>
+        <h3 >2.4  Place </h3>
+        <section>
+            <p>
+               In the places page you can see every location that is supported by our application. <br>
+               <img src="img/places.PNG"> <br>
+               Every place has it's own page in which you can see the listings opened in that place or you 
+               can subscribe to that place. If you subscribe, you will be notified every time a listing that 
+               requires your skills was opened in that place.
+               <img src="img/place.PNG"> 
+            </p>
+        </section>
+       </section>
+
+</body>
+</html>

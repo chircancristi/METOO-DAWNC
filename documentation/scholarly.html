@@ -189,6 +189,8 @@
                    with the data from the cache.
                    If the request for the network finds any new data, it will cache it then will render
                    the page with the data.
+                   To test the performance of the app the lighthouse tools has been used. <Br>
+                   <img class="lighthouse" src="img/lighthouse.PNG">
             </p>
         </section>
 
@@ -250,22 +252,79 @@
                 regarding listings that are created in that place and compatible with his set of skills.
             </p>
         </section>
-        <h4>2.2.4 Presentation of popular places </h4>
+        <h4>2.2.4 Caching</h4>
         <section>
             <p>
+                The static data (html,css,js) is cached using <a href="https://developer.mozilla.org/en-US/docs/Web/API/Cache" role="doc-biblioref">cache API </a> 
+                And the dinamic data is cached using <a href="https://localforage.github.io/localForage/" role="doc-biblioref">localForage </a>. When the user enters the app for the first time
+                the service worker is installed. After the instalation, he caches the static data. After that, every request regarding 
+                those static assets, will receive responses from the cache. When an user visits a page, the local js launches two requests, one for the server and the other 
+                for the cache. If there is something in the cache, it will be returned to the page (if there was no response from the server in the meantime).
+                The response from the server goes thru the service worker, who will cache it in the indexdb with the key being named after the request. 
+             </p>
+        </section>
+        <h4>2.2.5 Presentation of popular places </h4>
+        <section >
+            <p>
                 A place becomes popular after a threshold of listings is met, listings which are posted from the said
-                location. The home page features a list of the 5 most popular places that is presented using an
-                asymmetrical <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid" role="doc-biblioref"> CSS
-                    grid. </a>
+                location. The home page features a map in which the most popular places will be highlighted by marker.
+                The size of the marker represents the popularity of that place. <br>
+                <img class="map" src="img/map.PNG" >
             </p>
         </section>
 
-        <h4>2.2.5 "Add a listing" form </h4>
+        <h4>2.2.6 "Add a listing" form </h4>
         <section>
             <p>
                 The "Add a listing" form can be accessed from the Listings page. This component works in a
                 "step-by-step" manner, prompting the user for specific input at each stage. The information gathered
                 with this form represents the body of a listing which can be found in the Listings or Account pages.
+            </p>
+        </section>
+        <h4>2.2.7 Listing page </h4>
+        <section>
+            <p>
+                Every listing has a dedicated page in which are presented the details of that listing (name,description,skils required etc.).
+                The page also contains a section in which the users can post comments.  
+            </p>
+        </section>
+        <h4>2.2.8 Place page </h4>
+        <section>
+            <p>
+                Every place in our application has a dedicated page in which are presented that details of that location. 
+                The users can subscribe to that place, upon doing they will receive notifications when listings which require 
+                hi\her skills are opened at that location. 
+                
+            </p>
+        </section>
+        <h4>2.2.9 Server </h4>
+        <section>
+            <p>
+                The server is done using node JS Express with an MVC arhitecture. Every page of the application 
+                has it's own controller which handles requests for data. There are 3 models:<br>
+                - User <br>
+                - Place <br>
+                - Listing <br>
+                Those models gets/sets data from the database. So let's the user acesses the listings page 
+                the view will make an request to the controller "getListings", the controller will receive 
+                that request and will ask the listing model to give him the data regarding the listings. 
+                That data will be send back to the view and it will be rendered in page.
+                
+            </p>
+        </section>
+        <h4>Offline </h4>
+        <section>
+            <p>
+                Being an PWA, our application can be accesed offline. As mention before when an user 
+                acesses an page of our application, the data of that page is cached and the next time
+                the user acceses that page the data will be taken from the cache(of course every new 
+                data will be rendered and cached as well). This is done for 
+                two reasons: <br>
+                1. The speed in which the application renders data (app performance) <br>
+                2. Offline usage <br>
+                Regarding the second aspect, having all this data cached permits the application 
+                to be rendered  without any internet connection. The static data will be taken from the cache api 
+                and the dynamic one from the indexDB (localforage). 
             </p>
         </section>
     </section> <!-- proj-specifics -->
@@ -281,6 +340,7 @@
                     <li>request to join a certain listing</li>
                     <li>comment on a listing for which said user is owner or collaborator</li>
                 </ul>  
+                More details can be found in the application manual.
             </p>
         </section>
     </section> <!-- user-interaction -->
