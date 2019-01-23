@@ -13,6 +13,7 @@
 @import "components/account";
 @import "components/place";
 @import "components/login";
+@import "components/single-listing";
 
 
 html {
@@ -41,20 +42,21 @@ html {
 .main-content {
   margin: 1em 5em;
 
-  height: 80%;
   position: relative;
-  .map{
-    position: absolute;
-    left:50%;
-    top:50%;
-    transform: translate(-50%,-50%);
+  
+  &.main-content--home {
+    min-height: 80%;
 
-    width: 90%;
-    height:90%;
-
-
+    .map {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+  
+      width: 90%;
+      height: 90%;
+    }
   }
-
 
   @include query-below($lap) {
     margin: 1em 2.5em;
@@ -72,19 +74,21 @@ html {
 
 .allPlaces {
   padding: 2em 7em;
+  
   @include query-below($small) {
-  padding: 2em 2em;
+    padding: 2em 2em;
   }
+  
   .grid--twoColumns {
     height: calc(100% - 7em);
 
     @include query-above($small) {
       @include two-columns-grid;
     }
+
     @include query-below($small) {
       @include one-column-grid;
-   }
-   
+    }
   }
 }
 

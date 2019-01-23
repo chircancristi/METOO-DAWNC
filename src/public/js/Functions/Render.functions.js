@@ -11,7 +11,6 @@ export function renderLoginModal() {
     let modalHtmLMobile = document.getElementById("nav--mobileJS");
     let modalButtonNav = document.getElementById('nav--mainJS');
 
-
     let html = " <li class='modal__button' id='signInJs'><a>Sign in</a></li>"
     modalButtonNav.innerHTML = modalButtonNav.innerHTML + html;
     html = " <li class='modal__button' id='signInMobileJs'><a>Sign in</a></li>"
@@ -33,7 +32,6 @@ export function renderLoginModal() {
     modalHtml.innerHTML = html;
     html = " <script src='/js/login.js'></script>"
     document.getElementsByTagName("html").innerHTML = document.getElementsByTagName("html").innerHTML + html;
-
 }
 let map;
 function initMap() {
@@ -297,7 +295,6 @@ export function renderAllPlaces() {
                 updateAllplaces(data);
             }
         }).catch(function (error) {
-
             throw new Error("Problem acessing the cache",error)
         });
 }
