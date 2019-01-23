@@ -1,27 +1,30 @@
 class User {
 	static login(firebase, data) {
 		const db = firebase.firestore();
+		const settings = {
+			timestampsInSnapshots: true
+		};
+		
+		db.settings(settings);
+		
 		var docRef = db.collection('User').doc(data.displayName);
-		docRef
-			.get()
+		docRef.get()
 			.then(function(doc) {
-				if (!doc.exists) {
-					db.collection('User')
-						.doc(data.displayName)
-						.set({
-							fullName: data.displayName,
-							email: data.email,
-							imgUrl: data.imgUrl,
-							likes: 0,
-							dislikes: 0,
-							skills: [],
-						})
-						.then(() => {
-							console.log('Document succesfully written! ✅');
-						})
-						.catch(error => {
-							console.error('Failed writing document:', error);
-						});
+				if ( !doc.exists ) {
+					db.collection('User').doc(data.displayName).set({
+						fullName: data.displayName,
+						email: data.email,
+						imgUrl: data.imgUrl,
+						likes: 0,
+						dislikes: 0,
+						skills: [],
+					})
+					.then(() => {
+						console.log('Document succesfully written! ✅');
+					})
+					.catch(error => {
+						console.error('Failed writing document:', error);
+					})
 				}
 			})
 			.catch(function(error) {
@@ -31,9 +34,14 @@ class User {
 
 	static getUserInformation(firebase, username) {
 		const db = firebase.firestore();
+		const settings = {
+			timestampsInSnapshots: true
+		};
+		
+		db.settings(settings);
+
 		var docRef = db.collection('User').doc(username);
-		return docRef
-			.get()
+		return docRef.get()
 			.then(function(doc) {
 				if (doc.exists) {
 					let data = doc.data();

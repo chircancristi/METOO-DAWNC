@@ -12,7 +12,7 @@ module.exports.controller = async function(app, firebase) {
 		data.then(function(value) {
 			listing.getUserListing(req.body.username, firebase).then(function(listings) {
 				let response = {
-					listings: listings,
+					listings,
 					userData: value,
 				};
 				res.send(response);

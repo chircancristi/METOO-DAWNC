@@ -93,17 +93,21 @@ class Listing {
 			});
 		return getListings;
 	}
+
 	static addListing(firebase, data) {
 		const db = firebase.firestore();
+		const settings = {
+			timestampsInSnapshots: true
+		};
+		
+		db.settings(settings);
 
-		db.collection('Listing')
-			.get()
-			.then(function(querySnapshot) {
+		db.collection('Listing').get()
+			.then( function(querySnapshot) {
 				let size = querySnapshot.size;
-				let listingId = 'l' + (size + 1);
-				db.collection('Listing')
-					.doc(listingId)
-					.set({
+				let listingId = `l${size + 1}`;
+
+				db.collection('Listing').doc(listingId).set({
 						type: data.type,
 						status: 'opened',
 						author: data.author,
@@ -122,20 +126,24 @@ class Listing {
 					.catch(error => {
 						throw new Error(error);
 					});
-			});
+		});
 	}
 	static getListingsAtLocation(place, firebase) {
 		const db = firebase.firestore();
+		const settings = {
+			timestampsInSnapshots: true
+		};
+		
+		db.settings(settings);
+		
 		let listings = [];
-		return db
-			.collection('Listing')
-			.where('place', '==', place)
-			.get()
+		return db.collection('Listing').where('place', '==', place).get()
 			.then(function(querySnapshot) {
 				querySnapshot.forEach(function(doc) {
 					// doc.data() is never undefined for query doc snapshots
 					listings.push(doc.data());
 				});
+
 				return listings;
 			})
 			.catch(error => {
@@ -144,11 +152,16 @@ class Listing {
 	}
 	static getUserListing(username, firebase) {
 		const db = firebase.firestore();
-		return db
-			.collection('Listing')
-			.get()
+		const settings = {
+			timestampsInSnapshots: true
+		};
+		
+		db.settings(settings);
+
+		return db.collection('Listing').get()
 			.then(function(querySnapshot) {
 				let listings = [];
+
 				querySnapshot.forEach(function(doc) {
 					if (doc.data().author === username) {
 						listings.push(doc.data());
@@ -160,8 +173,9 @@ class Listing {
 						}
 					}
 				});
+
 				return listings;
-			});
+		});
 	}
 }
 

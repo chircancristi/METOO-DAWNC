@@ -1,0 +1,81 @@
+.main-content.main-content--single-listing {
+  min-height: 80%;
+  color: hsl(210, 28%, 29%);
+
+  .listing {
+    padding: 1em 5em;
+
+    .listing__info {
+      padding: .5em 0;
+
+      .header--listing {
+        margin-bottom: .5em;
+        display: flex;
+        justify-content: space-between;
+        align-content: center;
+        font-family: 'IBM Plex Mono', monospace;  
+
+        .author {
+          position: relative;
+          text-decoration: none;
+          font-size: 1.1em;
+
+          &:before {
+            content: "Author";
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: -10px;
+            color: hsl(210, 25%, 70%);
+            transition: all .15s ease-in-out;
+            transform: translate(-100%, -50%) rotate(170deg);
+            pointer-events: none;
+          }
+
+          &:hover:before {
+            color: hsl(28, 80%, 50%);
+            transform: translate(-100%, -50%) rotate(-10deg);
+          }
+        }
+      }
+
+
+      .skills-required {
+        margin-bottom: .5em;
+        position: relative;
+        display: flex;
+
+        &:before {
+          content: "Skills required";
+          display: block;
+          position: absolute;
+          top: 50%;
+          left: -10px;
+          color: hsl(210, 25%, 70%);
+          transition: all .15s ease-in-out;
+          transform: translate(-100%, -50%) rotate(-165deg);
+          pointer-events: none;
+        }
+
+        &:hover:before {
+          color: hsl(28, 80%, 50%);
+          transform: translate(-100%, -50%) rotate(10deg);
+        }
+
+        .skill {
+          padding: .2em .3em;
+          border: 1px solid #354a5f;
+        
+          &:not(:last-of-type) {
+            margin-right: .5em;
+          }
+        }
+      }
+
+      .desc {
+        text-align: justify;
+        line-height: 1.25;
+      }
+    }
+  }
+}

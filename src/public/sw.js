@@ -1,4 +1,5 @@
 importScripts('/js/Utilities/localforage.js');
+
 let staticAssets = [
     './css/styles.min.css',
     './js/main.js',
@@ -41,60 +42,61 @@ let staticAssets = [
    
 ]
 
-self.addEventListener('install', async event => {
+self.addEventListener('install', async (event) => {
+    event.waitUntil(
+        caches.open(`meToo-app-shell`)
+            .then( (cache) => {
+                return cache.addAll(staticAssets)
+            })
+    );
 
-    const cache = await caches.open('app-shell')
-    cache.addAll(staticAssets);
-})
+    self.skipWaiting();
+});
 
+self.addEventListener('activate', (event) => {
+   
+});
 
-self.addEventListener('fetch', event => {
-
+self.addEventListener('fetch', (event) => {  
     const request = event.request;
     const url = new URL(request.url);
-    if(event.request.mode === 'navigate' || (event.request.method === 'GET' && event.request.headers.get('accept').includes('text/html')))
-    {
-        event.respondWith(cacheFirst(request));
-    }
-    else{
-   
-    if (url.origin === location.origin) {
-        let flag=true;
-        for (i=0;i<url.pathname.length;i++){
-       
-            if (url.pathname[i]===".") 
-            {
 
-                flag=false;
+    if ( event.request.mode === 'navigate' 
+        || ( event.request.method === 'GET' && event.request.headers.get('accept').includes('text/html')) ) {
+        event.respondWith(cacheFirst(request));
+    } else {
+
+        if ( url.origin === location.origin ) {
+            let flag = true;
+
+            for ( let i = 0; i < url.pathname.length; i++ ) {
+                if ( url.pathname[i] === "." ) {
+                    flag = false;
+                }
+            }
+            
+            if ( flag === true ) {
+                event.respondWith( cacheThenNetwork(request) );
+            } else {
+                event.respondWith( cacheFirst(request) );
             }
         }
-        
-        if(flag===true){
-         
-        event.respondWith(cacheThenNetwork(request));
-        }
-        else{
-        event.respondWith(cacheFirst(request));
-        }
     }
-    
-    }
-})
+});
+
 async function cacheFirst(req) {
     const cachedResponse = await caches.match(req);
+
     return cachedResponse || fetch(req);
-    
 }
-function cacheThenNetwork(req) {
 
-    return fetch(req).
-         then(async function(resp) {
-            const url = new URL(req.url);
-            await localforage.setItem(url.pathname,resp.clone().json());
-         
-            return resp;
-           
-        }) 
+async function cacheThenNetwork(req) {
 
+    return fetch(req)
+            .then( async function(resp) {
+                const url = new URL(req.url);
+                await localforage.setItem(url.pathname,resp.clone().json());
 
+                return resp;
+            });
 }
