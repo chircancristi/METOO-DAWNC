@@ -57,6 +57,7 @@ export function loginWithGoogle(firebase) {
 			now.setTime(time);
 
 			document.cookie = 'username=' + user.displayName + '; expires=' + now.toUTCString() + '; path=/';
+			document.cookie = 'imgUrl='+ user.photoURL+'; expires=' + now.toUTCString() + '; path=/';
 
 			document.location.href = '/account.html';
 		})
@@ -97,6 +98,8 @@ export function loginWithGithub() {
 			now.setTime(time);
 
 			document.cookie = 'username=' + user.displayName + '; expires=' + now.toUTCString() + '; path=/';
+			document.cookie = 'imgUrl=' + user.imgUrl + '; expires=' + now.toUTCString() + '; path=/';
+
 
 			document.location.href = '/account';
 		})
