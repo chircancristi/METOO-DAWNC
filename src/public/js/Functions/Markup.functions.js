@@ -235,7 +235,3 @@ export function comment( commentDetails ) {
     throw e;
   }
 }
-
-export function singleListing( listingDetails ) {
-
-}
