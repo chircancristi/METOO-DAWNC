@@ -112,7 +112,7 @@ class Listing {
 					.doc(listingId)
 					.set({
 						type: data.type,
-						status: 'opened',
+						status: 'active',
 						author: data.author,
 						title: data.title,
 						description: data.description,
@@ -147,7 +147,7 @@ class Listing {
 			.get()
 			.then(function(querySnapshot) {
 				querySnapshot.forEach(function(doc) {
-					console.log(doc.data());
+				
 					// doc.data() is never undefined for query doc snapshots
 					listings.push(doc.data());
 				});

@@ -7,8 +7,8 @@ export function fetchAccountData() {
 	let networkDataReceived = false;
 	let data = {
 		username: login.getCookie('username'),
-    };
-    console.log(data);
+	};
+	console.log(data);
 
 	let request = new Request('userInformation', {
 		method: 'POST',
@@ -125,21 +125,19 @@ export function fetchAllListingsData() {
 }
 export function fetchListingData() {
 	let networkDataReceived = false;
-    
-	fetch(
-		`/listingAfterName/${login.getCookie("listing")}`
-	)
+
+	fetch(`/listingAfterName/${login.getCookie('listing')}`)
 		.then(resp => resp.json())
 		.then(function(json_data) {
 			networkDataReceived = true;
 			render.renderListingPage(json_data);
-			
+			pagesEvents.singleListingEvents();
 		})
 		.catch(function(error) {
 			throw new Error('Error at getting data from the server for the listings elements', error);
 		});
 	localforage
-		.getItem(`/listingAfterName?name=${login.getCookie("listing")}`, function(err, value) {
+		.getItem(`/listingAfterName?name=${login.getCookie('listing')}`, function(err, value) {
 			if (!value) throw Error('No data');
 			return value;
 		})
@@ -148,7 +146,7 @@ export function fetchListingData() {
 
 			if (!networkDataReceived) {
 				render.renderListingPage(json_data);
-				pagesEvents.viewListingEvents();
+				pagesEvents.singleListingEvents();
 			}
 		})
 		.catch(function(error) {

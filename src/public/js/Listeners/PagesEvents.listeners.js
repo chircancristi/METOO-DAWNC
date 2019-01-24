@@ -1,5 +1,8 @@
 import * as addListing from '../Functions/AddListing.functions.js';
 import * as place from '../Functions/Places.functions.js';
+import * as singleListing from '../Functions/SingleListing.functions.js';
+import * as requests from '../Functions/Requests.functions.js';
+import * as login from '../Functions/Login.functions.js'
 
 export function singlePlaceEvents() {
 	var slideIndex = 1;
@@ -38,20 +41,7 @@ export function addListingPageEvents() {
 	});
 }
 //browse listings
-export function browseListingsEvents() {
-	const listings = document.getElementById('js-listings');
 
-	function joinListing(target) {
-		if (target.id === 'js-join') {
-			target.classList.toggle('joined');
-			target.innerHTML === '✔' ? (target.innerHTML = 'Join') : (target.innerHTML = '✔');
-		}
-	}
-
-	listings.addEventListener('click', e => {
-		joinListing(e.target);
-	});
-}
 //browse places
 export function browsePlacesEvents() {
 	let placesTrigger = document.getElementsByClassName('grid__item');
@@ -73,7 +63,7 @@ export function singlePageEvents() {
 }
 export function viewListingEvents() {
 	let listings = document.getElementsByClassName('view-listing');
- 
+	let join = document.getElementsByClassName('join');
 	for (let i = 0; i < listings.length; i++) {
 		listings[i].addEventListener('click', function() {
 			var now = new Date();
@@ -85,4 +75,25 @@ export function viewListingEvents() {
 			document.location.href = `/single-listing`;
 		});
 	}
+	for (let i = 0; i < join.length; i++) {
+		join[i].addEventListener('click', function() {
+			let type="";
+			join[i].classList.toggle('joined');
+			join[i].innerHTML === '✔' ? (join[i].innerHTML = 'Join',type='leave') : (join[i].innerHTML = '✔',type='join');
+			let listing = join[i].value;
+			let data = {
+				user: login.getCookie('username'),
+				listing: listing,
+				imgUrl: login.getCookie('imgUrl'),
+				type:type
+			};
+			
+			requests.postDataToServer('/joinListing', data);
+
+		});
+	}
+}
+export function singleListingEvents() {
+	let postComment = document.getElementById('js-post-comment');
+	postComment.addEventListener('click', singleListing.sendMessage);
 }

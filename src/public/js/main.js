@@ -51,7 +51,7 @@ window.onload = function () {
 
         render.renderBasicPage();
         fetch.fetchAllListingsData();
-        pagesEvents.browseListingsEvents();
+       
     }
     
     if (window.location.pathname == "/browse-places.html") {

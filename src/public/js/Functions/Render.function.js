@@ -1,22 +1,21 @@
-import * as login from "./Login.functions.js";
-import * as events from "../Listeners/NavbarEvents.listeners.js";
-import * as pagesEvents from "../Listeners/PagesEvents.listeners.js"
+import * as login from './Login.functions.js';
+import * as events from '../Listeners/NavbarEvents.listeners.js';
+import * as pagesEvents from '../Listeners/PagesEvents.listeners.js';
 
 export function renderBasicPage() {
-  if (login.checkIfUserIsLogged() == false)
-      document.location.href = "/login"
-  events.addNavbarEvents();
+	if (login.checkIfUserIsLogged() == false) document.location.href = '/login';
+	events.addNavbarEvents();
 }
 export function renderLoginModal() {
-  let modalHtml = document.getElementById("nav--modalJS");
-  let modalHtmLMobile = document.getElementById("nav--mobileJS");
-  let modalButtonNav = document.getElementById('nav--mainJS');
+	let modalHtml = document.getElementById('nav--modalJS');
+	let modalHtmLMobile = document.getElementById('nav--mobileJS');
+	let modalButtonNav = document.getElementById('nav--mainJS');
 
-  let html = " <li class='modal__button' id='signInJs'><a>Sign in</a></li>"
-  modalButtonNav.innerHTML = modalButtonNav.innerHTML + html;
-  html = " <li class='modal__button' id='signInMobileJs'><a>Sign in</a></li>"
-  modalHtmLMobile.innerHTML = modalHtmLMobile.innerHTML + html;
-  html = `
+	let html = " <li class='modal__button' id='signInJs'><a>Sign in</a></li>";
+	modalButtonNav.innerHTML = modalButtonNav.innerHTML + html;
+	html = " <li class='modal__button' id='signInMobileJs'><a>Sign in</a></li>";
+	modalHtmLMobile.innerHTML = modalHtmLMobile.innerHTML + html;
+	html = `
   <ul class='modal__content-list'>
       <span id='closeJS'class='modal-content__close'>&times;</span> 
       <div class='modal__content-title'><h3>Please sign in</h3>
@@ -29,101 +28,96 @@ export function renderLoginModal() {
           <img src='/images/github.png'>
           <div class='list__element-name'><a>Github</a></div>
       </li>
-  </ul> `
-  modalHtml.innerHTML = html;
-  html = " <script src='/js/login.js'></script>"
-  document.getElementsByTagName("html").innerHTML = document.getElementsByTagName("html").innerHTML + html;
+  </ul> `;
+	modalHtml.innerHTML = html;
+	html = " <script src='/js/login.js'></script>";
+	document.getElementsByTagName('html').innerHTML = document.getElementsByTagName('html').innerHTML + html;
 }
 let map;
 function initMap() {
-    let uluru = { lat: 47.166478, lng: 27.580477 };
-    map = new google.maps.Map(
-        document.getElementById('map'),
-        {
-            zoom: 13,
-            center: uluru
-        }
-    );
+	let uluru = { lat: 47.166478, lng: 27.580477 };
+	map = new google.maps.Map(document.getElementById('map'), {
+		zoom: 13,
+		center: uluru,
+	});
 }
 export function renderMainPage() {
-    initMap();
-    fetch("favouritePlaces")
-        .then((resp) => resp.json())
-        .then(function (json_data) {
-            let sizeY;
-            let sizeX = sizeY = 60;
-            var icon = {
-                url: "../images/place5.png", // url
-                scaledSize: new google.maps.Size(sizeX, sizeY), // scaled size
-                origin: new google.maps.Point(0, 0), // origin
-                anchor: new google.maps.Point(0, 0) // anchor
-            };
-            var uluru;
-            for (let i = json_data.length - 1; i >= 0; i--) {
-                uluru = { lat: json_data[i].geolocation._lat, lng: json_data[i].geolocation._long };
-                let marker = new google.maps.Marker({ position: uluru, map: map, icon: icon });
+	initMap();
+	fetch('favouritePlaces')
+		.then(resp => resp.json())
+		.then(function(json_data) {
+			let sizeY;
+			let sizeX = (sizeY = 60);
+			var icon = {
+				url: '../images/place5.png', // url
+				scaledSize: new google.maps.Size(sizeX, sizeY), // scaled size
+				origin: new google.maps.Point(0, 0), // origin
+				anchor: new google.maps.Point(0, 0), // anchor
+			};
+			var uluru;
+			for (let i = json_data.length - 1; i >= 0; i--) {
+				uluru = { lat: json_data[i].geolocation._lat, lng: json_data[i].geolocation._long };
+				let marker = new google.maps.Marker({ position: uluru, map: map, icon: icon });
 
-                marker.addListener('click', function () {
-                    infowindow.open(marker.get('map'), marker);
-                });
-                var infowindow = new google.maps.InfoWindow({
-                    content: json_data[i].name
-                })
-                sizeX = sizeX + 20;
-                sizeY = sizeY + 20;
-                icon = {
-                    url: "../images/place" + (i + 1) + ".png", // url
-                    scaledSize: new google.maps.Size(sizeX, sizeY), // scaled size
-                    origin: new google.maps.Point(0, 0), // origin
-                    anchor: new google.maps.Point(0, 0) // anchor
-                }
-            }
-
-        })
-        .catch(function (error) {
-            throw new Error(error);
-        });
-
+				marker.addListener('click', function() {
+					infowindow.open(marker.get('map'), marker);
+				});
+				var infowindow = new google.maps.InfoWindow({
+					content: json_data[i].name,
+				});
+				sizeX = sizeX + 20;
+				sizeY = sizeY + 20;
+				icon = {
+					url: '../images/place' + (i + 1) + '.png', // url
+					scaledSize: new google.maps.Size(sizeX, sizeY), // scaled size
+					origin: new google.maps.Point(0, 0), // origin
+					anchor: new google.maps.Point(0, 0), // anchor
+				};
+			}
+		})
+		.catch(function(error) {
+			throw new Error(error);
+		});
 }
-export function renderAccountPage(json_data){
-    let displayName = document.getElementById("js-name");
-    let profilePic = document.getElementById("js-profile-pic");
-    let likes = document.getElementById("js-likes");
-    let dislikes = document.getElementById("js-dislikes");
-    let skills= document.getElementById("js-skills");
-    let favouritePlace= document.getElementById("js-favourite-place");
-    let listingsCompleted= document.getElementById("js-listings-completed");
-    let listingsActive= document.getElementById("js-listings-active");
+export function renderAccountPage(json_data) {
+	let displayName = document.getElementById('js-name');
+	let profilePic = document.getElementById('js-profile-pic');
+	let likes = document.getElementById('js-likes');
+	let dislikes = document.getElementById('js-dislikes');
+	let skills = document.getElementById('js-skills');
+	let favouritePlace = document.getElementById('js-favourite-place');
+	let listingsCompleted = document.getElementById('js-listings-completed');
+	let listingsActive = document.getElementById('js-listings-active');
 
-    let username=login.getCookie("username");
-    let min=-1;
-    let favouritePlaceName="";
-    let placesName=[];
-    let placeNames=[]
-    
-    displayName.innerHTML = json_data.userData.fullName;
-    profilePic.src = json_data.userData.imgUrl;
-    likes.innerHTML = json_data.userData.likes;
-    dislikes.innerHTML = json_data.userData.dislikes;
-    skills.innerHTML=""
-    listingsActive.innerHTML=""
-    listingsCompleted.innerHTML=""
-    for (let i=0;i<json_data.userData.skills.length;i++){
-        skills.innerHTML=skills.innerHTML+
-        ` <li class="skill">${json_data.userData.skills[i]}</li>`
-    }
-    for (let i=0;i<json_data.listings.length;i++){
-        if (json_data.listings[i].author==username){
-            if(!placesName[json_data.listings[i].place]){
-                placesName[json_data.listings[i].place]=0;
-                placeNames.push(json_data.listings[i].place);
-            }
-            placesName[json_data.listings[i].place]++;
-        }
-        let body=""
-        if (json_data.listings[i].status==="opened"){
-                body = body +
-                `
+	let username = login.getCookie('username');
+	let min = -1;
+	let favouritePlaceName = '';
+	let placesName = [];
+	let placeNames = [];
+
+	displayName.innerHTML = json_data.userData.fullName;
+	profilePic.src = json_data.userData.imgUrl;
+	likes.innerHTML = json_data.userData.likes;
+	dislikes.innerHTML = json_data.userData.dislikes;
+	skills.innerHTML = '';
+	listingsActive.innerHTML = '';
+	listingsCompleted.innerHTML = '';
+	for (let i = 0; i < json_data.userData.skills.length; i++) {
+		skills.innerHTML = skills.innerHTML + ` <li class="skill">${json_data.userData.skills[i]}</li>`;
+	}
+	for (let i = 0; i < json_data.listings.length; i++) {
+		if (json_data.listings[i].author == username) {
+			if (!placesName[json_data.listings[i].place]) {
+				placesName[json_data.listings[i].place] = 0;
+				placeNames.push(json_data.listings[i].place);
+			}
+			placesName[json_data.listings[i].place]++;
+		}
+		let body = '';
+		if (json_data.listings[i].status === 'active') {
+			body =
+				body +
+				`
             <div class="flex__item">
                 <article class="listing">
                 <div class="listing__content">
@@ -131,14 +125,13 @@ export function renderAccountPage(json_data){
                     <ul id="js-skills" class="skills-req">
             `;
 
-            for (let j = 0; j < json_data.listings[i].skills.length; j++) {
+			for (let j = 0; j < json_data.listings[i].skills.length; j++) {
+				body = body + `<li>${json_data.listings[i].skills[j]}</li>`;
+			}
 
-                body = body +
-                    `<li>${json_data.listings[i].skills[j]}</li>`
-            }
-
-            body = body +
-                ` </ul>
+			body =
+				body +
+				` </ul>
                     <div class="actions">
                     <button id="js-join" class="join">Join</button>
                     <a href="" class="view-listing">View Listing</a>
@@ -153,12 +146,12 @@ export function renderAccountPage(json_data){
                 <span class="listing__type">${json_data.listings[i].type}</span>
                 </article>
             </div>
-            `
-            listingsActive.innerHTML =  listingsActive.innerHTML+ body;
-        }
-        else{
-            body = body +
-            `
+            `;
+			listingsActive.innerHTML = listingsActive.innerHTML + body;
+		} else {
+			body =
+				body +
+				`
         <div class="flex__item">
             <article class="listing">
             <div class="listing__content">
@@ -166,14 +159,13 @@ export function renderAccountPage(json_data){
                 <ul id="js-skills" class="skills-req">
         `;
 
-        for (let j = 0; j < json_data.listings[i].skills.length; j++) {
+			for (let j = 0; j < json_data.listings[i].skills.length; j++) {
+				body = body + `<li>${json_data.listings[i].skills[j]}</li>`;
+			}
 
-            body = body +
-                `<li>${json_data.listings[i].skills[j]}</li>`
-        }
-
-        body = body +
-            ` </ul>
+			body =
+				body +
+				` </ul>
                 <div class="actions">
                 <button id="js-join" class="join">Join</button>
                 <a href="" class="view-listing">View Listing</a>
@@ -188,45 +180,44 @@ export function renderAccountPage(json_data){
             <span class="listing__type">${json_data.listings[i].type}</span>
             </article>
         </div>
-        `
-        listingsCompleted.innerHTML =  listingsActive.innerHTML+ body;
-
-        }
-        
-    }
-    for (let i=0;i<placeNames.length;i++)
-    {
-        if(placesName[placeNames[i]]>min){
-            min=placesName[placeNames[i]];
-            favouritePlaceName=placeNames[i];
-        }
-    }
-    favouritePlace.innerText=favouritePlaceName;
-
+        `;
+			listingsCompleted.innerHTML = listingsActive.innerHTML + body;
+		}
+	}
+	for (let i = 0; i < placeNames.length; i++) {
+		if (placesName[placeNames[i]] > min) {
+			min = placesName[placeNames[i]];
+			favouritePlaceName = placeNames[i];
+		}
+	}
+	favouritePlace.innerText = favouritePlaceName;
 }
 export function renderAddListing() {
-  let placesImplement = document.getElementById("js-input-place-implement");
-  let placesStudy = document.getElementById("js-input-place-study");
-  fetch("getPlaces")
-      .then((resp) => resp.json())
-      .then(function (json_data) {
-          for (let i = 0; i < json_data.length; i++) {
-              placesImplement.innerHTML = placesImplement.innerHTML +
-                  `<option value="${json_data[i].name}">${json_data[i].name} </option>`;
-              placesStudy.innerHTML = placesStudy.innerHTML +
-                  `<option value="${json_data[i].name}"> ${json_data[i].name} </option>`;
-          }
-      })
+	let placesImplement = document.getElementById('js-input-place-implement');
+	let placesStudy = document.getElementById('js-input-place-study');
+	fetch('getPlaces')
+		.then(resp => resp.json())
+		.then(function(json_data) {
+			for (let i = 0; i < json_data.length; i++) {
+				placesImplement.innerHTML =
+					placesImplement.innerHTML + `<option value="${json_data[i].name}">${json_data[i].name} </option>`;
+				placesStudy.innerHTML =
+					placesStudy.innerHTML + `<option value="${json_data[i].name}"> ${json_data[i].name} </option>`;
+			}
+		});
 }
 export function renderAllplaces(json_data) {
-  let placesGrid = document.getElementById("js-places-grid");
-  placesGrid.innerHTML = "";
-  for (let i = 0; i < json_data.length; i++) {
-      placesGrid.innerHTML = placesGrid.innerHTML +
-          `<a href="/single-place.html" id= ${json_data[i].name}  class="grid__item">
+	let placesGrid = document.getElementById('js-places-grid');
+	placesGrid.innerHTML = '';
+	for (let i = 0; i < json_data.length; i++) {
+		placesGrid.innerHTML =
+			placesGrid.innerHTML +
+			`<a href="/single-place.html" id= ${json_data[i].name}  class="grid__item">
 <article class="card">
   <div class="card__content">
-    <h2 class="card__title">`+ json_data[i].name + `</h2>
+    <h2 class="card__title">` +
+			json_data[i].name +
+			`</h2>
   </div>
   <picture class="card_image">
     <source media="(min-width: 800px)" srcset="${json_data[i].img[0]}" type="image/webp">
@@ -238,18 +229,17 @@ export function renderAllplaces(json_data) {
     <img src="${json_data[i].img[3]}" style="width:100%;height: 100%;">
   </picture>
 </article>
- </a>`
-  }
-  pagesEvents.browsePlacesEvents();
+ </a>`;
+	}
+	pagesEvents.browsePlacesEvents();
 }
 export function renderSinglePlacePage(json_data) {
-  let subscribersModal = document.getElementById("js-subscribers-modal");
-  let subscribersCount = document.getElementById("js-subscribers-count");
-  let listingsInProgress = document.getElementById("js-listings-in-progress");
-  let listingsFinished = document.getElementById("js-finished-listings");
+	let subscribersModal = document.getElementById('js-subscribers-modal');
+	let subscribersCount = document.getElementById('js-subscribers-count');
+	let listingsInProgress = document.getElementById('js-listings-in-progress');
+	let listingsFinished = document.getElementById('js-finished-listings');
 
-
-  document.getElementById("js-place-img").innerHTML = `
+	document.getElementById('js-place-img').innerHTML = `
   <picture class="card_image">
   <source media="(min-width: 800px)" srcset="${json_data.locationInformation.img[0]}" type="image/webp">
   <source media="(min-width: 800px)" srcset="${json_data.locationInformation.img[1]}" type="image/jpg">
@@ -258,34 +248,34 @@ export function renderSinglePlacePage(json_data) {
   <source media="(min-width: 300px)" srcset="${json_data.locationInformation.img[5]}"  type="image/webp">
   <source media="(min-width: 300px)" srcset="${json_data.locationInformation.img[6]}"  type="image/jpg">  
   <img src="${json_data.locationInformation.img[7]}" style="width:100%;height: 100%;">
-   </picture>`
+   </picture>`;
 
-  let value = 0;
+	let value = 0;
 
-  document.getElementById("js-place-name").innerText = json_data.locationInformation.name;
-  pagesEvents.singlePageEvents();
-  for (let i = 0; i < json_data.subscribers.length; i++) {
-      if (json_data.subscribers[i].fullName === login.getCookie("username")) {
-          document.getElementById("js-subscribe-title").innerHTML = "Unsubscribe";
-          value = -1;
-      }
-      else {
-          subscribersModal.innerHTML = subscribersModal.innerHTML +
-              `<div class="subscriber-container">
+	document.getElementById('js-place-name').innerText = json_data.locationInformation.name;
+	pagesEvents.singlePageEvents();
+	for (let i = 0; i < json_data.subscribers.length; i++) {
+		if (json_data.subscribers[i].fullName === login.getCookie('username')) {
+			document.getElementById('js-subscribe-title').innerHTML = 'Unsubscribe';
+			value = -1;
+		} else {
+			subscribersModal.innerHTML =
+				subscribersModal.innerHTML +
+				`<div class="subscriber-container">
           <img class="subscriber__pic" src="${json_data.subscribers[i].imgUrl}">
           <div class="subscriber__info">
               <h3 class="subscriber__info-name">${json_data.subscribers[i].fullName}</h3>
               <button class="subscriber__info-profile" >View profile</button>
           </div>
-       </div>`
-      }
-  }
-  subscribersCount.innerText = json_data.subscribers.length + value;
-  let body = ""
-  for (let i = 0; i < json_data.openListings.length; i++) {
-
-      body = body +
-          `
+       </div>`;
+		}
+	}
+	subscribersCount.innerText = json_data.subscribers.length + value;
+	let body = '';
+	for (let i = 0; i < json_data.openListings.length; i++) {
+		body =
+			body +
+			`
       <div class="flex__item">
           <article class="listing">
           <div class="listing__content">
@@ -293,14 +283,13 @@ export function renderSinglePlacePage(json_data) {
               <ul id="js-skills" class="skills-req">
       `;
 
-      for (let j = 0; j < json_data.openListings[i].skills.length; j++) {
+		for (let j = 0; j < json_data.openListings[i].skills.length; j++) {
+			body = body + `<li>${json_data.openListings[i].skills[j]}</li>`;
+		}
 
-          body = body +
-              `<li>${json_data.openListings[i].skills[j]}</li>`
-      }
-
-      body = body +
-          ` </ul>
+		body =
+			body +
+			` </ul>
               <div class="actions">
               <button id="js-join" class="join">Join</button>
               <a href="" class="view-listing">View Listing</a>
@@ -315,25 +304,26 @@ export function renderSinglePlacePage(json_data) {
           <span class="listing__type">${json_data.openListings[i].type}</span>
           </article>
       </div>
-      `
-  }
-  listingsInProgress.innerHTML = body;
-  body = ""
-  for (let i = 0; i < json_data.closeListings.length; i++) {
-      body = body +
-          `
+      `;
+	}
+	listingsInProgress.innerHTML = body;
+	body = '';
+	for (let i = 0; i < json_data.closeListings.length; i++) {
+		body =
+			body +
+			`
       <div class="flex__item">
           <article class="listing">
           <div class="listing__content">
               <h3 class="title">${json_data.closeListings[i].title}</h3>
               <ul id="js-skills" class="skills-req">
       `;
-      for (let j = 0; j < json_data.closeListings.skills[i].length; j++) {
-          body = body +
-              `<li>${json_data.closeListings[i].skills[j]}</li>`
-      }
-      body = body +
-          ` </ul>
+		for (let j = 0; j < json_data.closeListings[i].skills.length; j++) {
+			body = body + `<li>${json_data.closeListings[i].skills[j]}</li>`;
+		}
+		body =
+			body +
+			` </ul>
               <div class="actions">
               <button id="js-join" class="join">Join</button>
               <a href="" class="view-listing">View Listing</a>
@@ -348,18 +338,17 @@ export function renderSinglePlacePage(json_data) {
           <span class="listing__type">${json_data.closeListings[i].type}</span>
           </article>
       </div>
-      `
-  }
-  listingsFinished.innerHTML = body;
+      `;
+	}
+	listingsFinished.innerHTML = body;
 }
 export function renderAllListingsPage(json_data) {
-  console.log(json_data); 
-   let listings = document.getElementById("js-listings-flex");
-  let body = ""
-  for (let i = 0; i < json_data.length; i++) {
-
-      body = body +
-          `
+	let listings = document.getElementById('js-listings-flex');
+	let body = '';
+	for (let i = 0; i < json_data.length; i++) {
+		body =
+			body +
+			`
       <div class="flex__item">
           <article class="listing">
           <div class="listing__content">
@@ -367,16 +356,15 @@ export function renderAllListingsPage(json_data) {
               <ul id="js-skills" class="skills-req">
       `;
 
-      for (let j = 0; j < json_data[i].skills.length; j++) {
+		for (let j = 0; j < json_data[i].skills.length; j++) {
+			body = body + `<li>${json_data[i].skills[j]}</li>`;
+		}
 
-          body = body +
-              `<li>${json_data[i].skills[j]}</li>`
-      }
-
-      body = body +
-          ` </ul>
+		body =
+			body +
+			` </ul>
               <div class="actions">
-              <button id="js-join" class="join">Join</button>
+              <button id="js-join" value=${json_data[i].id} class="join">Join</button>
               <a href="#" class="view-listing" id=${json_data[i].id}>View Listing</a>
               </div>
           </div>
@@ -389,33 +377,99 @@ export function renderAllListingsPage(json_data) {
           <span class="listing__type">${json_data[i].type}</span>
           </article>
       </div>
-      `
-  }
-  listings.innerHTML = body;
-  
+      `;
+	}
+	listings.innerHTML = body;
 }
-export function renderListingPage(json_data){
-   let title=document.getElementById("js-listing-title");
-   let type=document.getElementById("js-listing-type");
-   let place=document.getElementById("js-listing-place");
-   let header=document.getElementById("js-listing-header");
-   let skills=document.getElementById("js-listing-skills");
-   let description=document.getElementById("js-listing-desc");
-   let contributors=document.getElementById("js-listing-contributors");
-   let contributorsCount=document.getElementById("js-listing-contributors-count");
+export function renderListingPage(json_data) {
+	let title = document.getElementById('js-listing-title');
+	let type = document.getElementById('js-listing-type');
+	let place = document.getElementById('js-listing-place');
+	let header = document.getElementById('js-listing-header');
+	let skills = document.getElementById('js-listing-skills');
+	let description = document.getElementById('js-listing-desc');
+	let contributors = document.getElementById('js-listing-contributors');
+	let contributorsCount = document.getElementById('js-listing-contributors-count');
+	let userFound = false;
+	let username = login.getCookie('username');
+	let postedComments = document.getElementById('js-posted-comments');
+	if (json_data.listing.author === username) {
+		userFound = true;
+		var now = new Date();
+		var time = now.getTime();
+		time += 3600 * 1000;
+		now.setTime(time);
 
-   title.innerText=json_data.title;
-   type.innerText=json_data.type;
-   place.innerText=json_data.place;
-   header.innerHTML=header.innerHTML+` <a href="" id='${json_data.author}' class="author">${json_data.author}</a>`
-   skills.innerHTML="";
-   for (let i=0;i<json_data.skills.length;i++){
-    skills.innerHTML=skills.innerHTML+`<li class="skill">${json_data.skills[i]}</li>`;
-   }
-   description.innerText=json_data.description;
-   contributorsCount.innerHTML=json_data.contributors.length;
-   contributors.innerHTML=""
-   for (let i=0;i<json_data.contributors.length;i++){
-    contributors.innerHTML=contributors.innerHTML+`<li class="contributor"><a id='${json_data.contributors[i]}' href="">${json_data.contributors[i]}</a></li>`;
-   }
+		document.cookie = 'role=author; expires=' + now.toUTCString() + '; path=/';
+	}
+	title.innerText = json_data.listing.title;
+	type.innerText = json_data.listing.type;
+	place.innerText = json_data.listing.place;
+	header.innerHTML =
+		header.innerHTML +
+		` <a href="" id='${json_data.listing.author}' class="author">${json_data.listing.author}</a>`;
+	skills.innerHTML = '';
+	for (let i = 0; i < json_data.listing.skills.length; i++) {
+		skills.innerHTML = skills.innerHTML + `<li class="skill">${json_data.listing.skills[i]}</li>`;
+	}
+	description.innerText = json_data.listing.description;
+	if (json_data.listing.contributors.length != 0) contributorsCount.innerHTML = json_data.listing.contributors.length;
+	contributors.innerHTML = '';
+	for (let i = 0; i < json_data.listing.contributors.length; i++) {
+		if (json_data.listing.contributors[i] === username) {
+			userFound = true;
+			var now = new Date();
+			var time = now.getTime();
+			time += 3600 * 1000;
+			now.setTime(time);
+
+			document.cookie = 'role=contributor; expires=' + now.toUTCString() + '; path=/';
+		}
+		contributors.innerHTML =
+			contributors.innerHTML +
+			`<li class="contributor"><a id='${json_data.listing.contributors[i]}' href="">${
+				json_data.listing.contributors[i]
+			}</a></li>`;
+	}
+	if (userFound == true) {
+		postedComments.style.display = 'block';
+	
+		let jsComments = document.getElementById('js-comments-container');
+		jsComments.innerHTML = '';
+
+		for (let i = 0; i < json_data.comments.length; i++) {
+			renderComment(json_data.comments[i]);
+		}
+	}
+}
+export function renderComment(commentData) {
+	let jsComments = document.getElementById('js-comments-container');
+	let dateString = new Date(commentData.date).toString();
+	dateString = dateString
+		.split(' ')
+		.slice(0, 4)
+		.join(' ');
+	jsComments.innerHTML =
+		jsComments.innerHTML +
+		`
+   <article class="comment">
+            <section class="comment__author">
+              <section class="comment__meta">
+                <p class="u-name">
+                  ${commentData.author}
+                </p>
+  
+                <span class="u-role u-role--${commentData.role}">${commentData.role}</span>
+                <span class="time">${dateString}</span>
+              </section>
+
+              <img class="profile-pic ${commentData.role}" src="${commentData.imgUrl}" alt="User profile picture">
+          </section>
+
+            <section class="comment__content">
+              <p>${commentData.content}</p>
+            </section>
+
+          </article>
+   `;
 }
