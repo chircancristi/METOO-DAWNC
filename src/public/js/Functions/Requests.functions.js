@@ -8,6 +8,6 @@ export function postDataToServer(url, data) {
 		}),
 	});
 	fetch(request).catch(function(error) {
-		console.log(error);
+		throw new Error("Error at posting the date", error)
 	});
 }

@@ -1,4 +1,6 @@
 .listing__comments {
+  display:none;
+
   h2 {
     margin-bottom: 1em;
   }
@@ -11,7 +13,7 @@
     grid-template-rows: auto;
     grid-template-areas: "author"
                          "content";
-    grid-row-gap: .5em;
+    grid-row-gap: 0.5em;
 
     .comment__author {
       grid-area: author;
@@ -56,18 +58,18 @@
           top: -2px;
           left: -2px;
           width: 63px;
-          height: 63px; 
+          height: 63px;
         }
 
         &:before,
         & > img {
           border-radius: 10px;
         }
-        
+
         &.author:before {
           border-color: hsl(48, 89%, 50%);
         }
-        
+
         &.contributor:before {
           border-color: hsl(168, 76%, 42%);
         }

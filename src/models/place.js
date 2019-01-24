@@ -2,20 +2,22 @@ class Place {
 	static getFavoritePlaces(firebase) {
 		const db = firebase.firestore();
 		const settings = {
-			timestampsInSnapshots: true
+			timestampsInSnapshots: true,
 		};
-		
+
 		db.settings(settings);
 
 		let places = [];
 		let aux;
-		
-		return db.collection('Place').get()
+
+		return db
+			.collection('Place')
+			.get()
 			.then(function(querySnapshot) {
 				querySnapshot.forEach(function(doc) {
 					// doc.data() is never undefined for query doc snapshots
 					places.push(doc.data());
-				})
+				});
 
 				for (let i = 0; i < places.length - 1; i++) {
 					for (let j = i + 1; j < places.length; j++) {
@@ -41,15 +43,17 @@ class Place {
 	static getAllPlaces(firebase) {
 		const db = firebase.firestore();
 		const settings = {
-			timestampsInSnapshots: true
+			timestampsInSnapshots: true,
 		};
-		
+
 		db.settings(settings);
 
 		let places = [];
 		let aux;
 
-		return db.collection('Place').get()
+		return db
+			.collection('Place')
+			.get()
 			.then(function(querySnapshot) {
 				querySnapshot.forEach(function(doc) {
 					// doc.data() is never undefined for query doc snapshots
@@ -66,19 +70,23 @@ class Place {
 	static updatePlaceWithListing(firebase, place, listing) {
 		const db = firebase.firestore();
 		const settings = {
-			timestampsInSnapshots: true
+			timestampsInSnapshots: true,
 		};
-		
+
 		db.settings(settings);
 
-		db.collection('Place').where('name', '==', place).get()
+		db.collection('Place')
+			.where('name', '==', place)
+			.get()
 			.then(function(querySnapshot) {
 				querySnapshot.forEach(function(doc) {
 					// doc.data() is never undefined for query doc snapshots
 					let currentListings = doc.data().listings;
 					currentListings.push(listing);
-					
-					db.collection('Place').doc(doc.id).update({
+
+					db.collection('Place')
+						.doc(doc.id)
+						.update({
 							listings: currentListings,
 						});
 				});
@@ -91,14 +99,17 @@ class Place {
 	static getPlaceByName(name, firebase) {
 		const db = firebase.firestore();
 		const settings = {
-			timestampsInSnapshots: true
+			timestampsInSnapshots: true,
 		};
-		
+
 		db.settings(settings);
 
 		let data;
 
-		return db.collection('Place').where('name', '==', name).get()
+		return db
+			.collection('Place')
+			.where('name', '==', name)
+			.get()
 			.then(function(querySnapshot) {
 				querySnapshot.forEach(function(doc) {
 					// doc.data() is never undefined for query doc snapshots
@@ -112,13 +123,15 @@ class Place {
 	static subscribeToPlace(namePlace, username, firebase) {
 		const db = firebase.firestore();
 		const settings = {
-			timestampsInSnapshots: true
+			timestampsInSnapshots: true,
 		};
-		
+
 		db.settings(settings);
-		
+
 		let subscribers = [];
-		db.collection('Place').where('name', '==', namePlace).get()
+		db.collection('Place')
+			.where('name', '==', namePlace)
+			.get()
 			.then(function(querySnapshot) {
 				querySnapshot.forEach(function(doc) {
 					subscribers = doc.data().subscribedUsers;
@@ -131,12 +144,14 @@ class Place {
 						subscribers.splice(index, 1);
 					}
 
-					db.collection('Place').doc(doc.id).update({
-						subscribedUsers: subscribers,
-					});
-				})
+					db.collection('Place')
+						.doc(doc.id)
+						.update({
+							subscribedUsers: subscribers,
+						});
+				});
 			})
-			.catch((error) => {
+			.catch(error => {
 				throw new Error(error);
 			});
 	}

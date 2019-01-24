@@ -1,10 +1,10 @@
 import * as login from "./Functions/Login.functions.js";
-import * as render from "./Functions/Render.functions.js";
+import * as fetch from "./Functions/Fetch.functions.js";
 import * as navbarEvents from "./Listeners/NavbarEvents.listeners.js";
 import * as pagesEvents from "./Listeners/PagesEvents.listeners.js";
 import * as locationFunctions from "./Functions/Location.functions.js";
-
-// progressiveEnhancement();
+import * as render from "./Functions/Render.function.js"
+//progressiveEnhancement();
 
 window.onload = function () {
     if (window.location.pathname == "/index.html" || window.location.pathname == "/" ) {
@@ -30,12 +30,12 @@ window.onload = function () {
     if (window.location.pathname == "/single-place.html" || window.location.pathname == "/single-place") {
         render.renderBasicPage();
         pagesEvents.singlePlaceEvents();
-        render.renderSinglePlacePage();
+        fetch.fetchSinglePlaceData();
     }
     
     if (window.location.pathname == "/account.html") {
         render.renderBasicPage();
-        render.renderAccountPage();
+        fetch.fetchAccountData();
     }
     
     if (window.location.pathname == "/add-listing.html") {
@@ -50,14 +50,19 @@ window.onload = function () {
         }
 
         render.renderBasicPage();
-        render.renderListingsPage();
-        pagesEvents.browseListingsEvents();
+        fetch.fetchAllListingsData();
+
     }
     
     if (window.location.pathname == "/browse-places.html") {
         render.renderBasicPage();
-        render.renderAllPlaces();
-   
+        fetch.fetchAllPlacesData();
+    }
+    if (  window.location.pathname=="/single-listing" )
+    {
+        render.renderBasicPage();
+        fetch.fetchListingData();
+
     }
 }
 
