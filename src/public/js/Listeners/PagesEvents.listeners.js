@@ -28,12 +28,12 @@ export function addListingPageEvents() {
 	});
 
 	document.getElementById('js-listing-implement').addEventListener('click', e => {
-		addListing.setType('implement');
+		addListing.setType('Coding');
 		addListing.changeQuestion(e.target, 'implement');
 	});
 
 	document.getElementById('js-listing-study').addEventListener('click', e => {
-		addListing.setType('study');
+		addListing.setType('Study');
 		addListing.changeQuestion(e.target, 'study');
 	});
 }
@@ -70,4 +70,19 @@ export function browsePlacesEvents() {
 //single page
 export function singlePageEvents() {
 	document.getElementById('js-subscribe-button').addEventListener('click', place.subscribe);
+}
+export function viewListingEvents() {
+	let listings = document.getElementsByClassName('view-listing');
+ 
+	for (let i = 0; i < listings.length; i++) {
+		listings[i].addEventListener('click', function() {
+			var now = new Date();
+			var time = now.getTime();
+			time += 3600 * 1000;
+			now.setTime(time);
+
+			document.cookie = 'listing=' + listings[i].id + '; expires=' + now.toUTCString() + '; path=/';
+			document.location.href = `/single-listing`;
+		});
+	}
 }

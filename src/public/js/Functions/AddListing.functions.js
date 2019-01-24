@@ -75,14 +75,14 @@ export function changeQuestion(target, type) {
 	}
 	if (target.id === 'next') {
 		if (target.value === 'title') {
-			if (listingType === 'implement') {
+			if (listingType === 'Coding') {
 				if (document.getElementById('js-input-title-implement').value == '') {
 					document.getElementById('js-error-title-implement').innerText = 'Please fill the field';
 					return false;
 				}
 				listingName = document.getElementById('js-input-title-implement').value;
 			}
-			if (listingType === 'study') {
+			if (listingType === 'Study') {
 				if (document.getElementById('js-input-title-study').value == '') {
 					document.getElementById('js-error-title-study').innerText = 'Please fill the field';
 					return false;
@@ -91,24 +91,24 @@ export function changeQuestion(target, type) {
 			}
 		}
 		if (target.value === 'place') {
-			if (listingType === 'implement') {
+			if (listingType === 'Coding') {
 				let dropDownElement = document.getElementById('js-input-place-implement');
 				listingLocation = dropDownElement.options[dropDownElement.selectedIndex].value;
 			}
-			if (listingType === 'study') {
+			if (listingType === 'Study') {
 				let dropDownElement = document.getElementById('js-input-place-study');
 				listingLocation = dropDownElement.options[dropDownElement.selectedIndex].value;
 			}
 		}
 		if (target.value === 'concept') {
-			if (listingType === 'implement') {
+			if (listingType === 'Coding') {
 				if (document.getElementById('js-input-concept-implement').value == '') {
 					document.getElementById('js-error-concept-implement').innerText = 'Please fill the field';
 					return false;
 				}
 				listingConcept = document.getElementById('js-input-concept-implement').value;
 			}
-			if (listingType === 'study') {
+			if (listingType === 'Study') {
 				if (document.getElementById('js-input-concept-study').value == '') {
 					document.getElementById('js-error-concept-study').innerText = 'Please fill the field';
 					return false;
@@ -117,14 +117,14 @@ export function changeQuestion(target, type) {
 			}
 		}
 		if (target.value === 'description') {
-			if (listingType === 'implement') {
+			if (listingType === 'Coding') {
 				if (document.getElementById('js-input-description-implement').value == '') {
 					document.getElementById('js-error-description-implement').innerText = 'Please fill the field';
 					return false;
 				}
 				listingShortDescription = document.getElementById('js-input-description-implement').value;
 			}
-			if (listingType === 'study') {
+			if (listingType === 'Study') {
 				if (document.getElementById('js-input-description-study').value == '') {
 					document.getElementById('js-error-description-study').innerText = 'Please fill the field';
 					return false;
@@ -133,14 +133,14 @@ export function changeQuestion(target, type) {
 			}
 		}
 		if (target.value === 'skills') {
-			if (listingType === 'implement') {
+			if (listingType === 'Coding') {
 				if (document.getElementById('js-input-skills-implement').value == '') {
 					document.getElementById('js-error-skills-implement').innerText = 'Please fill the field';
 					return false;
 				}
 				listingSkills = document.getElementById('js-input-skills-implement').value.split(' ');
 			}
-			if (listingType === 'study') {
+			if (listingType === 'Study') {
 				if (document.getElementById('js-input-skills-study').value == '') {
 					document.getElementById('js-error-skills-study').innerText = 'Please fill the field';
 					return false;

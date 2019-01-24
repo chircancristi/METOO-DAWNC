@@ -97,17 +97,20 @@ class Listing {
 	static addListing(firebase, data) {
 		const db = firebase.firestore();
 		const settings = {
-			timestampsInSnapshots: true
+			timestampsInSnapshots: true,
 		};
-		
+
 		db.settings(settings);
 
-		db.collection('Listing').get()
-			.then( function(querySnapshot) {
+		db.collection('Listing')
+			.get()
+			.then(function(querySnapshot) {
 				let size = querySnapshot.size;
 				let listingId = `l${size + 1}`;
 
-				db.collection('Listing').doc(listingId).set({
+				db.collection('Listing')
+					.doc(listingId)
+					.set({
 						type: data.type,
 						status: 'opened',
 						author: data.author,
@@ -118,7 +121,7 @@ class Listing {
 						concept: data.concept,
 						comments: [],
 						contributors: [],
-						
+						id: listingId,
 					})
 					.then(() => {
 						place.updatePlaceWithListing(firebase, data.place, listingId);
@@ -127,18 +130,21 @@ class Listing {
 					.catch(error => {
 						throw new Error(error);
 					});
-		});
+			});
 	}
 	static getListingsAtLocation(place, firebase) {
 		const db = firebase.firestore();
 		const settings = {
-			timestampsInSnapshots: true
+			timestampsInSnapshots: true,
 		};
-		
+
 		db.settings(settings);
-		
+
 		let listings = [];
-		return db.collection('Listing').where('place', '==', place).get()
+		return db
+			.collection('Listing')
+			.where('place', '==', place)
+			.get()
 			.then(function(querySnapshot) {
 				querySnapshot.forEach(function(doc) {
 					console.log(doc.data());
@@ -155,12 +161,14 @@ class Listing {
 	static getUserListing(username, firebase) {
 		const db = firebase.firestore();
 		const settings = {
-			timestampsInSnapshots: true
+			timestampsInSnapshots: true,
 		};
-		
+
 		db.settings(settings);
 
-		return db.collection('Listing').get()
+		return db
+			.collection('Listing')
+			.get()
 			.then(function(querySnapshot) {
 				let listings = [];
 
@@ -177,7 +185,28 @@ class Listing {
 				});
 
 				return listings;
-		});
+			});
+	}
+	static getListingByName(name, firebase) {
+		const db = firebase.firestore();
+		const settings = {
+			timestampsInSnapshots: true,
+		};
+
+		db.settings(settings);
+
+		listing = db
+			.collection('Listing')
+			.where('id', '==', name)
+			.get()
+			.then(function(listings) {
+				let returnListing;
+				listings.forEach(function(doc) {
+					returnListing = doc.data();
+				});
+				return returnListing;
+			});
+		return listing;
 	}
 }
 

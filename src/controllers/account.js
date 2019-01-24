@@ -10,6 +10,7 @@ module.exports.controller = async function(app, firebase) {
 		let data = user.getUserInformation(firebase, req.body.username);
 
 		data.then(function(value) {
+			console.log(req.body.username);
 			listing.getUserListing(req.body.username, firebase).then(function(listings) {
 				let response = {
 					listings,
