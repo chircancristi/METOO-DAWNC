@@ -82,6 +82,8 @@
   //   padding: 1em 10em;
   // }
 
+  @include content-container-padding;
+
   @include query-below($lap) {
     .listings__nav--new,
     .listings__nav--messages,
