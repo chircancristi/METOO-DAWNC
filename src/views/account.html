@@ -60,9 +60,9 @@
 
   <main class="main-content main--account">
     <section class="account">
-      <div class="account-container">
+      <section class="account-container">
         <div class="account__pic">
-          <img id="js-profile-pic" src="" alt="Profile picture">
+          <img id="js-profile-pic" src="" width="230" height="230" alt="Profile picture">
         </div>
 
         <div class="account__details">
@@ -83,8 +83,7 @@
   
           <div class="details__skills">
             <h3 class="title">Skills</h3>
-            <ul id="js-skills" class="skills">
-            </ul>
+            <ul id="js-skills" class="skills"></ul>
           </div>
           
           <div class="details__fav-place">
@@ -92,11 +91,9 @@
             <span id="js-favourite-place"></span>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="account-listings">
-      <div class="listings-container">
+      <section class="listings-container">
         <h2>Listings</h2>
 
         <!-- TODO: add a class to the <ul>s inside the tabs @razsbg -->
@@ -128,7 +125,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </section>
   </main>
 
@@ -141,8 +138,12 @@
       <li><a href="#">Contact</a></li>
     </ul>
   </footer>
+
   <script src="/js/Utilities/localforage.js"></script>
   <script type="module" src="/js/main.js"></script>
-
+  <script>
+    /* let addSkillBtnMarkup = `<button id="js-add-skill" class="add-skill" title="Add new skill">👌</button>`;
+    let editSkillsBtnMarkup = `<button id="js-edit-skills" class="edit">Edit skills</button>`; */
+  </script>
 </body>
 </html>

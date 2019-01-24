@@ -12,7 +12,7 @@
       margin-bottom: 1em;
 
       .header--listing {
-        margin-bottom: .75em;
+        margin-bottom: .25em;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -58,7 +58,7 @@
         .skills-required {
           position: relative;
           display: flex;
-          flex-wrap: wrap;
+          flex-flow: row wrap;
   
           &:before {
             content: "Skills required";
@@ -67,6 +67,7 @@
           .skill {
             padding: .2em .3em;
             border: 1px solid #354a5f;
+            margin-top: .5em;
             background-color: white;
             box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
   
