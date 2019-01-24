@@ -2,7 +2,9 @@ import * as addListing from '../Functions/AddListing.functions.js';
 import * as place from '../Functions/Places.functions.js';
 import * as singleListing from '../Functions/SingleListing.functions.js';
 import * as requests from '../Functions/Requests.functions.js';
-import * as login from '../Functions/Login.functions.js'
+import * as login from '../Functions/Login.functions.js';
+import * as render from '../Functions/Render.function.js';
+
 
 export function singlePlaceEvents() {
 	var slideIndex = 1;
@@ -64,6 +66,9 @@ export function singlePageEvents() {
 export function viewListingEvents() {
 	let listings = document.getElementsByClassName('view-listing');
 	let join = document.getElementsByClassName('join');
+	let search = document.getElementById('js-search-button');
+	let searchValue = document.getElementById('js-search-value');
+
 	for (let i = 0; i < listings.length; i++) {
 		listings[i].addEventListener('click', function() {
 			var now = new Date();
@@ -77,21 +82,72 @@ export function viewListingEvents() {
 	}
 	for (let i = 0; i < join.length; i++) {
 		join[i].addEventListener('click', function() {
-			let type="";
+			let type = '';
 			join[i].classList.toggle('joined');
-			join[i].innerHTML === '✔' ? (join[i].innerHTML = 'Join',type='leave') : (join[i].innerHTML = '✔',type='join');
+			join[i].innerHTML === '✔'
+				? ((join[i].innerHTML = 'Join'), (type = 'leave'))
+				: ((join[i].innerHTML = '✔'), (type = 'join'));
 			let listing = join[i].value;
 			let data = {
 				user: login.getCookie('username'),
 				listing: listing,
 				imgUrl: login.getCookie('imgUrl'),
-				type:type
+				type: type,
 			};
-			
-			requests.postDataToServer('/joinListing', data);
 
+			requests.postDataToServer('/joinListing', data);
 		});
 	}
+	search.addEventListener('click',function(){
+		let networkDataReceived = false;
+		let value=searchValue.value;
+		fetch(
+			`listingsAfterLocation?latitude=${login.getCookie('latitude')}&longtitude=${login.getCookie(
+				'longitude'
+			)}&username=${login.getCookie('username')}`
+		)
+			.then(resp => resp.json())
+			.then(function(json_data) {
+				networkDataReceived = true;
+				for (let i=0;i<json_data.length;i++){
+					console.log(value);
+					if (!json_data[i].place.includes(value))
+					{
+						json_data.splice(i, 1);
+						i = i - 1;
+					}
+				}
+				render.renderAllListingsPage(json_data);
+				viewListingEvents();
+			})
+			.catch(function(error) {
+				throw new Error( error);
+			});
+		localforage
+			.getItem(`/listingsAfterLocation`, function(err, value) {
+				if (!value) throw Error('No data');
+				return value;
+			})
+			.then(function(data) {
+				// don't overwrite newer network data
+	
+				if (!networkDataReceived) {
+					for (i=0;i<json_data.length;i++){
+						if (!json_data[i].place.contains(value))
+						{
+							json_data[i].splice(i, 1);
+							i = i - 1;
+						}
+					}
+					render.renderAllListingsPage(json_data);
+
+					viewListingEvents();
+				}
+			})
+			.catch(function(error) {
+				throw new Error('Problem acessing the cache', error);
+			});
+	})
 }
 export function singleListingEvents() {
 	let postComment = document.getElementById('js-post-comment');
