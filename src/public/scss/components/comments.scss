@@ -105,7 +105,7 @@
         display: block;
         position: absolute;
         top: 50%;
-        left: .5em;
+        left: 1.25em;
         transform: translateY(-50%);
         color: hsl(210, 28%, 80%);
       }
@@ -133,7 +133,6 @@
         }
       }
 
-      &:focus:after,
       &:not(:empty):after {
         display: none;
       }

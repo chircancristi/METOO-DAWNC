@@ -55,6 +55,11 @@ html {
   
       width: 90%;
       height: 90%;
+      
+      @include query-below($small) {
+        width: 100%;
+        height: 95%;
+      }
     }
   }
 

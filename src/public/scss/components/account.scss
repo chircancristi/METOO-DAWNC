@@ -3,11 +3,10 @@
   flex-direction: column;
 
   .account {
-    padding: 0 3em;
-  
     .account-container {
+      margin-bottom: 2em;
       display: grid;
-      grid-template-columns: 230px 30px 1fr;
+      grid-template-columns: 230px 20px 1fr;
   
       .account__pic {
         grid-column: 1 / 2;
@@ -17,14 +16,15 @@
         max-width: 230px;
         max-height: 230px;
         overflow: hidden;
-        box-shadow: 3px 4px 15px hsl(184, 9%, 70%);        
+        box-shadow: 0 1rem 3rem hsla(0, 0%, 0%, 0.15);
 
         img {
-          width: 100%;
+          border-radius: 7px;
+          max-width: 100%;
           height: auto;  
         }
       }
-  
+      
       .account__details {
         grid-column: 3 / 4;
         grid-row: 1 / 2;
@@ -59,87 +59,136 @@
         }
         
         .details__skills {
-          margin-bottom: 1em;;
-  
+          margin-bottom: .75em;
+
           .title {
-            margin-bottom: .4em;
+            font-weight: 500;
           }
   
           .skills {
             display: flex;
+            flex-flow: row wrap;
+
+            &:nt ~ .edit {
+
+            }
     
             .skill {
               padding: .2em .3em;
               border: 1px solid hsl(210, 29%, 29%);
+              margin-top: .5em;
               cursor: default;
+              background-color: white;
+              box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
     
               &:not(:last-of-type){
                 margin-right: .5em;
               }
             }
+
+            .add-skill,
+            .edit {
+              transition: all .15s ease-in;
+            }
+
+            .add-skill {
+              border: 0;
+              opacity: 0;
+              pointer-events: none;
+              font-size: 1.25em;
+              background-color: transparent;
+
+              &:nth-child(1),
+              &.in-view {
+                opacity: 1;
+                pointer-events: auto;
+              }
+            }
+
+            .edit {
+              padding: 0;
+              border: 0;
+              margin-top: .5em;
+              flex: 1 0 100%;
+              
+              opacity: 1;
+              pointer-events: auto;
+              text-align: left;
+              font-weight: 600;
+              color: hsl(204, 70%, 53%);
+              background-color: transparent;
+  
+              &:nth-child(2) {
+                opacity: 0;
+                pointer-events: none;
+              }
+              
+              &:hover {
+                text-decoration: underline;
+              }
+            }
           }
         }
   
-        .details__fav-place {
-          .title {
-            margin-bottom: .4em;
+        .details__fav-place .title {
+          margin-bottom: .5em;
+          font-weight: 500;
+        }
+      }
+    }
+
+    .listings-container {
+      h2 {
+        margin-bottom: 1em;
+      }
+  
+      .listings-tabs {
+        border-bottom: 1px solid hsl(216, 5%, 82%);     
+        display: flex;
+        position: relative;
+  
+        .tab {
+          &:not(:last-of-type) {
+            margin-right: 1em;
+          }
+  
+          .tab__checkbox {
+            display: none;
+  
+            &:checked + label {
+              color: hsl(204, 70%, 53%);
+            }
+  
+            &:checked ~ .tab__content {
+              display: block;
+            }
+          }
+  
+          label {
+            border-bottom: 2px solid transparent;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 600;
+  
+            &:hover {
+              border-color: hsl(204, 70%, 53%);
+            }
+          }
+  
+          .tab__content {
+            position: absolute;
+            top: 2em;
+            left: 0;
+            
+            width: 100%;
+            display: none;
+            transition: all .3s ease-in-out;
+            @include listings;
           }
         }
       }
     }
-  }
 
-  .account-listings {
-    padding: 2.5em 3em 0;
-
-    h2 {
-      margin-bottom: 1em;
-    }
-
-    .listings-tabs {
-      border-bottom: 1px solid hsl(216, 5%, 82%);     
-      display: flex;
-      position: relative;
-
-      .tab {
-        &:not(:last-of-type) {
-          margin-right: 1em;
-        }
-
-        .tab__checkbox {
-          display: none;
-
-          &:checked + label {
-            color: hsl(204, 70%, 53%);
-          }
-
-          &:checked ~ .tab__content {
-            display: block;
-          }
-        }
-
-        label {
-          border-bottom: 2px solid transparent;
-          cursor: pointer;
-          font-size: 1.1em;
-          font-weight: 600;
-
-          &:hover {
-            border-color: hsl(204, 70%, 53%);
-          }
-        }
-
-        .tab__content {
-          position: absolute;
-          top: 2em;
-          left: 0;
-          
-          width: 100%;
-          display: none;
-          transition: all .3s ease-in-out;
-          @include listings;
-        }
-      }
-    }
+    @include content-container-padding;
   }
 }
