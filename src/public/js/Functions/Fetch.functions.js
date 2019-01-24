@@ -8,7 +8,6 @@ export function fetchAccountData() {
 	let data = {
 		username: login.getCookie('username'),
 	};
-	console.log(data);
 
 	let request = new Request('userInformation', {
 		method: 'POST',
@@ -45,18 +44,18 @@ export function fetchAllPlacesData() {
 		.then(resp => resp.json())
 		.then(function(json_data) {
 			networkDataReceived = true;
-			render.renderAllplaces(data);
+			render.renderAllplaces(json_data);
 		});
 	localforage
 		.getItem('/getPlaces', function(err, value) {
 			if (!value) throw Error('No data');
 			return value;
 		})
-		.then(function(data) {
+		.then(function(json_data) {
 			// don't overwrite newer network data
 
 			if (!networkDataReceived) {
-				render.renderAllplaces(data);
+				render.renderAllplaces(json_data);
 			}
 		})
 		.catch(function(error) {
