@@ -11,7 +11,8 @@
     grid-template-rows: auto;
     grid-template-areas: "author"
                          "content";
-    
+    grid-row-gap: .5em;
+
     .comment__author {
       grid-area: author;
       display: flex;
@@ -23,6 +24,7 @@
         
         .u-name,
         .u-role {
+          margin-bottom: .25em;
           font-weight: 600;
         }
         
@@ -33,26 +35,46 @@
         .u-role--contributor {
           color: hsl(168, 76%, 42%);
         }
+
+        .time {
+          font-size: .8em;
+        }
       }
 
       .profile-pic {
-        padding: 2px;
-        border: 2px solid hsl(210, 28%, 29%);
-        border-radius: 10px;
         margin-right: .5em;
         
+        position: relative;
         order: -1;
         flex: 0 0 auto;
-        max-width: 60px;
-        max-height: 60px;
 
-        &.author {
-          border-color: hsl(48, 89%, 50%);
-
+        &:before {
+          content: "";
+          display: block;
+          border: 3px solid;
+          position: absolute;
+          top: -2px;
+          left: -2px;
+          width: 63px;
+          height: 63px; 
         }
 
-        &.contributor{
+        &:before,
+        & > img {
+          border-radius: 10px;
+        }
+        
+        &.author:before {
+          border-color: hsl(48, 89%, 50%);
+        }
+        
+        &.contributor:before {
           border-color: hsl(168, 76%, 42%);
+        }
+
+        & > img {
+          width: 60px;
+          height: auto;
         }
       }
     }
