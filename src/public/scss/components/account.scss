@@ -1,6 +1,6 @@
 .main--account {
   display: flex;
-  flex-direction: column;
+  flex-flow: column nowrap;
 
   .account {
     .account-container {
@@ -138,6 +138,7 @@
     }
 
     .listings-container {
+
       h2 {
         margin-bottom: 1em;
       }

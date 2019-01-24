@@ -53,7 +53,7 @@ export function loginWithGoogle(firebase) {
 			requests.postDataToServer('loginUser', data);
 			var now = new Date();
 			var time = now.getTime();
-			time += 3600 * 1000;
+			time += 3600 * 4000;
 			now.setTime(time);
 
 			document.cookie = 'username=' + user.displayName + '; expires=' + now.toUTCString() + '; path=/';
@@ -94,7 +94,7 @@ export function loginWithGithub() {
 
 			var now = new Date();
 			var time = now.getTime();
-			time += 3600 * 1000;
+			time += 3600 * 4000;
 			now.setTime(time);
 
 			document.cookie = 'username=' + user.displayName + '; expires=' + now.toUTCString() + '; path=/';
