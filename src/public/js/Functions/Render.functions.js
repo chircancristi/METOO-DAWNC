@@ -365,44 +365,15 @@ export function renderSinglePlacePage(json_data) {
 	listingsFinished.innerHTML = body;
 }
 
-export function renderAllListingsPage(json_data) {
-	let listings = document.getElementById('js-listings-flex');
-	let body = '';
-	for (let i = 0; i < json_data.length; i++) {
-		body =
-			body +
-			`
-      <div class="flex__item">
-          <article class="listing">
-          <div class="listing__content">
-              <h3 class="title">${json_data[i].title}</h3>
-              <ul id="js-skills" class="skills-req">
-      `;
+export function renderAllListingsPage(responseJSON) {
+	let listingsContainer = document.getElementById('js-listings-flex');
+	const listings = responseJSON;
 
-		for (let j = 0; j < json_data[i].skills.length; j++) {
-			body = body + `<li>${json_data[i].skills[j]}</li>`;
-		}
+	listings.forEach((listing) => {
+		let listingEl = markup.browseListing( listing );
 
-		body =
-			body +
-			` </ul>
-              <div class="actions">
-              <button id="js-join" value=${json_data[i].id} class="join">Join</button>
-              <a href="#" class="view-listing" id=${json_data[i].id}>View Listing</a>
-              </div>
-          </div>
-          <div class="listing__meta">
-              <a href="#">
-              <span class="author">${json_data[i].author}</span>
-              </a>
-              <a href="#"><span class="place">${json_data[i].place}</span></a>
-          </div>
-          <span class="listing__type">${json_data[i].type}</span>
-          </article>
-      </div>
-      `;
-	}
-	listings.innerHTML = body;
+		listingsContainer.appendChild( listingEl );
+	});
 }
 
 export function renderListingPage(json_data) {
@@ -410,13 +381,15 @@ export function renderListingPage(json_data) {
 	let type = document.getElementById('js-listing-type');
 	let place = document.getElementById('js-listing-place');
 	let header = document.getElementById('js-listing-header');
-	let skills = document.getElementById('js-listing-skills');
+	let skillsContainer = document.getElementById('js-listing-skills');
 	let description = document.getElementById('js-listing-desc');
 	let contributors = document.getElementById('js-listing-contributors');
 	let contributorsCount = document.getElementById('js-listing-contributors-count');
+
 	let userFound = false;
 	let username = login.getCookie('username');
 	let postedComments = document.getElementById('js-posted-comments');
+
 	if (json_data.listing.author === username) {
 		userFound = true;
 		var now = new Date();
@@ -426,17 +399,24 @@ export function renderListingPage(json_data) {
 
 		document.cookie = 'role=author; expires=' + now.toUTCString() + '; path=/';
 	}
+
 	title.innerText = json_data.listing.title;
 	type.innerText = json_data.listing.type;
 	place.innerText = json_data.listing.place;
 	header.innerHTML =
 		header.innerHTML +
 		` <a href="" id='${json_data.listing.author}' class="author">${json_data.listing.author}</a>`;
-	skills.innerHTML = '';
-	for (let i = 0; i < json_data.listing.skills.length; i++) {
-		skills.innerHTML = skills.innerHTML + `<li class="skill">${json_data.listing.skills[i]}</li>`;
-	}
+	skillsContainer.innerHTML = '';
+
+	let skills = json_data.listing.skills;
+	skills.forEach((skill) => {
+		let skillEl = markup.skill( skill, true );
+
+		skillsContainer.appendChild( skillEl );
+	});
+
 	description.innerText = json_data.listing.description;
+
 	if (json_data.listing.contributors.length != 0) contributorsCount.innerHTML = json_data.listing.contributors.length;
 	contributors.innerHTML = '';
 	for (let i = 0; i < json_data.listing.contributors.length; i++) {
@@ -455,6 +435,7 @@ export function renderListingPage(json_data) {
 				json_data.listing.contributors[i]
 			}</a></li>`;
 	}
+	
 	if (userFound == true) {
 		postedComments.style.display = 'block';
 	
@@ -468,35 +449,8 @@ export function renderListingPage(json_data) {
 }
 
 export function renderComment(commentData) {
-	let jsComments = document.getElementById('js-comments-container');
-	let dateString = new Date(commentData.date).toString();
-	dateString = dateString
-		.split(' ')
-		.slice(0, 4)
-		.join(' ');
-	jsComments.innerHTML =
-		jsComments.innerHTML +
-		`
-   <article class="comment">
-            <section class="comment__author">
-              <section class="comment__meta">
-                <p class="u-name">
-                  ${commentData.author}
-                </p>
-  
-                <span class="u-role u-role--${commentData.role}">${commentData.role}</span>
-                <span class="time">${dateString}</span>
-              </section>
-              
-				<div class="profile-pic ${commentData.role}">
-	              	<img src="${commentData.imgUrl}" alt="User profile picture">
-              </div>
-          </section>
-
-            <section class="comment__content">
-              <p>${commentData.content}</p>
-            </section>
-
-          </article>
-   `;
+	let commentsContainer = document.getElementById('js-comments-container');
+	let commentEl = markup.comment( commentData );
+	
+	commentsContainer.appendChild( commentEl );
 }

@@ -1,7 +1,7 @@
 import * as login from './Login.functions.js';
 import * as events from '../Listeners/NavbarEvents.listeners.js';
 import * as pagesEvents from '../Listeners/PagesEvents.listeners.js';
-import * as render from '../Functions/Render.function.js';
+import * as render from './Render.functions.js';
 
 export function fetchAccountData() {
 	let networkDataReceived = false;
@@ -122,6 +122,7 @@ export function fetchAllListingsData() {
 			throw new Error('Problem acessing the cache', error);
 		});
 }
+
 export function fetchListingData() {
 	let networkDataReceived = false;
 
@@ -133,7 +134,7 @@ export function fetchListingData() {
 			pagesEvents.singleListingEvents();
 		})
 		.catch(function(error) {
-			throw new Error('Error at getting data from the server for the listings elements', error);
+			throw new Error(error);
 		});
 	localforage
 		.getItem(`/listingAfterName?name=${login.getCookie('listing')}`, function(err, value) {

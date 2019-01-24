@@ -1,6 +1,6 @@
 import * as requests from '../Functions/Requests.functions.js';
 import * as login from './Login.functions.js';
-import * as render from '../Functions/Render.function.js';
+import * as render from './Render.functions.js';
 
 export function sendMessage() {
 	let commentContent = document.getElementById('js-post-comment-content');
