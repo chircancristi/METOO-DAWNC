@@ -247,7 +247,7 @@ export function renderAddListing() {
                 placesImplement.innerHTML = placesImplement.innerHTML +
                     `<option value="${json_data[i].name}">${json_data[i].name} </option>`;
                 placesStudy.innerHTML = placesStudy.innerHTML +
-                    `<option value=" ${json_data[i].name} "> ${json_data[i].name} </option>`;
+                    `<option value="${json_data[i].name}"> ${json_data[i].name} </option>`;
             }
         })
 }
@@ -264,10 +264,10 @@ function updateAllplaces(json_data) {
     <picture class="card_image">
       <source media="(min-width: 800px)" srcset="${json_data[i].img[0]}" type="image/webp">
       <source media="(min-width: 800px)" srcset="${json_data[i].img[1]}" type="image/jpg">
-      <source media="(min-width: 600px)" srcset="${json_data[i].img[2]}"  type="image/webp">
-      <source media="(min-width: 600px)" srcset="${json_data[i].img[3]}"  type="image/jpg">
-      <source media="(min-width: 300px)" srcset="${json_data[i].img[4]}"  type="image/webp">
-      <source media="(min-width: 300px)" srcset="${json_data[i].img[5]}"  type="image/jpg">  
+      <source media="(min-width: 600px)" srcset="${json_data[i].img[2]}" type="image/webp">
+      <source media="(min-width: 600px)" srcset="${json_data[i].img[3]}" type="image/jpg">
+      <source media="(min-width: 300px)" srcset="${json_data[i].img[4]}" type="image/webp">
+      <source media="(min-width: 300px)" srcset="${json_data[i].img[5]}" type="image/jpg">  
       <img src="${json_data[i].img[3]}" style="width:100%;height: 100%;">
     </picture>
   </article>

@@ -118,6 +118,7 @@ class Listing {
 						concept: data.concept,
 						comments: [],
 						contributors: [],
+						
 					})
 					.then(() => {
 						place.updatePlaceWithListing(firebase, data.place, listingId);
@@ -140,6 +141,7 @@ class Listing {
 		return db.collection('Listing').where('place', '==', place).get()
 			.then(function(querySnapshot) {
 				querySnapshot.forEach(function(doc) {
+					console.log(doc.data());
 					// doc.data() is never undefined for query doc snapshots
 					listings.push(doc.data());
 				});
