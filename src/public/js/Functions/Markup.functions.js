@@ -179,7 +179,6 @@ export function comment(commentDetails) {
 
 			// get date
 			let dateString = new Date(commentDetails.date).toString();
-			console.log(dateString);
 			dateString = dateString
 				.split(' ')
 				.slice(0, 5)

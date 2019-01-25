@@ -4,7 +4,7 @@ import * as navbarEvents from "./Listeners/NavbarEvents.listeners.js";
 import * as pagesEvents from "./Listeners/PagesEvents.listeners.js";
 import * as locationFunctions from "./Functions/Location.functions.js";
 import * as render from "./Functions/Render.functions.js"
-// progressiveEnhancement();
+progressiveEnhancement();
 
 window.onload = function () {
     if (window.location.pathname == "/index.html" || window.location.pathname == "/" ) {

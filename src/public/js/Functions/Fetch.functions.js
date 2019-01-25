@@ -171,8 +171,9 @@ export function fetchListingData() {
 		.catch(function(error) {
 			throw new Error(error);
 		});
+		
 	localforage
-		.getItem(`/listingAfterName?name=${login.getCookie('listing')}`, function(err, value) {
+		.getItem(`/listingAfterName/${login.getCookie('listing')}`, function(err, value) {
 			if (!value) throw Error('No data');
 			return value;
 		})
@@ -192,7 +193,7 @@ export function fetchListingData() {
 export function fetchNotifications(){
 	let networkDataReceived = false;
 
-	fetch(`/NotificationsForUser/${login.getCookie('username')}`)
+	fetch(`/NotificationsForUser/${encodeURI(login.getCookie('username'))}`)
 		.then(resp => resp.json())
 		.then(function(json_data) {
 			networkDataReceived = true;
@@ -204,7 +205,7 @@ export function fetchNotifications(){
 			throw new Error(error);
 		});
 	localforage
-		.getItem(`/NotificationsForUser/${login.getCookie('username')}`, function(err, value) {
+		.getItem(`/NotificationsForUser/${encodeURI(login.getCookie('username'))}`, function(err, value) {
 			if (!value) throw Error('No data');
 			return value;
 		})
@@ -214,7 +215,6 @@ export function fetchNotifications(){
 			if (!networkDataReceived) {
 				render.renderNotifications(json_data);
 					pagesEvents.notificationEvents();
-			
 			}
 		})
 		.catch(function(error) {
