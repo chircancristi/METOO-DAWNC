@@ -236,21 +236,24 @@ export function comment(commentDetails) {
 export function notification(notificationDetails) {
 	let notification = document.createElement('li');
 	notification.classList = 'notification';
-
+	notification.id = notificationDetails.listing;
 	let notificationIcon = document.createElement('div');
 	notificationIcon.classList = 'notification__icon';
 
 	let notificationIconObject = document.createElement('i');
+
 	if (notificationDetails.type === 'add-listing') {
 		notificationIconObject.classList = 'fas fa-plus-square';
 	}
 	if (notificationDetails.type === 'comment') {
 		notificationIconObject.classList = 'fas fa-comment';
 	}
-	if (notificationDetails.type === 'join-request') {
-    notificationIconObject.classList = 'fas fa-user-check';
+	if (notificationDetails.type === 'request') {
+		notificationIconObject.classList = 'fas fa-user-check';
+  }
+  if (notificationDetails.type === 'accepted') {
+		notificationIconObject.classList = 'fas fa-smile-beam';
 	}
-
 
 	notificationIcon.appendChild(notificationIconObject);
 	notification.appendChild(notificationIcon);
@@ -273,10 +276,63 @@ export function notification(notificationDetails) {
 	if (notificationDetails.type === 'comment') {
 		notificationDescription.innerHTML = notificationDescription.innerHTML + ` posted a comment`;
 	}
-	if (notificationDetails.type === 'join-request') {
-		notificationDescription.innerText = notificationDescription.innerHTML + ` requested to join your listing`;
-	}
+	if (notificationDetails.type === 'request') {
+		notificationDescription.innerHTML = notificationDescription.innerHTML + ` requested to join your listing`;
+  }
+  if (notificationDetails.type === 'accepted'){
+    notificationDescription.innerHTML = notificationDescription.innerHTML + ` accepted your request`;
+  }
 	notification.appendChild(notificationDescription);
 
 	return notification;
 }
+export function accountListing(listing, author) {
+	let listingElement = document.createElement('a');
+	listingElement.href = '#';
+	if (author == true) listingElement.classList = 'listing listing--author';
+	else listingElement.classList = 'listing listing--contributor';
+  listingElement.id=listing.id;
+
+  let listingTitleContainer= document.createElement("section");
+  listingTitleContainer.classList="listing__title";
+  
+  let listingTitle = document.createElement("h2");
+  listingTitle.classList="title";
+  listingTitle.id="js-acc-listing-title";
+  listingTitle.innerText=listing.title;
+
+  listingTitleContainer.appendChild(listingTitle);
+
+  listingElement.appendChild(listingTitleContainer);
+
+  let listingInfoContainer=document.createElement("section");
+  listingInfoContainer.classList="listing__info";
+
+  let listingInfoRole=document.createElement("span");
+  listingInfoRole.id="js-acc-listing-role";
+  listingInfoRole.classList="role";
+  if(author==false)
+    listingInfoRole.innerText="Contributor";
+  else
+    listingInfoRole.innerText="Author";
+  listingInfoContainer.appendChild(listingInfoRole);
+  
+  let listingInfoPlace=document.createElement("span");
+  listingInfoPlace.id="js-acc-listing-place";
+  listingInfoPlace.classList="place";
+  listingInfoPlace.innerText=listing.place;
+
+  listingInfoContainer.appendChild(listingInfoPlace);
+  listingElement.appendChild(listingInfoContainer);
+
+  let listingType=document.createElement("span");
+  listingType.id="js-acc-listing-type";
+  listingType.classList="type";
+  listingType.innerText=listing.type;
+
+  listingElement.appendChild(listingType);
+
+  return listingElement;
+
+
+} 

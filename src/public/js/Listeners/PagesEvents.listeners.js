@@ -152,3 +152,19 @@ export function singleListingEvents() {
 	let postComment = document.getElementById('js-post-comment');
 	postComment.addEventListener('click', singleListing.sendMessage);
 }
+export function notificationEvents(){
+	let notifications =document.getElementsByClassName("notification")
+	for (let i=0;i<notifications.length;i++)
+	{
+		notifications[i].addEventListener('click',function(){
+			var now = new Date();
+			var time = now.getTime();
+			time += 3600 * 1000;
+			now.setTime(time);
+
+			document.cookie = 'listing=' + notifications[i].id + '; expires=' + now.toUTCString() + '; path=/';
+			document.location.href = `/single-listing`;
+		})
+
+	}
+}
