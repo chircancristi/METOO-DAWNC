@@ -454,3 +454,10 @@ export function renderComment(commentData) {
 	
 	commentsContainer.appendChild( commentEl );
 }
+export function renderNotifications(json_data){
+	let notificationsContainer=document.getElementById("js-notification-container")
+	for (let i=json_data.length-1;i>=0;i--){
+		let notification=markup.notification(json_data[i]);
+		notificationsContainer.appendChild(notification);
+	}
+}

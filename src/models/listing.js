@@ -125,7 +125,8 @@ class Listing {
 					})
 					.then(() => {
 						place.updatePlaceWithListing(firebase, data.place, listingId);
-						console.log('Document succesfully written! ✅');
+						place.sendNotificationToSubscribers(firebase,data.place,listingId,data.author);
+						
 					})
 					.catch(error => {
 						throw new Error(error);
@@ -158,6 +159,84 @@ class Listing {
 				throw new error(error);
 			});
 	}
+	static sendNotificationToContribuitors(firebase, author, listingId,place){
+		const db = firebase.firestore();
+		const settings = {
+			timestampsInSnapshots: true,
+		};
+
+		db.settings(settings);
+
+		db.collection('Notification')
+			.get()
+			.then(function(querySnapshot) {
+				let size = querySnapshot.size;
+				let notificationId = `n${size + 1}`;
+
+				db.collection('Notification')
+					.doc(notificationId)
+					.set({
+						listing: listingId,
+						id: notificationId,
+						src: author,
+						type: 'comment',
+						place: place,
+					})
+					.then(() => {
+						db.collection('Listing')
+							.where('id', '==', listingId)
+							.get()
+							.then(function(querySnapshot) {
+								querySnapshot.forEach(function(doc) {
+									let contributors = doc.data().contributors;
+									for (let i = 0; i < contributors.length; i++) {
+										if (author!=contributors[i]){
+										let userData = db.collection('User').doc(contributors[i]);
+										userData.get().then(function(user) {
+
+											let newNotification=user.data().notifications;
+											let newNotificationStatus= user.data().notifications;
+											newNotification.push(notificationId)
+											newNotificationStatus.push(false);
+											db.collection('User')
+												.doc(contributors[i])
+												.update({
+													notifications: newNotification,
+													notificationsStatus:newNotificationStatus
+												});
+										});
+									}
+								}
+								if (author!=doc.data().author){
+									let userData = db.collection('User').doc(doc.data().author);
+										userData.get().then(function(user) {
+
+											let newNotification=user.data().notifications;
+											let newNotificationStatus= user.data().notifications;
+											newNotification.push(notificationId)
+											newNotificationStatus.push(false);
+											db.collection('User')
+												.doc(doc.data().author)
+												.update({
+													notifications: newNotification,
+													notificationsStatus:newNotificationStatus
+												});
+										});
+								}
+								
+								});
+							
+							})
+							.catch(error => {
+								throw new Error(error);
+							});
+					})
+					.catch(error => {
+						throw new Error(error);
+					});
+			});
+	}
+	
 	static getUserListing(username, firebase) {
 		const db = firebase.firestore();
 		const settings = {

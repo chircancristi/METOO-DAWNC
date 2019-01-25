@@ -155,6 +155,66 @@ class Place {
 				throw new Error(error);
 			});
 	}
+	static sendNotificationToSubscribers(firebase, place, listingId, author) {
+		const db = firebase.firestore();
+		const settings = {
+			timestampsInSnapshots: true,
+		};
+
+		db.settings(settings);
+
+		db.collection('Notification')
+			.get()
+			.then(function(querySnapshot) {
+				let size = querySnapshot.size;
+				let notificationId = `n${size + 1}`;
+
+				db.collection('Notification')
+					.doc(notificationId)
+					.set({
+						listing: listingId,
+						id: notificationId,
+						src: author,
+						type: 'add-listing',
+						place: place,
+					})
+					.then(() => {
+						db.collection('Place')
+							.where('name', '==', place)
+							.get()
+							.then(function(querySnapshot) {
+								querySnapshot.forEach(function(doc) {
+									let subscribers = doc.data().subscribedUsers;
+									for (let i = 0; i < subscribers.length; i++) {
+										if (author!=subscribers[i]){
+										let userData = db.collection('User').doc(subscribers[i]);
+										userData.get().then(function(user) {
+
+											let newNotification=user.data().notifications;
+											let newNotificationStatus= user.data().notifications;
+											newNotification.push(notificationId)
+											newNotificationStatus.push(false);
+											db.collection('User')
+												.doc(subscribers[i])
+												.update({
+													notifications: newNotification,
+													notificationsStatus:newNotificationStatus
+												});
+										});
+									}
+								}
+								});
+							
+							})
+							.catch(error => {
+								throw new Error(error);
+							});
+					})
+					.catch(error => {
+						throw new Error(error);
+					});
+			});
+	}
 }
 
 var place = Place;

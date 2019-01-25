@@ -153,3 +153,33 @@ export function fetchListingData() {
 			throw new Error('Problem acessing the cache', error);
 		});
 }
+export function fetchNotifications(){
+	let networkDataReceived = false;
+
+	fetch(`/NotificationsForUser/${login.getCookie('username')}`)
+		.then(resp => resp.json())
+		.then(function(json_data) {
+			networkDataReceived = true;
+			render.renderNotifications(json_data);
+	
+		})
+		.catch(function(error) {
+			throw new Error(error);
+		});
+	localforage
+		.getItem(`/NotificationsForUser/${login.getCookie('username')}`, function(err, value) {
+			if (!value) throw Error('No data');
+			return value;
+		})
+		.then(function(data) {
+			// don't overwrite newer network data
+
+			if (!networkDataReceived) {
+				render.renderNotifications(json_data);
+			
+			}
+		})
+		.catch(function(error) {
+			throw new Error('Problem acessing the cache', error);
+		});
+}
