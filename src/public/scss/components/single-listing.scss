@@ -1,6 +1,12 @@
 .main-content.main-content--single-listing {
   min-height: 80%;
   color: hsl(210, 28%, 29%);
+  transition: opacity .5s ease-in;
+
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
 
   .listing {
     padding: 1em 20em;

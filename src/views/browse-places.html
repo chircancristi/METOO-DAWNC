@@ -7,7 +7,18 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="theme-color" content="#4285f4">
 
-
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.4.2/css/solid.css"
+    integrity="sha384-uKQOWcYZKOuKmpYpvT0xCFAs/wE157X5Ua3H5onoRAOCNkJAMX/6QF0iXGGQV9cP"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.4.2/css/fontawesome.css"
+    integrity="sha384-HU5rcgG/yUrsDGWsVACclYdzdCcn5yU8V/3V84zSrPDHwZEdjykadlgI6RHrxGrJ"
+    crossorigin="anonymous"
+  />
   <link rel="stylesheet" type="text/css" href="/css/styles.min.css">
   <title>Browse - places</title>
 </head>
@@ -24,7 +35,11 @@
         <li><a href="browse-listings.html">Listings</a></li>
         <li><a href="browse-places.html">Places</a></li>
         <li><a href="account.html">Account</a></li>
-
+        <li>
+          <input name="notifications-checkbox" id="notifications-trigger" type="checkbox" />
+          <label for="notifications-trigger"><i class="fas fa-bell fa-icon"></i></label>
+          <ul id="js-notification-container" class="notifications-container"></ul>
+        </li>
       </ul>
 
     </div>
@@ -50,12 +65,15 @@
         <li><a href="browse-listings.html">Listings</a></li>
         <li><a href="browse-places.html">Places</a></li>
         <li><a href="account.html">Account</a></li>
-        <li><a href="about.html">About</a></li>
       </ul>
     </nav>
   </header>
 
-  <main class="main-content">
+  <div id="js-loader" class="loader in-view">
+    <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+  </div>
+
+  <main class="main-content main-content--places hidden">
     <section class="allPlaces">
       <div id="js-places-grid" class="grid--twoColumns">
 

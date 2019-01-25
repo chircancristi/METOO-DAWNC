@@ -1,5 +1,15 @@
 .b--listings {
   position: relative;
+  overflow-y: scroll;
+}
+
+.main-content--listings {
+  transition: opacity .45s ease-in;
+
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
 }
 
 .listings {
@@ -53,16 +63,6 @@
     }
 
     transition: all .15s ease-in-out;
-  }
-
-  .flex .loader {
-    opacity: 0;
-    pointer-events: none;
-    
-    &:only-child {
-      opacity: 1;
-      pointer-events: auto;
-    }
   }
 
   @include listings;

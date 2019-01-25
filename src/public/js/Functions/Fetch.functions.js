@@ -4,6 +4,9 @@ import * as pagesEvents from '../Listeners/PagesEvents.listeners.js';
 import * as render from './Render.functions.js';
 
 export function fetchAccountData() {
+	let mainEl = document.querySelector('main.main--account');
+	let loader = document.getElementById('js-loader');
+
 	let networkDataReceived = false;
 	let data = {
 		username: login.getCookie('username'),
@@ -19,6 +22,11 @@ export function fetchAccountData() {
 	fetch(request)
 		.then(resp => resp.json())
 		.then(function(json_data) {
+			loader.classList.remove('in-view');
+			setTimeout(() => {
+				mainEl.classList.remove('hidden');
+			}, 150);
+
 			networkDataReceived = true;
 			render.renderAccountPage(json_data);
 		});
@@ -38,11 +46,18 @@ export function fetchAccountData() {
 			throw new Error('Problem acessing the cache', error);
 		});
 }
-export function fetchAllPlacesData() {
+
+export function fetchAllPlacesData() {	
+	let mainEl = document.querySelector('main.main-content--places');
+	let loader = document.getElementById('js-loader');
 	let networkDataReceived = false;
 	fetch('getPlaces')
 		.then(resp => resp.json())
 		.then(function(json_data) {
+			loader.classList.remove('in-view');
+			setTimeout(() => {
+				mainEl.classList.remove('hidden');
+			}, 150)
 			networkDataReceived = true;
 			render.renderAllplaces(json_data);
 		});
@@ -64,10 +79,15 @@ export function fetchAllPlacesData() {
 }
 
 export function fetchSinglePlaceData() {
+	let mainEl = document.querySelector('main.main-content-place');
+	let loader = document.getElementById('js-loader');
+
 	let networkDataReceived = false;
 	fetch(`getLocationInformation/${login.getCookie('place')}`)
 		.then(resp => resp.json())
 		.then(function(json_data) {
+			loader.classList.remove('in-view');
+			mainEl.classList.remove('hidden');
 			networkDataReceived = true;
 			render.renderSinglePlacePage(json_data);
 		});
@@ -89,6 +109,8 @@ export function fetchSinglePlaceData() {
 }
 
 export function fetchAllListingsData() {
+	let mainEl = document.querySelector('main.main-content--listings');
+	let loader = document.getElementById('js-loader');
 	let networkDataReceived = false;
 
 	fetch(
@@ -99,6 +121,8 @@ export function fetchAllListingsData() {
 		.then(resp => resp.json())
 		.then(function(json_data) {
 			networkDataReceived = true;
+			mainEl.classList.remove('hidden');
+			loader.classList.remove('in-view');
 			render.renderAllListingsPage(json_data);
 			pagesEvents.viewListingEvents();
 		})
@@ -124,11 +148,15 @@ export function fetchAllListingsData() {
 }
 
 export function fetchListingData() {
+	let mainEl = document.querySelector('main.main-content--single-listing');
+	let loader = document.getElementById('js-loader');
 	let networkDataReceived = false;
 
 	fetch(`/listingAfterName/${login.getCookie('listing')}`)
 		.then(resp => resp.json())
 		.then(function(json_data) {
+			loader.classList.remove('in-view');
+			mainEl.classList.remove('hidden');
 			networkDataReceived = true;
 			render.renderListingPage(json_data);
 			pagesEvents.singleListingEvents();

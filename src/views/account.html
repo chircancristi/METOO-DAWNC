@@ -27,6 +27,11 @@
         <li><a href="browse-listings.html">Listings</a></li>
         <li><a href="browse-places.html">Places</a></li>
         <li><a href="account.html">Account</a></li>
+        <li>
+          <input name="notifications-checkbox" id="notifications-trigger" type="checkbox" />
+          <label for="notifications-trigger"><i class="fas fa-bell fa-icon"></i></label>
+          <ul id="js-notification-container" class="notifications-container"></ul>
+        </li>
       </ul>
       
      
@@ -58,7 +63,11 @@
     </nav>
   </header>
 
-  <main class="main-content main--account">
+  <div id="js-loader" class="loader in-view">
+    <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+  </div>
+
+  <main class="main-content main--account hidden">
     <section class="account">
       <section class="account-container">
         <div class="account__pic">

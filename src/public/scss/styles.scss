@@ -64,6 +64,15 @@ html {
     }
   }
 
+  &.main-content--places {
+    transition: opacity .5s ease-in;
+
+    &.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+
   @include query-below($lap) {
     margin: 1em 2.5em;
   }

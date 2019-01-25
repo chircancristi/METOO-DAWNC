@@ -1,375 +1,372 @@
 .main-content-place {
-    height: 85%;
-    font-family: 'IBM Plex Mono', monospace;
+  height: 85%;
+  font-family: "IBM Plex Mono", monospace;
+  transition: opacity 0.5s ease-in;
 
-    .place-info {
-        padding: 2em 7em;
-        height: 100%;
-    
-        .place-grid {
-            display: grid;
-            position: relative;
-            top:5%;
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
 
-            grid-template-columns: 30% 70%;
-            grid-template-rows: 20% 50% 30%;
-           
-            height: calc(100% - 7em);
-           
-            .place-grid__item {
-                
-                &:nth-of-type(1) {
-                    grid-column: 1 / 2;
-                    grid-row: 2 / 3;
-                
-                    img {
-                        height: 100%;
-                        width: 100%;
-                      
-                        box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.55);
-                    }
-                }
-                
-                &:nth-of-type(2) {
-                    grid-column: 2 / 3;
-                    grid-row: 1 / 4;
-                    
-                    margin-left: 2em;
-                    border: 1px black solid;
-                    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.55);
-                    
-                    display: flex;
-                    justify-content: center;
-                    flex-direction: column;
-                    
-                    .place-info__title {
-                        padding:0.3em;
+  .place-info {
+    padding: 2em 7em;
+    height: 100%;
 
-                        height: 20%;
-                        font-size: 2.5em;
-                        text-align: center;
-                        background-color: hsl(203, 57%, 82%);
-                        color:hsl(210, 28%, 29%);
-                    }
-                    
-                    .place-info__container {
-                        width: 100%;
-                        height: 100%;
-                    
-                        display: flex;
-                        justify-content: center;
-                        
-                        .place-info__listings-container {
-                            width: 100%;
-                            position: relative;
-                            display:flex;
+    .place-grid {
+      display: grid;
+      position: relative;
+      top: 5%;
 
-                            border-top: 2px black solid;
-                            overflow-y: auto;
-                            overflow-x: hidden;
+      grid-template-columns: 30% 70%;
+      grid-template-rows: 20% 50% 30%;
 
-                            .place-listings__selector{
-                                height: 10%;
-                                width: 50%;
-        
-                                border-bottom: 2px solid black;
-                                
-                                &:not(:last-of-type) {
-                                    border-right: 2px solid black;
-                                  }
+      height: calc(100% - 7em);
 
-                                .listings__checkbox{
-                                    display: none;
-                                    
-                                    &:checked + label {
-                                        color: hsl(204, 70%, 53%);
-                                      }
-                                      
-                                    &:checked ~ .place-listings__content {
-                                        display: block;
-                                        opacity:1;
-                                    }
-                                }
+      .place-grid__item {
+        &:nth-of-type(1) {
+          grid-column: 1 / 2;
+          grid-row: 2 / 3;
 
-                              
-                                label{
-                                    cursor: pointer;
-                            
-                                    .listings__selector-title__container{
-                                        position: relative;
-                                        width: 100%;
-                                        height: 100%;
-                                        .listings__selector-title{
-                                            position: absolute;
+          img {
+            height: 100%;
+            width: 100%;
 
-                                            top:50%;
-                                            transform:translateY(-50%);
-
-                                            width: 100%;
-                                            text-align: center;
-                                        }
-                                        
-                                        &:hover {
-                                            color: hsl(204, 70%, 53%);
-                                            }
-                                    }
-                                }
-                                .place-listings__content{
-                                    position: absolute;
-                                    top:4em;
-                                    left: 1em;
-                                    width: 95%;
-
-                                    display: none;
-                                    opacity:0;
-
-                                    @include listings;
-                                    transition: all .3s ease-in-out;
-                                }
-                            }
-                        }
-
-                        .place-info__details-container {
-                            width: 50%;
-                            height: 100%;
-                            border-left: 2px black solid;
-                            border-top: 2px black solid;
-
-
-                            .place-info__slideshow-container{
-                                position: relative;
-                                height: 100%;
-                                width: 100%;
-                                .slide{
-                                    position: absolute;
-                                    top:15%;
-                                    left:10%;
-
-                                    opacity: 0;
-                                    width: 80%;
-                                    height: 60%;
-
-                                    transition: all .3s ease-in-out;
-
-                                    .slide__text{
-                                        width: 100%;
-                                        text-align: center;
-
-                                    }
-                                    
-                                    img{
-                                      width: 100%;
-                                      height: 100%;
-                                    }
-                                }
-
-                                .prev, .next {
-                                    color: grey;
-                                    font-weight: bold;
-                                    font-size: 5em;
-                                    
-                                    position: absolute;
-                                    top: 50%;
-                                    transform: translateY(-50%);
-                                    width: auto;
-                                  
-                                    cursor: pointer;
-                                    transition: 0.6s ease;
-                                    border-radius: 0 3px 3px 0;
-                                  
-                                  }
-                                  .next {
-                                    right: 0;
-                                    border-radius: 3px 0 0 3px;
-                                  }
-                                  
-                                  .prev:hover, .next:hover {
-                                    background-color: rgba(0,0,0,0.8);
-                                  }
-                            }
-                         }
-                    }
-                }
-
-                &:nth-of-type(3) {
-                    grid-column: 1 / 2;
-                    grid-row: 3/ 4;
-                    
-                    .place-subscribe__container{
-                         height: 100%;
-                         position: relative;
-                  
-                        .place-listings__button {
-                            border: black solid 2px;
-                    
-                            position: absolute;
-                            height: 40%;
-                            width: 50%;
-
-                            top:30%;
-                            left: 50%;
-                            transform: translate(-50%, -50%);
-                    
-                            text-align: center;
-                            line-height: 100%;
-                            background-color:  hsl(203, 57%, 82%);
-                            transition: all 0.5s;
-                    
-                            h2 {
-                                position: absolute;
-                                display: inline-block;
-                                
-                                top:50%;
-                                transform: translate(-50%, -50%);
-
-                                vertical-align: middle;
-                                text-transform: uppercase;
-                                pointer-events: none;
-                                color:hsl(210, 28%, 29%);
-                                
-                                transition: all 0.5s;
-                            }
-
-                            &:hover {
-                                background-color:  hsl(210, 28%, 29%);
-
-                                h2{
-                                    color:hsl(203, 57%, 82%);
-                                }
-                            }
-                        }
-
-                        .place-listings__subscribers{
-                            position: relative;
-                            height: 50%;
-                            width: 100%;
-                            top:50%;
-
-                            .place-listings__subscribers-number{
-                                position: absolute;
-                                left:50%;
-                                transform: translatex(-50%);
-                            }
-                        }
-                        
-                    }
-                }
-            }
+            box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.55);
+          }
         }
-    }
-    .subscribed-modal{
-        display: none; 
-        position: fixed; 
 
-        z-index: 1;
-        left: 0;
-        top: 0;
+        &:nth-of-type(2) {
+          grid-column: 2 / 3;
+          grid-row: 1 / 4;
 
-        width: 100%; 
-        height: 100%; 
-        overflow: auto; 
+          margin-left: 2em;
+          border: 1px black solid;
+          box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.55);
 
-        background-color: rgba(0,0,0,0.4); 
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
 
-        .subscribed-modal__content{
-            position: relative;
-            padding: 1em;
-         
-            background-color: #fefefe;
-            border: 1px solid #888;
-            margin: auto;
+          .place-info__title {
+            padding: 0.3em;
 
-            overflow: auto;
-            border-radius: 25px;
-
-            top: 50%;
-            transform: translateY(-50%);
-            width: 25%;
-            height: 50%;
-
-            .subscribed-modal__content-header{
-                position: relative;
-                width: 100%;
-                height: 10%;
-                
-                border-bottom: 2px solid black;
-
-                .subscribed-modal__close {
-                    position: absolute;
-                    right: 0;
-                    top: 0;
-                    color: #aaaaaa;
-                
-                    font-size: 2em;
-                    font-weight: bold;
-                    
-                    &:hover{
-                        color: #000;
-                        text-decoration: none;
-                        cursor: pointer;
-                 }    
-            }
-
-            .subscribed-modal__title{
-                position: absolute;
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%,-50%);
-            }
+            height: 20%;
+            font-size: 2.5em;
+            text-align: center;
+            background-color: hsl(203, 57%, 82%);
+            color: hsl(210, 28%, 29%);
           }
 
-        .subscriber-modal__content-flex{
+          .place-info__container {
+            width: 100%;
+            height: 100%;
+
             display: flex;
-            min-height: min-content;
-            flex-direction: column;
+            justify-content: center;
 
-            overflow: auto;
+            .place-info__listings-container {
+              width: 100%;
+              position: relative;
+              display: flex;
 
-            .subscriber-container{
-                padding: .7em;
-                height: 30%;
-               
-                display: flex;
-                justify-content: space-between;
-                
-                border:1px grey solid;
-                background-color: hsl(184, 9%, 100%);
-                
-                .subscriber__pic{
-                    width: 10%;
-                    height: 3em;
+              border-top: 2px black solid;
+              overflow-y: auto;
+              overflow-x: hidden;
+
+              .place-listings__selector {
+                height: 10%;
+                width: 50%;
+
+                border-bottom: 2px solid black;
+
+                &:not(:last-of-type) {
+                  border-right: 2px solid black;
                 }
-                .subscriber__info{
+
+                .listings__checkbox {
+                  display: none;
+
+                  &:checked + label {
+                    color: hsl(204, 70%, 53%);
+                  }
+
+                  &:checked ~ .place-listings__content {
+                    display: block;
+                    opacity: 1;
+                  }
+                }
+
+                label {
+                  cursor: pointer;
+
+                  .listings__selector-title__container {
                     position: relative;
-                    width: 80%;
+                    width: 100%;
+                    height: 100%;
+                    .listings__selector-title {
+                      position: absolute;
 
-                    .subscriber__info-name{
-                        position: absolute;
-                        top:50%;
-                        transform: translateY(-50%);
+                      top: 50%;
+                      transform: translateY(-50%);
 
+                      width: 100%;
+                      text-align: center;
                     }
-                    .subscriber__info-profile{
-                        position: absolute;
-                        left:70%;
-                        top:50%;
-                        transform: translateY(-50%);
 
-                        background-color:hsl(203, 57%, 82%);
-                        color:	hsl(211, 31%, 65%);
-
-                        &:hover{
-                            color:black;
-                            background-color:white; 
-                        }
-
-                    }   
-                    
+                    &:hover {
+                      color: hsl(204, 70%, 53%);
+                    }
+                  }
                 }
+                .place-listings__content {
+                  position: absolute;
+                  top: 4em;
+                  left: 1em;
+                  width: 95%;
+
+                  display: none;
+                  opacity: 0;
+
+                  @include listings;
+                  transition: all 0.3s ease-in-out;
+                }
+              }
             }
+
+            .place-info__details-container {
+              width: 50%;
+              height: 100%;
+              border-left: 2px black solid;
+              border-top: 2px black solid;
+
+              .place-info__slideshow-container {
+                position: relative;
+                height: 100%;
+                width: 100%;
+                .slide {
+                  position: absolute;
+                  top: 15%;
+                  left: 10%;
+
+                  opacity: 0;
+                  width: 80%;
+                  height: 60%;
+
+                  transition: all 0.3s ease-in-out;
+
+                  .slide__text {
+                    width: 100%;
+                    text-align: center;
+                  }
+
+                  img {
+                    width: 100%;
+                    height: 100%;
+                  }
+                }
+
+                .prev,
+                .next {
+                  color: grey;
+                  font-weight: bold;
+                  font-size: 5em;
+
+                  position: absolute;
+                  top: 50%;
+                  transform: translateY(-50%);
+                  width: auto;
+
+                  cursor: pointer;
+                  transition: 0.6s ease;
+                  border-radius: 0 3px 3px 0;
+                }
+                .next {
+                  right: 0;
+                  border-radius: 3px 0 0 3px;
+                }
+
+                .prev:hover,
+                .next:hover {
+                  background-color: rgba(0, 0, 0, 0.8);
+                }
+              }
+            }
+          }
         }
+
+        &:nth-of-type(3) {
+          grid-column: 1 / 2;
+          grid-row: 3/ 4;
+
+          .place-subscribe__container {
+            height: 100%;
+            position: relative;
+
+            .place-listings__button {
+              border: black solid 2px;
+
+              position: absolute;
+              height: 40%;
+              width: 50%;
+
+              top: 30%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+
+              text-align: center;
+              line-height: 100%;
+              background-color: hsl(203, 57%, 82%);
+              transition: all 0.5s;
+
+              h2 {
+                position: absolute;
+                display: inline-block;
+
+                top: 50%;
+                transform: translate(-50%, -50%);
+
+                vertical-align: middle;
+                text-transform: uppercase;
+                pointer-events: none;
+                color: hsl(210, 28%, 29%);
+
+                transition: all 0.5s;
+              }
+
+              &:hover {
+                background-color: hsl(210, 28%, 29%);
+
+                h2 {
+                  color: hsl(203, 57%, 82%);
+                }
+              }
+            }
+
+            .place-listings__subscribers {
+              position: relative;
+              height: 50%;
+              width: 100%;
+              top: 50%;
+
+              .place-listings__subscribers-number {
+                position: absolute;
+                left: 50%;
+                transform: translatex(-50%);
+              }
+            }
+          }
         }
-    
+      }
     }
- 
+  }
+  .subscribed-modal {
+    display: none;
+    position: fixed;
+
+    z-index: 1;
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+
+    background-color: rgba(0, 0, 0, 0.4);
+
+    .subscribed-modal__content {
+      position: relative;
+      padding: 1em;
+
+      background-color: #fefefe;
+      border: 1px solid #888;
+      margin: auto;
+
+      overflow: auto;
+      border-radius: 25px;
+
+      top: 50%;
+      transform: translateY(-50%);
+      width: 25%;
+      height: 50%;
+
+      .subscribed-modal__content-header {
+        position: relative;
+        width: 100%;
+        height: 10%;
+
+        border-bottom: 2px solid black;
+
+        .subscribed-modal__close {
+          position: absolute;
+          right: 0;
+          top: 0;
+          color: #aaaaaa;
+
+          font-size: 2em;
+          font-weight: bold;
+
+          &:hover {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+          }
+        }
+
+        .subscribed-modal__title {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+
+      .subscriber-modal__content-flex {
+        display: flex;
+        min-height: min-content;
+        flex-direction: column;
+
+        overflow: auto;
+
+        .subscriber-container {
+          padding: 0.7em;
+          height: 30%;
+
+          display: flex;
+          justify-content: space-between;
+
+          border: 1px grey solid;
+          background-color: hsl(184, 9%, 100%);
+
+          .subscriber__pic {
+            width: 10%;
+            height: 3em;
+          }
+          .subscriber__info {
+            position: relative;
+            width: 80%;
+
+            .subscriber__info-name {
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+            }
+            .subscriber__info-profile {
+              position: absolute;
+              left: 70%;
+              top: 50%;
+              transform: translateY(-50%);
+
+              background-color: hsl(203, 57%, 82%);
+              color: hsl(211, 31%, 65%);
+
+              &:hover {
+                color: black;
+                background-color: white;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }

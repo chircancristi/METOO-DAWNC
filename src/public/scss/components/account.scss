@@ -5,6 +5,12 @@
 .main--account {
   display: flex;
   flex-flow: column nowrap;
+  transition: opacity .5s ease-in;
+
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
 
   .account {
     color: hsl(210, 28%, 29%);
