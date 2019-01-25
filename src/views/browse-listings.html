@@ -21,12 +21,23 @@
 
   <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans" rel="stylesheet">
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.4.2/css/solid.css"
+    integrity="sha384-uKQOWcYZKOuKmpYpvT0xCFAs/wE157X5Ua3H5onoRAOCNkJAMX/6QF0iXGGQV9cP"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.4.2/css/fontawesome.css"
+    integrity="sha384-HU5rcgG/yUrsDGWsVACclYdzdCcn5yU8V/3V84zSrPDHwZEdjykadlgI6RHrxGrJ"
+    crossorigin="anonymous"
+  />
   <link rel="stylesheet" type="text/css" href="/css/styles.min.css">
   <title>Browse - listings</title>
 </head>
 
 <body class="b--listings">
-
   <header class="header">
     <div class="title">
       <a class="title-text" href="#">
@@ -43,7 +54,6 @@
           <label for="notifications-trigger"><i class="fas fa-bell fa-icon"></i></label>
           <ul id="js-notification-container" class="notifications-container"></ul>
         </li>
-
       </ul>
 
     </div>
@@ -74,7 +84,11 @@
     </nav>
   </header>
 
-  <main class="main-content main-content--listings">
+  <div id="js-loader" class="loader in-view">
+    <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+  </div>
+
+  <main class="main-content main-content--listings hidden">
     <section id="js-listings" class="listings">
 
       <div class="listings__nav">

@@ -75,6 +75,7 @@
               color: inherit;
               font-weight: 500;
               text-decoration: none;
+              cursor: pointer;
 
               &:hover {
                 color: hsl(28, 80%, 50%);
@@ -103,6 +104,7 @@
           .author,
           .place {
             font-size: 1.2em;
+            cursor: pointer;
           }
         }
 

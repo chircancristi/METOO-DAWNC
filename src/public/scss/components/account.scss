@@ -1,6 +1,16 @@
+.b--account {
+  overflow-y: scroll;
+}
+
 .main--account {
   display: flex;
   flex-flow: column nowrap;
+  transition: opacity .5s ease-in;
+
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
 
   .account {
     color: hsl(210, 28%, 29%);
@@ -73,10 +83,6 @@
           .skills {
             display: flex;
             flex-flow: row wrap;
-
-            &:nt ~ .edit {
-
-            }
     
             .skill {
               padding: .2em .3em;
@@ -195,6 +201,7 @@
             .listings--completed,
             .requests {
               padding-top: .5em;
+              margin-bottom: 1.5em;
               display: flex;
               flex-flow: column nowrap;
             }

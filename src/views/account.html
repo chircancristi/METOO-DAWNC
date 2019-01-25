@@ -26,7 +26,7 @@
   <link rel="stylesheet"  type="text/css" href="/css/styles.min.css">
   <title>Account</title>
 </head>
-<body>
+<body class="b--account">
   <header class="header">
     <div class="title">
       <a class="title-text" href="#">
@@ -74,7 +74,11 @@
     </nav>
   </header>
 
-  <main class="main-content main--account">
+  <div id="js-loader" class="loader in-view">
+    <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+  </div>
+
+  <main class="main-content main--account hidden">
     <section class="account">
       <section class="account-container">
         <div class="account__pic">

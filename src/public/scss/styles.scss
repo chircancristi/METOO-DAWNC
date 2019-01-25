@@ -5,6 +5,7 @@
 @import "utils/mixins";
 
 // components
+@import "components/loader";
 @import "components/header";
 @import "components/card";
 @import "components/footer";
@@ -60,6 +61,15 @@ html {
         width: 100%;
         height: 95%;
       }
+    }
+  }
+
+  &.main-content--places {
+    transition: opacity .5s ease-in;
+
+    &.hidden {
+      opacity: 0;
+      pointer-events: none;
     }
   }
 
