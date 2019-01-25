@@ -107,7 +107,7 @@ export function renderAccountPage( responseJSON ) {
 	dislikes.innerText = responseJSON.userData.dislikes;
 
 	responseJSON.userData.skills.forEach( (item) => {
-		let skillEl = markup.skill( item );
+		let skillEl = markup.skill( item, true );
 
 		skills.appendChild( skillEl );
 	});

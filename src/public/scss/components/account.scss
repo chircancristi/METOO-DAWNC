@@ -3,6 +3,7 @@
   flex-flow: column nowrap;
 
   .account {
+    color: hsl(210, 28%, 29%);
     .account-container {
       margin-bottom: 2em;
       display: grid;
@@ -177,6 +178,7 @@
           }
   
           .tab__content {
+            margin-top: .5em;
             position: absolute;
             top: 2em;
             left: 0;
@@ -184,7 +186,107 @@
             width: 100%;
             display: none;
             transition: all .3s ease-in-out;
-            @include listings;
+
+            .listings--active,
+            .listings--completed {
+              padding-top: .5em;
+              display: flex;
+              flex-flow: column nowrap;
+            }
+
+            .listings--active .listing,
+            .listings--completed .listing {
+              padding: .5em;
+              border: 2px dashed currentColor;
+              display: flex;
+              flex-flow: column;
+              max-width: 80%;
+
+              transition: border-color .15s ease-in-out;
+              text-decoration: none;
+              color: inherit;
+
+              &:not(:last-of-type) {
+                margin-bottom: 1em;
+              }
+
+              &:nth-of-type(2n) {
+                align-self: flex-end;
+              }
+
+              .listing__title {
+                margin-bottom: .5em;
+              }
+              
+              .listing__info {
+                display: flex;
+                
+                .role {
+                  transition: color .15s ease-in-out;
+                  font-weight: 600;
+
+                  &:after {
+                    content: "@";
+                    margin: 0 .25em;
+                    display: inline-block;
+                    font-weight: 500;
+                  }
+                }
+              }
+
+              @include query-below($xsmall) {
+                max-width: 100%;
+
+                &:nth-of-type(2n) {
+                  align-self: auto;
+                }
+              }
+
+              @include query-above($xsmall) {
+                & {
+                  align-self: flex-start;
+                }
+                
+                .listing__title {
+                  align-self: flex-start;
+                }
+
+                .listing__info {
+                  align-self: flex-start;
+                }
+
+                .type {
+                  align-self: flex-start;
+                }
+              }
+            }
+
+            .listings--active .listing {
+              &.listing--author:hover,
+              &.listing--contributor:hover {
+                border-color: hsl(282, 44%, 47%);
+              }
+
+              &.listing--author:hover .role {
+                color: hsl(48, 89%, 45%);
+              }
+
+              &.listing--contributor:hover .role{
+                color: hsl(168, 76%, 42%);
+              }
+
+              &.listing--author {
+                border-color: hsl(48, 89%, 45%);
+              }
+
+              &.listing--contributor {
+                border-color: hsl(168, 76%, 42%);
+              }
+            }
+
+            .listings--completed .listing:hover {
+              border-color: hsl(282, 44%, 47%);
+            }
           }
         }
       }
