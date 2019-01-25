@@ -201,7 +201,7 @@
               display: flex;
               flex-flow: column;
               max-width: 80%;
-
+              min-width: 50%;
               transition: border-color .15s ease-in-out;
               text-decoration: none;
               color: inherit;
@@ -212,6 +212,7 @@
 
               &:nth-of-type(2n) {
                 align-self: flex-end;
+                min-width: 60%;
               }
 
               .listing__title {

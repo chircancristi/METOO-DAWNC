@@ -1,7 +1,7 @@
-import * as login from "./Login.functions.js";
-import * as events from "../Listeners/NavbarEvents.listeners.js";
-import * as pagesEvents from "../Listeners/PagesEvents.listeners.js";
-import * as markup from "./Markup.functions.js";
+import * as login from './Login.functions.js';
+import * as events from '../Listeners/NavbarEvents.listeners.js';
+import * as pagesEvents from '../Listeners/PagesEvents.listeners.js';
+import * as markup from './Markup.functions.js';
 
 export function renderBasicPage() {
 	if (login.checkIfUserIsLogged() == false) document.location.href = '/login';
@@ -38,7 +38,7 @@ export function renderLoginModal() {
 
 export function renderMainPage() {
 	let map;
-	
+
 	initMap();
 	fetch('favouritePlaces')
 		.then(resp => resp.json())
@@ -91,7 +91,7 @@ export function renderMainPage() {
 	}
 }
 
-export function renderAccountPage( responseJSON ) {
+export function renderAccountPage(responseJSON) {
 	let displayName = document.getElementById('js-name');
 	let profilePic = document.getElementById('js-profile-pic');
 	let likes = document.getElementById('js-likes');
@@ -106,109 +106,51 @@ export function renderAccountPage( responseJSON ) {
 	likes.innerText = responseJSON.userData.likes;
 	dislikes.innerText = responseJSON.userData.dislikes;
 
-	responseJSON.userData.skills.forEach( (item) => {
-		let skillEl = markup.skill( item, true );
+	responseJSON.userData.skills.forEach(item => {
+		let skillEl = markup.skill(item, true);
 
-		skills.appendChild( skillEl );
+		skills.appendChild(skillEl);
 	});
 
 	let addSkillBtn = markup.addSkill();
 	let editSkillsBtn = markup.editSkills();
 
-	skills.appendChild( addSkillBtn );
-	skills.appendChild( editSkillsBtn );
-
+	skills.appendChild(addSkillBtn);
+	skills.appendChild(editSkillsBtn);
+	let listingsCompletedContainer = document.getElementById('js-listings-completed');
+	let listingsActiveContainer = document.getElementById('js-listings-active');
 	let username = login.getCookie('username');
 	let listingsAt = {};
-	for (let i = 0; i < responseJSON.listings.length; i++) {
-		let author = responseJSON.listings[i].author;
-		let placeName = responseJSON.listings[i].place;
-
+	let listings = responseJSON.listings;
+	listings.forEach(listing => {
+		let flagAuthor=false;
+		let author = listing.author;
+		let placeName = listing.place;
 		if (author === username) {
 			if (!listingsAt.hasOwnProperty(placeName)) {
 				listingsAt[placeName] = 0;
 			}
-
+			flagAuthor=true;
 			listingsAt[placeName]++;
 		}
 
-		let body = '';
-		if (responseJSON.listings[i].status === 'active') {
-			body = body +
-				`
-            <div class="flex__item">
-                <article class="listing">
-                <div class="listing__content">
-                    <h3 class="title">${responseJSON.listings[i].title}</h3>
-                    <ul id="js-skills" class="skills-req">
-            `;
-
-			for (let j = 0; j < responseJSON.listings[i].skills.length; j++) {
-				body = body + `<li>${responseJSON.listings[i].skills[j]}</li>`;
-			}
-
-			body = body +
-				` </ul>
-                    <div class="actions">
-                    <button id="js-join" class="join">Join</button>
-                    <a href="" class="view-listing">View Listing</a>
-                    </div>
-                </div>
-                <div class="listing__meta">
-                    <a href="#">
-                    <span class="author">${responseJSON.listings[i].author}</span>
-                    </a>
-                    <a href="#"><span class="place">${responseJSON.listings[i].place}</span></a>
-                </div>
-                <span class="listing__type">${responseJSON.listings[i].type}</span>
-                </article>
-            </div>
-            `;
-			listingsActive.innerHTML = listingsActive.innerHTML + body;
+		if (listing.status === 'active') {
+			let listingElement = markup.accountListing(listing,flagAuthor);
+			listingsActiveContainer.appendChild(listingElement);
 		} else {
-			body = body +
-				`
-        <div class="flex__item">
-            <article class="listing">
-            <div class="listing__content">
-                <h3 class="title">${responseJSON.listings[i].title}</h3>
-                <ul id="js-skills" class="skills-req">
-        `;
-
-			for (let j = 0; j < responseJSON.listings[i].skills.length; j++) {
-				body = body + `<li>${responseJSON.listings[i].skills[j]}</li>`;
-			}
-
-			body = body +
-				` </ul>
-                <div class="actions">
-                <button id="js-join" class="join">Join</button>
-                <a href="" class="view-listing">View Listing</a>
-                </div>
-            </div>
-            <div class="listing__meta">
-                <a href="#">
-                <span class="author">${responseJSON.listings[i].author}</span>
-                </a>
-                <a href="#"><span class="place">${responseJSON.listings[i].place}</span></a>
-            </div>
-            <span class="listing__type">${responseJSON.listings[i].type}</span>
-            </article>
-        </div>
-        `;
-			listingsCompleted.innerHTML = listingsActive.innerHTML + body;
+			let listingElement = markup.accountListing(listing,flagAuthor);
+			listingsCompletedContainer.appendChild(listingElement);
 		}
-	}
-	
+	});
+
 	let max = 0;
 	let favouritePlaceName = '';
-	for ( let place in listingsAt ) {
-		if ( listingsAt[place] > max ) {
+	for (let place in listingsAt) {
+		if (listingsAt[place] > max) {
 			max = listingsAt[place];
 			favouritePlaceName = place;
 		}
 	}
-	
 	favouritePlace.innerText = favouritePlaceName;
 }
 
@@ -369,10 +311,10 @@ export function renderAllListingsPage(responseJSON) {
 	let listingsContainer = document.getElementById('js-listings-flex');
 	const listings = responseJSON;
 
-	listings.forEach((listing) => {
-		let listingEl = markup.browseListing( listing );
+	listings.forEach(listing => {
+		let listingEl = markup.browseListing(listing);
 
-		listingsContainer.appendChild( listingEl );
+		listingsContainer.appendChild(listingEl);
 	});
 }
 
@@ -409,10 +351,10 @@ export function renderListingPage(json_data) {
 	skillsContainer.innerHTML = '';
 
 	let skills = json_data.listing.skills;
-	skills.forEach((skill) => {
-		let skillEl = markup.skill( skill, true );
+	skills.forEach(skill => {
+		let skillEl = markup.skill(skill, true);
 
-		skillsContainer.appendChild( skillEl );
+		skillsContainer.appendChild(skillEl);
 	});
 
 	description.innerText = json_data.listing.description;
@@ -435,10 +377,10 @@ export function renderListingPage(json_data) {
 				json_data.listing.contributors[i]
 			}</a></li>`;
 	}
-	
+
 	if (userFound == true) {
 		postedComments.style.display = 'block';
-	
+
 		let jsComments = document.getElementById('js-comments-container');
 		jsComments.innerHTML = '';
 
@@ -450,14 +392,14 @@ export function renderListingPage(json_data) {
 
 export function renderComment(commentData) {
 	let commentsContainer = document.getElementById('js-comments-container');
-	let commentEl = markup.comment( commentData );
-	
-	commentsContainer.appendChild( commentEl );
+	let commentEl = markup.comment(commentData);
+
+	commentsContainer.appendChild(commentEl);
 }
-export function renderNotifications(json_data){
-	let notificationsContainer=document.getElementById("js-notification-container")
-	for (let i=json_data.length-1;i>=0;i--){
-		let notification=markup.notification(json_data[i]);
+export function renderNotifications(json_data) {
+	let notificationsContainer = document.getElementById('js-notification-container');
+	for (let i = json_data.length - 1; i >= 0; i--) {
+		let notification = markup.notification(json_data[i]);
 		notificationsContainer.appendChild(notification);
 	}
 }

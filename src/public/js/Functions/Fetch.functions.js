@@ -132,6 +132,7 @@ export function fetchListingData() {
 			networkDataReceived = true;
 			render.renderListingPage(json_data);
 			pagesEvents.singleListingEvents();
+			pagesEvents.notificationEvents();
 		})
 		.catch(function(error) {
 			throw new Error(error);
@@ -147,6 +148,7 @@ export function fetchListingData() {
 			if (!networkDataReceived) {
 				render.renderListingPage(json_data);
 				pagesEvents.singleListingEvents();
+			
 			}
 		})
 		.catch(function(error) {
@@ -161,6 +163,7 @@ export function fetchNotifications(){
 		.then(function(json_data) {
 			networkDataReceived = true;
 			render.renderNotifications(json_data);
+			pagesEvents.notificationEvents();
 	
 		})
 		.catch(function(error) {
@@ -176,6 +179,7 @@ export function fetchNotifications(){
 
 			if (!networkDataReceived) {
 				render.renderNotifications(json_data);
+				pagesEvents.notificationEvents();
 			
 			}
 		})
