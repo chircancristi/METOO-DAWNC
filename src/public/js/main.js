@@ -19,7 +19,6 @@ window.onload = function () {
 
         navbarEvents.addNavbarEvents();
         render.renderMainPage();
-       
     }
     
     if (window.location.pathname == "/login.html" || window.location.pathname == "/login") {
@@ -55,7 +54,6 @@ window.onload = function () {
 
         render.renderBasicPage();
         fetch.fetchAllListingsData();
-
     }
     
     if (window.location.pathname == "/browse-places.html") {
@@ -66,7 +64,6 @@ window.onload = function () {
     {
         render.renderBasicPage();
         fetch.fetchListingData();
-
     }
 }
 

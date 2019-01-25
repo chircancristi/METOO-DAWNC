@@ -1,33 +1,19 @@
+.b--listings {
+  position: relative;
+}
+
 .listings {
   padding: 1em 20em;
   height: 100%;
 
   .listings__nav {
+    margin-bottom: 1.5em;
     display: flex;
-    position: relative;
-
-    @include query-above($lap) {
-      justify-content: space-between;
-      margin-bottom: 1em;
-    }
-
-    @include query-below($lap) {
-      flex-direction: column;
-      justify-content: space-between;
-      align-content: center;
-    }
   }
 
   .search__wrapper {
     display: flex;
-    justify-content: center;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-
-    @include query-above($lap) {
-      width: 100%;
-    }
+    width: 100%;
 
     .search__box {
       height: 100%;
@@ -35,14 +21,12 @@
     }
 
     .search__button {
-      height: 100%;
       width: 30%;
       color: hsl(210, 29%, 65%);
       font-size: 1em;
       font-weight: bold;
       background-color: hsl(204, 70%, 86%);
-      transition: opacity 0.35s ease-in-out;
-      transition: all 0.35s ease-in-out;
+      transition: all .15s ease-in-out;
     }
 
     .search__button:hover {
@@ -68,35 +52,25 @@
       width: 30%;
     }
 
-    transition: all 0.35s ease-in-out;
+    transition: all .15s ease-in-out;
+  }
+
+  .flex .loader {
+    opacity: 0;
+    pointer-events: none;
+    
+    &:only-child {
+      opacity: 1;
+      pointer-events: auto;
+    }
   }
 
   @include listings;
 
-  // @include query-below($large) {
-  //   padding: 1em 15em;
-  // }
-  // @include query-below($desk) {
-  //   padding: 1em 10em;
-  // }
-
   @include content-container-padding;
 
-  @include query-below($lap) {
-    .listings__nav--new,
-    .listings__nav--messages,
-    .search__wrapper {
-      margin-bottom: 2em;
-    }
-  }
 }
 
 @include query-above($default) {
   margin: 1em 0;
 }
-
-// @include query-below($large) {
-//   .main-content.main-content--listings {
-//     margin: 1em 3em;
-//   }
-// }

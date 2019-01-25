@@ -114,7 +114,7 @@ export function fetchAllListingsData() {
 			// don't overwrite newer network data
 
 			if (!networkDataReceived) {
-				render.renderAllListingsPage(json_data);
+				render.renderAllListingsPage(data);
 				pagesEvents.viewListingEvents();
 			}
 		})
