@@ -5,7 +5,6 @@ import * as requests from '../Functions/Requests.functions.js';
 import * as login from '../Functions/Login.functions.js';
 import * as render from '../Functions/Render.functions.js';
 
-
 export function singlePlaceEvents() {
 	var slideIndex = 1;
 
