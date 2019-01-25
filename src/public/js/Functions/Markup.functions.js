@@ -239,19 +239,19 @@ export function notification(notificationDetails) {
 	let notificationIcon = document.createElement('div');
 	notificationIcon.classList = 'notification__icon';
 
-	let notificationIconObject = document.createElement('i');
+	let notificationIconObject = document.createElement('span');
 
 	if (notificationDetails.type === 'add-listing') {
-		notificationIconObject.classList = 'fas fa-plus-square';
+		notificationIconObject.innerText = '➕';
 	}
 	if (notificationDetails.type === 'comment') {
-		notificationIconObject.classList = 'fas fa-comment';
+		notificationIconObject.innerText = '💬';
 	}
 	if (notificationDetails.type === 'request') {
-		notificationIconObject.classList = 'fas fa-user-check';
+		notificationIconObject.innerText = '👋';
   }
   if (notificationDetails.type === 'accepted') {
-		notificationIconObject.classList = 'fas fa-smile-beam';
+		notificationIconObject.innerText = '👌';
 	}
 
 	notificationIcon.appendChild(notificationIconObject);

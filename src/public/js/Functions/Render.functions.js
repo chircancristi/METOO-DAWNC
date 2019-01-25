@@ -95,18 +95,13 @@ export function renderMainPage() {
 export function renderAccountPage(responseJSON) {
 	let displayName = document.getElementById('js-name');
 	let profilePic = document.getElementById('js-profile-pic');
-	let likes = document.getElementById('js-likes');
-	let dislikes = document.getElementById('js-dislikes');
 	let skills = document.getElementById('js-skills');
 	let favouritePlace = document.getElementById('js-favourite-place');
-	let listingsCompleted = document.getElementById('js-listings-completed');
-	let listingsActive = document.getElementById('js-listings-active');
 
 	displayName.innerText = responseJSON.userData.fullName;
 	profilePic.src = responseJSON.userData.imgUrl;
-	likes.innerText = responseJSON.userData.likes;
-	dislikes.innerText = responseJSON.userData.dislikes;
 
+	skills.innerHTML = "";
 	responseJSON.userData.skills.forEach(item => {
 		let skillEl = markup.skill(item, true);
 
@@ -120,6 +115,10 @@ export function renderAccountPage(responseJSON) {
 	skills.appendChild(editSkillsBtn);
 	let listingsCompletedContainer = document.getElementById('js-listings-completed');
 	let listingsActiveContainer = document.getElementById('js-listings-active');
+	
+	listingsCompletedContainer.innerHTML = "";
+	listingsActiveContainer.innerHTML = "";
+
 	let username = login.getCookie('username');
 	let listingsAt = {};
 	let listings = responseJSON.listings;
@@ -317,6 +316,7 @@ export function renderAllListingsPage(responseJSON) {
 	let listingsContainer = document.getElementById('js-listings-flex');
 	const listings = responseJSON;
 
+	listingsContainer.innerHTML = "";
 	listings.forEach(listing => {
 		let listingEl = markup.browseListing(listing);
 
@@ -338,6 +338,7 @@ export function renderListingPage(json_data) {
 	let username = login.getCookie('username');
 	let postedComments = document.getElementById('js-posted-comments');
 
+
 	if (json_data.listing.author === username) {
 		userFound = true;
 		var now = new Date();
@@ -347,7 +348,7 @@ export function renderListingPage(json_data) {
 
 		document.cookie = 'role=author; expires=' + now.toUTCString() + '; path=/';
 	}
-
+	
 	title.innerText = json_data.listing.title;
 	type.innerText = json_data.listing.type;
 	place.innerText = json_data.listing.place;
@@ -404,6 +405,8 @@ export function renderComment(commentData) {
 }
 export function renderNotifications(json_data) {
 	let notificationsContainer = document.getElementById('js-notification-container');
+
+	notificationsContainer.innerHTML = "";
 	for (let i = json_data.length - 1; i >= 0; i--) {
 		let notification = markup.notification(json_data[i]);
 		notificationsContainer.appendChild(notification);

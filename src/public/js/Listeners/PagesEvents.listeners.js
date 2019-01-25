@@ -76,7 +76,7 @@ export function viewListingEvents() {
 			now.setTime(time);
 
 			document.cookie = 'listing=' + listings[i].id + '; expires=' + now.toUTCString() + '; path=/';
-			document.location.href = `/single-listing`;
+			document.location.href = `/single-listing.html`;
 		});
 	}
 	for (let i = 0; i < join.length; i++) {
@@ -163,7 +163,7 @@ export function notificationEvents(){
 			now.setTime(time);
 
 			document.cookie = 'listing=' + notifications[i].id + '; expires=' + now.toUTCString() + '; path=/';
-			document.location.href = `/single-listing`;
+			document.location.href = `/single-listing.html`;
 		})
 
 	}
@@ -205,7 +205,7 @@ export function listingsAcountEvents(){
 			now.setTime(time);
 
 			document.cookie = 'listing=' + listings[i].id + '; expires=' + now.toUTCString() + '; path=/';
-			document.location.href = `/single-listing`;
+			document.location.href = `/single-listing.html`;
 		 })
 	 }
 

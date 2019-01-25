@@ -43,7 +43,11 @@ export function fetchAccountData() {
 			// don't overwrite newer network data
 
 			if (!networkDataReceived) {
-				render.renderAccountPage(json_data);
+				loader.classList.remove('in-view');
+				setTimeout(() => {
+					mainEl.classList.remove('hidden');
+				}, 150);
+				render.renderAccountPage(data);
 				pagesEvents.requestEvents();
 				pagesEvents.listingsAcountEvents()
 			}
@@ -106,7 +110,9 @@ export function fetchSinglePlaceData() {
 			// don't overwrite newer network data
 
 			if (!networkDataReceived) {
-				render.renderSinglePlacePage(json_data);
+				loader.classList.remove('in-view');
+				mainEl.classList.remove('hidden');
+				render.renderSinglePlacePage(data);
 			}
 		})
 		.catch(function(error) {
@@ -144,6 +150,8 @@ export function fetchAllListingsData() {
 			// don't overwrite newer network data
 
 			if (!networkDataReceived) {
+				mainEl.classList.remove('hidden');
+				loader.classList.remove('in-view');
 				render.renderAllListingsPage(data);
 				pagesEvents.viewListingEvents();
 			}
@@ -181,9 +189,10 @@ export function fetchListingData() {
 			// don't overwrite newer network data
 
 			if (!networkDataReceived) {
-				render.renderListingPage(json_data);
+				loader.classList.remove('in-view');
+				mainEl.classList.remove('hidden');
+				render.renderListingPage(data);
 				pagesEvents.singleListingEvents();
-			
 			}
 		})
 		.catch(function(error) {
@@ -213,7 +222,7 @@ export function fetchNotifications(){
 			// don't overwrite newer network data
 
 			if (!networkDataReceived) {
-				render.renderNotifications(json_data);
+				render.renderNotifications(data);
 					pagesEvents.notificationEvents();
 			}
 		})

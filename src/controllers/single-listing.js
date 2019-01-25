@@ -3,7 +3,7 @@ const user = require('../models/user');
 const listing = require('../models/listing');
 const comment = require('../models/comment')
 module.exports.controller = function(app, firebase) {
-	app.get('/single-listing', function(req, res) {
+	app.get('/single-listing.html', function(req, res) {
 		res.sendFile(path.resolve('views/single-listing.html'));
 	});
 	app.get('/listingAfterName/:listingName', function(req, res) {

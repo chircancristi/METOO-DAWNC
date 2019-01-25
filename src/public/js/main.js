@@ -26,11 +26,6 @@ window.onload = function () {
         navbarEvents.addNavbarEvents();
     }
     
-    if (window.location.pathname == "/single-listing.html") {
-        render.renderBasicPage();
-        fetch.fetchNotifications();
-    }
-    
     if (window.location.pathname == "/single-place.html" || window.location.pathname == "/single-place") {
         render.renderBasicPage();
         pagesEvents.singlePlaceEvents();
@@ -66,7 +61,7 @@ window.onload = function () {
         fetch.fetchAllPlacesData();
         fetch.fetchNotifications();
     }
-    if (  window.location.pathname=="/single-listing" )
+    if (  window.location.pathname=="/single-listing.html" )
     {
         render.renderBasicPage();
         fetch.fetchListingData();
