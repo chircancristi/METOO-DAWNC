@@ -195,3 +195,18 @@ export function requestEvents(){
 		})
 	}
 }
+export function listingsAcountEvents(){
+	 let listings=document.getElementsByClassName("listing");
+	 for ( let i=0;i<listings.length;i++){
+		 listings[i].addEventListener('click',function(){
+			var now = new Date();
+			var time = now.getTime();
+			time += 3600 * 1000;
+			now.setTime(time);
+
+			document.cookie = 'listing=' + listings[i].id + '; expires=' + now.toUTCString() + '; path=/';
+			document.location.href = `/single-listing`;
+		 })
+	 }
+
+}

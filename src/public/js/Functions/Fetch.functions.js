@@ -20,9 +20,10 @@ export function fetchAccountData() {
 		.then(resp => resp.json())
 		.then(function(json_data) {
 			networkDataReceived = true;
-			console.log(json_data);
+
 			render.renderAccountPage(json_data);
 			pagesEvents.requestEvents();
+			pagesEvents.listingsAcountEvents()
 		
 		});
 	localforage
@@ -36,6 +37,7 @@ export function fetchAccountData() {
 			if (!networkDataReceived) {
 				render.renderAccountPage(json_data);
 				pagesEvents.requestEvents();
+				pagesEvents.listingsAcountEvents()
 			}
 		})
 		.catch(function(error) {
