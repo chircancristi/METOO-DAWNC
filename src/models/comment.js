@@ -1,3 +1,4 @@
+const listing = require('./listing');
 class Comment {
 	static addComment(data, firebase) {
 		const db = firebase.firestore();
@@ -15,26 +16,29 @@ class Comment {
 				db.collection('Comment')
 					.doc(commentId)
 					.set({
-            author: data.author,
-            listing: data.listing,
-            imgUrl: data.imgUrl,
-            content: data.content,
-            date: data.date,
-            role: data.role,
-            id:commentId
-						
+						author: data.author,
+						listing: data.listing,
+						imgUrl: data.imgUrl,
+						content: data.content,
+						date: data.date,
+						role: data.role,
+						id: commentId,
 					})
 					.then(() => {
-					
-						console.log('Document succesfully written! ✅');
+						db.collection('Listing')
+							.doc(data.listing)
+							.get()
+							.then(function(doc) {
+								listing.sendNotificationToContribuitors(firebase, data.author, data.listing,doc.data().place);
+							});
 					})
 					.catch(error => {
 						throw new Error(error);
 					});
 			});
-  }
-  static getCommentsByListing(listingId,firebase){
-    const db = firebase.firestore();
+	}
+	static getCommentsByListing(listingId, firebase) {
+		const db = firebase.firestore();
 		const settings = {
 			timestampsInSnapshots: true,
 		};
@@ -46,14 +50,14 @@ class Comment {
 			.where('listing', '==', listingId)
 			.get()
 			.then(function(comments) {
-				let returnComment=[];
+				let returnComment = [];
 				comments.forEach(function(doc) {
 					returnComment.push(doc.data());
 				});
 				return returnComment;
 			});
 		return comment;
-  }
+	}
 }
 var comment = Comment;
 module.exports = comment;

@@ -13,9 +13,13 @@ window.onload = function () {
             navbarEvents.addLoginModalEvents();
             login.login();
         }
+        else{
+            fetch.fetchNotifications();
+        }
 
         navbarEvents.addNavbarEvents();
         render.renderMainPage();
+       
     }
     
     if (window.location.pathname == "/login.html" || window.location.pathname == "/login") {

@@ -1,170 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<meta name="theme-color" content="#4285f4" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="theme-color" content="#4285f4">
-  
-  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans" rel="stylesheet">
-  
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/solid.css" integrity="sha384-uKQOWcYZKOuKmpYpvT0xCFAs/wE157X5Ua3H5onoRAOCNkJAMX/6QF0iXGGQV9cP" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/fontawesome.css" integrity="sha384-HU5rcgG/yUrsDGWsVACclYdzdCcn5yU8V/3V84zSrPDHwZEdjykadlgI6RHrxGrJ" crossorigin="anonymous">
-  <link rel="stylesheet"  type="text/css" href="/css/styles.min.css">
-  <link rel="manifest" href="/manifest.json">
+		<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans" rel="stylesheet" />
 
-  <title>MeToo - Home</title>
-</head>
+		<link
+			rel="stylesheet"
+			href="https://use.fontawesome.com/releases/v5.4.2/css/solid.css"
+			integrity="sha384-uKQOWcYZKOuKmpYpvT0xCFAs/wE157X5Ua3H5onoRAOCNkJAMX/6QF0iXGGQV9cP"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://use.fontawesome.com/releases/v5.4.2/css/fontawesome.css"
+			integrity="sha384-HU5rcgG/yUrsDGWsVACclYdzdCcn5yU8V/3V84zSrPDHwZEdjykadlgI6RHrxGrJ"
+			crossorigin="anonymous"
+		/>
+		<link rel="stylesheet" type="text/css" href="/css/styles.min.css" />
+		<link rel="manifest" href="/manifest.json" />
 
-<body>
-  <div class="container">
-    <div class='modal__content' id='nav--modalJS'>
-    </div>
-    <header class="header" id="headerJs">
-      <div class="title">
-        <a class="title-text" href="#">
-          <h1 class="title-text__h1">Public Study</h1>
-          <h3 class="title-text__h3">Meet study mates</h3>
-        </a>
-        <ul class="nav nav--main" id="nav--mainJS">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="browse-listings.html">Listings</a></li>
-          <li><a href="browse-places.html">Places</a></li>
-          <li><a href="account.html">Account</a></li>
-          <li>
-            <input name="notifications-checkbox" id="notifications-trigger" type="checkbox">
-            <label for="notifications-trigger"><i class="fas fa-bell fa-icon"></i></label>
-            <ul class="notifications-container">
-              <li class="notification">
-                <div class="notification__icon">
-                  <i class="fas fa-user-check"></i>
-                </div>
-                <div class="notification__description">
-                  <span class="user">Johnny Doe</span>
-                  requested to join your listing.
-                </div>
-              </li>
-              <li class="notification">
-                <div class="notification__icon">
-                  <i class="fas fa-user-check"></i>
-                </div>
-                <div class="notification__description">
-                  <span class="user">Johnny Doe</span>
-                  requested to join your listing.
-                </div>
-              </li>
-              <li class="notification">
-                <div class="notification__icon">
-                  <i class="fas fa-user-check"></i>
-                </div>
-                <div class="notification__description">
-                  <span class="user">Johnny Doe</span>
-                  requested to join your listing.
-                </div>
-              </li>
-              <li class="notification">
-                <div class="notification__icon">
-                  <i class="fas fa-user-check"></i>
-                </div>
-                <div class="notification__description">
-                  <span class="user">Johnny Doe</span>
-                  requested to join your listing.
-                </div>
-              </li>
-              <li class="notification">
-                <div class="notification__icon">
-                  <i class="fas fa-user-check"></i>
-                </div>
-                <div class="notification__description">
-                  <span class="user">Johnny Doe</span>
-                  requested to join your listing.
-                </div>
-              </li>
-              <li class="notification">
-                <div class="notification__icon">
-                  <i class="fas fa-user-check"></i>
-                </div>
-                <div class="notification__description">
-                  <span class="user">Johnny Doe</span>
-                  requested to join your listing.
-                </div>
-              </li>
-              <li class="notification">
-                <div class="notification__icon">
-                  <i class="fas fa-user-check"></i>
-                </div>
-                <div class="notification__description">
-                  <span class="user">Johnny Doe</span>
-                  requested to join your listing.
-                </div>
-              </li>
-              <li class="notification">
-                <div class="notification__icon">
-                  <i class="fas fa-user-check"></i>
-                </div>
-                <div class="notification__description">
-                  <span class="user">Johnny Doe</span>
-                  requested to join your listing.
-                </div>
-            </ul>
+		<title>MeToo - Home</title>
+	</head>
 
-          </li>
-          
-        </ul>
-        
-      </div>
+	<body>
+		<div class="container">
+			<div class="modal__content" id="nav--modalJS"></div>
+			<header class="header" id="headerJs">
+				<div class="title">
+					<a class="title-text" href="#">
+						<h1 class="title-text__h1">Public Study</h1>
+						<h3 class="title-text__h3">Meet study mates</h3>
+					</a>
+					<ul class="nav nav--main" id="nav--mainJS">
+						<li><a href="index.html">Home</a></li>
+						<li><a href="browse-listings.html">Listings</a></li>
+						<li><a href="browse-places.html">Places</a></li>
+						<li><a href="account.html">Account</a></li>
+						<li>
+							<input name="notifications-checkbox" id="notifications-trigger" type="checkbox" />
+							<label for="notifications-trigger"><i class="fas fa-bell fa-icon"></i></label>
+							<ul id="js-notification-container" class="notifications-container"></ul>
+						</li>
+					</ul>
+				</div>
 
-      <div class="mobile-header">
-        <button id="js-nav-trigger" class="menu-trigger">
-          <span class="burger-line"></span>
-          <span class="burger-line"></span>
-          <span class="burger-line"></span>
-        </button>
+				<div class="mobile-header">
+					<button id="js-nav-trigger" class="menu-trigger">
+						<span class="burger-line"></span> <span class="burger-line"></span>
+						<span class="burger-line"></span>
+					</button>
 
-        <h2 class="mobile-title">Public Study</h2>
-      </div>
-      
-      <nav id="js-mobile-nav-wrapper" class="mobile-menu-wrapper">
-        <button id="js-nav-close" class="menu-close">
-          <span class="close"></span>
-          <span class="close"></span>
-        </button>
+					<h2 class="mobile-title">Public Study</h2>
+				</div>
 
-        <ul class="nav--mobile" id="nav--mobileJS">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="browse-listings.html">Listings</a></li>
-          <li><a href="browse-places.html">Places</a></li>
-          <li><a href="account.html">Account</a></li>
-        
-        </ul>
-        
-      </nav>
-    </header>
+				<nav id="js-mobile-nav-wrapper" class="mobile-menu-wrapper">
+					<button id="js-nav-close" class="menu-close">
+						<span class="close"></span> <span class="close"></span>
+					</button>
 
-    <main class="main-content main-content--home">
-        <div class="map" id="map"></div>
-    </main>
+					<ul class="nav--mobile" id="nav--mobileJS">
+						<li><a href="index.html">Home</a></li>
+						<li><a href="browse-listings.html">Listings</a></li>
+						<li><a href="browse-places.html">Places</a></li>
+						<li><a href="account.html">Account</a></li>
+					</ul>
+				</nav>
+			</header>
 
-    <footer class="footer">
-      <ul class="nav nav--footer">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Listings</a></li>
-        <li><a href="#">Places</a></li>
-        <li><a href="#">Account</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </footer>
-  </div>
+			<main class="main-content main-content--home"><div class="map" id="map"></div></main>
 
-  <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
-  <script  async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_5eJJP5kndI_iZuB9duVO_bs5KFCKeCQ">
-  </script>
-  <script type="module" src="/js/main.js"></script>
- 
-  
-</body>
+			<footer class="footer">
+				<ul class="nav nav--footer">
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Listings</a></li>
+					<li><a href="#">Places</a></li>
+					<li><a href="#">Account</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+			</footer>
+		</div>
+
+		<script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+		<script
+			async
+			defer
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_5eJJP5kndI_iZuB9duVO_bs5KFCKeCQ"
+    ></script>
+    <script src="/js/Utilities/localforage.js"></script>
+		<script type="module" src="/js/main.js"></script>
+	</body>
 </html>
