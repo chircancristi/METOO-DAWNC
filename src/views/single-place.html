@@ -6,7 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="theme-color" content="#4285f4">
-
+  <link
+  rel="stylesheet"
+  href="https://use.fontawesome.com/releases/v5.4.2/css/solid.css"
+  integrity="sha384-uKQOWcYZKOuKmpYpvT0xCFAs/wE157X5Ua3H5onoRAOCNkJAMX/6QF0iXGGQV9cP"
+  crossorigin="anonymous"
+/>
+<link
+  rel="stylesheet"
+  href="https://use.fontawesome.com/releases/v5.4.2/css/fontawesome.css"
+  integrity="sha384-HU5rcgG/yUrsDGWsVACclYdzdCcn5yU8V/3V84zSrPDHwZEdjykadlgI6RHrxGrJ"
+  crossorigin="anonymous"
+/>
   <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans" rel="stylesheet">
   <link rel="stylesheet"  type="text/css" href="/css/styles.min.css">
@@ -26,6 +37,11 @@
         <li><a href="browse-listings.html">Listings</a></li>
         <li><a href="browse-places.html">Places</a></li>
         <li><a href="account.html">Account</a></li>
+        <li>
+          <input name="notifications-checkbox" id="notifications-trigger" type="checkbox" />
+          <label for="notifications-trigger"><i class="fas fa-bell fa-icon"></i></label>
+          <ul id="js-notification-container" class="notifications-container"></ul>
+        </li>
         
       </ul>
      

@@ -101,7 +101,7 @@ class Request {
 				.get()
 				.then(requests => {
 					requests.forEach(doc => {
-						if (doc.data().handled == false) {
+						if (doc.data().handled == true) {
 							listings.splice(i, 1);
 							i = i - 1;
 						}
@@ -109,6 +109,105 @@ class Request {
 				});
 		}
 		return listings;
+	}
+	static getRequestsAtListing(listingId, firebase) {
+		const db = firebase.firestore();
+		const settings = {
+			timestampsInSnapshots: true,
+		};
+
+		db.settings(settings);
+		console.log(listingId);
+		request = db
+			.collection('Request')
+			.where('listing', '==', listingId)
+			.get()
+			.then(function(requests) {
+				let returnRequest = [];
+				requests.forEach(function(doc) {
+					if (doc.data().handled == false) returnRequest.push(doc.data());
+				});
+
+				return returnRequest;
+			});
+		return request;
+	}
+	static manageRequest(firebase, data) {
+		const db = firebase.firestore();
+		const settings = {
+			timestampsInSnapshots: true,
+		};
+
+		db.settings(settings);
+
+		db.collection('Request')
+			.doc(data.request)
+			.get()
+			.then(function(request) {
+				let dataRequest = request.data();
+				if (data.type == 'accept') {
+					db.collection('Listing')
+						.doc(dataRequest.listing)
+						.get()
+						.then(function(listing) {
+							let listingContributors = listing.data().contributors;
+
+							listingContributors.push(dataRequest.author);
+							
+							db.collection('Listing')
+								.doc(listing.data().id)
+								.update({
+									contributors: listingContributors,
+								});
+							db.collection('Notification')
+								.get()
+								.then(function(querySnapshot) {
+									let size = querySnapshot.size;
+									let notificationId = `n${size + 1}`;
+
+									db.collection('Notification')
+										.doc(notificationId)
+										.set({
+											listing: dataRequest.listing,
+											id: notificationId,
+											src: listing.data().author,
+											type: 'accepted',
+											place: '',
+										})
+										.then(() => {
+											db.collection('User')
+												.doc(dataRequest.author)
+												.get()
+												.then(function(userData) {
+													let newNotifications=userData.data().notifications;
+													newNotifications.push(notificationId);
+		
+													db.collection('User')
+														.doc(dataRequest.author)
+														.update({
+															notifications: newNotifications,
+														});
+												});
+										});
+								})
+								
+
+							let handled = !dataRequest.handled;
+							db.collection('Request')
+								.doc(dataRequest.id)
+								.update({
+									handled: handled,
+								});
+						});
+				} else {
+					let handled = !dataRequest.handled;
+					db.collection('Request')
+						.doc(dataRequest.id)
+						.update({
+							handled: handled,
+						});
+				}
+			});
 	}
 }
 var request = Request;

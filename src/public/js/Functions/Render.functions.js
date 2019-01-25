@@ -3,6 +3,7 @@ import * as events from '../Listeners/NavbarEvents.listeners.js';
 import * as pagesEvents from '../Listeners/PagesEvents.listeners.js';
 import * as markup from './Markup.functions.js';
 
+
 export function renderBasicPage() {
 	if (login.checkIfUserIsLogged() == false) document.location.href = '/login';
 	events.addNavbarEvents();
@@ -142,7 +143,12 @@ export function renderAccountPage(responseJSON) {
 			listingsCompletedContainer.appendChild(listingElement);
 		}
 	});
-
+	let requestsContainer=document.getElementById("js-listings-requests");
+	let requests=responseJSON.requests;
+	for (let i=0;i<requests.length;i++){
+		let requestElement=markup.requests(requests[i],listings);
+		requestsContainer.appendChild(requestElement);
+	}
 	let max = 0;
 	let favouritePlaceName = '';
 	for (let place in listingsAt) {
