@@ -7,7 +7,8 @@
     .account-container {
       margin-bottom: 2em;
       display: grid;
-      grid-template-columns: 230px 20px 1fr;
+      grid-template-columns: minmax(30px, 230px) 20px 1fr;
+      grid-template-rows: auto;
   
       .account__pic {
         grid-column: 1 / 2;
@@ -17,7 +18,10 @@
         max-width: 230px;
         max-height: 230px;
         overflow: hidden;
-        box-shadow: 0 1rem 3rem hsla(0, 0%, 0%, 0.15);
+        
+        @include query-above($xsmall) {
+          box-shadow: 0 1rem 3rem hsla(0, 0%, 0%, 0.15);
+        }
 
         img {
           border-radius: 7px;
@@ -188,7 +192,8 @@
             transition: all .3s ease-in-out;
 
             .listings--active,
-            .listings--completed {
+            .listings--completed,
+            .requests {
               padding-top: .5em;
               display: flex;
               flex-flow: column nowrap;
@@ -287,6 +292,56 @@
 
             .listings--completed .listing:hover {
               border-color: hsl(282, 44%, 47%);
+            }
+
+            .requests .request {
+              display: flex;
+
+              &:not(:last-of-type) {
+                margin-bottom: 1em;
+              }
+
+              .profile-pic {
+                border-radius: 50%;
+                margin-right: .5em;
+                width: 40px;
+                height: 40px;
+              }
+
+              .request__content {
+                .name,
+                .listing-title {
+                  font-weight: 600
+                }
+  
+                .request__actions {
+                  margin-top: .5em;
+                  display: flex;
+  
+                  .accept,
+                  .deny {
+                    padding: 0;
+                    border: 0;
+                    transition: color .15s ease-in-out;
+                    font-weight: 600;
+                    background-color: transparent;
+                  }
+
+                  .accept:hover,
+                  .deny:hover {
+                    text-decoration: underline;
+                  }
+  
+                  .accept {
+                    margin-right: .5em;
+                    color: hsl(168, 76%, 42%);
+                  }
+  
+                  .deny {
+                    color: hsl(6, 78%, 57%);
+                  }
+                }
+              }
             }
           }
         }
