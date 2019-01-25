@@ -28,7 +28,11 @@ export function fetchAccountData() {
 			}, 150);
 
 			networkDataReceived = true;
+
 			render.renderAccountPage(json_data);
+			pagesEvents.requestEvents();
+			pagesEvents.listingsAcountEvents()
+		
 		});
 	localforage
 		.getItem(`/userInformation`, function(err, value) {
@@ -40,6 +44,8 @@ export function fetchAccountData() {
 
 			if (!networkDataReceived) {
 				render.renderAccountPage(json_data);
+				pagesEvents.requestEvents();
+				pagesEvents.listingsAcountEvents()
 			}
 		})
 		.catch(function(error) {
@@ -207,7 +213,7 @@ export function fetchNotifications(){
 
 			if (!networkDataReceived) {
 				render.renderNotifications(json_data);
-				pagesEvents.notificationEvents();
+					pagesEvents.notificationEvents();
 			
 			}
 		})

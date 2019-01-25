@@ -168,3 +168,45 @@ export function notificationEvents(){
 
 	}
 }
+export function requestEvents(){
+	let acceptButtons=document.getElementsByClassName("accept");
+	let denyButtons=document.getElementsByClassName("deny");
+
+	for (let i=0;i<acceptButtons.length;i++){
+		acceptButtons[i].addEventListener('click',function(){
+			let data={
+				type:"accept",
+				request:acceptButtons[i].id
+			}
+			requests.postDataToServer("\manageRequest",data);
+			document.getElementById("body"+acceptButtons[i].id).style.display="none";
+			console.log("body"+acceptButtons[i].id);
+		})
+	}
+	for (let i=0;i<denyButtons.length;i++){
+		denyButtons[i].addEventListener('click',function(){
+				let data={
+					type:"deny",
+					request:denyButtons[i].id
+				}
+				requests.postDataToServer("\manageRequest",data);
+	
+				document.getElementById("body"+denyButtons[i].id).style.display="none";
+		})
+	}
+}
+export function listingsAcountEvents(){
+	 let listings=document.getElementsByClassName("listing");
+	 for ( let i=0;i<listings.length;i++){
+		 listings[i].addEventListener('click',function(){
+			var now = new Date();
+			var time = now.getTime();
+			time += 3600 * 1000;
+			now.setTime(time);
+
+			document.cookie = 'listing=' + listings[i].id + '; expires=' + now.toUTCString() + '; path=/';
+			document.location.href = `/single-listing`;
+		 })
+	 }
+
+}
