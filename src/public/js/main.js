@@ -29,23 +29,27 @@ window.onload = function () {
     
     if (window.location.pathname == "/single-listing.html") {
         render.renderBasicPage();
+        fetch.fetchNotifications();
     }
     
     if (window.location.pathname == "/single-place.html" || window.location.pathname == "/single-place") {
         render.renderBasicPage();
         pagesEvents.singlePlaceEvents();
         fetch.fetchSinglePlaceData();
+        fetch.fetchNotifications();
     }
     
     if (window.location.pathname == "/account.html") {
         render.renderBasicPage();
         fetch.fetchAccountData();
+        fetch.fetchNotifications();
     }
     
     if (window.location.pathname == "/add-listing.html") {
         render.renderBasicPage();
         pagesEvents.addListingPageEvents();
         render.renderAddListing();
+        fetch.fetchNotifications();
     }
     
     if (window.location.pathname == "/browse-listings.html") {
@@ -55,17 +59,20 @@ window.onload = function () {
 
         render.renderBasicPage();
         fetch.fetchAllListingsData();
+        fetch.fetchNotifications();
 
     }
     
     if (window.location.pathname == "/browse-places.html") {
         render.renderBasicPage();
         fetch.fetchAllPlacesData();
+        fetch.fetchNotifications();
     }
     if (  window.location.pathname=="/single-listing" )
     {
         render.renderBasicPage();
         fetch.fetchListingData();
+        fetch.fetchNotifications();
 
     }
 }

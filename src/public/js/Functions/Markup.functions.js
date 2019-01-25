@@ -333,6 +333,64 @@ export function accountListing(listing, author) {
   listingElement.appendChild(listingType);
 
   return listingElement;
-
-
 } 
+export function requests(request,listings){
+  let requestElement=document.createElement("article");
+  requestElement.classList="request";
+  requestElement.id=`body${request.id}`;
+  
+  let userImg = document.createElement("img");
+  userImg.src=request.imgUrl;
+  userImg.alt="User profile photo";
+  userImg.classList="profile-pic";
+  requestElement.appendChild(userImg);
+
+  let requestContentContainer= document.createElement("section");
+  requestContentContainer.classList="request__content";
+  
+  let requestAuthor=document.createElement("span");
+  requestAuthor.classList="name";
+  requestAuthor.innerText=request.author;
+
+  requestContentContainer.appendChild(requestAuthor);
+  requestContentContainer.innerHTML=requestContentContainer.innerHTML+" as requested to join your ";
+  let listingName;
+  for (let i=0;i<listings.length;i++){
+  
+    if (listings[i].id==request.listing){
+      listingName=listings[i].title;
+      break;
+    }
+  }
+  let requestListingName=document.createElement("span");
+  requestListingName.classList="listing-title";
+  requestListingName.innerText=listingName;
+
+  requestContentContainer.appendChild(requestListingName);
+  requestContentContainer.innerHTML=requestContentContainer.innerHTML+" listing";
+
+  let requestActionsContainer=document.createElement("section");
+  requestActionsContainer.classList="request__actions";
+
+  let acceptButton=document.createElement("button");
+  let declineButton=document.createElement("button");
+
+  acceptButton.classList="accept";
+  acceptButton.innerText="accept";
+  acceptButton.id=request.id;
+
+  declineButton.classList="deny";
+  declineButton.innerText="deny";
+  declineButton.id=request.id;
+
+  requestActionsContainer.appendChild(acceptButton);
+  requestActionsContainer.appendChild(declineButton);
+
+  requestContentContainer.appendChild(requestActionsContainer);
+
+  requestElement.appendChild(requestContentContainer);
+
+  return requestElement;
+  
+
+}

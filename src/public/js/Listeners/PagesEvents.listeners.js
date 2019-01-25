@@ -168,3 +168,30 @@ export function notificationEvents(){
 
 	}
 }
+export function requestEvents(){
+	let acceptButtons=document.getElementsByClassName("accept");
+	let denyButtons=document.getElementsByClassName("deny");
+
+	for (let i=0;i<acceptButtons.length;i++){
+		acceptButtons[i].addEventListener('click',function(){
+			let data={
+				type:"accept",
+				request:acceptButtons[i].id
+			}
+			requests.postDataToServer("\manageRequest",data);
+			document.getElementById("body"+acceptButtons[i].id).style.display="none";
+			console.log("body"+acceptButtons[i].id);
+		})
+	}
+	for (let i=0;i<denyButtons.length;i++){
+		denyButtons[i].addEventListener('click',function(){
+				let data={
+					type:"deny",
+					request:denyButtons[i].id
+				}
+				requests.postDataToServer("\manageRequest",data);
+	
+				document.getElementById("body"+denyButtons[i].id).style.display="none";
+		})
+	}
+}

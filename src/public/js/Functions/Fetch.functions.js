@@ -20,7 +20,10 @@ export function fetchAccountData() {
 		.then(resp => resp.json())
 		.then(function(json_data) {
 			networkDataReceived = true;
+			console.log(json_data);
 			render.renderAccountPage(json_data);
+			pagesEvents.requestEvents();
+		
 		});
 	localforage
 		.getItem(`/userInformation`, function(err, value) {
@@ -32,6 +35,7 @@ export function fetchAccountData() {
 
 			if (!networkDataReceived) {
 				render.renderAccountPage(json_data);
+				pagesEvents.requestEvents();
 			}
 		})
 		.catch(function(error) {
@@ -179,7 +183,7 @@ export function fetchNotifications(){
 
 			if (!networkDataReceived) {
 				render.renderNotifications(json_data);
-				pagesEvents.notificationEvents();
+					pagesEvents.notificationEvents();
 			
 			}
 		})
