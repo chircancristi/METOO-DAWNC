@@ -122,6 +122,7 @@ export function renderAccountPage(responseJSON) {
 	let username = login.getCookie('username');
 	let listingsAt = {};
 	let listings = responseJSON.listings;
+
 	listings.forEach(listing => {
 		let flagAuthor=false;
 		let author = listing.author;
@@ -149,7 +150,7 @@ export function renderAccountPage(responseJSON) {
 		requestsContainer.appendChild(requestElement);
 	}
 	let max = 0;
-	let favouritePlaceName = '';
+	let favouritePlaceName = "";
 	for (let place in listingsAt) {
 		if (listingsAt[place] > max) {
 			max = listingsAt[place];
@@ -328,7 +329,8 @@ export function renderListingPage(json_data) {
 	let title = document.getElementById('js-listing-title');
 	let type = document.getElementById('js-listing-type');
 	let place = document.getElementById('js-listing-place');
-	let header = document.getElementById('js-listing-header');
+	let author = document.getElementById('js-listing-author');
+	// let header = document.getElementById('js-listing-header');
 	let skillsContainer = document.getElementById('js-listing-skills');
 	let description = document.getElementById('js-listing-desc');
 	let contributors = document.getElementById('js-listing-contributors');
@@ -352,11 +354,10 @@ export function renderListingPage(json_data) {
 	title.innerText = json_data.listing.title;
 	type.innerText = json_data.listing.type;
 	place.innerText = json_data.listing.place;
-	header.innerHTML =
-		header.innerHTML +
-		` <a href="" id='${json_data.listing.author}' class="author">${json_data.listing.author}</a>`;
+	author.innerText = json_data.listing.author;
+	author.setAttribute("data-author", json_data.listing.author);
+		
 	skillsContainer.innerHTML = '';
-
 	let skills = json_data.listing.skills;
 	skills.forEach(skill => {
 		let skillEl = markup.skill(skill, true);
@@ -378,11 +379,8 @@ export function renderListingPage(json_data) {
 
 			document.cookie = 'role=contributor; expires=' + now.toUTCString() + '; path=/';
 		}
-		contributors.innerHTML =
-			contributors.innerHTML +
-			`<li class="contributor"><a id='${json_data.listing.contributors[i]}' href="">${
-				json_data.listing.contributors[i]
-			}</a></li>`;
+
+		contributors.innerHTML = contributors.innerHTML + `<li class="contributor"><a id='${json_data.listing.contributors[i]}' href="">${json_data.listing.contributors[i]}</a></li>`;
 	}
 
 	if (userFound == true) {

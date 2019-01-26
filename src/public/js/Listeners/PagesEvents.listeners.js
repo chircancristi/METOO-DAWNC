@@ -1,9 +1,10 @@
-import * as addListing from '../Functions/AddListing.functions.js';
-import * as place from '../Functions/Places.functions.js';
-import * as singleListing from '../Functions/SingleListing.functions.js';
-import * as requests from '../Functions/Requests.functions.js';
-import * as login from '../Functions/Login.functions.js';
-import * as render from '../Functions/Render.functions.js';
+import * as addListing from "../Functions/AddListing.functions.js";
+import * as place from "../Functions/Places.functions.js";
+import * as singleListing from "../Functions/SingleListing.functions.js";
+import * as requests from "../Functions/Requests.functions.js";
+import * as login from "../Functions/Login.functions.js";
+import * as render from "../Functions/Render.functions.js";
+import * as markup from "../Functions/Markup.functions.js";
 
 export function singlePlaceEvents() {
 	var slideIndex = 1;
@@ -62,6 +63,7 @@ export function browsePlacesEvents() {
 export function singlePageEvents() {
 	document.getElementById('js-subscribe-button').addEventListener('click', place.subscribe);
 }
+
 export function viewListingEvents() {
 	let listings = document.getElementsByClassName('view-listing');
 	let join = document.getElementsByClassName('join');
@@ -148,10 +150,12 @@ export function viewListingEvents() {
 			});
 	})
 }
+
 export function singleListingEvents() {
 	let postComment = document.getElementById('js-post-comment');
 	postComment.addEventListener('click', singleListing.sendMessage);
 }
+
 export function notificationEvents(){
 	let notifications =document.getElementsByClassName("notification")
 	for (let i=0;i<notifications.length;i++)
@@ -168,6 +172,7 @@ export function notificationEvents(){
 
 	}
 }
+
 export function requestEvents(){
 	let acceptButtons=document.getElementsByClassName("accept");
 	let denyButtons=document.getElementsByClassName("deny");
@@ -195,6 +200,7 @@ export function requestEvents(){
 		})
 	}
 }
+
 export function listingsAcountEvents(){
 	 let listings=document.getElementsByClassName("listing");
 	 for ( let i=0;i<listings.length;i++){
@@ -209,4 +215,63 @@ export function listingsAcountEvents(){
 		 })
 	 }
 
+}
+
+export function editSkills() {
+	// TODO: add functionality for removing skills @ srzvan
+	const editSkillsBtn = document.getElementById("js-edit-skills");
+	const addSkillBtn = document.getElementById("js-add-skill");
+	const skillsContainer = document.getElementById("js-skills");
+	let hasBorder = true;
+	let skills = [];
+
+	editSkillsBtn.addEventListener("click", () => {
+		addSkillBtn.classList.toggle("in-view");
+
+		// get the skills
+		// that the user already has
+		let skillsEls = document.querySelectorAll('#js-skills .skill');
+
+		skillsEls.forEach((skillEl) => {
+			skills.push(skillEl.innerText);
+		});
+
+		if ( editSkillsBtn.innerText === "Edit skills" ) {
+			editSkillsBtn.innerText = "Finish editing";
+		} else {
+			editSkillsBtn.innerText = "Edit skills";
+			console.log(skills);
+		}
+	});
+
+	addSkillBtn.addEventListener("click", () => {
+		let skillEl = markup.skill("", hasBorder);
+		skillEl.setAttribute("contenteditable", "true");
+
+		skillsContainer.insertBefore(skillEl, addSkillBtn);
+		skillEl.addEventListener("keypress", (e) => createSkill(e, skillEl, skills) );
+		skillEl.focus();
+	});
+
+	function createSkill(event, skillEl, existingSkills) {
+		try {
+			if (existingSkills.constructor == Array) {
+				if ( event.keyCode === 13 ) {
+					skillEl.blur();
+					skillEl.removeAttribute("contenteditable");
+					skillEl.removeEventListener("keypress", createSkill);
+
+					// TODO: investigate why this array
+					// contains the duplicated set of skills @srzvan
+					existingSkills.push(skillEl.innerText);
+				}
+			} else {
+				throw new Error("Event listeners (Account Page) -> param3 is not an array!")
+			}
+		}
+
+		catch (e) {
+			console.log(e)
+		}
+	}
 }

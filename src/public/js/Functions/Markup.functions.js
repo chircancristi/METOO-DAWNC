@@ -18,23 +18,23 @@ export function skill(skillName, border = false) {
 }
 
 export function addSkill() {
-	let addSkillBtn = document.createElement('button');
+	let addSkillBtn = document.createElement("button");
 
-	addSkillBtn.id = 'js-add-skill';
-	addSkillBtn.classList = 'add-skill';
-	addSkillBtn.title = 'Add new skill';
-	addSkillBtn.innerText = '👌';
+	addSkillBtn.id = "js-add-skill";
+	addSkillBtn.classList = "add-skill";
+	addSkillBtn.title = "Add new skill";
+	addSkillBtn.innerText = '✍';
 
 	return addSkillBtn;
 }
 
 export function editSkills() {
-	let editSkillsBtn = document.createElement('button');
+	let editSkillsBtn = document.createElement("button");
 
-	editSkillsBtn.id = 'js-edit-skills';
-	editSkillsBtn.classList = 'edit';
-	editSkillsBtn.title = 'Edit existing skills';
-	editSkillsBtn.innerText = 'Edit skills';
+	editSkillsBtn.id = "js-edit-skills";
+	editSkillsBtn.classList = "edit";
+	editSkillsBtn.title = "Edit existing skills";
+	editSkillsBtn.innerText = "Edit skills";
 
 	return editSkillsBtn;
 }

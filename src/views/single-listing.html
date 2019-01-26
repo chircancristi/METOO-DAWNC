@@ -1,144 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="theme-color" content="#4285f4">
-  <link
-  rel="stylesheet"
-  href="https://use.fontawesome.com/releases/v5.4.2/css/solid.css"
-  integrity="sha384-uKQOWcYZKOuKmpYpvT0xCFAs/wE157X5Ua3H5onoRAOCNkJAMX/6QF0iXGGQV9cP"
-  crossorigin="anonymous"
-/>
-<link
-  rel="stylesheet"
-  href="https://use.fontawesome.com/releases/v5.4.2/css/fontawesome.css"
-  integrity="sha384-HU5rcgG/yUrsDGWsVACclYdzdCcn5yU8V/3V84zSrPDHwZEdjykadlgI6RHrxGrJ"
-  crossorigin="anonymous"
-/>
- 
-  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans" rel="stylesheet">
-  <link
-    rel="stylesheet"
-    href="https://use.fontawesome.com/releases/v5.4.2/css/solid.css"
-    integrity="sha384-uKQOWcYZKOuKmpYpvT0xCFAs/wE157X5Ua3H5onoRAOCNkJAMX/6QF0iXGGQV9cP"
-    crossorigin="anonymous"
-  />
-  <link
-    rel="stylesheet"
-    href="https://use.fontawesome.com/releases/v5.4.2/css/fontawesome.css"
-    integrity="sha384-HU5rcgG/yUrsDGWsVACclYdzdCcn5yU8V/3V84zSrPDHwZEdjykadlgI6RHrxGrJ"
-    crossorigin="anonymous"
-  />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="theme-color" content="#4285f4" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.4.2/css/solid.css"
+      integrity="sha384-uKQOWcYZKOuKmpYpvT0xCFAs/wE157X5Ua3H5onoRAOCNkJAMX/6QF0iXGGQV9cP"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.4.2/css/fontawesome.css"
+      integrity="sha384-HU5rcgG/yUrsDGWsVACclYdzdCcn5yU8V/3V84zSrPDHwZEdjykadlgI6RHrxGrJ"
+      crossorigin="anonymous"
+    />
 
-  <link rel="stylesheet"  type="text/css" href="/css/styles.min.css">
-  <title>Single listing</title>
-</head>
-<body>
-  <header class="header">
-    <div class="title">
-      <a class="title-text" href="#">
-        <h1 class="title-text__h1">Public Study</h1>
-        <h3 class="title-text__h3">Meet study mates</h3>
-      </a>
-      <ul class="nav nav--main">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="browse-listings.html">Listings</a></li>
-        <li><a href="browse-places.html">Places</a></li>
-        <li><a href="account.html">Account</a></li>
-        <li>
-          <input name="notifications-checkbox" id="notifications-trigger" type="checkbox" />
-          <label for="notifications-trigger">🔔</label>
-          <ul id="js-notification-container" class="notifications-container"></ul>
-        </li>
-      </ul>
-      
+    <link
+      href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.4.2/css/solid.css"
+      integrity="sha384-uKQOWcYZKOuKmpYpvT0xCFAs/wE157X5Ua3H5onoRAOCNkJAMX/6QF0iXGGQV9cP"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.4.2/css/fontawesome.css"
+      integrity="sha384-HU5rcgG/yUrsDGWsVACclYdzdCcn5yU8V/3V84zSrPDHwZEdjykadlgI6RHrxGrJ"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" type="text/css" href="/css/styles.min.css" />
+    <title>Single listing</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="title">
+        <a class="title-text" href="#">
+          <h1 class="title-text__h1">Public Study</h1>
+          <h3 class="title-text__h3">Meet study mates</h3>
+        </a>
+        <ul class="nav nav--main">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="browse-listings.html">Listings</a></li>
+          <li><a href="browse-places.html">Places</a></li>
+          <li><a href="account.html">Account</a></li>
+          <li>
+            <input
+              name="notifications-checkbox"
+              id="notifications-trigger"
+              type="checkbox"
+            />
+            <label for="notifications-trigger">🔔</label>
+            <ul
+              id="js-notification-container"
+              class="notifications-container"
+            ></ul>
+          </li>
+        </ul>
+      </div>
+
+      <div class="mobile-header">
+        <button id="js-nav-trigger" class="menu-trigger">
+          <span class="burger-line"></span> <span class="burger-line"></span>
+          <span class="burger-line"></span>
+        </button>
+
+        <h2 class="mobile-title">Public Study</h2>
+      </div>
+
+      <nav id="js-mobile-nav-wrapper" class="mobile-menu-wrapper">
+        <button id="js-nav-close" class="menu-close">
+          <span class="close"></span> <span class="close"></span>
+        </button>
+
+        <ul class="nav--mobile">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="browse-listings.html">Listings</a></li>
+          <li><a href="browse-places.html">Places</a></li>
+          <li><a href="account.html">Account</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div id="js-loader" class="loader in-view">
+      <div class="lds-roller">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
 
-    <div class="mobile-header">
-      <button id="js-nav-trigger" class="menu-trigger">
-        <span class="burger-line"></span>
-        <span class="burger-line"></span>
-        <span class="burger-line"></span>
-      </button>
-
-      <h2 class="mobile-title">Public Study</h2>
-    </div>
-    
-    <nav id="js-mobile-nav-wrapper" class="mobile-menu-wrapper">
-      <button id="js-nav-close" class="menu-close">
-        <span class="close"></span>
-        <span class="close"></span>
-      </button>
-
-      <ul class="nav--mobile">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="browse-listings.html">Listings</a></li>
-        <li><a href="browse-places.html">Places</a></li>
-        <li><a href="account.html">Account</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <div id="js-loader" class="loader in-view">
-    <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-  </div>
-  
-  <main class="main-content main-content--single-listing hidden">
-    <article class="listing">
-      <section id="js-single-listing-info" class="listing__info">
-        <header id="js-listing-header" class="header--listing">
-          <h2 id="js-listing-title" class="title"></h2>
-          <span id="js-listing-type" class="type"></span>
-          <span id="js-listing-place" class="place"></span>
-        </header>
-
-        <div class="skills-container">
-          <ul id="js-listing-skills" class="skills-required">
-
-          </ul>
-        </div>
-
-        <p id="js-listing-desc" class="desc">
-
-            </p>
-
-        <div class="contributors-container">
-          <header class="header--contributors">
-            <h2>Contributors</h2>
-            <span id="js-listing-contributors-count" class="pill"></span>
+    <main class="main-content main-content--single-listing hidden">
+      <article class="listing">
+        <section id="js-single-listing-info" class="listing__info">
+          <header id="js-listing-header" class="header--listing">
+            <h2 id="js-listing-title" class="title"></h2>
+            <span id="js-listing-type" class="type"></span>
+            <span id="js-listing-place" class="place"></span>
+            <a href="" id="js-listing-author" class="author"></a>
           </header>
-          <ul id="js-listing-contributors" class="contributors">
 
-          </ul>
-        </div>
-      </section>
-      <section id="js-posted-comments" class="listing__comments">
-        <h2>Comments</h2>
-        <section class="post-comment">
-          <p id="js-post-comment-content" class="textarea" contenteditable="true"></p>
-          <button id="js-post-comment" class="submit">Post</button>
+          <div class="skills-container">
+            <ul id="js-listing-skills" class="skills-required"></ul>
+          </div>
+
+          <p id="js-listing-desc" class="desc"></p>
+
+          <div class="contributors-container">
+            <header class="header--contributors">
+              <h2>Contributors</h2>
+              <span id="js-listing-contributors-count" class="pill"></span>
+            </header>
+            <ul id="js-listing-contributors" class="contributors"></ul>
+          </div>
         </section>
+        <section id="js-posted-comments" class="listing__comments">
+          <h2>Comments</h2>
+          <section class="post-comment">
+            <p
+              id="js-post-comment-content"
+              class="textarea"
+              contenteditable="true"
+            ></p>
+            <button id="js-post-comment" class="submit">Post</button>
+          </section>
 
-        <section id="js-comments-container" class="posted-comments"></section>
+          <section id="js-comments-container" class="posted-comments"></section>
+        </section>
+      </article>
+    </main>
 
-      </section>
-    </article>
-  </main>
+    <footer class="footer">
+      <ul class="nav nav--footer">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Listings</a></li>
+        <li><a href="#">Places</a></li>
+        <li><a href="#">Account</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </footer>
 
-  <footer class="footer">
-    <ul class="nav nav--footer">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Listings</a></li>
-      <li><a href="#">Places</a></li>
-      <li><a href="#">Account</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
-  </footer>
-
-  <script src="/js/Utilities/localforage.js"></script>
-  <script type="module" src="/js/main.js"></script>
-</body>
+    <script src="/js/Utilities/localforage.js"></script>
+    <script type="module" src="/js/main.js"></script>
+  </body>
 </html>

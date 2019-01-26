@@ -73,7 +73,7 @@
       padding: 1em;
       position: absolute;
       top: calc(100% + 5px);
-      right: 0;
+      right: 4px;
 
       display: flex;
       flex-flow: column;
@@ -112,7 +112,9 @@
 
         .notification__icon {
           margin-right: .3em;
-          font-size: 1.1em;
+          & > span {
+            font-size: 1.4em;
+          }
         }
       }
     }

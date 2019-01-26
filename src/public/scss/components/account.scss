@@ -88,18 +88,45 @@
               padding: .2em .3em;
               border: 1px solid hsl(210, 29%, 29%);
               margin-top: .5em;
+              position: relative;
               cursor: default;
               background-color: white;
               box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+              transition: all .15s ease-in-out;
     
               &:not(:last-of-type){
                 margin-right: .5em;
+              }
+
+              &[contenteditable="true"] {
+                caret-color: hsl(168, 76%, 42%);
+                outline-color: hsl(168, 76%, 42%);
+
+                &:before {
+                  content: "";
+                  position: absolute;
+                  top: 0;
+                  right: 0;
+                  bottom: 0;
+                  left: 0;
+                  display: block;
+                  opacity: 0;
+                  pointer-events: none;
+                  box-shadow: inset 0 0 10px hsl(168, 76%, 42%);
+                  transition: opacity .15s ease-in-out;
+                }
+
+                &:focus:before {
+                  opacity: 1;
+                }
               }
             }
 
             .add-skill,
             .edit {
-              transition: all .15s ease-in;
+              transition: opacity .15s ease-in
+                          pointer-events .15s ease-in
+                          transform .075s ease-in-out;
             }
 
             .add-skill {
@@ -113,6 +140,14 @@
               &.in-view {
                 opacity: 1;
                 pointer-events: auto;
+              }
+
+              &:focus {
+                outline: none;
+              }
+
+              &:active {
+                transform: scale(0.9);
               }
             }
 
@@ -136,6 +171,14 @@
               
               &:hover {
                 text-decoration: underline;
+              }
+
+              &:focus {
+                outline: none;
+              }
+
+              &:active {
+                color: hsl(210, 28%, 29%);
               }
             }
           }

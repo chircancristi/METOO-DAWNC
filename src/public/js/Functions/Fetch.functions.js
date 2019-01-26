@@ -32,6 +32,7 @@ export function fetchAccountData() {
 			render.renderAccountPage(json_data);
 			pagesEvents.requestEvents();
 			pagesEvents.listingsAcountEvents()
+			pagesEvents.editSkills();
 		
 		});
 	localforage
@@ -49,7 +50,8 @@ export function fetchAccountData() {
 				}, 150);
 				render.renderAccountPage(data);
 				pagesEvents.requestEvents();
-				pagesEvents.listingsAcountEvents()
+				pagesEvents.listingsAcountEvents();
+				pagesEvents.editSkills();
 			}
 		})
 		.catch(function(error) {
